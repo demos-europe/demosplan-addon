@@ -1,6 +1,6 @@
 <?php
 
-namespace DemosEurope\DemosPlanAddon\Configuration;
+namespace DemosEurope\DemosplanAddon\Configuration;
 
 /**
  * All addons need to have an information provider which implements this interface.
