@@ -1,19 +1,12 @@
 {
-    "name": "demos-europe/demosplan-addon-package",
+    "name": "demos-europe/demosplan-addon",
     "description": "This is the base contract package for all demosplan addons",
     "type": "package",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "AlexMenschoid",
-            "email": "meyer-schlichtmann@demos-deutschland.de"
-        }
-    ],
     "autoload": {
-        "psr-4": {"dplanAddon\\": "src/"}
-    },
-    "extra": {
-        "class": "dplanAddon\\AddonInstallerPlugin"
+        "psr-4": {
+            "DemosEurope\\DemosplanAddon\\": "src/"
+        }
     },
     "require": {
         "composer-plugin-api": "^2.0"

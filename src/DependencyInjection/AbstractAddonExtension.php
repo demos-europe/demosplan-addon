@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace demosplan\DemosPlanAddonBundle\src;
+namespace DemosEurope\DemosPlanAddon\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;

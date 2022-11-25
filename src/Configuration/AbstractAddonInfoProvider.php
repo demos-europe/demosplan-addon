@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace demosplan\DemosPlanAddonBundle\src;
+namespace DemosEurope\DemosPlanAddon\Configuration;
 
 use Symfony\Component\Yaml\Yaml;
 
