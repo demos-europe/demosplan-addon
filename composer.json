@@ -1,6 +1,6 @@
 {
     "name": "demos-europe/demosplan-addon",
-    "description": "This is the base contract package for all demosplan addons",
+    "description": "This is the base package for all demosplan addons",
     "type": "package",
     "license": "MIT",
     "autoload": {
