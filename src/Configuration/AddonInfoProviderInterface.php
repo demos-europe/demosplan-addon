@@ -9,12 +9,6 @@ namespace DemosEurope\DemosplanAddon\Configuration;
 interface AddonInfoProviderInterface
 {
     /**
-     * Provides an array with the addons new permissions
-     * @return array<int, string>
-     */
-    public function getAvailablePermissions(): array;
-
-    /**
      * Provides an array with all subscribed events
      * @return array<int, string>
      */
