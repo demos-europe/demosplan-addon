@@ -22,7 +22,7 @@ interface PermissionEvaluatorInterface
      * Determine if the given permission name is known to this particular evaluator instance at all.
      *
      * As `isPermissionEnabled` will return `false` if a permission is not known, this method can
-     * be used beforehand to determine other evaluators should be tried instead.
+     * be used beforehand to determine if other evaluators should be tried instead.
      *
      * @param non-empty-string $permissionName
      */
