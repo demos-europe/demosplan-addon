@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts;
 
+use DemosEurope\DemosplanAddon\Contracts\PermissionsInterface;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Symfony\Component\Security\Core\User\UserInterface;
 use demosplan\DemosPlanCoreBundle\Entity\User\Customer;
-use demosplan\DemosPlanCoreBundle\Entity\User\User;
-use demosplan\DemosPlanCoreBundle\Permissions\PermissionsInterface;
-use demosplan\DemosPlanUserBundle\Exception\UserNotFoundException;
 
 interface CurrentUserInterface
 {
     /**
      * @throws UserNotFoundException
      */
-    public function getUser(): User;
+    public function getUser(): UserInterface;
 
-    public function setUser(User $user, Customer $customer = null): void;
+    public function setUser(UserInterface $user, Customer $customer = null): void;
 
     public function getPermissions(): PermissionsInterface;
 
