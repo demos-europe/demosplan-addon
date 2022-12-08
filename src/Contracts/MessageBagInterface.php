@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts;
 
-use demosplan\DemosPlanCoreBundle\Exception\MessageBagException;
-use demosplan\DemosPlanCoreBundle\Logic\Message;
+use DemosEurope\DemosplanAddon\Contracts\MessageSerializableInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Tightenco\Collect\Support\Collection;
 
@@ -41,8 +40,6 @@ interface MessageBagInterface
      *
      * @param string $message #TranslationKey
      * @param string $domain #TranslationDomain
-     *
-     * @throws MessageBagException
      */
     public function add(
         string $severity,
@@ -69,7 +66,7 @@ interface MessageBagInterface
      *
      * @param bool $toStart if to add the parameter to the start of the list of messages
      */
-    public function addObject(Message $message, bool $toStart = false): void;
+    public function addObject(MessageSerializableInterface $message, bool $toStart = false): void;
 
     /**
      * Generate error messages from a Symfony violation list.
