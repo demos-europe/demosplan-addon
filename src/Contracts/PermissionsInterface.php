@@ -80,7 +80,7 @@ interface PermissionsInterface
      *
      * @param string $permission
      *
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @throws AccessDeniedException
      */
     public function checkPermission($permission);
 
@@ -89,7 +89,7 @@ interface PermissionsInterface
      *
      * @param array|null $permissions
      *
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     * @throws AccessDeniedException
      */
     public function checkPermissions($permissions);
 
