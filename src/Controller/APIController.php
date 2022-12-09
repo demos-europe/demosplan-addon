@@ -2,8 +2,17 @@
 
 namespace DemosEurope\DemosplanAddon\Controller;
 
+use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiResourceServiceInterface;
+use DemosEurope\DemosplanAddon\Contracts\ApiRequest\Normalizer;
+use DemosEurope\DemosplanAddon\Contracts\ApiRequest\TopLevelInterface;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
+use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
+use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
+use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
+use DemosEurope\DemosplanAddon\DemosPipes\Logic\Json;
+use DemosEurope\DemosplanAddon\Response\APIResponse;
 use EDT\JsonApi\OutputTransformation\ExcludeException;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\RequestHandling\UrlParameter;
@@ -12,42 +21,29 @@ use EDT\JsonApi\Validation\FieldsValidator;
 use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\PropertyAccessException;
 use EDT\Wrapping\Contracts\TypeRetrievalAccessException;
+use EDT\Wrapping\TypeProviders\PrefilledTypeProvider;
+use EDT\Wrapping\Utilities\PropertyPathProcessor;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use EDT\Wrapping\Utilities\TypeAccessor;
+use EDT\Wrapping\Utilities\TypeAccessors\AbstractProcessorConfig;
+use Exception;
 use InvalidArgumentException;
+use JsonSchema\Exception\ResourceNotFoundException;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\ResourceAbstract;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\SessionUnavailableException;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Throwable;
-use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\HttpFoundation\Exception\BadRequestException;
-use demosplan\DemosPlanCoreBundle\Exception\ConcurrentEditionException;
-use demosplan\DemosPlanCoreBundle\Exception\MessageBagException;
-use demosplan\DemosPlanCoreBundle\Exception\PersistResourceException;
-use JsonSchema\Exception\ResourceNotFoundException;
-use demosplan\DemosPlanCoreBundle\Exception\ViolationsException;
-use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\DplanPropertyPathProcessorFactory;
-use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\Normalizer;
-use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\PrefilledResourceTypeProvider;
-use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\PropertyUpdateAccessException;
-use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\TopLevel;
-use demosplan\DemosPlanCoreBundle\Logic\Logger\ApiLogger;
-use demosplan\DemosPlanCoreBundle\Response\APIResponse;
-use demosplan\DemosPlanCoreBundle\Response\EmptyResponse;
-use demosplan\DemosPlanCoreBundle\Services\ApiResourceService;
-use demosplan\DemosPlanCoreBundle\Utilities\Json;
-use demosplan\DemosPlanCoreBundle\ValueObject\ValueObject;
-use demosplan\DemosPlanStatementBundle\Exception\DuplicateInternIdException;
 use function array_key_exists;
 use function data_get;
 use function is_array;
@@ -61,7 +57,7 @@ abstract class APIController
     protected $fractal;
 
     /**
-     * @var ApiResourceService
+     * @var ApiResourceServiceInterface
      */
     protected $resourceService;
 
@@ -71,7 +67,7 @@ abstract class APIController
     protected $request;
 
     /**
-     * @var TopLevel|null
+     * @var TopLevelInterface|null
      */
     protected $requestData;
 
@@ -86,12 +82,12 @@ abstract class APIController
      */
     private $translator;
     /**
-     * @var PrefilledResourceTypeProvider
+     * @var PrefilledTypeProvider
      */
     protected $resourceTypeProvider;
 
     /**
-     * @var ApiLogger
+     * @var ApiLoggerInterface
      */
     private $apiLogger;
 
@@ -125,20 +121,26 @@ abstract class APIController
      */
     private $messageBag;
 
+    /**
+     * @var AbstractProcessorConfig
+     */
+    private $processorConfig;
+
     public function __construct(
-        ApiLogger                     $apiLogger,
-        PrefilledResourceTypeProvider $resourceTypeProvider,
+        ApiLoggerInterface            $apiLogger,
+        PrefilledTypeProvider         $resourceTypeProvider,
         TranslatorInterface           $translator,
         LoggerInterface               $logger,
         GlobalConfigInterface         $globalConfig,
-        MessageBagInterface           $messageBag
+        MessageBagInterface           $messageBag,
+        AbstractProcessorConfig       $processorConfig
     )
     {
         $this->translator = $translator;
         $this->resourceTypeProvider = $resourceTypeProvider;
         $this->apiLogger = $apiLogger;
         $this->schemaPathProcessor = new SchemaPathProcessor(
-            new DplanPropertyPathProcessorFactory($apiLogger),
+            new PropertyPathProcessor($processorConfig),
             $resourceTypeProvider
         );
         $this->fieldsValidator = new FieldsValidator(
@@ -159,7 +161,7 @@ abstract class APIController
      */
     public function setupApiController(
         RequestStack       $requestStack,
-        ApiResourceService $resourceService
+        ApiResourceServiceInterface $resourceService
     ): void
     {
         $this->request = $requestStack->getCurrentRequest();
@@ -171,7 +173,7 @@ abstract class APIController
      * @param string|resource $content
      */
     protected function setupApiControllerFromRequestContent(
-        ApiResourceService $resourceService,
+        ApiResourceServiceInterface $resourceService,
                            $content
     ): void
     {
@@ -247,9 +249,9 @@ abstract class APIController
         return APIResponse::create($data, $status);
     }
 
-    protected function createEmptyResponse(): EmptyResponse
+    protected function createEmptyResponse(): Response
     {
-        return new EmptyResponse();
+        return new Response(null, Response::HTTP_NO_CONTENT, []);
     }
 
     // @improve T16795
@@ -273,11 +275,11 @@ abstract class APIController
                 case $exception instanceof ExcludeException:
                     $message = $exception->getMessage();
                     break;
-                case $exception instanceof PropertyUpdateAccessException:
+                case in_array("PropertyUpdateAccessExceptionInterface", class_implements(get_class($exception))):
                     $status = Response::HTTP_FORBIDDEN;
                     break;
-                case $exception instanceof ViolationsException:
-                    /** @var ViolationsException $exception */
+                case in_array("ViolationsExceptionInterface", class_implements(get_class($exception))):
+                    /** @var ViolationsExceptionInterface $exception */
                     $violations = $exception->getViolations();
 
                     $this->messageBag->addViolations($violations);
@@ -290,13 +292,13 @@ abstract class APIController
                 case $exception instanceof ResourceNotFoundException:
                     $status = Response::HTTP_NOT_FOUND;
                     break;
-                case $exception instanceof PersistResourceException:
+                case in_array("PersistResourceExceptionInterface", class_implements(get_class($exception))):
                     // Error message was already added.
                     break;
-                case $exception instanceof ConcurrentEditionException:
+                case in_array("ConcurrentEditionExceptionInterface", class_implements(get_class($exception))):
                     $status = Response::HTTP_CONFLICT;
                     break;
-                case $exception instanceof DuplicateInternIdException:
+                case in_array("DuplicateInternIdExceptionInterface", class_implements(get_class($exception))):
                     $status = Response::HTTP_BAD_REQUEST;
                     $message = 'error.unique.procedure.internid';
                     break;
@@ -310,7 +312,7 @@ abstract class APIController
             if (null !== $exception && '' !== $message) {
                 $this->messageBag->add('error', $message);
             }
-        } catch (MessageBagException $exception) {
+        } catch (Exception $exception) {
             $this->logger->error('Failed to add error message to message bag');
         }
 
@@ -330,13 +332,13 @@ abstract class APIController
     /**
      * Send a single item as response.
      *
-     * @param array|CoreEntityInterface|ValueObject|UserInterface $data
+     * @param array|CoreEntityInterface|ValueObjectInterface|UserInterface $data
      * @param int $httpResponseStatusCode HTTP status code to use for the response
      */
     protected function renderItem($data, string $transformerName, int $httpResponseStatusCode = Response::HTTP_OK): APIResponse
     {
         if (null === $data) {
-            throw new \demosplan\DemosPlanCoreBundle\Exception\InvalidArgumentException('Will not render item based on null data.');
+            throw new InvalidArgumentException('Will not render item based on null data.');
         }
         $item = $this->resourceService->makeItem($data, $transformerName);
 
@@ -344,12 +346,12 @@ abstract class APIController
     }
 
     /**
-     * @deprecated use {@link ApiResourceService::makeItemOfResource()} and call {@link APIController::renderResource()} instead
+     * @deprecated use {@link ApiResourceServiceInterface::makeItemOfResource()} and call {@link APIController::renderResource()} instead
      */
     protected function renderItemOfResource($data, ResourceTypeInterface $resourceType, int $httpResponseStatusCode = Response::HTTP_OK): APIResponse
     {
         if (null === $data) {
-            throw new \demosplan\DemosPlanCoreBundle\Exception\InvalidArgumentException('Will not render item based on null data.');
+            throw new InvalidArgumentException('Will not render item based on null data.');
         }
         $item = new Item($data, $resourceType->getTransformer(), $resourceType::getName());
 
@@ -359,7 +361,7 @@ abstract class APIController
     /**
      * Send a collection of items as response.
      *
-     * @param iterable|CoreEntityInterface[]|ValueObject[] $data
+     * @param iterable|CoreEntityInterface[]|ValueObjectInterface[] $data
      */
     protected function renderCollection($data, string $transformerName): APIResponse
     {
@@ -399,7 +401,7 @@ abstract class APIController
     /**
      * @param int $status
      *
-     * @throws MessageBagException
+     * @throws Exception
      */
     protected function renderError($status): APIResponse
     {
