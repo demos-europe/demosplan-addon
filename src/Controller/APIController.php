@@ -34,6 +34,7 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\ResourceAbstract;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -50,7 +51,7 @@ use function data_get;
 use function is_array;
 use function is_string;
 
-abstract class APIController
+abstract class APIController extends AbstractController
 {
     /**
      * @var Manager
