@@ -12,6 +12,7 @@ use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
 use DemosEurope\DemosplanAddon\DemosPipes\Logic\Json;
+use DemosEurope\DemosplanAddon\Exception\ConcurrentEditionException;
 use DemosEurope\DemosplanAddon\Response\APIResponse;
 use EDT\JsonApi\OutputTransformation\ExcludeException;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
@@ -295,7 +296,7 @@ abstract class APIController
                 case in_array("PersistResourceExceptionInterface", class_implements(get_class($exception))):
                     // Error message was already added.
                     break;
-                case in_array("ConcurrentEditionExceptionInterface", class_implements(get_class($exception))):
+                case $exception instanceof ConcurrentEditionException:
                     $status = Response::HTTP_CONFLICT;
                     break;
                 case in_array("DuplicateInternIdExceptionInterface", class_implements(get_class($exception))):
