@@ -10,7 +10,8 @@
     },
     "require": {
         "composer-plugin-api": "^2.0",
-        "php": "^7.4 || ^8.0"
+        "php": "^7.4 || ^8.0",
+        "ramsey/uuid": "^4"
     },
     "require-dev": {
         "composer/composer": "^2.1",
