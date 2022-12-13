@@ -17,7 +17,8 @@
         "league/fractal": "^0.19",
         "symfony/http-foundation": "5.*.*",
         "demos-europe/edt-jsonapi": "^0.14.0",
-        "demos-europe/edt-paths": "^0.14.0"
+        "demos-europe/edt-paths": "^0.14.0",
+        "sensio/framework-extra-bundle": "^6.1"
     },
     "require-dev": {
         "composer/composer": "^2.1",
