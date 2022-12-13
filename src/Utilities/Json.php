@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Utilities;
 
-use demosplan\DemosPlanCoreBundle\Exception\JsonException;
+use DemosEurope\DemosplanAddon\Exception\JsonException;
+use const JSON_ERROR_NONE;
 use function json_decode;
 use function json_encode;
-use const JSON_ERROR_NONE;
 use function json_last_error;
 
 final class Json
@@ -32,6 +32,7 @@ final class Json
 
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw JsonException::encodeFailed();
+            throw new \JsonException('Failed to decode json: '.json_last_error_msg());
         }
 
         return $encoded;
