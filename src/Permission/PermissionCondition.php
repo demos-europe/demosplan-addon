@@ -13,15 +13,15 @@ use DemosEurope\DemosplanAddon\Permission\Validation\PermissionFilterConstraint;
  *
  * For a permission to be considered enabled by an instance of this class **all** of the following
  * must be true:
+ *
  * * The conditions returned by the {@link self::getCustomerConditions()} must match the current
- * customer context. If the current customer is `null` there must be effectively no customer
- * conditions present.
+ * customer context or be effectively empty.
+ *
  * * The conditions returned by the {@link self::getUserConditions()} must match the current
- * user context. If the current user is `null` there must be effectively no user conditions
- * present.
+ * user context or be effectively empty.
+ *
  * * The conditions returned by the {@link self::getProcedureConditions()} must match the current
- * procedure context. If the current procedure is `null` there must be effectively no procedure
- * conditions present.
+ * procedure context or be effectively empty.
  *
  * Having *effectively* no conditions present means that the returned array does not need to be
  * empty. It may contain empty groups or conditions that are members of non-existent groups only.
