@@ -6,6 +6,9 @@ namespace DemosEurope\DemosplanAddon\Permission;
 
 /**
  * Allows to evaluate if a permission is enabled or disabled.
+ *
+ * Do not use this interface for dependency injections within an addon, instead use the addon-specific
+ * {@link AbstractPermissionEvaluator} implementation.
  */
 interface PermissionEvaluatorInterface
 {

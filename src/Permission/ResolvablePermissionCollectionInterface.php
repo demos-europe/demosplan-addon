@@ -39,8 +39,9 @@ interface ResolvablePermissionCollectionInterface
      *
      * @param non-empty-string          $name
      * @param non-empty-string          $label
-     * @param list<PermissionCondition> $permissionConditions list of conditions under which the
-     *                                                        permission shall be enabled
+     * @param list<PermissionCondition> $permissionConditions on permission checks each item will be
+     *                                                        evaluated, if none matches the permission
+     *                                                        is disabled, otherwise it is enabled
      *
      * @throws PermissionOverrideException permissions defined by the core can not be replaced
      */

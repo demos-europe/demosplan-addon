@@ -11,6 +11,9 @@ use DemosEurope\DemosplanAddon\Permission\Validation\PermissionFilterConstraint;
 /**
  * Provides conditions to determine if a permission should be enabled or not.
  *
+ * Use instances of this class when calling {@link ResolvablePermissionCollectionInterface::configurePermission()}
+ * within your {@link AbstractPermissionEvaluator::configureAddonPermissions()} implementation.
+ *
  * For a permission to be considered enabled by an instance of this class **all** of the following
  * must be true:
  *
@@ -66,6 +69,17 @@ class PermissionCondition
     private array $procedureConditions;
 
     /**
+     * Initialize an instance with the given conditions.
+     *
+     * The `PermissionFilter` format extends the Drupal filter
+     * {@link https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/filtering specification}.
+     *
+     * Beside additional operators it also adds support for the `parameterCondition` type, which
+     * works like the `condition` type, except that it does not contain a `value` field with a predefined
+     * value, but a `parameter`field. The `parameter` field accepts specific placeholders, which are
+     * replaced with the actual value when the permission is evaluated. For supported placeholders
+     * and other details see the `PermissionFilter` format type-definition.
+     *
      * @param array<non-empty-string, PermissionFilter>|AbstractCondition $customerConditions
      * @param array<non-empty-string, PermissionFilter>|AbstractCondition $userConditions
      * @param array<non-empty-string, PermissionFilter>|AbstractCondition $procedureConditions
