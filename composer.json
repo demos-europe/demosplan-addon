@@ -19,11 +19,11 @@
         "demos-europe/edt-jsonapi": "^0.14.0",
         "demos-europe/edt-paths": "^0.14.0",
         "sensio/framework-extra-bundle": "^6.1",
-        "ramsey/uuid": "^4"
-    },
-    "require-dev": {
-        "composer/composer": "^2.1",
+        "ramsey/uuid": "^4",
         "symfony/dependency-injection": "^5.0",
         "symfony/validator": "^5.0"
+    },
+    "require-dev": {
+        "composer/composer": "^2.1"
     }
 }
