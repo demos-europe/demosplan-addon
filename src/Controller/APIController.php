@@ -4,14 +4,14 @@ namespace DemosEurope\DemosplanAddon\Controller;
 
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiResourceServiceInterface;
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\Normalizer;
-use DemosEurope\DemosplanAddon\Contracts\ApiRequest\TopLevelInterface;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
 use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
-use DemosEurope\DemosplanAddon\DemosPipes\Logic\Json;
+use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
+use DemosEurope\DemosplanAddon\Utilities\Json;
 use DemosEurope\DemosplanAddon\Exception\ConcurrentEditionException;
 use DemosEurope\DemosplanAddon\Response\APIResponse;
 use EDT\JsonApi\OutputTransformation\ExcludeException;
@@ -69,7 +69,7 @@ abstract class APIController extends AbstractController
     protected $request;
 
     /**
-     * @var TopLevelInterface|null
+     * @var TopLevel|null
      */
     protected $requestData;
 
@@ -413,7 +413,7 @@ abstract class APIController extends AbstractController
             $message = 'error.api.notfound';
         }
 
-        $this->getMessageBag()->add('error', $message);
+        $this->messageBag->add('error', $message);
 
         return $this->createResponse([], $status);
     }

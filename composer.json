@@ -24,6 +24,7 @@
         "symfony/validator": "^5.0"
     },
     "require-dev": {
-        "composer/composer": "^2.1"
+        "composer/composer": "^2.1",
+        "phpstan/phpstan": "^1.9"
     }
 }

@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Validator;
 
-use DemosEurope\DemosplanAddon\DemosPipes\Logic\Json;
+use DemosEurope\DemosplanAddon\Utilities\Json;
 use JsonException;
 use JsonSchema\Exception\InvalidSchemaException;
 use JsonSchema\Validator;
