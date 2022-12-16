@@ -116,17 +116,17 @@ abstract class APIController extends AbstractController
     /**
      * @var GlobalConfigInterface
      */
-    private $globalConfig;
+    protected $globalConfig;
 
     /**
      * @var MessageBagInterface
      */
-    private $messageBag;
+    protected $messageBag;
 
     /**
      * @var AbstractProcessorConfig
      */
-    private $processorConfig;
+    protected $processorConfig;
 
     public function __construct(
         ApiLoggerInterface            $apiLogger,
