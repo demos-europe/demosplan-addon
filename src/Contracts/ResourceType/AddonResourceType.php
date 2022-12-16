@@ -9,6 +9,8 @@ use DemosEurope\DemosplanAddon\Contracts\CurrentProcedureServiceInterface;
 use DemosEurope\DemosplanAddon\Contracts\CurrentUserInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ResourceType\ResourceTypeServiceInterface;
+use DemosEurope\DemosplanAddon\Contracts\Services\CurrentUserProviderInterface;
+use DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface;
 use EDT\ConditionFactory\ConditionFactoryInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
@@ -35,7 +37,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 {
     use PropertyAutoPathTrait;
 
-    protected CurrentUserInterface $currentUser;
+    protected CurrentUserProviderInterface $currentUserProvider;
 
     protected CurrentProcedureServiceInterface $currentProcedureService;
 
@@ -55,10 +57,13 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     protected WrapperObjectFactory $wrapperFactory;
 
+    protected PermissionEvaluatorInterface $permissionEvaluator;
+
     private MessageFormatter $messageFormatter;
 
     public function __construct(
-        CurrentUserInterface             $currentUser,
+        PermissionEvaluatorInterface     $permissionEvaluator,
+        CurrentUserProviderInterface     $currentUserProvider,
         CurrentProcedureServiceInterface $currentProcedureService,
         GlobalConfigInterface            $globalConfig,
         LoggerInterface                  $logger,
@@ -68,7 +73,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         ConditionFactoryInterface        $conditionFactory
     )
     {
-        $this->currentUser = $currentUser;
+        $this->currentUserProvider = $currentUserProvider;
         $this->currentProcedureService = $currentProcedureService;
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
@@ -77,6 +82,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->translator = $translator;
         $this->conditionFactory = $conditionFactory;
         $this->messageFormatter = new MessageFormatter();
+        $this->permissionEvaluator = $permissionEvaluator;
     }
 
     /**
