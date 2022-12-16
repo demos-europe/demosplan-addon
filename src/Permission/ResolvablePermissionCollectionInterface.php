@@ -39,11 +39,13 @@ interface ResolvablePermissionCollectionInterface
      *
      * @param non-empty-string          $name
      * @param non-empty-string          $label
-     * @param list<PermissionCondition> $permissionConditions
+     * @param list<PermissionCondition> $permissionConditions on permission checks each item will be
+     *                                                        evaluated, if none matches the permission
+     *                                                        is disabled, otherwise it is enabled
      *
      * @throws PermissionOverrideException permissions defined by the core can not be replaced
      */
-    public function setPermission(
+    public function configurePermission(
         string $name,
         string $label,
         string $description,
