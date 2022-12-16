@@ -7,7 +7,6 @@ use DemosEurope\DemosplanAddon\Contracts\ApiRequest\Normalizer;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
-use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
@@ -89,7 +88,7 @@ abstract class APIController extends AbstractController
     protected $resourceTypeProvider;
 
     /**
-     * @var ApiLoggerInterface
+     * @var LoggerInterface
      */
     private $apiLogger;
 
@@ -129,7 +128,7 @@ abstract class APIController extends AbstractController
     protected $processorConfig;
 
     public function __construct(
-        ApiLoggerInterface            $apiLogger,
+        LoggerInterface               $apiLogger,
         PrefilledTypeProvider         $resourceTypeProvider,
         TranslatorInterface           $translator,
         LoggerInterface               $logger,
