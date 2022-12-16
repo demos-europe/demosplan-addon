@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
-use demosplan\DemosPlanCoreBundle\Logic\ResourceChange;
+use DemosEurope\DemosplanAddon\Logic\ResourceChange;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;

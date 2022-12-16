@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
-use demosplan\DemosPlanCoreBundle\Logic\ResourceChange;
+use DemosEurope\DemosplanAddon\Logic\ResourceChange;
 use Doctrine\Common\Collections\Collection;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\Wrapping\Contracts\Types\UpdatableTypeInterface;

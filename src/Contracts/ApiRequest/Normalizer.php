@@ -5,8 +5,8 @@ namespace DemosEurope\DemosplanAddon\Contracts\ApiRequest;
 use function array_key_exists;
 use function array_merge;
 use function data_get;
-use demosplan\DemosPlanCoreBundle\Exception\InvalidArgumentException;
-use demosplan\DemosPlanCoreBundle\Utilities\Json;
+use InvalidArgumentException;
+use DemosEurope\DemosplanAddon\Utilities\Json;
 use EDT\JsonApi\Schema\ContentField;
 
 class Normalizer
