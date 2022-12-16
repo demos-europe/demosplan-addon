@@ -111,7 +111,7 @@ abstract class APIController extends AbstractController
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    protected $logger;
 
     /**
      * @var GlobalConfigInterface
