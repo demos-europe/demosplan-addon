@@ -11,6 +11,12 @@
     "require": {
         "composer-plugin-api": "^2.0",
         "php": "^7.4 || ^8.0",
+        "symfony/yaml": "^6.2",
+        "symfony/security-core": "^5.4",
+        "tightenco/collect": "~8.83.0",
+        "league/fractal": "^0.19",
+        "symfony/http-foundation": "5.*.*",
+        "demos-europe/edt-jsonapi": "^0.14.0",
         "ramsey/uuid": "^4",
         "symfony/dependency-injection": "^5.0",
         "symfony/validator": "^5.0"
