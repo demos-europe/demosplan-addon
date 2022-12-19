@@ -37,21 +37,19 @@ interface ResolvablePermissionCollectionInterface
     /**
      * Sets a new permission with the given settings or replaces an existing one with the same name.
      *
-     * @param non-empty-string $name
-     * @param non-empty-string $label
-     * @param PermissionFilter $customerFilters
-     * @param PermissionFilter $userFilters
-     * @param PermissionFilter $procedureFilters
+     * @param non-empty-string          $name
+     * @param non-empty-string          $label
+     * @param list<PermissionCondition> $permissionConditions on permission checks each item will be
+     *                                                        evaluated, if none matches the permission
+     *                                                        is disabled, otherwise it is enabled
      *
      * @throws PermissionOverrideException permissions defined by the core can not be replaced
      */
-    public function setPermission(
+    public function configurePermission(
         string $name,
         string $label,
         string $description,
         bool $exposed,
-        array $customerFilters,
-        array $userFilters,
-        array $procedureFilters
+        array $permissionConditions
     ): void;
 }
