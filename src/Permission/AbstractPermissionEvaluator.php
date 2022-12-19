@@ -38,13 +38,11 @@ abstract class AbstractPermissionEvaluator implements PermissionEvaluatorInterfa
     {
         if ($this->addonPermission->isPermissionKnown($permissionName)) {
             $this->addonPermission->requirePermission($permissionName);
-        }
-
-        if ($this->corePermissionEvaluator->isPermissionKnown($permissionName)) {
+        } elseif ($this->corePermissionEvaluator->isPermissionKnown($permissionName)) {
             $this->corePermissionEvaluator->requirePermission($permissionName);
+        } else {
+            throw new AccessDeniedException("Permission '$permissionName' is not known.");
         }
-
-        throw new AccessDeniedException("Permission '$permissionName' is not known.");
     }
 
     public function isPermissionEnabled(string $permissionName): bool
