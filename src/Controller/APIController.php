@@ -4,14 +4,14 @@ namespace DemosEurope\DemosplanAddon\Controller;
 
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiResourceServiceInterface;
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\Normalizer;
-use DemosEurope\DemosplanAddon\Contracts\ApiRequest\TopLevelInterface;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
-use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
-use DemosEurope\DemosplanAddon\DemosPipes\Logic\Json;
+use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
+use DemosEurope\DemosplanAddon\Utilities\Json;
+use DemosEurope\DemosplanAddon\Exception\ConcurrentEditionException;
 use DemosEurope\DemosplanAddon\Response\APIResponse;
 use EDT\JsonApi\OutputTransformation\ExcludeException;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
@@ -33,6 +33,7 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Resource\ResourceAbstract;
 use Psr\Log\LoggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -49,7 +50,7 @@ use function data_get;
 use function is_array;
 use function is_string;
 
-abstract class APIController
+abstract class APIController extends AbstractController
 {
     /**
      * @var Manager
@@ -67,7 +68,7 @@ abstract class APIController
     protected $request;
 
     /**
-     * @var TopLevelInterface|null
+     * @var TopLevel|null
      */
     protected $requestData;
 
@@ -87,7 +88,7 @@ abstract class APIController
     protected $resourceTypeProvider;
 
     /**
-     * @var ApiLoggerInterface
+     * @var LoggerInterface
      */
     private $apiLogger;
 
@@ -109,25 +110,25 @@ abstract class APIController
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    protected $logger;
 
     /**
      * @var GlobalConfigInterface
      */
-    private $globalConfig;
+    protected $globalConfig;
 
     /**
      * @var MessageBagInterface
      */
-    private $messageBag;
+    protected $messageBag;
 
     /**
      * @var AbstractProcessorConfig
      */
-    private $processorConfig;
+    protected $processorConfig;
 
     public function __construct(
-        ApiLoggerInterface            $apiLogger,
+        LoggerInterface               $apiLogger,
         PrefilledTypeProvider         $resourceTypeProvider,
         TranslatorInterface           $translator,
         LoggerInterface               $logger,
@@ -295,7 +296,7 @@ abstract class APIController
                 case in_array("PersistResourceExceptionInterface", class_implements(get_class($exception))):
                     // Error message was already added.
                     break;
-                case in_array("ConcurrentEditionExceptionInterface", class_implements(get_class($exception))):
+                case $exception instanceof ConcurrentEditionException:
                     $status = Response::HTTP_CONFLICT;
                     break;
                 case in_array("DuplicateInternIdExceptionInterface", class_implements(get_class($exception))):
@@ -411,7 +412,7 @@ abstract class APIController
             $message = 'error.api.notfound';
         }
 
-        $this->getMessageBag()->add('error', $message);
+        $this->messageBag->add('error', $message);
 
         return $this->createResponse([], $status);
     }

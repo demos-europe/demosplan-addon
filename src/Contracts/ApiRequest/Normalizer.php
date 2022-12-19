@@ -2,12 +2,14 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\ApiRequest;
 
+use DemosEurope\DemosplanAddon\Logic\ApiRequest\ResourceObject;
+use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
+use DemosEurope\DemosplanAddon\Utilities\Json;
+use EDT\JsonApi\Schema\ContentField;
+use InvalidArgumentException;
 use function array_key_exists;
 use function array_merge;
 use function data_get;
-use demosplan\DemosPlanCoreBundle\Exception\InvalidArgumentException;
-use demosplan\DemosPlanCoreBundle\Utilities\Json;
-use EDT\JsonApi\Schema\ContentField;
 
 class Normalizer
 {
