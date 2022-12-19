@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Permission;
 
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 /**
  * Every addon is required to implement this class **once** and add their permissions via
  * {@link self::configureAddonPermissions()} to make them available to the core.
@@ -30,6 +32,19 @@ abstract class AbstractPermissionEvaluator implements PermissionEvaluatorInterfa
         $this->addonPermission = $addonPermissions;
         $this->configureAddonPermissions($this->addonPermission);
         $this->corePermissionEvaluator = $corePermissionEvaluator;
+    }
+
+    public function requirePermission(string $permissionName): void
+    {
+        if ($this->addonPermission->isPermissionKnown($permissionName)) {
+            $this->addonPermission->requirePermission($permissionName);
+        }
+
+        if ($this->corePermissionEvaluator->isPermissionKnown($permissionName)) {
+            $this->corePermissionEvaluator->requirePermission($permissionName);
+        }
+
+        throw new AccessDeniedException("Permission '$permissionName' is not known.");
     }
 
     public function isPermissionEnabled(string $permissionName): bool
