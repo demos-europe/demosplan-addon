@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 interface PermissionEvaluatorInterface
 {
     /**
-     * Checks if the
+     * Checks if the permission corresponding to the given name is enabled. Thrown an exception if not.
      *
      * @param non-empty-string $permissionName
      *
