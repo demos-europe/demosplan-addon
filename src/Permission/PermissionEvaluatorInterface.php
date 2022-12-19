@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Permission;
 
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 /**
  * Allows to evaluate if a permission is enabled or disabled.
  *
@@ -12,6 +14,15 @@ namespace DemosEurope\DemosplanAddon\Permission;
  */
 interface PermissionEvaluatorInterface
 {
+    /**
+     * Checks if the
+     *
+     * @param non-empty-string $permissionName
+     *
+     * @throws AccessDeniedException
+     */
+    public function requirePermission(string $permissionName): void;
+
     /**
      * Evaluate if a permission with the given name is enabled.
      *
