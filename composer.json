@@ -11,12 +11,21 @@
     "require": {
         "composer-plugin-api": "^2.0",
         "php": "^7.4 || ^8.0",
+        "symfony/yaml": "5.*.*",
+        "symfony/security-core": "^5.4",
+        "tightenco/collect": "~8.83.0",
+        "league/fractal": "^0.19",
+        "symfony/http-foundation": "5.*.*",
+        "demos-europe/edt-jsonapi": "^0.14.0",
+        "demos-europe/edt-paths": "^0.14.0",
+        "sensio/framework-extra-bundle": "^6.1",
         "ramsey/uuid": "^4",
         "symfony/dependency-injection": "^5.0",
         "symfony/validator": "^5.0",
         "symfony/security-bundle": "5.*.*"
     },
     "require-dev": {
-        "composer/composer": "^2.1"
+        "composer/composer": "^2.1",
+        "phpstan/phpstan": "^1.9"
     }
 }
