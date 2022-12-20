@@ -22,10 +22,7 @@ use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\PropertyAccessException;
 use EDT\Wrapping\Contracts\TypeRetrievalAccessException;
 use EDT\Wrapping\TypeProviders\PrefilledTypeProvider;
-use EDT\Wrapping\Utilities\PropertyPathProcessor;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
-use EDT\Wrapping\Utilities\TypeAccessor;
-use EDT\Wrapping\Utilities\TypeAccessors\AbstractProcessorConfig;
 use Exception;
 use InvalidArgumentException;
 use JsonSchema\Exception\ResourceNotFoundException;
@@ -42,7 +39,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\SessionUnavailableException;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Validation;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Throwable;
 use function array_key_exists;
@@ -122,32 +118,21 @@ abstract class APIController extends AbstractController
      */
     protected $messageBag;
 
-    /**
-     * @var AbstractProcessorConfig
-     */
-    protected $processorConfig;
-
     public function __construct(
         LoggerInterface               $apiLogger,
         PrefilledTypeProvider         $resourceTypeProvider,
+        FieldsValidator               $fieldsValidator,
         TranslatorInterface           $translator,
         LoggerInterface               $logger,
         GlobalConfigInterface         $globalConfig,
         MessageBagInterface           $messageBag,
-        AbstractProcessorConfig       $processorConfig
-    )
-    {
+        SchemaPathProcessor           $schemaPathProcessor
+    ) {
         $this->translator = $translator;
         $this->resourceTypeProvider = $resourceTypeProvider;
         $this->apiLogger = $apiLogger;
-        $this->schemaPathProcessor = new SchemaPathProcessor(
-            new PropertyPathProcessor($processorConfig),
-            $resourceTypeProvider
-        );
-        $this->fieldsValidator = new FieldsValidator(
-            new TypeAccessor($resourceTypeProvider),
-            Validation::createValidator()
-        );
+        $this->schemaPathProcessor = $schemaPathProcessor;
+        $this->fieldsValidator  = $fieldsValidator;
         $this->messageFormatter = new MessageFormatter();
         $this->logger           = $logger;
         $this->globalConfig     = $globalConfig;
