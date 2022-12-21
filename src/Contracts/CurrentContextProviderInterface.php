@@ -9,10 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 interface CurrentContextProviderInterface
 {
-    /**
-     * @throws Exception When there is no current Procedure
-     */
-    public function getCurrentProcedure(): ProcedureInterface;
+    public function getCurrentProcedure(): ?ProcedureInterface;
 
     /**
      * @throws Exception When there is no current User
