@@ -12,7 +12,7 @@ use DemosEurope\DemosplanAddon\Permission\Validation\PermissionFilterConstraint;
  * Provides conditions to determine if a permission should be enabled or not.
  *
  * Use instances of this class when calling {@link ResolvablePermissionCollectionInterface::configurePermission()}
- * within your {@link AbstractPermissionEvaluator::configureAddonPermissions()} implementation.
+ * within your {@link PermissionInitializerInterface::configurePermissions()} implementation.
  *
  * For a permission to be considered enabled by an instance of this class **all** of the following
  * must be true:

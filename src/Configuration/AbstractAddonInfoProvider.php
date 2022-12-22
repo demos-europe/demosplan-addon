@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Configuration;
 
+use Composer\Package\Loader\ArrayLoader;
+use DemosEurope\DemosplanAddon\Permission\PermissionInitializerInterface;
 use Symfony\Component\Yaml\Yaml;
 
 abstract class AbstractAddonInfoProvider
@@ -13,6 +15,13 @@ abstract class AbstractAddonInfoProvider
      * @var string
      */
     protected string $composerPath;
+
+    protected ArrayLoader $loader;
+
+    public function __construct()
+    {
+        $this->loader = new ArrayLoader();
+    }
 
     /**
      * Provides an array containing all avilable base information for the addon.
@@ -24,4 +33,14 @@ abstract class AbstractAddonInfoProvider
     {
         return Yaml::parseFile($this->composerPath);
     }
+
+    /**
+     * @return non-empty-string
+     */
+    final public function getAddonIdentifier(): string
+    {
+        return $this->loader->load($this->getAddonInformation())->getName();
+    }
+
+    abstract public function getPermissionInitializer(): PermissionInitializerInterface;
 }

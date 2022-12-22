@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Permission;
 
 /**
- * @internal For core and {@link AbstractPermissionEvaluator} usage only. Do not use this interface
- *           for dependency injections in classes other than {@link AbstractPermissionEvaluator}!
- *
  * @phpstan-type Group = array{
  *            conjunction: non-empty-string,
  *            memberOf?: non-empty-string
@@ -35,7 +32,8 @@ namespace DemosEurope\DemosplanAddon\Permission;
 interface ResolvablePermissionCollectionInterface
 {
     /**
-     * Sets a new permission with the given settings or replaces an existing one with the same name.
+     * Sets a new permission with the given settings or replaces an existing one that was previously
+     * configured into this instance.
      *
      * @param non-empty-string          $name
      * @param non-empty-string          $label
