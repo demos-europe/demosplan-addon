@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\DependencyInjection;
 
 use DemosEurope\DemosplanAddon\Configuration\AddonInfoProviderInterface;
-use DemosEurope\DemosplanAddon\Permission\AbstractPermissionEvaluator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -34,10 +33,6 @@ abstract class AbstractAddonExtension extends Extension
         $infoProviderDefinition->addTag('demosplan_addon.addon_info_provider');
         $container->setDefinition($infoProviderClass, $infoProviderDefinition);
 
-        $permissionEvaluatorClass = $this->getPermissionEvaluatorClass();
-        $permissionEvaluatorDefinition = new Definition($permissionEvaluatorClass);
-        $container->setDefinition($permissionEvaluatorClass, $permissionEvaluatorDefinition);
-
         if ($this->enabled) {
             $this->loadFullAddon($configs, $container);
         }
@@ -54,9 +49,4 @@ abstract class AbstractAddonExtension extends Extension
      * @return class-string<AddonInfoProviderInterface>
      */
     abstract protected function getInfoProviderClass(): string;
-
-    /**
-     * @return class-string<AbstractPermissionEvaluator>
-     */
-    abstract protected function getPermissionEvaluatorClass(): string;
 }
