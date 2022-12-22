@@ -17,16 +17,16 @@ class PermissionIdentifier implements PermissionIdentifierInterface
     /**
      * @var non-empty-string|null
      */
-    private ?string $addonName;
+    private ?string $addonIdentifier;
 
     /**
-     * @param non-empty-string $permissionName
-     * @param non-empty-string|null $addonName
+     * @param non-empty-string      $permissionName
+     * @param non-empty-string|null $addonIdentifier
      */
-    private function __construct(string $permissionName, ?string $addonName)
+    private function __construct(string $permissionName, ?string $addonIdentifier)
     {
         $this->permissionName = $permissionName;
-        $this->addonName = $addonName;
+        $this->addonIdentifier = $addonIdentifier;
     }
 
     /**
@@ -39,16 +39,16 @@ class PermissionIdentifier implements PermissionIdentifierInterface
 
     /**
      * @param non-empty-string $permissionName
-     * @param non-empty-string $addonName
+     * @param non-empty-string $addonIdentifier
      */
-    public static function forAddon(string $permissionName, string $addonName): self
+    public static function forAddon(string $permissionName, string $addonIdentifier): self
     {
-        return new self($permissionName, $addonName);
+        return new self($permissionName, $addonIdentifier);
     }
 
-    public function getAddonName(): ?string
+    public function getAddonIdentifier(): ?string
     {
-        return $this->addonName;
+        return $this->addonIdentifier;
     }
 
     public function getPermissionName(): string
