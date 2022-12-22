@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
-use DemosEurope\DemosplanAddon\Contracts\CurrentProcedureServiceInterface;
+use DemosEurope\DemosplanAddon\Contracts\CurrentContextProviderInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
-use DemosEurope\DemosplanAddon\Contracts\ResourceType\ResourceTypeServiceInterface;
-use DemosEurope\DemosplanAddon\Contracts\Services\CurrentUserProviderInterface;
 use DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface;
 use EDT\ConditionFactory\ConditionFactoryInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
@@ -36,10 +34,6 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 {
     use PropertyAutoPathTrait;
 
-    protected CurrentUserProviderInterface $currentUserProvider;
-
-    protected CurrentProcedureServiceInterface $currentProcedureService;
-
     protected GlobalConfigInterface $globalConfig;
 
     protected LoggerInterface $logger;
@@ -59,11 +53,11 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
     protected PermissionEvaluatorInterface $permissionEvaluator;
 
     private MessageFormatter $messageFormatter;
+    private CurrentContextProviderInterface $currentContextProvider;
 
     public function __construct(
         PermissionEvaluatorInterface     $permissionEvaluator,
-        CurrentUserProviderInterface     $currentUserProvider,
-        CurrentProcedureServiceInterface $currentProcedureService,
+        CurrentContextProviderInterface  $currentContextProvider,
         GlobalConfigInterface            $globalConfig,
         LoggerInterface                  $logger,
         MessageBagInterface              $messageBag,
@@ -72,8 +66,6 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         ConditionFactoryInterface        $conditionFactory
     )
     {
-        $this->currentUserProvider = $currentUserProvider;
-        $this->currentProcedureService = $currentProcedureService;
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
         $this->messageBag = $messageBag;
@@ -82,6 +74,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->conditionFactory = $conditionFactory;
         $this->messageFormatter = new MessageFormatter();
         $this->permissionEvaluator = $permissionEvaluator;
+        $this->currentContextProvider = $currentContextProvider;
     }
 
     /**
