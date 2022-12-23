@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Permission;
 
+use DemosEurope\DemosplanAddon\DemosPipes\Configuration\PermissionEnabler;
+
 /**
  * @phpstan-type Group = array{
  *            conjunction: non-empty-string,
@@ -49,5 +51,11 @@ interface ResolvablePermissionCollectionInterface
         string $description,
         bool $exposed,
         array $permissionConditions
+    ): void;
+
+
+    public function configurePermissionInstance(
+        PermissionMetaInterface $permission,
+        PermissionEnabler $permissionConditionBuilder
     ): void;
 }
