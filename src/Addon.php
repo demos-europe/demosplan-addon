@@ -12,7 +12,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class Addon extends Bundle
 {
-    public function __construct(private bool $enabled = false) {}
+    private bool $enabled;
+
+    public function __construct(bool $enabled = false) {
+        $this->enabled = $enabled;
+    }
 
     /**
      * Creates the bundle's container extension. 
