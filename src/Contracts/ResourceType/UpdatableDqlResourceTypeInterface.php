@@ -5,15 +5,14 @@ namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 use DemosEurope\DemosplanAddon\Logic\ResourceChange;
 use Doctrine\Common\Collections\Collection;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
-use EDT\Wrapping\Contracts\Types\UpdatableTypeInterface;
+use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 
 /**
  * @template T of object
  *
  * @template-extends ResourceTypeInterface<T>
- * @template-extends UpdatableTypeInterface<T>
  */
-interface UpdatableDqlResourceTypeInterface extends ResourceTypeInterface, UpdatableTypeInterface
+interface UpdatableDqlResourceTypeInterface extends ResourceTypeInterface
 {
     /**
      * Update an object of the type specified in {@link ResourceTypeInterface::getEntityClass}.
@@ -25,7 +24,7 @@ interface UpdatableDqlResourceTypeInterface extends ResourceTypeInterface, Updat
      * {@link Collection} for to-many relationships.
      *
      * When called via the generic JSON:API it was already ensured that only property names are present
-     * in the `$properties` array that were returned by {@link UpdatableTypeInterface::getUpdatableProperties()}.
+     * in the `$properties` array that were returned by {@link TransferableTypeInterface::getUpdatableProperties()}.
      *
      * Implementations are responsible for the validity of the resulting object state.
      *
