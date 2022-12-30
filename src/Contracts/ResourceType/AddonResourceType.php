@@ -53,7 +53,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
     protected PermissionEvaluatorInterface $permissionEvaluator;
 
     private MessageFormatter $messageFormatter;
-    private CurrentContextProviderInterface $currentContextProvider;
+    protected CurrentContextProviderInterface $currentContextProvider;
 
     public function __construct(
         PermissionEvaluatorInterface     $permissionEvaluator,
