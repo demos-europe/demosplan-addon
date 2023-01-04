@@ -19,11 +19,3 @@ services:
   DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface:
     class: 'demosplan\DemosPlanCoreBundle\Resources\config\GlobalConfig'
     public: true
-
-  #DemosEurope\DemosplanAddon\Contracts\MessageBagInterface: '@demosplan\DemosPlanCoreBundle\Logic\MessageBag'
-
-  #DemosEurope\DemosplanAddon\Contracts\ApiClientInterface: '@demosplan\DemosPlanCoreBundle\Logic\GuzzleApiClient'
-
-  #DemosEurope\DemosplanAddon\Contracts\CurrentUserInterface: '@demosplan\DemosPlanUserBundle\Logic\CurrentUserService'
-
-  #DemosEurope\DemosplanAddon\Contracts\CurrentContextProviderInterface: '@demosplan\DemosPlanCoreBundle\Logic\CurrentContextProvider'
