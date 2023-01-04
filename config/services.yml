@@ -1,0 +1,29 @@
+services:
+  _defaults:
+    # automatically injects dependencies in your services
+    autowire: true
+    # automatically registers your services as commands, event subscribers, etc.
+    autoconfigure: true
+    # this means you cannot fetch services directly from the container via $container->get()
+    # if you need to do this, you can override this setting on individual services
+    public: false
+    lazy: true
+
+  DemosEurope\DemosplanAddon\:
+    resource: '../src/*'
+
+  DemosEurope\DemosplanAddon\Controller\APIController:
+    arguments:
+      $resourceTypeProvider: '@demosplan\DemosPlanCoreBundle\Logic\ApiRequest\PrefilledResourceTypeProvider'
+
+  DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface:
+    class: 'demosplan\DemosPlanCoreBundle\Resources\config\GlobalConfig'
+    public: true
+
+  #DemosEurope\DemosplanAddon\Contracts\MessageBagInterface: '@demosplan\DemosPlanCoreBundle\Logic\MessageBag'
+
+  #DemosEurope\DemosplanAddon\Contracts\ApiClientInterface: '@demosplan\DemosPlanCoreBundle\Logic\GuzzleApiClient'
+
+  #DemosEurope\DemosplanAddon\Contracts\CurrentUserInterface: '@demosplan\DemosPlanUserBundle\Logic\CurrentUserService'
+
+  #DemosEurope\DemosplanAddon\Contracts\CurrentContextProviderInterface: '@demosplan\DemosPlanCoreBundle\Logic\CurrentContextProvider'
