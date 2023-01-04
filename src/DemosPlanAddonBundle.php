@@ -6,6 +6,6 @@ namespace DemosEurope\DemosplanAddon;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class DemosAddonBundle extends Bundle
+class DemosPlanAddonBundle extends Bundle
 {
 }
