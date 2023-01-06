@@ -15,7 +15,7 @@ use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\PropertyPathInterface;
-use EDT\Wrapping\Utilities\TypeAccessor;
+use EDT\Wrapping\Contracts\TypeProviderInterface;
 use EDT\Wrapping\WrapperFactories\WrapperObjectFactory;
 use IteratorAggregate;
 use Psr\Log\LoggerInterface;
@@ -46,26 +46,27 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     protected ConditionFactoryInterface $conditionFactory;
 
-    protected TypeAccessor $typeAccessor;
+    protected TypeProviderInterface $typeProvider;
 
     protected WrapperObjectFactory $wrapperFactory;
 
     protected PermissionEvaluatorInterface $permissionEvaluator;
 
     private MessageFormatter $messageFormatter;
+
     protected CurrentContextProviderInterface $currentContextProvider;
 
     public function __construct(
-        PermissionEvaluatorInterface     $permissionEvaluator,
-        CurrentContextProviderInterface  $currentContextProvider,
-        GlobalConfigInterface            $globalConfig,
-        LoggerInterface                  $logger,
-        MessageBagInterface              $messageBag,
-        ResourceTypeServiceInterface     $resourceTypeService,
-        TranslatorInterface              $translator,
-        ConditionFactoryInterface        $conditionFactory
-    )
-    {
+        PermissionEvaluatorInterface    $permissionEvaluator,
+        TypeProviderInterface           $typeProvider,
+        CurrentContextProviderInterface $currentContextProvider,
+        GlobalConfigInterface           $globalConfig,
+        LoggerInterface                 $logger,
+        MessageBagInterface             $messageBag,
+        ResourceTypeServiceInterface    $resourceTypeService,
+        TranslatorInterface             $translator,
+        ConditionFactoryInterface       $conditionFactory
+    ) {
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
         $this->messageBag = $messageBag;
@@ -75,6 +76,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->messageFormatter = new MessageFormatter();
         $this->permissionEvaluator = $permissionEvaluator;
         $this->currentContextProvider = $currentContextProvider;
+        $this->typeProvider = $typeProvider;
     }
 
     /**
@@ -146,9 +148,9 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         return $this->wrapperFactory;
     }
 
-    protected function getTypeAccessor(): TypeAccessor
+    protected function getTypeProvider(): TypeProviderInterface
     {
-        return $this->typeAccessor;
+        return $this->typeProvider;
     }
 
     protected function getLogger(): LoggerInterface
