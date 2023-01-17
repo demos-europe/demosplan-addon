@@ -23,7 +23,8 @@
         "ramsey/uuid": "^4",
         "symfony/dependency-injection": "^5.0",
         "symfony/validator": "^5.0",
-        "symfony/security-bundle": "5.*.*"
+        "symfony/security-bundle": "5.*.*",
+        "symfony/http-client": "5.*.*"
     },
     "require-dev": {
         "composer/composer": "^2.1",
