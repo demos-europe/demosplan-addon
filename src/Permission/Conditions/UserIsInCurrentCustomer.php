@@ -13,7 +13,7 @@ class UserIsInCurrentCustomer extends AbstractCondition
                 'parameterCondition' => [
                     'path' => 'roleInCustomers.customer.id',
                     'operator' => '=',
-                    'value' => '$currentCustomerId',
+                    'parameter' => '$currentCustomerId',
                 ]
             ],
         ];
