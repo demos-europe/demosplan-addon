@@ -13,6 +13,7 @@ use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\PathBuilding\End;
+use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\PropertyPathInterface;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
@@ -31,7 +32,7 @@ use function is_array;
  *
  * @property-read End $id
  */
-abstract class AddonResourceType extends CachingResourceType implements IteratorAggregate, PropertyPathInterface
+abstract class AddonResourceType extends CachingResourceType implements IteratorAggregate, PropertyPathInterface, PropertyAutoPathInterface
 {
     use PropertyAutoPathTrait;
 

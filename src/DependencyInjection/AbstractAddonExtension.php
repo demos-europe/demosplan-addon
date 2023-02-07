@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\DependencyInjection;
 
-use DemosEurope\DemosplanAddon\Configuration\AddonInfoProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
 /**
@@ -28,11 +26,6 @@ abstract class AbstractAddonExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $infoProviderClass = $this->getInfoProviderClass();
-        $infoProviderDefinition = new Definition($infoProviderClass);
-        $infoProviderDefinition->addTag('demosplan_addon.addon_info_provider');
-        $container->setDefinition($infoProviderClass, $infoProviderDefinition);
-
         if ($this->enabled) {
             $this->loadFullAddon($configs, $container);
         }
@@ -44,9 +37,4 @@ abstract class AbstractAddonExtension extends Extension
      * @param array<string, mixed> $configs
      */
     abstract protected function loadFullAddon(array $configs, ContainerBuilder $container): void;
-
-    /**
-     * @return class-string<AddonInfoProviderInterface>
-     */
-    abstract protected function getInfoProviderClass(): string;
 }

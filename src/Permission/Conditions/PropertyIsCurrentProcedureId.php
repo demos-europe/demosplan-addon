@@ -25,7 +25,7 @@ class PropertyIsCurrentProcedureId extends AbstractCondition
             $this->createRandomName() => [
                 'parameterCondition' => [
                     'path' => $this->path,
-                    'parameter' => '$procedureId',
+                    'parameter' => '$currentProcedureId',
                     'operator' => '=',
                 ],
             ],

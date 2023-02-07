@@ -18,3 +18,5 @@ services:
   DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface:
     class: 'demosplan\DemosPlanCoreBundle\Resources\config\GlobalConfig'
     public: true
+
+  DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface: '@demosplan\DemosPlanCoreBundle\Permissions\Permissions'

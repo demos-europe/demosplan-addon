@@ -524,12 +524,9 @@ abstract class APIController extends AbstractController
                 ->instanceOf(ResourceTypeInterface::class)
                 ->getInstanceOrThrow();
 
-            if (!$type->isAvailable()) {
-                throw AccessException::typeNotAvailable($type);
-            }
 
             if (!$type->isExposedAsPrimaryResource()) {
-                throw new InvalidArgumentException("The resource type '$resourceTypeName' is not directly accessible");
+                throw AccessException::typeNotDirectlyAccessible($type);
             }
 
             $includes = explode(',', $rawIncludes);
