@@ -24,7 +24,7 @@ class PropertyIsCurrentUserId extends AbstractCondition
         return [
             $this->createRandomName() => [
                 'parameterCondition' => [
-                    'value' => '$currentUserId',
+                    'parameter' => '$currentUserId',
                     'operator' => '=',
                     'path' => $this->path,
                 ],

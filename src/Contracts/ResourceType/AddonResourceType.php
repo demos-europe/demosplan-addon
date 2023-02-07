@@ -13,6 +13,7 @@ use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\PathBuilding\End;
+use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\PropertyPathInterface;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
@@ -30,7 +31,7 @@ use function is_array;
  *
  * @property-read End $id
  */
-abstract class AddonResourceType extends CachingResourceType implements IteratorAggregate, PropertyPathInterface
+abstract class AddonResourceType extends CachingResourceType implements IteratorAggregate, PropertyPathInterface, PropertyAutoPathInterface
 {
     use PropertyAutoPathTrait;
 
@@ -99,7 +100,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     public function getInternalProperties(): array
     {
-        return array_map(static function (string $className): ?string {
+        $properties =  array_map(static function (string $className): ?string {
             $classImplements = class_implements($className);
             if (is_array($classImplements) && in_array(ResourceTypeInterface::class, $classImplements, true)) {
                 /* @var ResourceTypeInterface $className */
@@ -108,6 +109,13 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
             return null;
         }, $this->getAutoPathProperties());
+
+        return array_map(
+            fn (?string $typeIdentifier): ?TypeInterface => null === $typeIdentifier
+                ? null
+                : $this->typeProvider->requestType($typeIdentifier)->getInstanceOrThrow(),
+            $properties
+        );
     }
 
     /**
