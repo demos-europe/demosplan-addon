@@ -17,6 +17,7 @@ use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\PropertyPathInterface;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
+use EDT\Wrapping\Contracts\Types\TypeInterface;
 use EDT\Wrapping\WrapperFactories\WrapperObjectFactory;
 use IteratorAggregate;
 use Psr\Log\LoggerInterface;
@@ -100,7 +101,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     public function getInternalProperties(): array
     {
-        $properties =  array_map(static function (string $className): ?string {
+        $properties = array_map(static function (string $className): ?string {
             $classImplements = class_implements($className);
             if (is_array($classImplements) && in_array(ResourceTypeInterface::class, $classImplements, true)) {
                 /* @var ResourceTypeInterface $className */
