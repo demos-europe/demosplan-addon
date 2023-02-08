@@ -98,7 +98,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
             case 0:
                 throw new \Exception('there are no class that implements'. $interface);
             case 1:
-                return $implementingClasses[0];
+                return array_pop($implementingClasses);
             default:
                 throw new \Exception('there are many as one class that implement'. $interface);
         }
