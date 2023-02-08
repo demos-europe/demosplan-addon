@@ -100,7 +100,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     public function getInternalProperties(): array
     {
-        $properties =  array_map(static function (string $className): ?string {
+        return  array_map(static function (string $className): ?string {
             $classImplements = class_implements($className);
             if (is_array($classImplements) && in_array(ResourceTypeInterface::class, $classImplements, true)) {
                 /* @var ResourceTypeInterface $className */
@@ -109,13 +109,6 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
             return null;
         }, $this->getAutoPathProperties());
-
-        return array_map(
-            fn (?string $typeIdentifier): ?TypeInterface => null === $typeIdentifier
-                ? null
-                : $this->typeProvider->requestType($typeIdentifier)->getInstanceOrThrow(),
-            $properties
-        );
     }
 
     /**
