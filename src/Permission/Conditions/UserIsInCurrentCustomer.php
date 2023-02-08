@@ -10,10 +10,10 @@ class UserIsInCurrentCustomer extends AbstractCondition
     {
         return [
             $this->createRandomName() => [
-                'condition' => [
+                'parameterCondition' => [
                     'path' => 'roleInCustomers.customer.id',
                     'operator' => '=',
-                    'value' => '$currentCustomerId',
+                    'parameter' => '$currentCustomerId',
                 ]
             ],
         ];

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DemosEurope\DemosplanAddon\Contracts;
+namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 /**
  * This event will be triggered in core when creating a new statement from a simplified form.
