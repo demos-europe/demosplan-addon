@@ -91,7 +91,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         }
         $implementingClasses = array_filter(
             get_declared_classes(),
-            fn (string $class): bool => $class instanceof $interface
+            fn (string $class): bool => is_a($class,$interface,true)
         );
 
         switch (count($implementingClasses)) {
