@@ -131,6 +131,10 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $properties = array_map(static function (string $className): ?string {
             $classImplements = class_implements($className);
             if (is_array($classImplements) && in_array(ResourceTypeInterface::class, $classImplements, true)) {
+                if (interface_exists($className))
+                {
+                    $className = $this->findImplementationOfInterface($className);
+                }
                 /* @var ResourceTypeInterface $className */
                 return $className::getName();
             }
