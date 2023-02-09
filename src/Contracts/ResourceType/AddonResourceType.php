@@ -128,7 +128,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     public function getInternalProperties(): array
     {
-        $properties = array_map(static function (string $className): ?string {
+        $properties = array_map(function (string $className): ?string {
             $classImplements = class_implements($className);
             if (is_array($classImplements) && in_array(ResourceTypeInterface::class, $classImplements, true)) {
                 if (interface_exists($className))
