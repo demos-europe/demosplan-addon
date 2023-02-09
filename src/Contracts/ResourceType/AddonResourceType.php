@@ -12,9 +12,11 @@ use EDT\ConditionFactory\ConditionFactoryInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
+use EDT\PathBuilding\DocblockPropertyByTraitEvaluator;
 use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
+use EDT\PathBuilding\TraitEvaluator;
 use EDT\Querying\Contracts\PropertyPathInterface;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
 use EDT\Wrapping\Contracts\Types\TypeInterface;
@@ -170,6 +172,23 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
             })->all();
     }
 
+    /**
+     * @deprecated This method is only needed temporary to fix a bug in a third-party dependency. After the
+     * `demos-europe/edt-...` dependencies has been updated to `^0.17`, this method can be removed.
+     */
+    protected function getDocblockTraitEvaluator(array $targetTags): DocblockPropertyByTraitEvaluator
+    {
+        if (null === $this->docblockTraitEvaluator) {
+            $this->docblockTraitEvaluator = new AddonDocblockPropertyByTraitEvaluator(
+                new TraitEvaluator(),
+                PropertyAutoPathTrait::class,
+                $targetTags,
+            );
+        }
+
+        return $this->docblockTraitEvaluator;
+    }
+
     protected function processProperties(array $properties): array
     {
         return $properties;
@@ -195,4 +214,3 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         return $this->messageFormatter;
     }
 }
-
