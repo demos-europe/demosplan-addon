@@ -69,7 +69,8 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         MessageBagInterface             $messageBag,
         ResourceTypeServiceInterface    $resourceTypeService,
         TranslatorInterface             $translator,
-        ConditionFactoryInterface       $conditionFactory
+        ConditionFactoryInterface       $conditionFactory,
+        WrapperObjectFactory            $wrapperFactory
     ) {
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
@@ -81,6 +82,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->permissionEvaluator = $permissionEvaluator;
         $this->currentContextProvider = $currentContextProvider;
         $this->typeProvider = $typeProvider;
+        $this->wrapperFactory = $wrapperFactory;
         $this->childCreateCallback = fn(string $propertyType, ResourceTypeInterface $self, string $propertyName): PropertyPathInterface
         => self::createChild($this->findImplementationOfInterface($propertyType), $this, $propertyName);
     }
@@ -126,9 +128,13 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
 
     public function getInternalProperties(): array
     {
-        $properties = array_map(static function (string $className): ?string {
+        $properties = array_map(function (string $className): ?string {
             $classImplements = class_implements($className);
             if (is_array($classImplements) && in_array(ResourceTypeInterface::class, $classImplements, true)) {
+                if (interface_exists($className))
+                {
+                    $className = $this->findImplementationOfInterface($className);
+                }
                 /* @var ResourceTypeInterface $className */
                 return $className::getName();
             }
