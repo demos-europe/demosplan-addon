@@ -81,6 +81,29 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->permissionEvaluator = $permissionEvaluator;
         $this->currentContextProvider = $currentContextProvider;
         $this->typeProvider = $typeProvider;
+        $this->childCreateCallback = fn(string $propertyType, ResourceTypeInterface $self, string $propertyName): PropertyPathInterface
+        => self::createChild($this->findImplementationOfInterface($propertyType), $this, $propertyName);
+    }
+
+    public function findImplementationOfInterface(string $interface): string
+    {
+        if (class_exists($interface))
+        {
+            return $interface;
+        }
+        $implementingClasses = array_filter(
+            get_declared_classes(),
+            fn (string $class): bool => is_a($class,$interface,true)
+        );
+
+        switch (count($implementingClasses)) {
+            case 0:
+                throw new \Exception('there are no class that implements'. $interface);
+            case 1:
+                return array_pop($implementingClasses);
+            default:
+                throw new \Exception('there are many as one class that implement'. $interface);
+        }
     }
 
     /**
