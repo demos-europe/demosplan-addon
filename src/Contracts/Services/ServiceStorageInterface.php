@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DemosEurope\DemosplanAddon\Contracts\Services\ServiceStorageInterface;
+namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
 use Exception;
 

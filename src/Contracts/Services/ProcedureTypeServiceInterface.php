@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DemosEurope\DemosplanAddon\Contracts\Services\ProcedureTypeServiceInterface;
+namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
 interface ProcedureTypeServiceInterface
 {
