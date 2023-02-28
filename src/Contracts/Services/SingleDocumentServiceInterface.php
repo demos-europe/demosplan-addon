@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\SingleDocumentInterface;
-use demosplan\DemosPlanCoreBundle\Entity\Document\SingleDocument;
-use demosplan\DemosPlanCoreBundle\Entity\Document\SingleDocumentVersion;
 use Exception;
 use ReflectionException;
 

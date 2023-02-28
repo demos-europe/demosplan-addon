@@ -9,7 +9,12 @@ use Exception;
 interface ServiceStorageInterface
 {
     /**
+     * @param array  $data
+     * @param string $procedureID
+     *
+     * @return array
+     *
      * @throws Exception
      */
-    public function administrationGlobalGisHandler(array $data, string $procedureID): array;
+    public function administrationGlobalGisHandler($data, $procedureID);
 }

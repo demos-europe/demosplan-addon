@@ -12,9 +12,13 @@ interface MapRepositoryInterface
      * Delete a single Gislayer form the DB.
      * If the given ID related to a global GisLayer, all Entries which uses this global-ID will be also deleted.     *
      *
+     * @var string $gisLayerId
+     *
+     * @return bool
+     *
      * @throws Exception
      */
-    public function delete(string $gisLayerId): bool;
+    public function delete($gisLayerId);
 
 
     /**
@@ -27,7 +31,7 @@ interface MapRepositoryInterface
      *
      * @throws Exception
      */
-    public function reOrderGisLayers(array $gisLayerIds): bool;
+    public function reOrderGisLayers($gisLayerIds): bool;
 
 
     /**
