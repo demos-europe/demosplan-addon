@@ -37,8 +37,10 @@ interface MapRepositoryInterface
     /**
      * @param GisLayerInterface $gisLayer
      *
+     * @return GisLayerInterface
+     *
      * @throws Exception
      */
-    public function updateObject($gisLayer): GisLayerInterface;
+    public function updateObject($gisLayer);
 
 }
