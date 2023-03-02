@@ -252,9 +252,7 @@ abstract class APIController extends AbstractController
         $status = Response::HTTP_BAD_REQUEST;
         $message = '';
 
-        if (!$this->globalConfig->isProdMode()) {
-            $this->logger->error('API exception occurred', [$exception]);
-        }
+        $this->logger->error('API exception occurred', [$exception]);
 
         try {
             switch (true) {
