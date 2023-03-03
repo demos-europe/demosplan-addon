@@ -3,6 +3,7 @@
 namespace DemosEurope\DemosplanAddon\Contracts\Exceptions;
 
 use Exception;
+use Throwable;
 
 class AddonContentMandatoryFieldsException extends Exception
 {
