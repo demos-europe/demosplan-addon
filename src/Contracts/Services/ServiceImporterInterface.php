@@ -11,7 +11,10 @@ interface ServiceImporterInterface
     /**
      * Uploads a single File.
      *
+     * @param string $elementId
+     * @param string $procedureId
+     *
      * @throws Exception
      */
-    public function uploadImportFile(string $elementId,string $procedureId, $uploadedFile): void;
+    public function uploadImportFile($elementId, $procedureId, $uploadedFile): void;
 }
