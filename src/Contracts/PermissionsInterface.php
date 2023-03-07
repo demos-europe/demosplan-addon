@@ -16,7 +16,7 @@ interface PermissionsInterface
     /**
      * Initialize all permissions that do not depend on a procedure.
      */
-    public function initPermissions(UserInterface $user, array $context = null): Permissions;
+    public function initPermissions(UserInterface $user, array $context = null): self;
 
     /**
      * Ist die Organisation des angemeldeten Nutzers Inhaberin des Verfahrens?
