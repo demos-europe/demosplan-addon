@@ -147,6 +147,8 @@ interface GlobalConfigInterface
 
     public function isHoneypotDisabled(): bool;
 
+    public function getHoneypotTimeout(): int;
+
     public function getMaintenanceKey(): string;
 
     /**
