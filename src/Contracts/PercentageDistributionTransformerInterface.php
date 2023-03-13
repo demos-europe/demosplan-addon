@@ -6,5 +6,5 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 
 interface PercentageDistributionTransformerInterface
 {
-
+    public function getInstance();
 }
