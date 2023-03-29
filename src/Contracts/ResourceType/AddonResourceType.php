@@ -23,6 +23,7 @@ use EDT\Wrapping\Contracts\Types\TypeInterface;
 use EDT\Wrapping\WrapperFactories\WrapperObjectFactory;
 use IteratorAggregate;
 use Psr\Log\LoggerInterface;
+use ReflectionClass;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use function in_array;
 use function is_array;
@@ -84,10 +85,42 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->typeProvider = $typeProvider;
         $this->wrapperFactory = $wrapperFactory;
         $this->childCreateCallback = fn(string $propertyType, ResourceTypeInterface $self, string $propertyName): PropertyPathInterface
-        => self::createChild($this->findImplementationOfInterface($propertyType), $this, $propertyName);
+        => self::createChild($propertyType, $this, $propertyName);
     }
 
-    public function findImplementationOfInterface(string $interface): string
+    public static function createChild(
+        string $className,
+        ?PropertyAutoPathInterface $parent,
+        ?string $parentPropertyName,
+        array $constructorArgs = []
+    ): PropertyPathInterface {
+
+        $className = self::findImplementationOfInterface($className);
+
+        $class = new ReflectionClass($className);
+
+        if ([] === $constructorArgs) {
+            $constructor = $class->getConstructor();
+            if (null === $constructor || 0 === $constructor->getNumberOfRequiredParameters()) {
+                $childPathSegment = $class->newInstance();
+            } else {
+                $childPathSegment = $class->newInstanceWithoutConstructor();
+            }
+        } else {
+            $childPathSegment = $class->newInstanceArgs($constructorArgs);
+        }
+
+        if (null !== $parent) {
+            $childPathSegment->setParent($parent);
+        }
+        if (null !== $parentPropertyName) {
+            $childPathSegment->setParentPropertyName($parentPropertyName);
+        }
+
+        return $childPathSegment;
+    }
+
+    public static function findImplementationOfInterface(string $interface): string
     {
         if (class_exists($interface))
         {
