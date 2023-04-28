@@ -128,7 +128,6 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
      * @param string $subdomain
      *
      * @return OrgaTypeInterface[]
-     * fixme adjust this method in Core OrgaTypeInterface[]
      */
     public function getOrgaTypes($subdomain, bool $acceptedOnly): array;
 
@@ -145,13 +144,11 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
 
     /**
      * @return Collection<int,AddressInterface>
-     * fixme adjust this method in Core AddressCollection
      */
     public function getAddresses(): Collection;
 
     /**
      * @param AddressInterface[] $addresses
-     * fixme adjust this method in Core AddressInterface[]
      */
     public function setAddresses(array $addresses): self;
 
@@ -159,12 +156,10 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
      * Returns the address of the orga. It should only be one.
      *
      * @return AddressInterface|false note that the return types of first() are the object or false
-     * fixme adjust this method in Core AddressInterface
      */
     public function getAddress();
 
     public function addAddress(AddressInterface $address): self;
-//    fixme adjust this method in Core AddressInterface
 
     /**
      * Get Street from associated (first) Address.
@@ -273,13 +268,11 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
 
     /**
      * Add user to this Organisation, if not already exists in the collection.
-     * fixme adjust this method in Core UserInterface
      */
     public function addUser(UserInterface $user): self;
 
     /**
      * Remove user from this Organisation.
-     * fixme adjust this method in Core UserInterface
      */
     public function removeUser(UserInterface $user): self;
 
@@ -287,13 +280,11 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
 
     /**
      * @param array<int,DepartmentInterface> $departments
-     * fixme adjust this method in Core DepartmentInterface
      */
     public function setDepartments($departments): self;
 
     /**
      * Add department to this Organisation.
-     * fixme adjust this method in Core DepartmentInterface
      */
     public function addDepartment(DepartmentInterface $department): self;
 
@@ -325,12 +316,10 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
 
     /**
      * @param AddressBookEntryInterface[] $addressBookEntries
-     * fixme adjust this method in Core AddressBookEntryInterface
      */
     public function setAddressBookEntries(array $addressBookEntries): self;
 
     /**
-     * fixme adjust this method in Core AddressBookEntryInterface
      * Add a single AddressBookEntry, if not already present in $this->addressBook.
      *
      * @return bool "true" if the given AddressBookEntry was successfully added to this organisation
@@ -368,14 +357,10 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     public function getStatusInCustomers(): Collection;
 
     /**
-     * fixme adjust this method in Core OrgaStatusInCustomerInterface
      * @param Collection<int, OrgaStatusInCustomerInterface> $statusInCustomers
      */
     public function setStatusInCustomers(Collection $statusInCustomers): self;
 
-    /**
-    * fixme adjust this method in Core OrgaStatusInCustomerInterface
-    */
     public function addStatusInCustomer(OrgaStatusInCustomerInterface $orgaStatusInCustomer): self;
 
     public function addCustomer(CustomerInterface $customer): bool;
@@ -416,11 +401,7 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     public function getMasterUser(string $subdomain): ?UserInterface;
 
     public function getMasterToeb(): ?MasterToebInterface;
-    // fixme MasterToebInterface needs to be implemented by MasterToeb in core
 
-    /**
-     * fixme adjust this method in Core MasterToebInterface
-     */
     public function setMasterToeb(?MasterToebInterface $masterToeb): self;
 
     public function hasType(string $orgaType, string $currentSubdomain): bool;
@@ -428,32 +409,18 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     public function isDefaultCitizenOrganisation(): bool;
 
     public function getBranding(): ?BrandingInterface;
-    // fixme BrandingInterface needs to be implemented by Branding in core
 
-    /**
-     * fixme adjust this method in Core BrandingInterface
-     */
     public function setBranding(?BrandingInterface $branding): self;
 
     /**
-     * fixme the IstitutionTag in core needs to implement InstitutionTagInterface
      * @return Collection<int, InstitutionTagInterface>
      */
     public function getAssignedTags(): Collection;
 
-    /**
-     * fixme adjust this method in Core InstitutionTagInterface
-     */
     public function addAssignedTag(InstitutionTagInterface $tag): void;
 
-    /**
-     * fixme adjust this method in Core InstitutionTagInterface
-     */
     public function removeAssignedTag(InstitutionTagInterface $tag): void;
 
-    /**
-     * fixme adjust this method in Core InstitutionTagInterface
-     */
     public function addOwnInstitutionTag(InstitutionTagInterface $tag): void;
 
     /**
@@ -461,8 +428,5 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     */
     public function getOwnInstitutionTags(): Collection;
 
-    /**
-     * fixme adjust this method in Core InstitutionTagInterface
-     */
     public function removeOwnInstitutionTag(InstitutionTagInterface $tag): void;
 }
