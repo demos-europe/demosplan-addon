@@ -116,7 +116,7 @@ interface DepartmentInterface extends UuidEntityInterface, CoreEntityInterface
     /**
      * @return ArrayCollection<int,AddressInterface>
      */
-    public function getAddresses(): self;
+    public function getAddresses();
 
     /**
      * Add Address to Orga.
