@@ -49,12 +49,6 @@ interface GlobalConfigInterface
 
     public function getElasticsearchNumReplicas(): int;
 
-    public function isElasticsearchAsyncIndexing(): bool;
-
-    public function isElasticsearchAsyncIndexingLogStatus(): bool;
-
-    public function getElasticsearchAsyncIndexingPoolSize(): int;
-
     public function getElasticsearchMajorVersion(): int;
 
     public function getUrlScheme(): string;
