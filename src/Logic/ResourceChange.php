@@ -13,63 +13,38 @@ use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
  * handles as many request handling details as possible but leaves the actual implementation of
  * writing tasks and their details to manually implemented methods. These methods must return
  * {@link ResourceChange} instances, containing the affected entities, so that the generic API
- * implementation can automatically update the database and search index.
+ * implementation can automatically update the database.
  *
- * @template T of \demosplan\DemosPlanCoreBundle\Entity\EntityInterface
+ * @template T of EntityInterface
  */
 class ResourceChange implements EntityChangeInterface
 {
-    /**
-     * The entity backing the resource that is the target of the request.
-     *
-     * @var T
-     */
-    private $targetEntity;
-
     /**
      * The entities that need to be persisted in the database to apply the changes resulting from the request.
      * Includes {@link targetEntity}.
      *
      * @var array<int,EntityInterface>
      */
-    private $entitiesToPersist = [];
+    private array $entitiesToPersist = [];
 
     /**
      * @var array<int,EntityInterface>
      */
-    private $entitiesToDelete = [];
+    private array $entitiesToDelete = [];
+
+    private bool $unrequestedChangesToTargetResource = false;
 
     /**
-     * @var ResourceTypeInterface<T>
-     */
-    private $targetResourceType;
-
-    /**
-     * @var bool
-     */
-    private $unrequestedChangesToTargetResource = false;
-
-    /**
-     * @var array<string,mixed>
-     */
-    private $requestProperties;
-
-    /**
-     * @var array<class-string,array<int,string>>
-     */
-    private $entityIdsToUpdateInIndex = [];
-
-    /**
-     * @param object $targetEntity the entity backing the resource that was targeted by the request
-     * @param array $requestProperties the values in the request that were specified to be set. Additional changes may
+     * @param T $targetEntity the entity backing the resource that was targeted by the request
+     * @param ResourceTypeInterface<T> $targetResourceType
+     * @param array<string,mixed> $requestProperties the values in the request that were specified to be set. Additional changes may
      *                                  have been made by the resource type or listeners
      */
-    public function __construct(object $targetEntity, ResourceTypeInterface $targetResourceType, array $requestProperties)
-    {
-        $this->targetEntity = $targetEntity;
-        $this->targetResourceType = $targetResourceType;
-        $this->requestProperties = $requestProperties;
-    }
+    public function __construct(
+        private readonly object $targetEntity,
+        private readonly ResourceTypeInterface $targetResourceType,
+        private readonly array $requestProperties
+    ) {}
 
     public function addEntityToPersist(EntityInterface $entity): void
     {
@@ -143,16 +118,6 @@ class ResourceChange implements EntityChangeInterface
     public function getRequestProperties(): array
     {
         return $this->requestProperties;
-    }
-
-    public function addEntityToUpdateInIndex(string $class, string $entityId): void
-    {
-        $this->entityIdsToUpdateInIndex[$class][] = $entityId;
-    }
-
-    public function getEntityIdsToUpdateInIndex(): array
-    {
-        return $this->entityIdsToUpdateInIndex;
     }
 }
 
