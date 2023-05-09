@@ -3,7 +3,6 @@
 namespace DemosEurope\DemosplanAddon\Contracts\Repositories;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\GisLayerInterface;
-use demosplan\DemosPlanCoreBundle\Entity\Map\GisLayer;
 use Exception;
 
 interface MapRepositoryInterface
