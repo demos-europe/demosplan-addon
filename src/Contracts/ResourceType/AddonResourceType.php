@@ -8,6 +8,7 @@ use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\CurrentContextProviderInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface;
+use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\ResourceType\DplanResourceType;
 use EDT\ConditionFactory\ConditionFactoryInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
@@ -24,6 +25,7 @@ use EDT\Wrapping\WrapperFactories\WrapperObjectFactory;
 use IteratorAggregate;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use function in_array;
 use function is_array;
@@ -71,7 +73,8 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         ResourceTypeServiceInterface    $resourceTypeService,
         TranslatorInterface             $translator,
         ConditionFactoryInterface       $conditionFactory,
-        WrapperObjectFactory            $wrapperFactory
+        WrapperObjectFactory            $wrapperFactory,
+        protected ContainerInterface    $container
     ) {
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
@@ -85,18 +88,16 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->typeProvider = $typeProvider;
         $this->wrapperFactory = $wrapperFactory;
         $this->childCreateCallback = fn(string $propertyType, ResourceTypeInterface $self, string $propertyName): PropertyPathInterface
-        => self::createChild($propertyType, $this, $propertyName);
+        => $this->createChildFromPotentialInterface($propertyType, $self, $propertyName);
     }
 
-    public static function createChild(
+    public function createChildFromPotentialInterface(
         string $className,
         ?PropertyAutoPathInterface $parent,
         ?string $parentPropertyName,
         array $constructorArgs = []
     ): PropertyPathInterface {
-
-        $className = self::findImplementationOfInterface($className);
-
+        $className = $this->findImplementationOfInterface($className);
         $class = new ReflectionClass($className);
 
         if ([] === $constructorArgs) {
@@ -109,7 +110,30 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         } else {
             $childPathSegment = $class->newInstanceArgs($constructorArgs);
         }
+        if (!is_a($childPathSegment, End::class, true)) {
 
+            if (is_a($childPathSegment, DplanResourceType::class, true)) {
+                $param1 = DplanResourceType::class;
+            } elseif (is_a($childPathSegment, AddonResourceType::class, true)) {
+                $param1 = AddonResourceType::class;
+            } else {
+                throw new \Exception();
+            }
+            $childCreateCallbackProperty = new \ReflectionProperty($param1, 'childCreateCallback');
+            $childCreateCallbackProperty->setAccessible(true);
+            $childCreateCallbackProperty->setValue(
+                $childPathSegment,
+                fn (
+                    string $propertyType,
+                    ResourceTypeInterface $self,
+                    string $propertyName
+                ): PropertyPathInterface => $this->createChildFromPotentialInterface(
+                    $propertyType,
+                    $self,
+                    $propertyName
+                )
+            );
+        }
         if (null !== $parent) {
             $childPathSegment->setParent($parent);
         }
@@ -120,20 +144,23 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         return $childPathSegment;
     }
 
-    public static function findImplementationOfInterface(string $interface): string
+    protected function findImplementationOfInterface(string $interface): string
     {
         if (class_exists($interface))
         {
             return $interface;
         }
-        $implementingClasses = array_filter(
-            get_declared_classes(),
-            fn (string $class): bool => is_a($class,$interface,true)
-        );
+
+        // $implementingClasses = array_filter(
+        //    get_declared_classes(),
+        //    fn (string $class): bool => is_a($class,$interface,true)
+        //  );
+
+        $implementingClasses = [get_class($this->container->get($interface))];
 
         switch (count($implementingClasses)) {
             case 0:
-                throw new \Exception('there are no class that implements'. $interface);
+                throw new \Exception('there are no class that implements'. $interface . ' GET_DECLARED_CLASSES: ' . var_export(get_declared_classes(), true) . '<br>');
             case 1:
                 return array_pop($implementingClasses);
             default:
