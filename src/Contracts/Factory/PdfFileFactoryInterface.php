@@ -8,5 +8,5 @@ use DemosEurope\DemosplanAddon\Contracts\ValueObject\PdfFileInterface;
 
 interface PdfFileFactoryInterface
 {
-    public function createPdfFile(): PdfFileInterface;
+    public function createPdfFile(string $name, string $content): PdfFileInterface;
 }
