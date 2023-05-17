@@ -55,35 +55,5 @@ interface EntityChangeInterface
      * @return array<int,EntityInterface>
      */
     public function getEntitiesToDelete(): array;
-
-    /**
-     * This method is only needed in very special cases, attempted to be explained below:.
-     *
-     * Within the `fos_elastica.yml` file you can define a listener via `persistence.listener`
-     * in each type. The default is "`listener: ~`" meaning that the FoS Elastica Bundle
-     * listens on doctrine events (e.g. an update) and automatically updates the index.
-     *
-     * In some cases a custom listener needs to be used instead of the default one (currently the
-     * case for {@link Statement} and {@link StatementFragment} entities). In this case you need
-     * to set `listener: { enabled: false }` and implement your own listener like
-     * {@link UpdateElasticaStatementPostListener} and configure it as an appropriately
-     * tagged service, so it will become active at the relevant events.
-     *
-     * *If* for some reason these custom listeners do not update the index with all data of the
-     * entity, a manual call to {@link SearchIndexTaskService::addIndexTask()} is needed. Adding
-     * the IDs and corresponding class of entities via this method expresses the desire that
-     * these will be manually updated at some point.
-     *
-     * Currently, it is needed for {@link Statement} entities only, so their attributes are updated
-     * in the Elasticsearch index, to avoid discrepancies between the database and the index.
-     *
-     * @param class-string $class
-     */
-    public function addEntityToUpdateInIndex(string $class, string $entityId): void;
-
-    /**
-     * @return array<class-string,array<int,string>>
-     */
-    public function getEntityIdsToUpdateInIndex(): array;
 }
 
