@@ -117,18 +117,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         if ($class->hasProperty('childCreateCallback')) {
             $childCreateCallbackProperty = $class->getProperty('childCreateCallback');
             $childCreateCallbackProperty->setAccessible(true);
-            $childCreateCallbackProperty->setValue(
-                $childPathSegment,
-                fn (
-                    string $propertyType,
-                    ResourceTypeInterface $self,
-                    string $propertyName
-                ): PropertyPathInterface => $this->createChildFromPotentialInterface(
-                    $propertyType,
-                    $self,
-                    $propertyName
-                )
-            );
+            $childCreateCallbackProperty->setValue($childPathSegment, [$this, 'createChildFromPotentialInterface']);
         }
 
         if (null !== $parent) {
