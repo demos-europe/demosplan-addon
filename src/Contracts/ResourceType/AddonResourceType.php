@@ -151,11 +151,6 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
             return $interface;
         }
 
-        // $implementingClasses = array_filter(
-        //    get_declared_classes(),
-        //    fn (string $class): bool => is_a($class,$interface,true)
-        //  );
-
         $implementingClasses = [get_class($this->container->get($interface))];
 
         switch (count($implementingClasses)) {
