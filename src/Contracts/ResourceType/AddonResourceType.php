@@ -8,7 +8,6 @@ use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\CurrentContextProviderInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface;
-use demosplan\DemosPlanCoreBundle\Logic\ApiRequest\ResourceType\DplanResourceType;
 use EDT\ConditionFactory\ConditionFactoryInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
@@ -110,16 +109,13 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         } else {
             $childPathSegment = $class->newInstanceArgs($constructorArgs);
         }
-        if (!is_a($childPathSegment, End::class, true)) {
 
-            if (is_a($childPathSegment, DplanResourceType::class, true)) {
-                $param1 = DplanResourceType::class;
-            } elseif (is_a($childPathSegment, AddonResourceType::class, true)) {
-                $param1 = AddonResourceType::class;
-            } else {
-                throw new \Exception();
-            }
-            $childCreateCallbackProperty = new \ReflectionProperty($param1, 'childCreateCallback');
+        while (!$class->hasProperty('childCreateCallback') && $class->getParentClass() !== false) {
+            $class = $class->getParentClass();
+        }
+
+        if ($class->hasProperty('childCreateCallback')) {
+            $childCreateCallbackProperty = $class->getProperty('childCreateCallback');
             $childCreateCallbackProperty->setAccessible(true);
             $childCreateCallbackProperty->setValue(
                 $childPathSegment,
@@ -134,6 +130,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
                 )
             );
         }
+
         if (null !== $parent) {
             $childPathSegment->setParent($parent);
         }
