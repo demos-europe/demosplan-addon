@@ -43,9 +43,6 @@ interface GdprConsentInterface extends UuidEntityInterface
      */
     public function getStatement();
 
-    /**
-     * @throws InvalidDataException
-     */
     public function setStatement(StatementInterface $statement);
 
     public function isConsented(): bool;
