@@ -83,7 +83,7 @@ interface StatementFragmentInterface extends UuidEntityInterface
     public function getTagsAndTopicsAsString();
 
     public function getTagsAndTopics();
-    
+
     public function getTopics();
 
     /**
