@@ -4,6 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
+
 interface DraftStatementFileInterface extends UuidEntityInterface
 {
     public function getDraftStatement(): ?DraftStatementInterface;
