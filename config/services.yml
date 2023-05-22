@@ -26,5 +26,5 @@ services:
     public: true
 
   EDT\PathBuilding\TraitEvaluator:
-    argument:
+    arguments:
       $targetTrait: string
