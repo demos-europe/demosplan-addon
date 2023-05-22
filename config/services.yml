@@ -24,3 +24,5 @@ services:
   DemosEurope\DemosplanAddon\Contracts\ResourceType\:
     resource: '../src/Contracts/ResourceType'
     public: true
+
+  EDT\PathBuilding\TraitEvaluator: ~
