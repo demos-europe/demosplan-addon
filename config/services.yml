@@ -25,4 +25,6 @@ services:
     resource: '../src/Contracts/ResourceType'
     public: true
 
-  EDT\PathBuilding\TraitEvaluator: ~
+  EDT\PathBuilding\TraitEvaluator:
+    argument:
+      $targetTrait: string
