@@ -20,3 +20,7 @@ services:
     public: true
 
   DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface: '@demosplan\DemosPlanCoreBundle\Permissions\Permissions'
+
+  DemosEurope\DemosplanAddon\Contracts\ResourceType\:
+    resource: '../src/Contracts/ResourceType'
+    public: true
