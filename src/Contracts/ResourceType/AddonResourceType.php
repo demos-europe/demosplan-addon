@@ -24,6 +24,7 @@ use EDT\Wrapping\WrapperFactories\WrapperObjectFactory;
 use IteratorAggregate;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use function in_array;
 use function is_array;
@@ -71,7 +72,8 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         ResourceTypeServiceInterface    $resourceTypeService,
         TranslatorInterface             $translator,
         ConditionFactoryInterface       $conditionFactory,
-        WrapperObjectFactory            $wrapperFactory
+        WrapperObjectFactory            $wrapperFactory,
+        protected ContainerInterface    $container
     ) {
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
@@ -85,18 +87,16 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         $this->typeProvider = $typeProvider;
         $this->wrapperFactory = $wrapperFactory;
         $this->childCreateCallback = fn(string $propertyType, ResourceTypeInterface $self, string $propertyName): PropertyPathInterface
-        => self::createChild($propertyType, $this, $propertyName);
+        => $this->createChildFromPotentialInterface($propertyType, $self, $propertyName);
     }
 
-    public static function createChild(
+    public function createChildFromPotentialInterface(
         string $className,
         ?PropertyAutoPathInterface $parent,
         ?string $parentPropertyName,
         array $constructorArgs = []
     ): PropertyPathInterface {
-
-        $className = self::findImplementationOfInterface($className);
-
+        $className = $this->findImplementationOfInterface($className);
         $class = new ReflectionClass($className);
 
         if ([] === $constructorArgs) {
@@ -110,6 +110,16 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
             $childPathSegment = $class->newInstanceArgs($constructorArgs);
         }
 
+        while (!$class->hasProperty('childCreateCallback') && $class->getParentClass() !== false) {
+            $class = $class->getParentClass();
+        }
+
+        if ($class->hasProperty('childCreateCallback')) {
+            $childCreateCallbackProperty = $class->getProperty('childCreateCallback');
+            $childCreateCallbackProperty->setAccessible(true);
+            $childCreateCallbackProperty->setValue($childPathSegment, [$this, 'createChildFromPotentialInterface']);
+        }
+
         if (null !== $parent) {
             $childPathSegment->setParent($parent);
         }
@@ -120,16 +130,14 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         return $childPathSegment;
     }
 
-    public static function findImplementationOfInterface(string $interface): string
+    protected function findImplementationOfInterface(string $interface): string
     {
         if (class_exists($interface))
         {
             return $interface;
         }
-        $implementingClasses = array_filter(
-            get_declared_classes(),
-            fn (string $class): bool => is_a($class,$interface,true)
-        );
+
+        $implementingClasses = [get_class($this->container->get($interface))];
 
         switch (count($implementingClasses)) {
             case 0:
