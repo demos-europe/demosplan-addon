@@ -322,11 +322,6 @@ interface GlobalConfigInterface
 
     public function getProjectSubmissionType(): string;
 
-    /**
-     * @param string $procedureId
-     */
-    public function getDatasheetVersion($procedureId): int;
-
     public function getKernelEnvironment(): string;
 
     /**
