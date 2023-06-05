@@ -6,7 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
 use Exception;
 
-interface ServiceStorageInterface
+interface MapServiceStorageInterface
 {
     /**
      * @param array  $data
