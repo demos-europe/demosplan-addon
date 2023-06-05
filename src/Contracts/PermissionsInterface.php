@@ -6,7 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\User\UserInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
 
 /**
  * Zentrale Berechtigungssteuerung fuer Funktionen.
@@ -64,7 +64,7 @@ interface PermissionsInterface
      *
      * @param string $permission
      *
-     * @return Permission|false
+     * @return PermissionsInterface|false
      */
     public function getPermission($permission);
 
