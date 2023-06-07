@@ -9,7 +9,7 @@ use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\Transformer\BaseTransformerInterface;
 use Exception;
 use League\Fractal\Manager;
-use Doctrine\Common\Collections\Collection;
+use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use Symfony\Component\Security\Core\User\UserInterface;
 
