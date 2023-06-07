@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use League\Fractal\Resource\Collection;
-use League\Fractal\Resource\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 
 interface StatementInterface extends UuidEntityInterface, SegmentInterface
@@ -1639,5 +1639,7 @@ interface StatementInterface extends UuidEntityInterface, SegmentInterface
     public function isAnonymous(): bool;
 
     public function setAnonymous(bool $anonymous): StatementInterface;
+
+    public function removeSimilarStatementSubmitter(ProcedurePersonInterface $procedurePerson): void;
 
 }

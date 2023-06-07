@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use League\Fractal\Resource\Collection;
+use Doctrine\Common\Collections\Collection;
 use DateTime;
 
 interface SurveyInterface extends UuidEntityInterface

@@ -2,8 +2,8 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use League\Fractal\Resource\ArrayCollection;
-use League\Fractal\Resource\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 interface CountyInterface extends UuidEntityInterface
 {

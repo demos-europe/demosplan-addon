@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use League\Fractal\Resource\Collection;
+use Doctrine\Common\Collections\Collection;
 
 interface CustomerInterface extends UuidEntityInterface
 {

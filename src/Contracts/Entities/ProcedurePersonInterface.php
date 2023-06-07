@@ -2,6 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
+use Doctrine\Common\Collections\Collection;
 interface ProcedurePersonInterface extends UuidEntityInterface
 {
     public function getProcedure(): ProcedureInterface;
@@ -29,4 +30,10 @@ interface ProcedurePersonInterface extends UuidEntityInterface
     public function setEmailAddress(?string $emailAddress): ProcedurePersonInterface;
 
     public function getEmailAddress(): ?string;
+
+    public function getSimilarForeignStatements(): Collection;
+
+    public function addSimilarForeignStatement(StatementInterface $similarForeignStatement): void;
+
+    public function removeSimilarForeignStatement(StatementInterface $similarForeignStatement): void;
 }

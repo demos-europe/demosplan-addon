@@ -5,8 +5,8 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use DateTimeInterface;
 use DateTimeImmutable;
-use League\Fractal\Resource\Collection;
-use League\Fractal\Resource\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface UserInterface extends UuidEntityInterface
 {

@@ -3,7 +3,7 @@
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use League\Fractal\Resource\Collection;
+use Doctrine\Common\Collections\Collection;
 
 interface ParagraphInterface extends UuidEntityInterface
 {

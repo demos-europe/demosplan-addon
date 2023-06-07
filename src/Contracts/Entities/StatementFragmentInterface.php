@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use League\Fractal\Resource\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
 interface StatementFragmentInterface extends UuidEntityInterface

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use League\Fractal\Resource\Collection;
-use League\Fractal\Resource\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
 interface ProcedureInterface
