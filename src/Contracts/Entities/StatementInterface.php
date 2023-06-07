@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 
-interface StatementInterface extends UuidEntityInterface, SegmentInterface
+interface StatementInterface extends UuidEntityInterface
 {
     public const IMPORT_VALIDATION = 'import';
     public const DEFAULT_VALIDATION = 'Default';
