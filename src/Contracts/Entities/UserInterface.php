@@ -7,7 +7,7 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\UserInterfac as SecurityUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
 interface UserInterface extends SecurityUserInterface, UuidEntityInterface
 {
