@@ -128,7 +128,7 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface
 
     public function setAlternativeLoginPassword(?string $alternativeLoginPassword);
 
-    public function setSalt(?string $salt): UserInterface;
+    public function setSalt(?string $salt): SecurityUserInterface;
 
     /**
      * @return string
@@ -484,11 +484,11 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface
      */
     public function setRolesAllowed($roles): void;
 
-    public function getTwinUser(): ?UserInterface;
+    public function getTwinUser(): ?SecurityUserInterface;
 
     public function hasTwinUser(): bool;
 
-    public function setTwinUser(?UserInterface $twinUser): UserInterface;
+    public function setTwinUser(?UserInterface $twinUser): SecurityUserInterface;
 
     /**
      * Returns collection of roles the user has with a specified customer (current is default).
