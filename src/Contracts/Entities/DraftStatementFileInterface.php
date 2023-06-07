@@ -14,7 +14,7 @@ interface DraftStatementFileInterface extends UuidEntityInterface
      */
     public function setDraftStatement(?DraftStatementInterface $draftStatement): self;
 
-    public function getCreateDate(): DateTime;
+    public function getCreateDate(): \DateTimeInterface;
 
     public function getFile(): FileInterface;
 
