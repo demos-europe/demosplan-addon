@@ -7,8 +7,9 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterfac as SecurityUserInterface;
 
-interface UserInterface extends UuidEntityInterface
+interface UserInterface extends SecurityUserInterface, UuidEntityInterface
 {
     /**
      * Set hard coded anonymous user Values until refactored.
@@ -112,18 +113,11 @@ interface UserInterface extends UuidEntityInterface
     public function setLogin(?string $login): void;
 
     /**
-     * @return string
-     */
-    public function getUsername();
-
-    /**
      * Symfony > 6 needs getUserIdentifier() for auth system.
      */
     public function getUserIdentifier(): ?string;
 
     public function setPassword(?string $password): void;
-
-    public function getPassword(): ?string;
 
     /**
      * @deprecated $this->password should be safe now
@@ -133,13 +127,6 @@ interface UserInterface extends UuidEntityInterface
     public function getAlternativeLoginPassword();
 
     public function setAlternativeLoginPassword(?string $alternativeLoginPassword);
-
-    /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     */
-    public function getSalt(): ?string;
 
     public function setSalt(?string $salt): UserInterface;
 
@@ -576,24 +563,6 @@ interface UserInterface extends UuidEntityInterface
     public function hasAnyOfRoles(array $roles): bool;
 
     /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return string[] The user roles
-     */
-    public function getRoles(): array;
-
-    /**
      * Alias for getDplanRolesString.
      *
      * @return string
@@ -604,12 +573,6 @@ interface UserInterface extends UuidEntityInterface
      * Setzen des loggedIn Status auf true.
      */
     public function isLoggedIn(): bool;
-
-    /**
-     * We cannot remove any sensitive data from user object during login (this is where this is called)
-     * as user object is persisted later on which would lead in an empty password field in database.
-     */
-    public function eraseCredentials(): void;
 
     public function getEntityContentChangeIdentifier(): string;
 
