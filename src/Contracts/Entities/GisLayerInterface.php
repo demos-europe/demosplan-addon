@@ -8,6 +8,10 @@ use DateTime;
 
 interface GisLayerInterface extends UuidEntityInterface, CoreEntityInterface
 {
+
+    public const TYPE_BASE = 'base';
+    public const TYPE_OVERLAY = 'overlay';
+
     public function set($data);
 
     /**
@@ -16,8 +20,6 @@ interface GisLayerInterface extends UuidEntityInterface, CoreEntityInterface
      * @return array
      */
     public function toArray();
-
-    public function getIdent(): ?string;
 
     /**
      * @param string $ident

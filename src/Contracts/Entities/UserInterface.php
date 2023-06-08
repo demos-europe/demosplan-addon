@@ -7,9 +7,11 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Hslavich\OneloginSamlBundle\Security\User\SamlUserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
-interface UserInterface extends SecurityUserInterface, UuidEntityInterface
+interface UserInterface extends SecurityUserInterface, UuidEntityInterface, SamlUserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * Set hard coded anonymous user Values until refactored.
@@ -652,11 +654,6 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface
      * Should be indexed in Elasticsearch.
      */
     public function shouldBeIndexed(): bool;
-
-    /**
-     * This method will be used to fill user properties from saml providers.
-     */
-    public function setSamlAttributes(array $attributes): void;
 
     public function isDefaultGuestUser(): bool;
 

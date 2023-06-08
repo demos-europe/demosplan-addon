@@ -66,8 +66,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setId($id);
 
-    public function getIdent(): ?string;
-
     /**
      * @return StatementInterface
      */

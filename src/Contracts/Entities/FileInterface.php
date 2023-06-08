@@ -18,8 +18,6 @@ interface FileInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setIdent($ident);
 
-    public function getIdent(): ?string;
-
     /**
      * @param string $hash
      *
