@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
-interface ProcedureInterface
+interface ProcedureInterface extends SluggedEntityInterface
 {
     public const VALIDATION_GROUP_MANDATORY_PROCEDURE = 'mandatory_procedure';
 

@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface NotificationReceiverInterface extends UuidEntityInterface
+interface NotificationReceiverInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @param string $id

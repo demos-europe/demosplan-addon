@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface StatementAttributeInterface extends UuidEntityInterface
+interface StatementAttributeInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @param string $id

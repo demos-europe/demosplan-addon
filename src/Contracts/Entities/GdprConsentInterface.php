@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface GdprConsentInterface extends UuidEntityInterface
+interface GdprConsentInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function setId(string $id);
 

@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
 
-interface ParagraphInterface extends UuidEntityInterface
+interface ParagraphInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getParent(): ?self;
 

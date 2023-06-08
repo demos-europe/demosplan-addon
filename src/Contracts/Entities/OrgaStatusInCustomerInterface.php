@@ -3,7 +3,7 @@
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 
-interface OrgaStatusInCustomerInterface extends UuidEntityInterface
+interface OrgaStatusInCustomerInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const STATUS_PENDING = 'pending';
 

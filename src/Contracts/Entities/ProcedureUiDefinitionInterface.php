@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface ProcedureUiDefinitionInterface extends UuidEntityInterface
+interface ProcedureUiDefinitionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * The placeholder that may be used in {@link ProcedureUiDefinitionInterface::$statementPublicSubmitConfirmationText}.

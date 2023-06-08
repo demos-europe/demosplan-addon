@@ -5,9 +5,11 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
 
-interface SingleDocumentInterface
+interface SingleDocumentInterface extends CoreEntityInterface
 {
     public const IMPORT_CREATION = 'importCreation';
+
+    public function getId(): ?string;
 
     /**
      * Set procedure.

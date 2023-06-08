@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\Collection;
 
-interface OrgaTypeInterface extends UuidEntityInterface
+interface OrgaTypeInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * AHB = Anhörungsbehörde = hearing authority.

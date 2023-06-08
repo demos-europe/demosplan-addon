@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
-interface StatementFragmentInterface extends UuidEntityInterface
+interface StatementFragmentInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const VALIDATION_GROUP_MANDATORY = 'mandatory';
 
@@ -147,8 +147,6 @@ interface StatementFragmentInterface extends UuidEntityInterface
      */
     public function getModified();
 
-    public function getId(): ?string;
-
     /**
      * Needed to create a StatementFragment from StatementFragmentDataObject.
      *
@@ -170,6 +168,11 @@ interface StatementFragmentInterface extends UuidEntityInterface
      * @return string|null
      */
     public function getVote();
+
+    /**
+     * @param string|null $vote
+     */
+    public function setVote($vote): self;
 
     /**
      * @param string|null $vote;

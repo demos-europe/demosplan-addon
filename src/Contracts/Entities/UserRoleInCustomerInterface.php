@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface UserRoleInCustomerInterface extends UuidEntityInterface
+interface UserRoleInCustomerInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * Set User.

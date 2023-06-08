@@ -4,15 +4,13 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface StatementFieldDefinitionInterface extends UuidEntityInterface
+interface StatementFieldDefinitionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function isEnabled(): bool;
 
     public function setEnabled(bool $enabled): void;
 
     public function getName(): string;
-
-    public function getId(): ?string;
 
     public function getStatementFormDefinition(): StatementFormDefinitionInterface;
 

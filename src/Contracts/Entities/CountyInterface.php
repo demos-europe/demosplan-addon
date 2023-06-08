@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-interface CountyInterface extends UuidEntityInterface
+interface CountyInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @return Collection<int, CustomerCountyInterface>

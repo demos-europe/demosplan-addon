@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
 
-interface TagTopicInterface extends UuidEntityInterface
+interface TagTopicInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const TAG_TOPIC_MISC = 'Sonstiges';
 

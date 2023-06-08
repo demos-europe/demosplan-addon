@@ -6,6 +6,7 @@ use DateTime;
 
 interface OriginalStatementAnonymizationInterface
 {
+    public function getId(): string;
     public function getCreated(): DateTime;
 
     public function isAttachmentsDeleted(): bool;

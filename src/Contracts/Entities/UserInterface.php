@@ -74,9 +74,6 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface
      */
     public function getName();
 
-    /**
-     * @deprecated use {@link UserInterface::getId()} instead
-     */
     public function getIdent(): ?string;
 
     /**

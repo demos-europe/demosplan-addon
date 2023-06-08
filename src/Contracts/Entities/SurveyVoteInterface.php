@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface SurveyVoteInterface extends UuidEntityInterface
+interface SurveyVoteInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const PUBLICATION_PENDING = 'publication_pending';
     public const PUBLICATION_REJECTED = 'publication_rejected';

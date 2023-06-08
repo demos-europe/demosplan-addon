@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface CustomerCountyInterface extends UuidEntityInterface
+interface CustomerCountyInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function setId(string $id): self;
 

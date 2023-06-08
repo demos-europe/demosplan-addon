@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
 
-interface ProcedureSettingsInterface extends UuidEntityInterface
+interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * Max length of the {@see mapHint} field.
@@ -34,6 +34,11 @@ interface ProcedureSettingsInterface extends UuidEntityInterface
      * @return $this
      */
     public function setId($id);
+
+    /**
+     * @return string|null
+     */
+    public function getPId();
 
     /**
      * Set psMapExtent.

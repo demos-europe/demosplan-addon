@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-interface MunicipalityInterface extends UuidEntityInterface
+interface MunicipalityInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * Return name in addition of officialMunicipalityKey if officialMunicipalityKey is set.

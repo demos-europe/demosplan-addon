@@ -6,7 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\Collection;
 
-interface CustomerInterface extends UuidEntityInterface
+interface CustomerInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function setId(string $id);
 

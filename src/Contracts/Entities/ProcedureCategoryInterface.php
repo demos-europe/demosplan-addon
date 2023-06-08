@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface ProcedureCategoryInterface extends UuidEntityInterface
+interface ProcedureCategoryInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @return $this

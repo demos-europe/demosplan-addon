@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface ParagraphVersionInterface extends UuidEntityInterface
+interface ParagraphVersionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * Get elementId.

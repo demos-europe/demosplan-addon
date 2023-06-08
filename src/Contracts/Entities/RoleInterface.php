@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface RoleInterface extends UuidEntityInterface
+interface RoleInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * Fachplaner-Masteruser GLAUTH Kommune.

@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-interface BoilerplateGroupInterface extends UuidEntityInterface
+interface BoilerplateGroupInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @param string $id

@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface ProcedureTypeInterface extends UuidEntityInterface
+interface ProcedureTypeInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const BAULEITPLANUNG = 'Bauleitplanung';
 

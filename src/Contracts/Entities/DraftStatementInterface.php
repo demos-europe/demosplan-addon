@@ -4,17 +4,11 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface DraftStatementInterface extends UuidEntityInterface
+interface DraftStatementInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const INTERNAL = 'internal';
 
     public const EXTERNAL = 'external';
-
-
-    /**
-     * @deprecated use {@link DraftStatementInterface::getId()} instead
-     */
-    public function getIdent(): ?string;
 
     /**
      * Set procedure.

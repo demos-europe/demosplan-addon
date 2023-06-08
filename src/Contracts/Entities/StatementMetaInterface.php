@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface StatementMetaInterface extends UuidEntityInterface
+interface StatementMetaInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const USER_GROUP = 'userGroup';
     public const USER_ORGANISATION = 'userOrganisation';
@@ -19,8 +19,6 @@ interface StatementMetaInterface extends UuidEntityInterface
      * @param string $id
      */
     public function setId($id);
-
-    public function getId(): ?string;
 
     /**
      * Set author.

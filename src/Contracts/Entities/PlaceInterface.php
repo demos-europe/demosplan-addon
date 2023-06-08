@@ -2,8 +2,9 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface PlaceInterface
+interface PlaceInterface extends CoreEntityInterface
 {
+    public function getId(): ?string;
     public function getName(): string;
 
     public function setName(string $name): self;

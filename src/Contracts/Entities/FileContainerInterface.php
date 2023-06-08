@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface FileContainerInterface extends UuidEntityInterface
+interface FileContainerInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @param string $id

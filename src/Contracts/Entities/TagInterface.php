@@ -7,7 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-interface TagInterface extends UuidEntityInterface
+interface TagInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @param string $id

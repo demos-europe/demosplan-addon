@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface ExportFieldsConfigurationInterface extends UuidEntityInterface
+interface ExportFieldsConfigurationInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function isIdExportable(): bool;
 
@@ -116,8 +116,6 @@ interface ExportFieldsConfigurationInterface extends UuidEntityInterface
     public function isInstitutionOrCitizenExportable(): bool;
 
     public function setInstitutionOrCitizenExportable(bool $institutionOrCitizenExportable): void;
-
-    public function getId(): ?string;
 
     public function getProcedure(): ProcedureInterface;
 

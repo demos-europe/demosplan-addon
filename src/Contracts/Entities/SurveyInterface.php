@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
 
-interface SurveyInterface extends UuidEntityInterface
+interface SurveyInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const STATUS_COMPLETED = 'completed';
     public const STATUS_CONFIGURATION = 'configuration';

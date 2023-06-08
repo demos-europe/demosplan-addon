@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface SingleDocumentVersionInterface extends UuidEntityInterface
+interface SingleDocumentVersionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * Set procedure.

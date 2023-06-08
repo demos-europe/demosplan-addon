@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use DateTime;
+use DateTimeInterface;
 
 
 interface DraftStatementFileInterface extends UuidEntityInterface
@@ -14,7 +14,7 @@ interface DraftStatementFileInterface extends UuidEntityInterface
      */
     public function setDraftStatement(?DraftStatementInterface $draftStatement): self;
 
-    public function getCreateDate(): \DateTimeInterface;
+    public function getCreateDate(): DateTimeInterface;
 
     public function getFile(): FileInterface;
 

@@ -5,12 +5,16 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-interface BoilerplateCategoryInterface extends UuidEntityInterface
+interface BoilerplateCategoryInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const TITLE_NEWS_NOTES = 'news.notes';
     public const TITLE_EMAIL = 'email';
     public const TITLE_CONSIDERATION = 'consideration';
 
+    /**
+     * @return string
+     */
+    public function getPId();
 
     /**
      * @return ProcedureInterface

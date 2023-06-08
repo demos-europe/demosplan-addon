@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 
-interface StatementInterface extends UuidEntityInterface
+interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const IMPORT_VALIDATION = 'import';
     public const DEFAULT_VALIDATION = 'Default';
@@ -61,16 +61,11 @@ interface StatementInterface extends UuidEntityInterface
      */
     public const MAP_FILE_EMPTY_DASHED = '---';
 
-    public function getId(): ?string;
-
     /**
      * @param string $id
      */
     public function setId($id);
 
-    /**
-     * @deprecated use {@link StatementInterface::getId()} instead
-     */
     public function getIdent(): ?string;
 
     /**

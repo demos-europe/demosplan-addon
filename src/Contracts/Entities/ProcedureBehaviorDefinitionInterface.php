@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface ProcedureBehaviorDefinitionInterface extends UuidEntityInterface
+interface ProcedureBehaviorDefinitionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getProcedure(): ?ProcedureInterface;
 

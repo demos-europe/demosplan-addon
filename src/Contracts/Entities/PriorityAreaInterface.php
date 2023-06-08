@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-interface PriorityAreaInterface extends UuidEntityInterface
+interface PriorityAreaInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @return string

@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
 
-interface StatementFormDefinitionInterface extends UuidEntityInterface
+interface StatementFormDefinitionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const MAP_AND_COUNTY_REFERENCE = 'mapAndCountyReference';
     public const COUNTY_REFERENCE = 'countyReference';
@@ -32,9 +32,6 @@ interface StatementFormDefinitionInterface extends UuidEntityInterface
     public function getFieldDefinitionByName(string $name): ?StatementFieldDefinitionInterface;
 
     public function isFieldDefinitionEnabled(string $name);
-
-    public function getId(): ?string;
-
     public function getProcedure(): ?ProcedureInterface;
 
     public function setProcedure(ProcedureInterface $procedure): void;

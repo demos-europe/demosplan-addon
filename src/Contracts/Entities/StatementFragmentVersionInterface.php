@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface StatementFragmentVersionInterface extends UuidEntityInterface
+interface StatementFragmentVersionInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @return StatementFragmentInterface
