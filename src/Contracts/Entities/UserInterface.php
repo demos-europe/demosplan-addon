@@ -7,7 +7,9 @@ use DateTimeInterface;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Hslavich\OneloginSamlBundle\Security\User\SamlUserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
 interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserInterface
 {
