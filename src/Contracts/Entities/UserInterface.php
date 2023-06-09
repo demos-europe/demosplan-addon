@@ -163,7 +163,7 @@ interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserIn
 
     public function setAlternativeLoginPassword(?string $alternativeLoginPassword);
 
-    public function setSalt(?string $salt): SecurityUserInterface;
+    public function setSalt(?string $salt): UserInterface;
 
     /**
      * @return string
