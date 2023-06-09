@@ -76,8 +76,6 @@ interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserIn
      */
     public function getName();
 
-    public function getIdent(): ?string;
-
     /**
      * @param string $firstname
      */
@@ -110,6 +108,44 @@ interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserIn
     public function getLogin(): ?string;
 
     public function setLogin(?string $login): void;
+
+    /**
+     * @return string
+     */
+    public function getUsername();
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return string[] The user roles
+     */
+    public function getRoles(): array;
+
+    public function getPassword(): ?string;
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     */
+    public function getSalt(): ?string;
+
+    /**
+     * We cannot remove any sensitive data from user object during login (this is where this is called)
+     * as user object is persisted later on which would lead in an empty password field in database.
+     */
+    public function eraseCredentials(): void;
 
     /**
      * Symfony > 6 needs getUserIdentifier() for auth system.
@@ -147,7 +183,7 @@ interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserIn
     /**
      * @param DateTime $createdDate
      */
-    public function setCreatedDate(DateTime $createdDate);
+    public function setCreatedDate(DateTimeInterface $createdDate);
 
     /**
      * @return DateTime
