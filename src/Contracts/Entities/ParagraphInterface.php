@@ -2,14 +2,39 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-use Doctrine\Common\Collections\Collection;
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 
-interface SingleDocumentInterface extends CoreEntityInterface
+interface ParagraphInterface extends UuidEntityInterface, CoreEntityInterface
 {
-    public const IMPORT_CREATION = 'importCreation';
+    public function getParent(): ?self;
 
-    public function getId(): ?string;
+    /**
+     * @return $this
+     */
+    public function setParent(?ParagraphInterface $parent): self;
+
+    /**
+     * @return ParagraphInterface[]
+     */
+    public function getChildren(): array;
+
+    /**
+     * @param ParagraphInterface[] $children
+     *
+     * @return $this
+     */
+    public function setChildren(array $children): self;
+
+    /**
+     * @return $this
+     */
+    public function addChild(ParagraphInterface $child): self;
+
+    /**
+     * @return $this
+     */
+    public function removeChild(ParagraphInterface $child): self;
 
     /**
      * Set procedure.
@@ -69,42 +94,25 @@ interface SingleDocumentInterface extends CoreEntityInterface
      */
     public function getText(): string;
 
-    public function getSymbol(): string;
-
-    public function setSymbol(string $symbol): void;
-
-    public function getDocument(): string;
-
-    public function setDocument(string $document): void;
-
     /**
-     * @return Collection<int, SingleDocumentVersionInterface>
-     */
-    public function getVersions(): Collection;
-
-    /**
-     * Set Order.
+     * Set eOrder.
      */
     public function setOrder(int $order): self;
 
     /**
-     * Get Order.
+     * Get eOrder.
      */
     public function getOrder(): int;
-
-    public function isStatementEnabled(): bool;
-
-    public function setStatementEnabled(bool $statementEnabled): void;
 
     /**
      * Set eEnabled.
      */
-    public function setVisible(bool $visible): self;
+    public function setVisible(int $visible): self;
 
     /**
      * Get eEnabled.
      */
-    public function getVisible(): bool;
+    public function getVisible(): int;
 
     /**
      * Set eDeleted.
@@ -117,11 +125,25 @@ interface SingleDocumentInterface extends CoreEntityInterface
     public function getDeleted(): bool;
 
     /**
+     * Set lockReason.
+     */
+    public function setLockReason(string $lockReason): self;
+
+    /**
+     * Get lockReason.
+     */
+    public function getLockReason(): string;
+
+    /**
      * Set eCreateDate.
      */
     public function setCreateDate(DateTime $createDate): self;
 
+    /**
+     * Get eCreateDate.
+     */
     public function getCreateDate(): DateTime;
+
     /**
      * Set eModifyDate.
      */
@@ -141,4 +163,10 @@ interface SingleDocumentInterface extends CoreEntityInterface
      * Get eDeleteDate.
      */
     public function getDeleteDate(): DateTime;
+
+    /**
+     * @return Collection<int, ParagraphVersionInterface>
+     */
+    public function getVersions(): Collection;
+
 }
