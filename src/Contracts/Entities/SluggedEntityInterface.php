@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use Doctrine\Common\Collections\Collection;
 use Exception;
 
-interface SluggedEntityInterface extends UuidEntityInterface
+interface SluggedEntityInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getSlugs(): Collection;
 

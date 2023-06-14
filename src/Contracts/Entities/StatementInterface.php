@@ -5,12 +5,62 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 
-interface StatementInterface extends EntityInterface
+interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 {
+    public const IMPORT_VALIDATION = 'import';
+    public const DEFAULT_VALIDATION = 'Default';
+    public const MANUAL_CREATE_VALIDATION = 'manual_create';
+
+    public const INTERNAL = 'internal';
+    public const EXTERNAL = 'external';
+
+    /**
+     * Type used for statements submitted via public participation functionalities.
+     */
+    public const SUBMIT_TYPE_SYSTEM = 'system';
+    // more submission types, see form_options.yml
+    public const SUBMIT_TYPE_EMAIL = 'email';
+    public const SUBMIT_TYPE_FAX = 'fax';
+    public const SUBMIT_TYPE_LETTER = 'letter';
+    public const SUBMIT_TYPE_EAKTE = 'eakte';
+    public const SUBMIT_TYPE_DECLARATION = 'declaration';
+    public const SUBMIT_TYPE_UNKNOWN = 'unknown';
+    public const SUBMIT_TYPE_UNSPECIFIED = 'unspecified';
+
+    /**
+     * For documentation, see Statement->publicVerifiedMapping.
+     */
+    public const PUBLICATION_NO_CHECK_SINCE_PERMISSION_DISABLED = 'no_check_permission_disabled';
+
+    /**
+     * For documentation, see {@link publicVerifiedMapping}.
+     */
+    public const PUBLICATION_NO_CHECK_SINCE_NOT_ALLOWED = 'no_check_since_not_allowed';
+
+    /**
+     * For documentation, see {@link publicVerifiedMapping}.
+     */
+    public const PUBLICATION_PENDING = 'publication_pending';
+
+    /**
+     * For documentation, see {@link publicVerifiedMapping}.
+     */
+    public const PUBLICATION_REJECTED = 'publication_rejected';
+
+    /**
+     * For documentation, see {@link publicVerifiedMapping}.
+     */
+    public const PUBLICATION_APPROVED = 'publication_approved';
+
+    /**
+     * One of probably three options to determine that there is no mapFile given.
+     */
+    public const MAP_FILE_EMPTY_DASHED = '---';
+
     /**
      * @param string $id
      */
@@ -95,6 +145,7 @@ interface StatementInterface extends EntityInterface
      */
     public function getPrioritySort();
 
+
     /**
      * Set externId.
      *
@@ -121,7 +172,7 @@ interface StatementInterface extends EntityInterface
     /**
      * Get user.
      *
-     * @return ?UserInterface
+     * @return UserInterface
      */
     public function getUser();
 
@@ -582,7 +633,7 @@ interface StatementInterface extends EntityInterface
      */
     public function setAttachments(Collection $attachments): void;
 
-    public function addAttachment(StatementAttachmentInterface $attachment): StatementInterface;
+    public function addAttachment(StatementAttachmentInterface $attachment): self;
 
     /**
      * Get reasonParagraph.
@@ -1049,7 +1100,6 @@ interface StatementInterface extends EntityInterface
      * Or a manually entered statement ('M')
      */
     public function getType(): string;
-
     public function isManual(): bool;
 
     /**
@@ -1080,7 +1130,6 @@ interface StatementInterface extends EntityInterface
     public function setClusterStatement($isCluster): StatementInterface;
 
     public function getAuthorName(): string;
-
     /**
      * @return string|null
      */
@@ -1102,7 +1151,7 @@ interface StatementInterface extends EntityInterface
      */
     public function getOrgaEmail();
 
-    public function setOrgaEmail(string $emailAddress): StatementInterface;
+    public function setOrgaEmail(string $emailAddress): self;
 
     public function getOrgaPhoneNumber(): string;
 
@@ -1197,9 +1246,9 @@ interface StatementInterface extends EntityInterface
     public function getSubmitterEmailAddress(): ?string;
 
     /**
-     * Attempts to reverse the logic in {@link Statement::getSubmitterEmailAddress()}.
+     * Attempts to reverse the logic in {@link StatementInterface::getSubmitterEmailAddress()}.
      */
-    public function setSubmitterEmailAddress(string $emailAddress): StatementInterface;
+    public function setSubmitterEmailAddress(string $emailAddress): self;
 
     public function getName(): string;
 
@@ -1220,7 +1269,6 @@ interface StatementInterface extends EntityInterface
      * @return string|null
      */
     public function getSubmitterId();
-
     /**
      * Returns the Name of the submitter of this statement, if existing.
      * Will return null, in case of submitter unregistered User (or dummy user User::ANONYMOUS_USER_ID).
@@ -1282,7 +1330,7 @@ interface StatementInterface extends EntityInterface
     public function setAnonymizations(Collection $anonymizations): void;
 
     /**
-     * @return bool True if this statement has at least one {@link OriginalStatementAnonymization}
+     * @return bool True if this statement has at least one {@link OriginalStatementAnonymizationInterface}
      *              entry in which the submitter or author data were deleted from the meta data.
      *              False otherwise. This will not take author/submitter data anonymizations in
      *              the statement text into account.
@@ -1290,14 +1338,14 @@ interface StatementInterface extends EntityInterface
     public function isSubmitterAndAuthorMetaDataAnonymized(): bool;
 
     /**
-     * @return bool True if this statement has at least one {@link OriginalStatementAnonymization}
+     * @return bool True if this statement has at least one {@link OriginalStatementAnonymizationInterface}
      *              entry in which text passages in {@link text} were anonymized. False
      *              otherwise.
      */
     public function isTextPassagesAnonymized(): bool;
 
     /**
-     * @return bool True if this statement has at least one {@link OriginalStatementAnonymization}
+     * @return bool True if this statement has at least one {@link OriginalStatementAnonymizationInterface}
      *              entry in which attachments were deleted. False otherwise.
      */
     public function isAttachmentsDeleted(): bool;
@@ -1316,16 +1364,15 @@ interface StatementInterface extends EntityInterface
      */
     public function getSimilarStatementSubmitters(): Collection;
 
-    public function addSimilarStatementSubmitter(ProcedurePersonInterface $similarStatementSubmitter): void;
-
     /**
      * @param Collection<int, ProcedurePersonInterface> $similarStatementSubmitters
      */
     public function setSimilarStatementSubmitters(Collection $similarStatementSubmitters): StatementInterface;
 
-    public function removeSimilarStatementSubmitter(ProcedurePersonInterface $procedurePerson): void;
-
     public function isAnonymous(): bool;
 
     public function setAnonymous(bool $anonymous): StatementInterface;
+
+    public function removeSimilarStatementSubmitter(ProcedurePersonInterface $procedurePerson): void;
+
 }
