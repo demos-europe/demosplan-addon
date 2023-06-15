@@ -145,38 +145,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getPrioritySort();
 
-    /**
-     * Add Priority Area.
-     *
-     * @param PriorityAreaInterface $priorityArea
-     *
-     * @return bool - true, if the given priorityArea was successful added to this statement
-     *              and this statement was successful added to the given priorityArea, otherwise false
-     */
-    public function addPriorityArea($priorityArea): bool;
-
-    /**
-     * Remove PriorityArea.
-     *
-     * @param PriorityAreaInterface $priorityArea
-     */
-    public function removePriorityArea($priorityArea);
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getPriorityAreas();
-
-    public function getPriorityAreaKeys(): array;
-
-    public function getMunicipalityNames(): array;
-
-    public function getCountyNames(): array;
-
-    /**
-     * @param PriorityAreaInterface[]|ArrayCollection<int, PriorityAreaInterface> $priorityAreas
-     */
-    public function setPriorityAreas($priorityAreas);
 
     /**
      * Set externId.
@@ -212,20 +180,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * @return string|null
      */
     public function getUserId();
-
-    /**
-     * Method for ES indexing.
-     *
-     * @return string
-     */
-    public function getUId();
-
-    /**
-     * Method for ES indexing.
-     *
-     * @return string
-     */
-    public function getUName();
 
     /**
      * Returns the name of the author!
@@ -435,80 +389,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
     public function setDeletedDate($deletedDate): StatementInterface;
 
     /**
-     * @return ArrayCollection
-     */
-    public function getCounties();
-
-    /**
-     * @param CountyInterface[]|ArrayCollection<int, CountyInterface> $counties
-     */
-    public function setCounties($counties);
-
-    /**
-     * Add County.
-     *
-     * @param CountyInterface $county
-     *
-     * @return bool - true, if the given county was successful added to this statement
-     *              and this statement was successful added to the given county, otherwise false
-     */
-    public function addCounty($county): bool;
-
-    /**
-     * Remove County.
-     *
-     * @param CountyInterface $county
-     */
-    public function removeCounty($county);
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getMunicipalities();
-
-    /**
-     * @param MunicipalityInterface[]|ArrayCollection<int, MunicipalityInterface> $municipalities
-     */
-    public function setMunicipalities($municipalities);
-
-    /**
-     * Add Municipality.
-     *
-     * @param MunicipalityInterface $municipality
-     *
-     * @return bool - true, if the given municipality was successful added to this statement
-     *              and this statement was successful added to the given municipality, otherwise false
-     */
-    public function addMunicipality($municipality): bool;
-
-    public function getFragments(): Collection;
-
-    /**
-     * @param StatementFragmentInterface[] $fragments
-     */
-    public function setFragments($fragments);
-
-    public function removeFragment(StatementFragmentInterface $fragment): void;
-
-    public function addFragment(StatementFragmentInterface $fragment): void;
-
-    /**
-     * Number of fragments that match a given filter when a search is applied
-     * Returns the number of all fragments if nothing is filtered or searched.
-     */
-    public function getFragmentsFilteredCount(): ?int;
-
-    /**
-     * Number of all fragments.
-     */
-    public function getFragmentsCount(): int;
-
-    /**
-     * @param int|null $fragmentsFilteredCount
-     */
-    public function setFragmentsFilteredCount($fragmentsFilteredCount);
-
-    /**
      * @return array<int,string>
      */
     public function getFiles(): array;
@@ -526,13 +406,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * @param array $files
      */
     public function setFiles($files);
-
-    /**
-     * Remove Municipality.
-     *
-     * @param MunicipalityInterface $municipality
-     */
-    public function removeMunicipality($municipality);
 
     /**
      * Returns a text that describes in the name of whom this
@@ -589,13 +462,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * Is deleted.
      */
     public function isDeleted(): bool;
-
-    /**
-     * Tells Elasticsearch whether Entity should be indexed.
-     *
-     * @return bool
-     */
-    public function shouldBeIndexed();
 
     /**
      * Set negativeStatement.
@@ -656,13 +522,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * Get translation key of property publicVerified.
      */
     public function getPublicVerifiedTranslation(): string;
-
-    /**
-     * Get publicCheck. This code is solely for backward compatibility and waiting to be completely removed.
-     *
-     * @deprecated the information of $this->publicCheck is now completely transferred to this->publicVerified
-     */
-    public function getPublicCheck(): string;
 
     /**
      * Set publicStatement.
@@ -796,22 +655,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
     public function getPlanningDocument();
 
     /**
-     * Set file.
-     *
-     * @param string $file
-     */
-    public function setFile($file): StatementInterface;
-
-    /**
-     * Get file.
-     *
-     * @return string
-     *
-     * @deprecated this was basically removed (replaced with {@link FileContainerInterface}) but may be still used somewhere
-     */
-    public function getFile();
-
-    /**
      * Set mapFile.
      *
      * @param string $mapFile
@@ -826,20 +669,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      *                     value may be null or an empty string as well.
      */
     public function getMapFile(): ?string;
-
-    /**
-     * Set countyNotified.
-     *
-     * @param bool $cn
-     */
-    public function setCountyNotified($cn): StatementInterface;
-
-    /**
-     * Get countyNotified.
-     *
-     * @return bool
-     */
-    public function getCountyNotified();
 
     /**
      * @return ParagraphVersionInterface|null
@@ -1271,50 +1100,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * Or a manually entered statement ('M')
      */
     public function getType(): string;
-
-    /**
-     * @return string|null
-     *
-     * @throws Exception
-     */
-    public function getConsentSubmitterId();
-
-    /**
-     * @return UserInterface|null
-     *
-     * @throws Exception
-     */
-    public function getConsentAuthor();
-
-    /**
-     * Considers if a GDPR consent was given at some time as well as if the consent was revoked.
-     *
-     * The original statement will be used if this statement isn't one.
-     *
-     * @return bool true if the consent was given and not revoked; false otherwise
-     */
-    public function isConsented(): bool;
-
-    /**
-     * Uses the GdprConsent attached to its $original Statement or its own GdprConsent if the $original
-     * Statement is null. If both are null a fake GdprConsent (consentReceived and consentRevoked both false)
-     * will be returned. This is done as it is hard to determine the actual consent of some original statements
-     * (for example original cluster statements).
-     *
-     * @return GdprConsentInterface|null
-     */
-    public function getGdprConsent();
-
-    /**
-     * @return bool true if the consent was revoked, regardless of if it was received at all; false otherwise
-     */
-    public function isConsentRevoked(): bool;
-
-    /**
-     * @return bool true if the consent was received, regardless of if it was revoked later; false otherwise
-     */
-    public function isConsentReceived(): bool;
-
     public function isManual(): bool;
 
     /**
@@ -1490,43 +1275,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getSubmitterName(): ?string;
 
-    /**
-     * Set GdprConsent to this Statement.
-     *
-     * @param GdprConsentInterface|null $gdprConsent
-     *
-     */
-    public function setGdprConsent($gdprConsent);
-
-    /**
-     * Check if this statement was submitted and authored by an unregistered citizen.
-     *
-     * @return bool true, if this statement was submitted by an unregistered citizen, otherwise false
-     */
-    public function hasBeenSubmittedAndAuthoredByUnregisteredCitizen(): bool;
-
-    /**
-     * Check if this statement was submitted and authored by a registered citizen.
-     *
-     * @return bool true, if this statement was submitted by an registered citizen, otherwise false
-     */
-    public function hasBeenSubmittedAndAuthoredByRegisteredCitizen(): bool;
-
-    /**
-     * Check if this statement was submitted and authored by a "InvitableInstitutionKoordinator".
-     *
-     * @return bool true, if this statement was submitted by an "InvitableInstitutionKoordinator", otherwise false
-     */
-    public function hasBeenSubmittedAndAuthoredByInvitableInstitutionKoordinator(): bool;
-
-    /**
-     * Check if this statement was authored by a "InstitutionSachbearbeiter".
-     * This implicit means, that this statement has be submitted by InstitutionKoordinator!
-     *
-     * @return bool true, if this statement was submitted by an "InstitutionSachbearbeiter", otherwise false
-     */
-    public function hasBeenAuthoredByInstitutionSachbearbeiterAndSubmittedByInstitutionKoordinator(): bool;
-
     public function isSubmitter(string $userId): bool;
 
     public function isAuthor(string $userId): bool;
@@ -1602,18 +1350,10 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function isAttachmentsDeleted(): bool;
 
-    public function getSegmentationPiRetries(): int;
-
-    public function incrementSegmentationPiRetries(): void;
-
     /**
      * Returns the Pdf the Statement was created from or null if there is none.
      */
     public function getOriginalFile(): ?FileInterface;
-
-    public function getPiSegmentsProposalResourceUrl(): ?string;
-
-    public function setPiSegmentsProposalResourceUrl(?string $piSegmentsProposalResourceUrl): void;
 
     public function hasDefaultGuestUser(): bool;
 
