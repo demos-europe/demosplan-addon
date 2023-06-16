@@ -41,11 +41,6 @@ interface CustomerInterface extends UuidEntityInterface, CoreEntityInterface
     public function getOrgas(): Collection;
 
     /**
-     * @return string[]
-     */
-    public function getEmailsOfUsersOfOrgas(): array;
-
-    /**
      * @param Collection<int, OrgaInterface> $orgas
      */
     public function setOrgas(Collection $orgas);
