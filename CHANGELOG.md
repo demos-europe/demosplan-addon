@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.1.1 (2023-06-16)
+
+- **chore** Delete method that should not be used in Customer
+
 ## v0.1 (2023-06-16)
 
 - **feat** Added and adjusted interfaces 
