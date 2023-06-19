@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface BrandingInterface extends UuidEntityInterface
+interface BrandingInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getCssvars(): ?string;
 

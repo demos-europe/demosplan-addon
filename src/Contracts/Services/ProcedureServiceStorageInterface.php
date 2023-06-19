@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
 use Exception;
 
-interface ServiceStorageInterface
+interface ProcedureServiceStorageInterface
 {
+    public function administrationNewHandler(array $data, string $currentUserId): ProcedureInterface;
     /**
      * @param array  $data
      * @param string $procedureID
