@@ -6,5 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 interface GetDatasheetFilePathAbsoluteEventInterface
 {
+    public function setDatasheetFilePathAbsolute(string $datasheetFilePathAbsolute): void;
 
+    public function getDatasheetFilePathAbsolute(): string;
 }
