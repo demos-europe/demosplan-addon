@@ -2,6 +2,9 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Handler;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\FaqCategoryInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\FaqInterface;
+
 interface FaqHandlerInterface
 {
     /**
