@@ -2,7 +2,17 @@
 
 ## UNRELEASED
 
-- **feat** Add needed interfaces
+## v0.3 (2023-06-30)
+
+- **feat** Adjusts interfaces needed for XBeteiligung addon.
+- Adjusts Events that are needed in XBeteiligung and Maillane.
+- XBeteiligung and Maillane depend on this change.
+
+## v0.2 (2023-06-29)
+
+- **feat** Adjusts global config interface.
+- the method generateDownloadFilename was removed from the GlobalConfig (from core:main) that is why the GlobalConfigInterface had to be adjusted.
+- This does not affect an addon.
 
 ## v0.1.1 (2023-06-16)
 
