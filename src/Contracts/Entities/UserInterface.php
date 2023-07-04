@@ -8,6 +8,7 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Hslavich\OneloginSamlBundle\Security\User\SamlUserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 interface UserInterface extends SamlUserInterface, UuidEntityInterface, PasswordAuthenticatedUserInterface
 {
     /**
