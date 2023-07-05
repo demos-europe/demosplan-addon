@@ -6,10 +6,9 @@ use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
-use Hslavich\OneloginSamlBundle\Security\User\SamlUserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
-interface UserInterface extends SamlUserInterface, UuidEntityInterface, PasswordAuthenticatedUserInterface
+interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * Set hard coded anonymous user Values until refactored.
