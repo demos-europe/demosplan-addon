@@ -3,15 +3,13 @@
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-use Hslavich\OneloginSamlBundle\Security\User\SamlUserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
-interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserInterface
+interface UserInterface extends SecurityUserInterface, UuidEntityInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * Set hard coded anonymous user Values until refactored.
@@ -519,11 +517,11 @@ interface UserInterface extends UuidEntityInterface, PasswordAuthenticatedUserIn
      */
     public function setRolesAllowed($roles): void;
 
-    public function getTwinUser(): ?SecurityUserInterface;
+    public function getTwinUser(): ?self;
 
     public function hasTwinUser(): bool;
 
-    public function setTwinUser(?UserInterface $twinUser): SecurityUserInterface;
+    public function setTwinUser(?self $twinUser): self;
 
     /**
      * Returns collection of roles the user has with a specified customer (current is default).
