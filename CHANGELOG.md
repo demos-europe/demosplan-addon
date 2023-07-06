@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.4 (2023-07-06)
+
+- Adjust UserInterface
+
 ## v0.3 (2023-06-30)
 
 - **feat** Adjusts interfaces needed for XBeteiligung addon.
