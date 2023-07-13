@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.5 (2023-07-13)
+
+- add interface needed for xBeteiligungAsyncAddon
+
 ## v0.4 (2023-07-06)
 
 - Adjust UserInterface
