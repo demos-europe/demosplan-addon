@@ -1,10 +1,10 @@
 # Changelog
 
-## v0.5 (2023-07-11)
+## UNRELEASED
+
+## v0.5 (2023-07-13)
 
 - add interface needed for xBeteiligungAsyncAddon
-
-## UNRELEASED
 
 ## v0.4 (2023-07-06)
 
