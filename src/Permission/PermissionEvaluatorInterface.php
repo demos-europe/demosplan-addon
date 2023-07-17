@@ -26,6 +26,19 @@ interface PermissionEvaluatorInterface
      */
     public function requirePermission($permissionIdentifier): void;
 
+     /**
+     * Checks if all permissions corresponding to the given names are enabled. Throws an exception if not.
+     *
+     * If an item is a string it is assumed that it denotes a core permissions. If an item
+     * is given as {@link PermissionIdentifierInterface} it can correspond to a core permission or an addon
+     * permissions.
+     *
+     * @param non-empty-list<non-empty-string|PermissionIdentifierInterface> $permissionIdentifiers
+     *
+     * @throws AccessDeniedException
+     */
+    public function requireAllPermissions(array $permissionIdentifiers): void;
+
     /**
      * Evaluate if a permission with the given name is enabled.
      *
