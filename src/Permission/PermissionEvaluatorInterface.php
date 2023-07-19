@@ -29,9 +29,9 @@ interface PermissionEvaluatorInterface
      /**
      * Checks if all permissions corresponding to the given names are enabled. Throws an exception if not.
      *
-     * If an item is a string it is assumed that it denotes a core permissions. If an item
+     * If an item is a string it is assumed that it denotes a core permission. If an item
      * is given as {@link PermissionIdentifierInterface} it can correspond to a core permission or an addon
-     * permissions.
+     * permission.
      *
      * @param non-empty-list<non-empty-string|PermissionIdentifierInterface> $permissionIdentifiers
      *
