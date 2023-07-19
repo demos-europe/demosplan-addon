@@ -9,5 +9,7 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
 
 interface PostProcedureUpdatedEventInterface
 {
-    public function getProcedure(): ProcedureInterface;
+    public function getProcedureBeforeUpdate(): ProcedureInterface;
+    public function getProcedureAfterUpdate(): ProcedureInterface;
+    public function getModifiedValues(): array;
 }
