@@ -2,6 +2,14 @@
 
 ## UNRELEASED
 
+## v0.6 (2023-07-19)
+
+- **feat** Adjusted the PostProcedureUpdatedEventInterface.
+- PostProcedureUpdateEvent::getProcedure() was removed.
+- PostProcedureUpdatedEvent::getProcedureBeforeUpdate() was added.
+- PostProcedureUpdatedEvent::getProcedureAfterUpdate() was added.
+- PostProcedureUpdatedEvent::getModifiedValues() was added.
+
 ## v0.5 (2023-07-13)
 
 - add interface needed for xBeteiligungAsyncAddon
