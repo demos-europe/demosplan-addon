@@ -2,6 +2,12 @@
 
 ## UNRELEASED
 
+**feat**
+- remove deprecated sensio/framework-extra-bundle
+- explicitly define required symfony packages
+- downgrade bundles to symfony 5.4
+- update other dependencies
+
 ## v0.6 (2023-07-19)
 
 - **feat** Adjusted the PostProcedureUpdatedEventInterface.
