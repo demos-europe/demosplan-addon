@@ -35,8 +35,6 @@ interface JsonApiResourceTypeServiceInterface
 
     public function getEntityAsReadTarget(JsonApiResourceTypeInterface $type, string $id): object;
 
-    public function isExposedAsRelationship(JsonApiResourceTypeInterface $type): bool;
-
     public function isExposedAsPrimaryResource(JsonApiResourceTypeInterface $type): bool;
 
     public function addCreationErrorMessage(array $parameters): void;

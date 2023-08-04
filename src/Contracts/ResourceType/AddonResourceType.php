@@ -270,11 +270,6 @@ abstract class AddonResourceType extends CachingResourceType implements JsonApiR
         return $this->jsonApiResourceTypeService->isExposedAsPrimaryResource($this);
     }
 
-    public function isExposedAsRelationship(): bool
-    {
-        return $this->jsonApiResourceTypeService->isExposedAsRelationship($this);
-    }
-
     public function listEntities(array $conditions, array $sortMethods = []): array
     {
         return $this->jsonApiResourceTypeService->listEntities($this, $conditions, $sortMethods);
