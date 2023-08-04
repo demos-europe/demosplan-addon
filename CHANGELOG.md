@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.7 (2023-08-04)
+
+**feat** Allow addons to utilize FluentRepository  
+
 ## v0.6 (2023-07-19)
 
 - **feat** Adjusted the PostProcedureUpdatedEventInterface.
