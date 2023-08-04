@@ -309,9 +309,4 @@ abstract class AddonResourceType extends CachingResourceType implements JsonApiR
     {
         return $this->jsonApiResourceTypeService->listEntityIdentifiers($this, $conditions, $sortMethods);
     }
-
-    public function getAccessCondition(): PathsBasedInterface
-    {
-        return $this->jsonApiResourceTypeService->getAccessCondition($this);
-    }
 }

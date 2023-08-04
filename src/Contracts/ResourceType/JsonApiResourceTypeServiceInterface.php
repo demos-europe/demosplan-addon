@@ -27,7 +27,7 @@ interface JsonApiResourceTypeServiceInterface
 
     public function listEntityIdentifiers(JsonApiResourceTypeInterface $type, array $conditions, array $sortMethods): array;
 
-    public function getAccessCondition(JsonApiResourceTypeInterface $type): PathsBasedInterface;
+    public function getAccessCondition(array $accessConditions): PathsBasedInterface;
 
     public function formatDate(?DateTime $date): ?string;
 
