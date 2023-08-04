@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface SlugInterface extends UuidEntityInterface
+interface SlugInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function setId(string $id);
 

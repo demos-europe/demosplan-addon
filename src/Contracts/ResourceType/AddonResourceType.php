@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
+use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\CurrentContextProviderInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
@@ -17,11 +18,13 @@ use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\PathBuilding\TraitEvaluator;
+use EDT\Querying\Contracts\PathsBasedInterface;
 use EDT\Querying\Contracts\PropertyPathInterface;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
 use EDT\Wrapping\Contracts\Types\TypeInterface;
 use EDT\Wrapping\WrapperFactories\WrapperObjectFactory;
 use IteratorAggregate;
+use Pagerfanta\Pagerfanta;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -36,7 +39,7 @@ use function is_array;
  *
  * @property-read End $id
  */
-abstract class AddonResourceType extends CachingResourceType implements IteratorAggregate, PropertyPathInterface, PropertyAutoPathInterface
+abstract class AddonResourceType extends CachingResourceType implements JsonApiResourceTypeInterface, IteratorAggregate, PropertyPathInterface, PropertyAutoPathInterface
 {
     use PropertyAutoPathTrait;
 
@@ -73,7 +76,8 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
         TranslatorInterface             $translator,
         ConditionFactoryInterface       $conditionFactory,
         WrapperObjectFactory            $wrapperFactory,
-        protected ContainerInterface    $container
+        protected ContainerInterface    $container,
+        protected readonly JsonApiResourceTypeServiceInterface $jsonApiResourceTypeService
     ) {
         $this->globalConfig = $globalConfig;
         $this->logger = $logger;
@@ -154,7 +158,7 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
      */
     public function addCreationErrorMessage(array $parameters): void
     {
-        $this->messageBag->add('error', 'generic.error');
+        $this->jsonApiResourceTypeService->addCreationErrorMessage($parameters);
     }
 
     public function getDefaultSortMethods(): array
@@ -259,5 +263,50 @@ abstract class AddonResourceType extends CachingResourceType implements Iterator
     protected function getMessageFormatter(): MessageFormatter
     {
         return $this->messageFormatter;
+    }
+
+    public function isExposedAsPrimaryResource(): bool
+    {
+        return $this->jsonApiResourceTypeService->isExposedAsPrimaryResource($this);
+    }
+
+    public function isExposedAsRelationship(): bool
+    {
+        return $this->jsonApiResourceTypeService->isExposedAsRelationship($this);
+    }
+
+    public function listEntities(array $conditions, array $sortMethods = []): array
+    {
+        return $this->jsonApiResourceTypeService->listEntities($this, $conditions, $sortMethods);
+    }
+
+    public function getEntityPaginator(ApiPaginationInterface $pagination, array $conditions, array $sortMethods = []): Pagerfanta
+    {
+        return $this->jsonApiResourceTypeService->getEntityPaginator($this, $pagination, $conditions, $sortMethods);
+    }
+
+    public function listPrefilteredEntities(array $dataObjects, array $conditions = [], array $sortMethods = []): array
+    {
+        return $this->jsonApiResourceTypeService->listPrefilteredEntities($this, $dataObjects, $conditions, $sortMethods);
+    }
+
+    public function getEntityAsReadTarget(string $id): object
+    {
+        return $this->jsonApiResourceTypeService->getEntityAsReadTarget($this, $id);
+    }
+
+    public function getEntityCount(array $conditions): int
+    {
+        return $this->jsonApiResourceTypeService->getEntityCount($this, $conditions);
+    }
+
+    public function getEntityByTypeIdentifier(string $id): object
+    {
+        return $this->jsonApiResourceTypeService->getEntityByTypeIdentifier($this, $id);
+    }
+
+    public function listEntityIdentifiers(array $conditions, array $sortMethods): array
+    {
+        return $this->jsonApiResourceTypeService->listEntityIdentifiers($this, $conditions, $sortMethods);
     }
 }

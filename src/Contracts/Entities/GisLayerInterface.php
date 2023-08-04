@@ -6,8 +6,12 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 
-interface GisLayerInterface extends UuidEntityInterface
+interface GisLayerInterface extends UuidEntityInterface, CoreEntityInterface
 {
+
+    public const TYPE_BASE = 'base';
+    public const TYPE_OVERLAY = 'overlay';
+
     public function set($data);
 
     /**
@@ -16,11 +20,6 @@ interface GisLayerInterface extends UuidEntityInterface
      * @return array
      */
     public function toArray();
-
-    /**
-     * @deprecated use {@link GisLayerInterface::getId()} instead
-     */
-    public function getIdent(): ?string;
 
     /**
      * @param string $ident

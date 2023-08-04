@@ -6,7 +6,7 @@ use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 
-interface AddressBookEntryInterface extends UuidEntityInterface
+interface AddressBookEntryInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getName(): ?string;
 
