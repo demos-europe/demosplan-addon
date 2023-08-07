@@ -39,13 +39,6 @@ interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, Exposa
     public function isDirectlyAccessible(): bool;
 
     /**
-     * @deprecated Move the permission-checks from the overrides of this method to the
-     *             {@link self::getProperties()} method of the referencing resource type instead.
-     *             Afterward, return `true` in the override of this method.
-     */
-    public function isReferencable(): bool;
-
-    /**
      * Will return all entities matching the given condition with the specified sorting.
      *
      * For all properties accessed while filtering/sorting it is checked if:
