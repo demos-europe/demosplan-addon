@@ -29,5 +29,8 @@
     "require-dev": {
         "composer/composer": "^2.1",
         "phpstan/phpstan": "^1.9"
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse"
     }
 }

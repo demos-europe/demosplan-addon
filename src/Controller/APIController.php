@@ -6,14 +6,15 @@ use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiResourceServiceInterface;
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\Normalizer;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
+use DemosEurope\DemosplanAddon\Contracts\ResourceType\JsonApiResourceTypeInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
 use DemosEurope\DemosplanAddon\Utilities\Json;
 use DemosEurope\DemosplanAddon\Exception\ConcurrentEditionException;
 use DemosEurope\DemosplanAddon\Response\APIResponse;
-use EDT\JsonApi\OutputTransformation\ExcludeException;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\RequestHandling\UrlParameter;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
@@ -41,6 +42,7 @@ use Symfony\Component\Security\Core\Exception\SessionUnavailableException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Throwable;
+use Webmozart\Assert\Assert;
 use function array_key_exists;
 use function data_get;
 use function is_array;
@@ -59,7 +61,7 @@ abstract class APIController extends AbstractController
     protected $resourceService;
 
     /**
-     * @var Request
+     * @var Request|null
      */
     protected $request;
 
@@ -256,9 +258,6 @@ abstract class APIController extends AbstractController
 
         try {
             switch (true) {
-                case $exception instanceof ExcludeException:
-                    $message = $exception->getMessage();
-                    break;
                 case in_array("PropertyUpdateAccessExceptionInterface", class_implements(get_class($exception))):
                     $status = Response::HTTP_FORBIDDEN;
                     break;
@@ -316,14 +315,10 @@ abstract class APIController extends AbstractController
     /**
      * Send a single item as response.
      *
-     * @param array|CoreEntityInterface|ValueObjectInterface|UserInterface $data
      * @param int $httpResponseStatusCode HTTP status code to use for the response
      */
-    protected function renderItem($data, string $transformerName, int $httpResponseStatusCode = Response::HTTP_OK): APIResponse
+    protected function renderItem(array|CoreEntityInterface|ValueObjectInterface|UserInterface $data, string $transformerName, int $httpResponseStatusCode = Response::HTTP_OK): APIResponse
     {
-        if (null === $data) {
-            throw new InvalidArgumentException('Will not render item based on null data.');
-        }
         $item = $this->resourceService->makeItem($data, $transformerName);
 
         return $this->renderResource($item, $httpResponseStatusCode);
@@ -337,7 +332,7 @@ abstract class APIController extends AbstractController
         if (null === $data) {
             throw new InvalidArgumentException('Will not render item based on null data.');
         }
-        $item = new Item($data, $resourceType->getTransformer(), $resourceType::getName());
+        $item = new Item($data, $resourceType->getTransformer(), $resourceType->getTypeName());
 
         return $this->renderResource($item, $httpResponseStatusCode);
     }
@@ -361,8 +356,6 @@ abstract class APIController extends AbstractController
      * Confirm entity deletion.
      *
      * @param int $status
-     *
-     * @return JsonResponse
      */
     protected function renderDelete($status = Response::HTTP_OK): Response
     {
@@ -448,12 +441,12 @@ abstract class APIController extends AbstractController
         foreach ($fieldset as $typeIdentifier => $propertiesString) {
             try {
                 // Checking if the type exists and is a resource type implementation.
-                $type = $this->resourceTypeProvider->requestType($typeIdentifier)
-                    ->instanceOf(ResourceTypeInterface::class)
-                    ->getInstanceOrThrow();
+                $type = $this->resourceTypeProvider->getTypeByIdentifier($typeIdentifier);
+                Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
+                /** @var JsonApiResourceTypeInterface<EntityInterface> $type */
 
                 if (!$type->isAvailable()) {
-                    throw AccessException::typeNotAvailable($type);
+                    throw new InvalidArgumentException("The request mentioned the resource type `{$type->getTypeName()}` in its `fields` parameter, but such type is not available.");
                 }
 
                 $nonReadableProperties = $this->fieldsValidator->getNonReadableProperties($propertiesString, $type);
@@ -507,10 +500,8 @@ abstract class APIController extends AbstractController
         // the existence of properties in a resource type can only be checked if we were able to
         // retrieve the accessed resource type from the request
         if (is_string($resourceTypeName)) {
-            try {
-                $this->resourceTypeProvider->requestType($resourceTypeName)
-                    ->getInstanceOrThrow();
-            } catch (TypeRetrievalAccessException $exception) {
+            $type = $this->resourceTypeProvider->getTypeByIdentifier($resourceTypeName);
+            if (null === $type) {
                 // The accessed resource type is probably not a generic one, thus we can not
                 // continue to validate the 'include' properties.
                 return;
@@ -518,23 +509,17 @@ abstract class APIController extends AbstractController
 
             // if the type exists at all (see `getType` above) then it must be an
             // available, directly accessible resource type
-            $type = $this->resourceTypeProvider->requestType($resourceTypeName)
-                ->instanceOf(ResourceTypeInterface::class)
-                ->getInstanceOrThrow();
-
-
-            if (!$type->isExposedAsPrimaryResource()) {
-                throw AccessException::typeNotDirectlyAccessible($type);
-            }
+            Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
+            /** @var JsonApiResourceTypeInterface $type */
 
             $includes = explode(',', $rawIncludes);
             array_map(function (string $include) use ($type): void {
                 try {
                     $includePath = explode('.', $include);
-                    $this->schemaPathProcessor->mapExternReadablePath($type, $includePath, false);
+                    $this->schemaPathProcessor->verifyExternReadablePath($type, $includePath, false);
                 } catch (PropertyAccessException $exception) {
                     $this->apiLogger->warning(
-                        "The following include property path is not available in the resource type '{$type::getName()}': $include",
+                        "The following include property path is not available in the resource type '{$type->getTypeName()}': $include",
                         ['exception' => $exception]
                     );
                 }

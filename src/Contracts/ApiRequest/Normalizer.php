@@ -5,8 +5,9 @@ namespace DemosEurope\DemosplanAddon\Contracts\ApiRequest;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\ResourceObject;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
 use DemosEurope\DemosplanAddon\Utilities\Json;
-use EDT\JsonApi\Schema\ContentField;
+use EDT\JsonApi\RequestHandling\ContentField;
 use InvalidArgumentException;
+use Webmozart\Assert\Assert;
 use function array_key_exists;
 use function array_merge;
 use function data_get;
@@ -67,8 +68,10 @@ class Normalizer
             }
 
             if (array_key_exists(ContentField::RELATIONSHIPS, $item)) {
-                /** @var array $relationship */
-                foreach ($item[ContentField::RELATIONSHIPS] as $relationship) {
+                $relationships = $item[ContentField::RELATIONSHIPS];
+                Assert::isArray($relationships);
+                foreach ($relationships as $relationship) {
+                    Assert::isArray($relationship);
                     $relationshipType = data_get($relationship, [ContentField::DATA, ContentField::TYPE]);
 
                     if (null !== $relationshipType) {
@@ -79,8 +82,10 @@ class Normalizer
 
                     if (null !== $relationship[ContentField::DATA]) {
                         // data may be null in case of an empty to-one relationship
-                        /** @var array $relationshipIdentifier */
-                        foreach ($relationship[ContentField::DATA] as $relationshipIdentifier) {
+                        $relationships = $relationship[ContentField::DATA];
+                        Assert::isArray($relationships);
+                        foreach ($relationships as $relationshipIdentifier) {
+                            Assert::isArray($relationshipIdentifier);
                             $result[$relationshipIdentifier[ContentField::TYPE]][$relationshipIdentifier[ContentField::ID]] = null;
                         }
                     }

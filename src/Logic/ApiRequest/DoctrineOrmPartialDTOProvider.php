@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Logic\ApiRequest;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
+use EDT\DqlQuerying\Contracts\ClauseInterface;
 use EDT\DqlQuerying\Contracts\MappingException;
 use EDT\DqlQuerying\Contracts\OrderByInterface;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\DqlQuerying\ObjectProviders\DoctrineOrmEntityProvider;
 use EDT\DqlQuerying\Utilities\QueryBuilderPreparer;
 use EDT\Querying\Contracts\PaginationException;
@@ -19,7 +21,7 @@ use InvalidArgumentException;
 /**
  * Instances of this class will load specific properties only and wrap them in a {@link PartialDTO}.
  *
- * @template-extends DoctrineOrmEntityProvider<PartialDto>
+ * @template-extends DoctrineOrmEntityProvider<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, PartialDto>
  */
 class DoctrineOrmPartialDTOProvider extends DoctrineOrmEntityProvider
 {
@@ -28,11 +30,18 @@ class DoctrineOrmPartialDTOProvider extends DoctrineOrmEntityProvider
      */
     private $properties;
 
-    public function __construct(EntityManager $entityManager, QueryBuilderPreparer $builderPreparer, string $property, string ...$properties)
-    {
-        parent::__construct($entityManager, $builderPreparer);
-        array_unshift($properties, $property);
-        $this->properties = $properties;
+    /**
+     * @param class-string $entityClass
+     * @param non-empty-list<non-empty-string> $propertiesToLoad
+     */
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        QueryBuilderPreparer $builderPreparer,
+        string $entityClass,
+        array $propertiesToLoad,
+    ) {
+        parent::__construct($entityManager, $builderPreparer, $entityClass);
+        $this->properties = $propertiesToLoad;
     }
 
     /**
@@ -53,16 +62,16 @@ class DoctrineOrmPartialDTOProvider extends DoctrineOrmEntityProvider
     }
 
     /**
-     * @param OrderByInterface      $conditions
-     * @param OrderByInterface      $sortMethods
+     * @param list<ClauseInterface> $conditions
+     * @param list<OrderByInterface> $sortMethods
      * @param OffsetPagination|null $pagination
      *
-     * @return iterable<PartialDTO>
+     * @return list<PartialDTO>
      *
      * @throws MappingException
      * @throws PaginationException
      */
-    public function getEntities(array $conditions, array $sortMethods, ?object $pagination): iterable
+    public function getEntities(array $conditions, array $sortMethods, ?object $pagination): array
     {
         if (null === $pagination) {
             $offset = 0;
@@ -76,7 +85,7 @@ class DoctrineOrmPartialDTOProvider extends DoctrineOrmEntityProvider
         $this->replaceSelect($queryBuilder);
         $result = $queryBuilder->getQuery()->getResult();
 
-        return array_map(static fn (array $properties): PartialDTO => new PartialDTO($properties), $result);
+        return array_values(array_map(static fn (array $properties): PartialDTO => new PartialDTO($properties), $result));
     }
 
     /**

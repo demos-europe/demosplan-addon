@@ -32,7 +32,6 @@ final class Json
 
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw JsonException::encodeFailed();
-            throw new \JsonException('Failed to decode json: '.json_last_error_msg());
         }
 
         return $encoded;

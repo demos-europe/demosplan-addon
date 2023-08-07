@@ -5,26 +5,31 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\MappingException;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
-use EDT\JsonApi\ResourceTypes\ExposablePrimaryResourceTypeInterface;
+use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\Querying\Contracts\FunctionInterface;
 use EDT\Querying\Contracts\PaginationException;
 use EDT\Querying\Contracts\PathException;
 use EDT\Querying\Contracts\SortMethodInterface;
 use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
-use EDT\Wrapping\Contracts\Types\IdentifiableTypeInterface;
-use EDT\Wrapping\Contracts\Types\TypeInterface;
+use EDT\Wrapping\Contracts\Types\FilteringTypeInterface;
+use EDT\Wrapping\Contracts\Types\IdRetrievableTypeInterface;
+use EDT\Wrapping\Contracts\Types\SortingTypeInterface;
+use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 use Exception;
 use InvalidArgumentException;
 use Pagerfanta\Pagerfanta;
 
 /**
- * @template TEntity of object
+ * @template TEntity of EntityInterface
+ * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends IdRetrievableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
  */
-interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, ExposablePrimaryResourceTypeInterface, ExposableRelationshipTypeInterface
+interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterface, ResourceTypeInterface, IdRetrievableTypeInterface
 {
     /**
      * @param array<string, mixed> $parameters
@@ -33,10 +38,19 @@ interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, Exposa
      */
     public function addCreationErrorMessage(array $parameters): void;
 
-
     public function isAvailable(): bool;
 
+    /**
+     * @deprecated use one of the following, depending on your use case:
+     * {@link ListableResourceTypeInterface::isListAllowed()},
+     * {@link CreatableResourceTypeInterface::isCreateAllowed()},
+     * {@link UpdatableResourceTypeInterface::isUpdateAllowed()},
+     * {@link GetableResourceTypeInterface::isGetAllowed()},
+     * {@link DeletableResourceTypeInterface::isDeleteAllowed()}
+     */
     public function isDirectlyAccessible(): bool;
+
+    public function mapPaths(array $conditions, array $sortMethods): void;
 
     /**
      * Will return all entities matching the given condition with the specified sorting.
@@ -44,11 +58,11 @@ interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, Exposa
      * For all properties accessed while filtering/sorting it is checked if:
      *
      * * the given type and the types in the property paths are
-     *  {@link TypeInterface::isAvailable() available at all} and
+     *  {@link self::isAvailable() available at all} and
      *  {@link TransferableTypeInterface readable}
      * * the property is available for
-     *  {@link FilterableTypeInterface::getFilterableProperties() filtering}/
-     *  {@link SortableTypeInterface::getSortableProperties() sorting}
+     *  {@link FilteringTypeInterface::getFilteringProperties() filtering}/
+     *  {@link SortingTypeInterface::getSortingProperties() sorting}
      *
      * @param array<int,FunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
      * @param array<int,SortMethodInterface>     $sortMethods Order matters. Lower positions imply
@@ -91,11 +105,11 @@ interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, Exposa
      * For all properties accessed while filtering/sorting it is checked if:
      *
      * * the given type and the types in the property paths are
-     *   {@link TypeInterface::isAvailable() available at all} and
+     *   {@link self::isAvailable() available at all} and
      *   {@link TransferableTypeInterface readable}
      * * the property is available for
-     *   {@link FilterableTypeInterface::getFilterableProperties() filtering}/
-     *   {@link SortableTypeInterface::getSortableProperties() sorting}
+     *   {@link FilteringTypeInterface::getFilteringProperties() filtering}/
+     *   {@link SortingTypeInterface::getSortingProperties() sorting}
      *
      * @param array<int,TEntity>                 $dataObjects
      * @param array<int,FunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
@@ -122,6 +136,8 @@ interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, Exposa
      * @throws AccessException          thrown if the resource type denies the currently logged in user
      *                                  the access to the resource type needed to fulfill the request
      * @throws InvalidArgumentException thrown if no entity with the given ID and resource type was found
+     *
+     * @deprecated use {@link self::getEntityByTypeIdentifier()} instead and check {@link self::isDirectlyAccessible()} manually
      */
     public function getEntityAsReadTarget(string $id): object;
 
@@ -136,6 +152,8 @@ interface JsonApiResourceTypeInterface extends IdentifiableTypeInterface, Exposa
      * @throws AccessException          thrown if the resource type denies the currently logged in user
      *                                  the access to the resource type needed to fulfill the request
      * @throws InvalidArgumentException thrown if no entity with the given ID and resource type was found
+     *
+     * @deprecated use {@link IdRetrievableTypeInterface::getEntityByIdentifier} or {@link FluentRepository::getEntityByIdentifier()} instead and call {@link self::isAvailable()} manually, depending on your use case
      */
     public function getEntityByTypeIdentifier(string $id): object;
 

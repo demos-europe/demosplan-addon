@@ -3,7 +3,7 @@
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 interface BoilerplateCategoryInterface extends UuidEntityInterface, CoreEntityInterface
 {
@@ -87,12 +87,12 @@ interface BoilerplateCategoryInterface extends UuidEntityInterface, CoreEntityIn
     /**
      * Return the Boilerplates attached to this BoilerplateCategory.
      *
-     * @return ArrayCollection[Boilerplate]
+     * @return Collection<int, BoilerplateInterface>
      */
     public function getBoilerplates();
 
     /**
-     * @param array|ArrayCollection $boilerplates
+     * @param array<int, BoilerplateInterface>|Collection<int, BoilerplateInterface> $boilerplates
      */
     public function setBoilerplates($boilerplates);
 

@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
 use DemosEurope\DemosplanAddon\Logic\ResourceChange;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
+use EDT\JsonApi\ResourceTypes\CreatableTypeInterface;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
-use EDT\Wrapping\Contracts\Types\CreatableTypeInterface;
 
 /**
- * @template T of object
+ * @template T of EntityInterface
  *
  * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, T>
- * @template-extends CreatableTypeInterface<ClauseFunctionInterface<bool>>
+ * @template-extends CreatableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, T>
  */
 interface CreatableDqlResourceTypeInterface extends ResourceTypeInterface, CreatableTypeInterface
 {

@@ -11,7 +11,7 @@ interface MapRepositoryInterface
      * Delete a single Gislayer form the DB.
      * If the given ID related to a global GisLayer, all Entries which uses this global-ID will be also deleted.     *
      *
-     * @var string $gisLayerId
+     * @param string $gisLayerId
      *
      * @return bool
      *

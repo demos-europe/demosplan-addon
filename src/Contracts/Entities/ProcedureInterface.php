@@ -694,7 +694,7 @@ interface ProcedureInterface extends SluggedEntityInterface
     public function setPlanningOffices($planningOffices): self;
 
     /**
-     * @return ArrayCollection[Orga]
+     * @return Collection<int, OrgaInterface>
      */
     public function getDataInputOrganisations();
 

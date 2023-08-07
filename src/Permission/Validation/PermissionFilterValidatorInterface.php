@@ -12,5 +12,5 @@ interface PermissionFilterValidatorInterface
      *
      * @throws PermissionFilterException
      */
-    public function validateFilter($value): void;
+    public function validateFilter($filter): void;
 }

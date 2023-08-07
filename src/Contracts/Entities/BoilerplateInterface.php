@@ -4,6 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 interface BoilerplateInterface extends UuidEntityInterface, CoreEntityInterface
 {
@@ -103,7 +104,7 @@ interface BoilerplateInterface extends UuidEntityInterface, CoreEntityInterface
     /**
      * Returns this Boilerplate's categories.
      *
-     * @return ArrayCollection[BoilerplateCategory]
+     * @return Collection<int, BoilerplateCategoryInterface>
      */
     public function getCategories();
 

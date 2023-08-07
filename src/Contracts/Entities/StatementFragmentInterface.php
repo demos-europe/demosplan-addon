@@ -4,6 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
+use Doctrine\Common\Collections\Collection;
 
 interface StatementFragmentInterface extends UuidEntityInterface, CoreEntityInterface
 {
@@ -173,9 +174,6 @@ interface StatementFragmentInterface extends UuidEntityInterface, CoreEntityInte
      * @param string|null $vote
      */
     public function setVote($vote): self;
-
-    /**
-     * @param string|null $vote;
 
     /**
      * @return DepartmentInterface
@@ -396,7 +394,7 @@ interface StatementFragmentInterface extends UuidEntityInterface, CoreEntityInte
     public function getVersions();
 
     /**
-     * @param Collection<StatementFragmentVersionInterface>|array $versions
+     * @param Collection<int, StatementFragmentVersionInterface>|array $versions
      */
     public function setVersions($versions);
 

@@ -1,0 +1,22 @@
+parameters:
+    level: 5
+    treatPhpDocTypesAsCertain: false
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+    rememberPossiblyImpureFunctionValues: false
+    checkBenevolentUnionTypes: true
+    checkMissingCallableSignature: true
+
+    paths:
+        - src
+
+    ignoreErrors:
+        -
+            message: "#^Parameter \\#1 \\$type of method EDT\\\\Wrapping\\\\Utilities\\\\SchemaPathProcessor\\:\\:verifyExternReadablePath\\(\\) expects EDT\\\\Wrapping\\\\Contracts\\\\Types\\\\TransferableTypeInterface\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, object\\>, DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\JsonApiResourceTypeInterface given\\.$#"
+            count: 1
+            path: src/Controller/APIController.php
+
+        -
+            message: "#^Parameter \\#2 \\$type of method EDT\\\\JsonApi\\\\Validation\\\\FieldsValidator\\:\\:getNonReadableProperties\\(\\) expects EDT\\\\Wrapping\\\\Contracts\\\\Types\\\\TransferableTypeInterface\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, object\\>, DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\JsonApiResourceTypeInterface\\<DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\> given\\.$#"
+            count: 1
+            path: src/Controller/APIController.php

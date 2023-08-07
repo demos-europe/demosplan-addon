@@ -9,12 +9,14 @@ use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
 use EDT\Querying\Contracts\PathsBasedInterface;
 use Pagerfanta\Pagerfanta;
 
+/**
+ * Classes implementing this interface are intended as helper classes for implementations of
+ * {@link JsonApiResourceTypeInterface} only.
+ *
+ * Do not use this interface or its method in any non-resource-type class.
+ */
 interface JsonApiResourceTypeServiceInterface
 {
-    public function getInternalProperties(JsonApiResourceTypeInterface $type, array $autoPathProperties): array;
-
-    public function toProperties(array $propertyPaths): array;
-
     public function listEntities(JsonApiResourceTypeInterface $type, array $conditions, array $sortMethods): array;
 
     public function getEntityPaginator(JsonApiResourceTypeInterface $type, ApiPaginationInterface $pagination, array $conditions, array $sortMethods): Pagerfanta;
@@ -36,8 +38,6 @@ interface JsonApiResourceTypeServiceInterface
     public function getEntityAsReadTarget(JsonApiResourceTypeInterface $type, string $id): object;
 
     public function isExposedAsRelationship(JsonApiResourceTypeInterface $type): bool;
-
-    public function isExposedAsPrimaryResource(JsonApiResourceTypeInterface $type): bool;
 
     public function addCreationErrorMessage(array $parameters): void;
 }
