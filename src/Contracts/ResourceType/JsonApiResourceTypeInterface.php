@@ -17,21 +17,27 @@ use EDT\Querying\Contracts\SortMethodInterface;
 use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
 use EDT\Wrapping\Contracts\Types\FilteringTypeInterface;
-use EDT\Wrapping\Contracts\Types\IdRetrievableTypeInterface;
 use EDT\Wrapping\Contracts\Types\SortingTypeInterface;
 use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 use Exception;
 use InvalidArgumentException;
 use Pagerfanta\Pagerfanta;
+use Symfony\Component\Validator\Constraints\GroupSequence;
 
 /**
  * @template TEntity of EntityInterface
+ *
  * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
- * @template-extends IdRetrievableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends GetableResourceTypeInterface<TEntity>
+ * @template-extends ListableResourceTypeInterface<TEntity>
+ * @template-extends CreatableResourceTypeInterface<TEntity>
+ * @template-extends UpdatableResourceTypeInterface<TEntity>
  */
-interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterface, ResourceTypeInterface, IdRetrievableTypeInterface
+interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterface, ResourceTypeInterface, GetableResourceTypeInterface, ListableResourceTypeInterface, DeletableResourceTypeInterface, CreatableResourceTypeInterface, UpdatableResourceTypeInterface
 {
     /**
+     * Adds the Message when an error on creating a Resource Type occurs.
+     *
      * @param array<string, mixed> $parameters
      *
      * @throws Exception
@@ -50,7 +56,18 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
      */
     public function isDirectlyAccessible(): bool;
 
+    /**
+     * @param list<ClauseFunctionInterface<bool>> $conditions
+     * @param list<OrderBySortMethodInterface> $sortMethods
+     *
+     * @throws PathException
+     */
     public function mapPaths(array $conditions, array $sortMethods): void;
+
+    /**
+     * @return array<string|GroupSequence> if empty, no validation will be executed, use `Default` to denote the default validation
+     */
+    public function getValidationGroups(): array;
 
     /**
      * Will return all entities matching the given condition with the specified sorting.

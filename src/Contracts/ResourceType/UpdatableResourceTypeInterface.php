@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\ResourceTypes\UpdatableTypeInterface;
 
+/**
+ * @template TEntity of EntityInterface
+ *
+ * @template-extends UpdatableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ */
 interface UpdatableResourceTypeInterface extends UpdatableTypeInterface
 {
     /**

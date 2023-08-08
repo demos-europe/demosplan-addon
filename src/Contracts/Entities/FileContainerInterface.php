@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
@@ -102,5 +104,4 @@ interface FileContainerInterface extends UuidEntityInterface, CoreEntityInterfac
      * @return bool
      */
     public function getPublicAllowed();
-
 }

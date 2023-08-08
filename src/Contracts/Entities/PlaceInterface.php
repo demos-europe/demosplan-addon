@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 interface PlaceInterface extends CoreEntityInterface
@@ -18,5 +20,4 @@ interface PlaceInterface extends CoreEntityInterface
     public function getDescription(): string;
 
     public function setDescription(string $description);
-
 }

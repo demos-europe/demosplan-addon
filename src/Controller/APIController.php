@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Controller;
 
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiResourceServiceInterface;
@@ -7,6 +9,9 @@ use DemosEurope\DemosplanAddon\Contracts\ApiRequest\Normalizer;
 use DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\CoreEntityInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use DemosEurope\DemosplanAddon\Contracts\Exceptions\DuplicateInternIdExceptionImterface;
+use DemosEurope\DemosplanAddon\Contracts\Exceptions\PersistResourceExceptionInterface;
+use DemosEurope\DemosplanAddon\Contracts\Exceptions\PropertyUpdateAccessExceptionInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ResourceType\JsonApiResourceTypeInterface;
@@ -15,11 +20,12 @@ use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
 use DemosEurope\DemosplanAddon\Utilities\Json;
 use DemosEurope\DemosplanAddon\Exception\ConcurrentEditionException;
 use DemosEurope\DemosplanAddon\Response\APIResponse;
+use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\RequestHandling\UrlParameter;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\JsonApi\Validation\FieldsValidator;
-use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\PropertyAccessException;
 use EDT\Wrapping\Contracts\TypeRetrievalAccessException;
 use EDT\Wrapping\TypeProviders\PrefilledTypeProvider;
@@ -234,7 +240,7 @@ abstract class APIController extends AbstractController
 
         $data['jsonapi'] = ['version' => '1.0'];
 
-        return APIResponse::create($data, $status);
+        return new APIResponse($data, $status);
     }
 
     protected function createEmptyResponse(): Response
@@ -257,11 +263,13 @@ abstract class APIController extends AbstractController
         $this->logger->error('API exception occurred', [$exception]);
 
         try {
+            $exceptionParentInterfaces = class_implements(get_class($exception));
+
             switch (true) {
-                case in_array("PropertyUpdateAccessExceptionInterface", class_implements(get_class($exception))):
+                case in_array(PropertyUpdateAccessExceptionInterface::class, $exceptionParentInterfaces, true):
                     $status = Response::HTTP_FORBIDDEN;
                     break;
-                case in_array("ViolationsExceptionInterface", class_implements(get_class($exception))):
+                case in_array(ViolationsExceptionInterface::class, $exceptionParentInterfaces, true):
                     /** @var ViolationsExceptionInterface $exception */
                     $violations = $exception->getViolations();
 
@@ -275,13 +283,13 @@ abstract class APIController extends AbstractController
                 case $exception instanceof ResourceNotFoundException:
                     $status = Response::HTTP_NOT_FOUND;
                     break;
-                case in_array("PersistResourceExceptionInterface", class_implements(get_class($exception))):
+                case in_array(PersistResourceExceptionInterface::class, $exceptionParentInterfaces, true):
                     // Error message was already added.
                     break;
                 case $exception instanceof ConcurrentEditionException:
                     $status = Response::HTTP_CONFLICT;
                     break;
-                case in_array("DuplicateInternIdExceptionInterface", class_implements(get_class($exception))):
+                case in_array(DuplicateInternIdExceptionImterface::class, $exceptionParentInterfaces, true):
                     $status = Response::HTTP_BAD_REQUEST;
                     $message = 'error.unique.procedure.internid';
                     break;
@@ -325,6 +333,7 @@ abstract class APIController extends AbstractController
     }
 
     /**
+     * @param ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, EntityInterface> $resourceType
      * @deprecated use {@link ApiResourceServiceInterface::makeItemOfResource()} and call {@link APIController::renderResource()} instead
      */
     protected function renderItemOfResource($data, ResourceTypeInterface $resourceType, int $httpResponseStatusCode = Response::HTTP_OK): APIResponse
@@ -510,7 +519,7 @@ abstract class APIController extends AbstractController
             // if the type exists at all (see `getType` above) then it must be an
             // available, directly accessible resource type
             Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
-            /** @var JsonApiResourceTypeInterface $type */
+            /** @var JsonApiResourceTypeInterface<EntityInterface> $type */
 
             $includes = explode(',', $rawIncludes);
             array_map(function (string $include) use ($type): void {

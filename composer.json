@@ -17,9 +17,9 @@
         "league/fractal": "^0.19",
         "symfony/http-foundation": "5.*.*",
         "doctrine/doctrine-bundle": "^2",
-        "demos-europe/edt-dql": "^0.21.0",
-        "demos-europe/edt-jsonapi": "^0.21.0",
-        "demos-europe/edt-paths": "^0.21.0",
+        "demos-europe/edt-dql": "^0.22.0",
+        "demos-europe/edt-jsonapi": "^0.22.0",
+        "demos-europe/edt-paths": "^0.22.0",
         "sensio/framework-extra-bundle": "^6.1",
         "ramsey/uuid": "^4",
         "symfony/dependency-injection": "5.*.*",
@@ -28,7 +28,12 @@
     },
     "require-dev": {
         "composer/composer": "^2.1",
-        "phpstan/phpstan": "^1.9"
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-webmozart-assert": "^1.2",
+        "ergebnis/phpstan-rules": "^2.0",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.4.2",
+        "thecodingmachine/phpstan-strict-rules": "^1.0"
     },
     "scripts": {
         "phpstan": "phpstan analyse"

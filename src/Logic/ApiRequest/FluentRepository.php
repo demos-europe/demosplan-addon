@@ -16,6 +16,7 @@ use EDT\DqlQuerying\ObjectProviders\DoctrineOrmEntityProvider;
 use EDT\DqlQuerying\SortMethodFactories\SortMethodFactory;
 use EDT\DqlQuerying\Utilities\JoinFinder;
 use EDT\DqlQuerying\Utilities\QueryBuilderPreparer;
+use EDT\JsonApi\InputHandling\RepositoryInterface;
 use EDT\Querying\Contracts\FunctionInterface;
 use EDT\Querying\Contracts\PaginationException;
 use EDT\Querying\FluentQueries\ConditionDefinition;
@@ -26,7 +27,6 @@ use EDT\Querying\Pagination\OffsetPagination;
 use EDT\Querying\Pagination\PagePagination;
 use EDT\Querying\Utilities\Iterables;
 use EDT\Querying\Utilities\Reindexer;
-use EDT\Wrapping\Contracts\EntityFetcherInterface;
 use InvalidArgumentException;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -37,9 +37,9 @@ use const PHP_INT_MAX;
  * @template TEntity of EntityInterface
  *
  * @template-extends ServiceEntityRepository<TEntity>
- * @template-implements EntityFetcherInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-implements RepositoryInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
  */
-abstract class FluentRepository extends ServiceEntityRepository implements EntityFetcherInterface
+abstract class FluentRepository extends ServiceEntityRepository implements RepositoryInterface
 {
     protected DoctrineOrmEntityProvider $objectProvider;
     protected JoinFinder $joinFinder;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\ApiRequest;
 
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\ResourceObject;

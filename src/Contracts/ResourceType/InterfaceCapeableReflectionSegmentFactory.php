@@ -7,7 +7,6 @@ namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\SegmentFactories\ReflectionSegmentFactory;
 use EDT\Querying\Contracts\PropertyPathInterface;
-use Exception;
 use ReflectionClass;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Webmozart\Assert\Assert;
@@ -52,15 +51,7 @@ class InterfaceCapeableReflectionSegmentFactory extends ReflectionSegmentFactory
 
         $interfaceFromContainer = $this->container->get($interface);
         Assert::notNull($interfaceFromContainer);
-        $implementingClasses = [get_class($interfaceFromContainer)];
 
-        switch (count($implementingClasses)) {
-            case 0:
-                throw new Exception('there are no class that implements'. $interface);
-            case 1:
-                return array_pop($implementingClasses);
-            default:
-                throw new Exception('there are many as one class that implement'. $interface);
-        }
+        return get_class($interfaceFromContainer);
     }
 }

@@ -1,6 +1,21 @@
+includes:
+    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-webmozart-assert/extension.neon
+
+rules:
+    # kept from vendor/ergebnis/phpstan-rules/rules.neon version ^1.0, the others are considered as too restricting
+    - Ergebnis\PHPStan\Rules\Expressions\NoCompactRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoErrorSuppressionRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoEvalRule
+    - Ergebnis\PHPStan\Rules\Files\DeclareStrictTypesRule
+    - Ergebnis\PHPStan\Rules\Methods\PrivateInFinalClassRule
+
 parameters:
     level: 5
     treatPhpDocTypesAsCertain: false
+    checkGenericClassInNonGenericObjectType: true
     checkTooWideReturnTypesInProtectedAndPublicMethods: true
     checkUninitializedProperties: true
     rememberPossiblyImpureFunctionValues: false
@@ -12,7 +27,17 @@ parameters:
 
     ignoreErrors:
         -
-            message: "#^Parameter \\#1 \\$type of method EDT\\\\Wrapping\\\\Utilities\\\\SchemaPathProcessor\\:\\:verifyExternReadablePath\\(\\) expects EDT\\\\Wrapping\\\\Contracts\\\\Types\\\\TransferableTypeInterface\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, object\\>, DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\JsonApiResourceTypeInterface given\\.$#"
+            message: "#^Method DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\DoctrineResourceType\\:\\:getRepository\\(\\) should return EDT\\\\JsonApi\\\\InputHandling\\\\RepositoryInterface\\<EDT\\\\DqlQuerying\\\\Contracts\\\\ClauseFunctionInterface\\<bool\\>, EDT\\\\DqlQuerying\\\\Contracts\\\\OrderBySortMethodInterface, TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\> but returns DemosEurope\\\\DemosplanAddon\\\\Logic\\\\ApiRequest\\\\FluentRepository&Doctrine\\\\ORM\\\\EntityRepository\\<TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\>\\.$#"
+            count: 1
+            path: src/Contracts/ResourceType/DoctrineResourceType.php
+
+        -
+            message: "#^In method \"DemosEurope\\\\DemosplanAddon\\\\Controller\\\\APIController\\:\\:handleApiError\", caught \"Exception\" must be rethrown\\. Either catch a more specific exception or add a \"throw\" clause in the \"catch\" block to propagate the exception\\. More info\\: http\\://bit\\.ly/failloud$#"
+            count: 1
+            path: src/Controller/APIController.php
+
+        -
+            message: "#^Parameter \\#1 \\$type of method EDT\\\\Wrapping\\\\Utilities\\\\SchemaPathProcessor\\:\\:verifyExternReadablePath\\(\\) expects EDT\\\\Wrapping\\\\Contracts\\\\Types\\\\TransferableTypeInterface\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, object\\>, DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\JsonApiResourceTypeInterface\\<DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\> given\\.$#"
             count: 1
             path: src/Controller/APIController.php
 
@@ -20,3 +45,8 @@ parameters:
             message: "#^Parameter \\#2 \\$type of method EDT\\\\JsonApi\\\\Validation\\\\FieldsValidator\\:\\:getNonReadableProperties\\(\\) expects EDT\\\\Wrapping\\\\Contracts\\\\Types\\\\TransferableTypeInterface\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, object\\>, DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\JsonApiResourceTypeInterface\\<DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\> given\\.$#"
             count: 1
             path: src/Controller/APIController.php
+
+        -
+            message: "#^Parameter \\#1 \\$configs \\(array\\<string, mixed\\>\\) of method DemosEurope\\\\DemosplanAddon\\\\DependencyInjection\\\\AbstractAddonExtension\\:\\:load\\(\\) should be contravariant with parameter \\$configs \\(array\\) of method Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\ExtensionInterface\\:\\:load\\(\\)$#"
+            count: 2
+            path: src/DependencyInjection/AbstractAddonExtension.php
