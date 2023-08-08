@@ -215,4 +215,10 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
     {
         $this->reindexer->assertMatchingEntity($entity, $conditions);
     }
+
+    public function deleteEntityByIdentifier(string $entityIdentifier, array $conditions, array $identifierPropertyPath): void
+    {
+        $entity = $this->getEntityByIdentifier($entityIdentifier, $conditions, $identifierPropertyPath);
+        $this->getEntityManager()->remove($entity);
+    }
 }

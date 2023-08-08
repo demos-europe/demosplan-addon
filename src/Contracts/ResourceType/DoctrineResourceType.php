@@ -94,6 +94,15 @@ abstract class DoctrineResourceType extends CachingResourceType implements JsonA
         return [];
     }
 
+    /**
+     * This method determines the property within an entity that should be used as ID.
+     *
+     * Not all entities use `id` for this, some use `ident`. The default is set to `id` though.
+     *
+     * It must return an array with a single item, as support for ID properties nested in relationship was not added yet.
+     *
+     * @return array{0: non-empty-string}
+     */
     public function getIdentifierPropertyPath(): array
     {
         return $this->id->getAsNames();
