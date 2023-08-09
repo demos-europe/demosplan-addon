@@ -94,6 +94,16 @@ abstract class DoctrineResourceType extends CachingResourceType implements JsonA
         return [];
     }
 
+    protected function processProperties(array $properties): array
+    {
+        return $this->getJsonApiResourceTypeService()->processProperties($this, $properties);
+    }
+
+    public function getValidationGroups(): array
+    {
+        return ['Default'];
+    }
+
     /**
      * This method determines the property within an entity that should be used as ID.
      *

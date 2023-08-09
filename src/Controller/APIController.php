@@ -26,6 +26,7 @@ use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\RequestHandling\UrlParameter;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\JsonApi\Validation\FieldsValidator;
+use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\PropertyAccessException;
 use EDT\Wrapping\Contracts\TypeRetrievalAccessException;
 use EDT\Wrapping\TypeProviders\PrefilledTypeProvider;
@@ -531,6 +532,8 @@ abstract class APIController extends AbstractController
                         "The following include property path is not available in the resource type '{$type->getTypeName()}': $include",
                         ['exception' => $exception]
                     );
+                } catch (AccessException $exception) {
+                    $this->apiLogger->warning('JSON:API access violation in `include` parameter.', ['exception' => $exception]);
                 }
             }, $includes);
         }
