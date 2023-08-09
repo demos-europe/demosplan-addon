@@ -11,6 +11,9 @@ use EDT\JsonApi\ResourceTypes\PropertyBuilderFactory;
 use EDT\Querying\Contracts\PathException;
 use EDT\Querying\Contracts\PropertyPathInterface;
 
+/**
+ * @template-extends PropertyBuilderFactory<ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
+ */
 class DplanPropertyBuilderFactory extends PropertyBuilderFactory
 {
     /**

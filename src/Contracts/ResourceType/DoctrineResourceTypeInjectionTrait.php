@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
+use DemosEurope\DemosplanAddon\Contracts\ApiRequest\DplanPropertyBuilderFactory;
 use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\Services\TransactionServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,7 +19,7 @@ trait DoctrineResourceTypeInjectionTrait
 {
     protected ?SchemaPathProcessor $schemaPathProcessor = null;
     protected ?EventDispatcherInterface $eventDispatcher = null;
-    protected ?PropertyBuilderFactory $propertyBuilderFactory = null;
+    protected ?DplanPropertyBuilderFactory $propertyBuilderFactory = null;
     protected ?EntityManagerInterface $entityManager = null;
     protected ?LoggerInterface $logger = null;
     protected ?MessageFormatter $messageFormatter = null;
@@ -48,12 +49,12 @@ trait DoctrineResourceTypeInjectionTrait
     }
 
     #[Required]
-    public function setPropertyBuilderFactory(PropertyBuilderFactory $propertyBuilderFactory): void
+    public function setPropertyBuilderFactory(DplanPropertyBuilderFactory $propertyBuilderFactory): void
     {
         $this->propertyBuilderFactory = $propertyBuilderFactory;
     }
 
-    protected function getPropertyBuilderFactory(): PropertyBuilderFactory
+    protected function getPropertyBuilderFactory(): DplanPropertyBuilderFactory
     {
         return $this->propertyBuilderFactory;
     }
