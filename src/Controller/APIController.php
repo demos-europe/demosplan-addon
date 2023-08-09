@@ -481,11 +481,8 @@ abstract class APIController extends AbstractController
                         "The following include property path is not available in the resource type '{$type->getTypeName()}': $include",
                         ['exception' => $exception]
                     );
-                    throw $exception;
                 } catch (AccessException $exception) {
                     $this->apiLogger->warning('JSON:API access violation in `include` parameter.', ['exception' => $exception]);
-
-                    throw $exception;
                 }
             }, $includes);
         }
