@@ -13,6 +13,7 @@ use DemosEurope\DemosplanAddon\Contracts\Exceptions\DuplicateInternIdExceptionIm
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\PersistResourceExceptionInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\PropertyUpdateAccessExceptionInterface;
 use DemosEurope\DemosplanAddon\Contracts\Exceptions\ViolationsExceptionInterface;
+use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\MessageBagInterface;
 use DemosEurope\DemosplanAddon\Contracts\ResourceType\JsonApiResourceTypeInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\ValueObjectInterface;
@@ -83,70 +84,18 @@ abstract class APIController extends AbstractController
      * @var array|null
      */
     protected $requestJson;
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-    /**
-     * @var PrefilledTypeProvider
-     */
-    protected $resourceTypeProvider;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $apiLogger;
-
-    /**
-     * @var SchemaPathProcessor
-     */
-    private $schemaPathProcessor;
-
-    /**
-     * @var FieldsValidator
-     */
-    private $fieldsValidator;
-
-    /**
-     * @var MessageFormatter
-     */
-    private $messageFormatter;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @var GlobalConfigInterface
-     */
-    protected $globalConfig;
-
-    /**
-     * @var MessageBagInterface
-     */
-    protected $messageBag;
 
     public function __construct(
-        LoggerInterface               $apiLogger,
-        PrefilledTypeProvider         $resourceTypeProvider,
-        FieldsValidator               $fieldsValidator,
-        TranslatorInterface           $translator,
-        LoggerInterface               $logger,
-        GlobalConfigInterface         $globalConfig,
-        MessageBagInterface           $messageBag,
-        SchemaPathProcessor           $schemaPathProcessor
-    ) {
-        $this->translator = $translator;
-        $this->resourceTypeProvider = $resourceTypeProvider;
-        $this->apiLogger = $apiLogger;
-        $this->schemaPathProcessor = $schemaPathProcessor;
-        $this->fieldsValidator  = $fieldsValidator;
-        $this->messageFormatter = new MessageFormatter();
-        $this->logger           = $logger;
-        $this->globalConfig     = $globalConfig;
-        $this->messageBag       = $messageBag;
-    }
+        protected readonly ApiLoggerInterface $apiLogger,
+        protected readonly PrefilledTypeProvider $resourceTypeProvider,
+        private readonly FieldsValidator $fieldsValidator,
+        private readonly TranslatorInterface $translator,
+        protected readonly LoggerInterface $logger,
+        protected readonly GlobalConfigInterface $globalConfig,
+        protected readonly MessageBagInterface $messageBag,
+        private readonly SchemaPathProcessor $schemaPathProcessor,
+        private readonly MessageFormatter $messageFormatter
+    ) {}
 
     /**
      * This method is called during the `kernel.controller` event for
@@ -532,8 +481,11 @@ abstract class APIController extends AbstractController
                         "The following include property path is not available in the resource type '{$type->getTypeName()}': $include",
                         ['exception' => $exception]
                     );
+                    throw $exception;
                 } catch (AccessException $exception) {
                     $this->apiLogger->warning('JSON:API access violation in `include` parameter.', ['exception' => $exception]);
+
+                    throw $exception;
                 }
             }, $includes);
         }
