@@ -13,6 +13,7 @@ use EDT\JsonApi\InputHandling\RepositoryInterface;
 use EDT\JsonApi\RequestHandling\Body\CreationRequestBody;
 use EDT\JsonApi\RequestHandling\Body\UpdateRequestBody;
 use EDT\JsonApi\ResourceTypes\CachingResourceType;
+use EDT\JsonApi\ResourceTypes\PropertyBuilder;
 use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
@@ -151,5 +152,16 @@ abstract class DoctrineResourceType extends CachingResourceType implements JsonA
     public function listEntityIdentifiers(array $conditions, array $sortMethods): array
     {
         return $this->getJsonApiResourceTypeService()->listEntityIdentifiers($this, $conditions, $sortMethods);
+    }
+
+    /**
+     * @return PropertyBuilder<TEntity, mixed, ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
+     */
+    protected function createDateTimeAttribute(PropertyPathInterface $path): PropertyBuilder
+    {
+        return $this->getPropertyBuilderFactory()->createDateTimeAttribute(
+            $this->getEntityClass(),
+            $path
+        );
     }
 }
