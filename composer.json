@@ -20,6 +20,7 @@
         "demos-europe/edt-dql": "^0.22.0",
         "demos-europe/edt-jsonapi": "^0.22.0",
         "demos-europe/edt-paths": "^0.22.0",
+        "nesbot/carbon": "^2.0.0",
         "sensio/framework-extra-bundle": "^6.1",
         "ramsey/uuid": "^4",
         "symfony/dependency-injection": "5.*.*",
