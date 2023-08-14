@@ -9,7 +9,6 @@ use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\Services\TransactionServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
-use EDT\JsonApi\ResourceTypes\PropertyBuilderFactory;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
