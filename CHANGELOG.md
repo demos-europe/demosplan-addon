@@ -2,6 +2,11 @@
 
 ## UNRELEASED
 
+## v0.8 (2023-08-23)
+
+- add interface needed for SegmentOracle
+- this also affects DemosPipes so it depends on this version
+
 ## v0.7 (2023-08-04)
 
 **feat** Allow addons to utilize FluentRepository  
