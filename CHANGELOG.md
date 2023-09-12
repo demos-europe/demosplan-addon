@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- remove GlobalConfigInterface::subdomainsAllowed
+
 ## v0.8 (2023-08-23)
 
 - add interface needed for SegmentOracle
