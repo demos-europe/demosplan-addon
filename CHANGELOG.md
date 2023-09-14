@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+## v0.9 (2023-09-14)
+
 - remove GlobalConfigInterface::subdomainsAllowed
 
 ## v0.8 (2023-08-23)
