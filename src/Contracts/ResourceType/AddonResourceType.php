@@ -16,7 +16,6 @@ abstract class AddonResourceType extends DoctrineResourceType
     public function __construct(
         InterfaceCapeableReflectionSegmentFactory $segmentFactory
     ) {
-        parent::__construct();
         $this->segmentFactory = $segmentFactory;
     }
 }

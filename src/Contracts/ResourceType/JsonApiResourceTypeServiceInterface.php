@@ -6,6 +6,10 @@ namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
 use DateTime;
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
+use EDT\JsonApi\ResourceConfig\Builder\ResourceConfigBuilderInterface;
 use EDT\Querying\Contracts\PathsBasedInterface;
 use Pagerfanta\Pagerfanta;
 
@@ -33,7 +37,15 @@ interface JsonApiResourceTypeServiceInterface
 
     public function formatDate(?DateTime $date): ?string;
 
-    public function processProperties(JsonApiResourceTypeInterface $type, array $properties): array;
+    /**
+     * @template TEntity of EntityInterface
+     *
+     * @param JsonApiResourceTypeInterface<TEntity> $type
+     * @param ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity> $resourceConfigBuilder
+     *
+     * @return ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     */
+    public function processProperties(JsonApiResourceTypeInterface $type, ResourceConfigBuilderInterface $resourceConfigBuilder): ResourceConfigBuilderInterface;
 
     public function getEntityAsReadTarget(JsonApiResourceTypeInterface $type, string $id): object;
 

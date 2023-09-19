@@ -7,7 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\ApiRequest;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\ResourceObject;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\TopLevel;
 use DemosEurope\DemosplanAddon\Utilities\Json;
-use EDT\JsonApi\RequestHandling\ContentField;
+use EDT\Wrapping\Contracts\ContentField;
 use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 use function array_key_exists;

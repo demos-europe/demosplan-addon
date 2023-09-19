@@ -10,38 +10,75 @@ use DemosEurope\DemosplanAddon\Logic\ApiRequest\FluentRepository;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\InputHandling\RepositoryInterface;
-use EDT\JsonApi\RequestHandling\Body\CreationRequestBody;
-use EDT\JsonApi\RequestHandling\Body\UpdateRequestBody;
-use EDT\JsonApi\ResourceTypes\CachingResourceType;
-use EDT\JsonApi\ResourceTypes\PropertyBuilder;
+use EDT\JsonApi\OutputHandling\DynamicTransformer;
+use EDT\JsonApi\PropertyConfig\Builder\AttributeConfigBuilder;
+use EDT\JsonApi\PropertyConfig\Builder\ToManyRelationshipConfigBuilder;
+use EDT\JsonApi\PropertyConfig\Builder\ToOneRelationshipConfigBuilder;
+use EDT\JsonApi\RequestHandling\ModifiedEntity;
+use EDT\JsonApi\ResourceConfig\Builder\UnifiedResourceConfigBuilder;
+use EDT\JsonApi\ResourceConfig\ResourceConfigInterface;
+use EDT\JsonApi\ResourceTypes\AbstractResourceType;
+use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
+use EDT\Querying\Contracts\EntityBasedInterface;
+use EDT\Querying\Contracts\PathsBasedInterface;
 use EDT\Querying\Contracts\PropertyPathInterface;
+use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
+use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
+use EDT\Wrapping\CreationDataInterface;
+use EDT\Wrapping\EntityDataInterface;
+use EDT\Wrapping\PropertyBehavior\Relationship\RelationshipReadabilityInterface;
 use Exception;
 use IteratorAggregate;
+use League\Fractal\TransformerAbstract;
 use Pagerfanta\Pagerfanta;
 use Webmozart\Assert\Assert;
+use function is_array;
 
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends CachingResourceType<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends AbstractResourceType<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
  * @template-implements JsonApiResourceTypeInterface<TEntity>
  * @template-implements IteratorAggregate<int, non-empty-string>
  *
  * @property-read End $id
  */
-abstract class DoctrineResourceType extends CachingResourceType implements JsonApiResourceTypeInterface, IteratorAggregate, PropertyPathInterface, PropertyAutoPathInterface
+abstract class DoctrineResourceType extends AbstractResourceType implements JsonApiResourceTypeInterface, IteratorAggregate, PropertyPathInterface, PropertyAutoPathInterface
 {
     use PropertyAutoPathTrait;
     use DoctrineResourceTypeInjectionTrait;
 
-    public function createEntity(CreationRequestBody $requestBody): ?EntityInterface
+    /**
+     * @var ResourceConfigInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>|null
+     */
+    private ?ResourceConfigInterface $resourceConfig = null;
+
+    protected function getResourceConfig(): ResourceConfigInterface
+    {
+        if (null === $this->resourceConfig) {
+            $configBuilder = $this->getProperties();
+            if (is_array($configBuilder)) {
+                $namedProperties = [];
+                foreach ($configBuilder as $property) {
+                    $namedProperties[$property->getName()] = $property;
+                }
+                $configBuilder = new UnifiedResourceConfigBuilder($this->getEntityClass(), $namedProperties);
+            }
+            $configBuilder = $this->getJsonApiResourceTypeService()->processProperties($this, $configBuilder);
+            $this->resourceConfig = $configBuilder->build();
+        }
+
+        return $this->resourceConfig;
+    }
+
+    public function createEntity(CreationDataInterface $entityData): ModifiedEntity
     {
         try {
             return $this->getTransactionService()->executeAndFlushInTransaction(
-                fn () => parent::createEntity($requestBody)
+                fn () => parent::createEntity($entityData)
             );
         } catch (Exception $exception) {
             $this->addCreationErrorMessage([]);
@@ -50,10 +87,10 @@ abstract class DoctrineResourceType extends CachingResourceType implements JsonA
         }
     }
 
-    public function updateEntity(UpdateRequestBody $requestBody): ?object
+    public function updateEntity(string $entityId, EntityDataInterface $entityData): ModifiedEntity
     {
         return $this->getTransactionService()->executeAndFlushInTransaction(
-            fn () => parent::updateEntity($requestBody)
+            fn () => parent::updateEntity($entityId, $entityData)
         );
     }
 
@@ -95,9 +132,90 @@ abstract class DoctrineResourceType extends CachingResourceType implements JsonA
         return [];
     }
 
-    protected function processProperties(array $properties): array
+    /**
+     * @return AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>
+     */
+    protected function createAttribute(PropertyPathInterface $path): AttributeConfigBuilder
     {
-        return $this->getJsonApiResourceTypeService()->processProperties($this, $properties);
+        return $this->getPropertyBuilderFactory()->createAttribute(
+            $this->getEntityClass(),
+            $path
+        );
+    }
+
+    /**
+     * @template TRelationship of object
+     *
+     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TRelationship> $path
+     *
+     * @return ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, TRelationship>
+     */
+    protected function createToOneRelationship(
+        PropertyPathInterface&ResourceTypeInterface $path
+    ): ToOneRelationshipConfigBuilder {
+        // Even though $path is already a ResourceTypeInterface, it is not the actual
+        // instance but one that was created via reflection for path purposes only and thus not
+        // sufficient for further processing.
+        $relationshipType = $this->getTypeProvider()->getTypeByIdentifier($path->getTypeName());
+        Assert::notNull($relationshipType);
+
+        return $this->getPropertyBuilderFactory()->createToOneWithType(
+            $this->getEntityClass(),
+            $relationshipType,
+            $path
+        );
+    }
+
+    /**
+     * @template TRelationship of object
+     *
+     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TRelationship> $path
+     *
+     * @return ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, TRelationship>
+     */
+    protected function createToManyRelationship(
+        PropertyPathInterface&ResourceTypeInterface $path
+    ): ToManyRelationshipConfigBuilder {
+        // Even though $path is already a ResourceTypeInterface, it is not the actual
+        // instance but one that was created via reflection for path purposes only and thus not
+        // sufficient for further processing.
+        $relationshipType = $this->getTypeProvider()->getTypeByIdentifier($path->getTypeName());
+        Assert::notNull($relationshipType);
+
+        return $this->getPropertyBuilderFactory()->createToManyWithType(
+            $this->getEntityClass(),
+            $relationshipType,
+            $path
+        );
+    }
+
+    /**
+     * @param RelationshipReadabilityInterface<TransferableTypeInterface<PathsBasedInterface, PathsBasedInterface, object>> $readability
+     */
+    protected function isExposedReadability(RelationshipReadabilityInterface $readability): bool
+    {
+        $relationshipType = $readability->getRelationshipType();
+
+        return $relationshipType instanceof ExposableRelationshipTypeInterface
+            && $relationshipType->isExposedAsRelationship();
+    }
+
+    /**
+     * Array order: Even though the order of the properties returned within the array may have an
+     * effect (e.g. determining the order of properties in JSON:API responses) you can not rely on
+     * these effects; they may be changed in the future.
+     *
+     * @return list<AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>|ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>|ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>>|ResourceConfigInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     */
+    abstract protected function getProperties(): array|ResourceConfigInterface;
+
+    public function getTransformer(): TransformerAbstract
+    {
+        return new DynamicTransformer(
+            $this,
+            $this->getMessageFormatter(),
+            $this->getLogger()
+        );
     }
 
     public function getValidationGroups(): array
@@ -152,16 +270,5 @@ abstract class DoctrineResourceType extends CachingResourceType implements JsonA
     public function listEntityIdentifiers(array $conditions, array $sortMethods): array
     {
         return $this->getJsonApiResourceTypeService()->listEntityIdentifiers($this, $conditions, $sortMethods);
-    }
-
-    /**
-     * @return PropertyBuilder<TEntity, mixed, ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
-     */
-    protected function createDateTimeAttribute(PropertyPathInterface $path): PropertyBuilder
-    {
-        return $this->getPropertyBuilderFactory()->createDateTimeAttribute(
-            $this->getEntityClass(),
-            $path
-        );
     }
 }

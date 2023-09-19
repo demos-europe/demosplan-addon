@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
-use DemosEurope\DemosplanAddon\Contracts\ApiRequest\DplanPropertyBuilderFactory;
 use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\Services\TransactionServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
+use EDT\JsonApi\Utilities\PropertyBuilderFactory;
+use EDT\Wrapping\Contracts\TypeProviderInterface;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
@@ -18,12 +19,13 @@ trait DoctrineResourceTypeInjectionTrait
 {
     protected ?SchemaPathProcessor $schemaPathProcessor = null;
     protected ?EventDispatcherInterface $eventDispatcher = null;
-    protected ?DplanPropertyBuilderFactory $propertyBuilderFactory = null;
+    protected ?PropertyBuilderFactory $propertyBuilderFactory = null;
     protected ?EntityManagerInterface $entityManager = null;
     protected ?LoggerInterface $logger = null;
     protected ?MessageFormatter $messageFormatter = null;
     protected ?TransactionServiceInterface $transactionService = null;
     protected ?JsonApiResourceTypeServiceInterface $jsonApiResourceTypeService = null;
+    protected ?TypeProviderInterface $typeProvider = null;
 
     #[Required]
     public function setSchemaPathProcessor(SchemaPathProcessor $schemaPathProcessor): void
@@ -48,12 +50,12 @@ trait DoctrineResourceTypeInjectionTrait
     }
 
     #[Required]
-    public function setPropertyBuilderFactory(DplanPropertyBuilderFactory $propertyBuilderFactory): void
+    public function setPropertyBuilderFactory(PropertyBuilderFactory $propertyBuilderFactory): void
     {
         $this->propertyBuilderFactory = $propertyBuilderFactory;
     }
 
-    protected function getPropertyBuilderFactory(): DplanPropertyBuilderFactory
+    protected function getPropertyBuilderFactory(): PropertyBuilderFactory
     {
         return $this->propertyBuilderFactory;
     }
@@ -111,5 +113,16 @@ trait DoctrineResourceTypeInjectionTrait
     protected function getJsonApiResourceTypeService(): JsonApiResourceTypeServiceInterface
     {
         return $this->jsonApiResourceTypeService;
+    }
+
+    #[Required]
+    public function setTypeProvider(TypeProviderInterface $typeProvider): void
+    {
+        $this->typeProvider = $typeProvider;
+    }
+
+    protected function getTypeProvider(): TypeProviderInterface
+    {
+        return $this->typeProvider;
     }
 }

@@ -203,7 +203,9 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
 
     public function assertMatchingEntities(array $entities, array $conditions): void
     {
-        $this->reindexer->assertMatchingEntities($entities, $conditions);
+        foreach ($entities as $entity) {
+            $this->reindexer->assertMatchingEntity($entity, $conditions);
+        }
     }
 
     public function isMatchingEntity(object $entity, array $conditions): bool
