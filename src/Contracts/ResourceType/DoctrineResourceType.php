@@ -63,7 +63,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
             if (is_array($configBuilder)) {
                 $namedProperties = [];
                 foreach ($configBuilder as $property) {
-                    $namedProperties[$property->getName()] = $property;
+                    $propertyName = $property->getName();
+                    Assert::keyNotExists($namedProperties, $propertyName);
+                    $namedProperties[$propertyName] = $property;
                 }
                 $configBuilder = new UnifiedResourceConfigBuilder($this->getEntityClass(), $namedProperties);
             }
