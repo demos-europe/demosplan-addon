@@ -12,6 +12,7 @@ use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\InputHandling\RepositoryInterface;
 use EDT\JsonApi\OutputHandling\DynamicTransformer;
 use EDT\JsonApi\PropertyConfig\Builder\AttributeConfigBuilder;
+use EDT\JsonApi\PropertyConfig\Builder\IdentifierConfigBuilder;
 use EDT\JsonApi\PropertyConfig\Builder\ToManyRelationshipConfigBuilder;
 use EDT\JsonApi\PropertyConfig\Builder\ToOneRelationshipConfigBuilder;
 use EDT\JsonApi\RequestHandling\ModifiedEntity;
@@ -132,6 +133,14 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     public function getDefaultSortMethods(): array
     {
         return [];
+    }
+
+    /**
+     * @return IdentifierConfigBuilder<TEntity>
+     */
+    protected function createIdentifier(): IdentifierConfigBuilder
+    {
+        return $this->getPropertyBuilderFactory()->createIdentifier($this->getEntityClass());
     }
 
     /**
