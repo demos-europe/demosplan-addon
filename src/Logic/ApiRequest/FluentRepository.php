@@ -31,6 +31,8 @@ use InvalidArgumentException;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 
+use Psr\Log\LoggerInterface;
+use Symfony\Contracts\Service\Attribute\Required;
 use const PHP_INT_MAX;
 
 /**
@@ -44,6 +46,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
     protected DoctrineOrmEntityProvider $objectProvider;
     protected JoinFinder $joinFinder;
     protected QueryBuilderPreparer $builderPreparer;
+    protected ?LoggerInterface $logger;
 
     public function __construct(
         protected readonly DqlConditionFactory $conditionFactory,
@@ -222,5 +225,23 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
     {
         $entity = $this->getEntityByIdentifier($entityIdentifier, $conditions, $identifierPropertyPath);
         $this->getEntityManager()->remove($entity);
+    }
+
+    protected function getLogger(): LoggerInterface
+    {
+        return $this->logger;
+    }
+
+    /**
+     * Please don't use `@required` for DI. It should only be used in base classes like this one.
+     *
+     * @return $this
+     */
+    #[Required]
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+
+        return $this;
     }
 }
