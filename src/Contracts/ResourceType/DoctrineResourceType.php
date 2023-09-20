@@ -214,7 +214,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return new DynamicTransformer(
             $this,
             $this->getMessageFormatter(),
-            $this->getLogger()
+            $this->getApiLogger()
         );
     }
 

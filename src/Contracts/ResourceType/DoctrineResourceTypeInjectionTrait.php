@@ -26,6 +26,7 @@ trait DoctrineResourceTypeInjectionTrait
     protected ?TransactionServiceInterface $transactionService = null;
     protected ?JsonApiResourceTypeServiceInterface $jsonApiResourceTypeService = null;
     protected ?TypeProviderInterface $typeProvider = null;
+    protected ?ApiLoggerInterface $apiLogger = null;
 
     #[Required]
     public function setSchemaPathProcessor(SchemaPathProcessor $schemaPathProcessor): void
@@ -124,5 +125,16 @@ trait DoctrineResourceTypeInjectionTrait
     protected function getTypeProvider(): TypeProviderInterface
     {
         return $this->typeProvider;
+    }
+
+    #[Required]
+    public function setApiLogger(ApiLoggerInterface $apiLogger): void
+    {
+        $this->apiLogger = $apiLogger;
+    }
+
+    protected function getApiLogger(): ApiLoggerInterface
+    {
+        return $this->apiLogger;
     }
 }
