@@ -376,13 +376,6 @@ interface GlobalConfigInterface
 
     public function setSubdomain(string $subdomain): void;
 
-    /**
-     * Defines which subdomains (aka {@link CustomerInterface}s) are allowed.
-     *
-     * @return array<int,string>
-     */
-    public function getSubdomainsAllowed(): array;
-
     public function getOrgaBrandedRoutes(): array;
 
     public function getPublicIndexRoute(): string;
