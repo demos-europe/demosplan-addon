@@ -46,7 +46,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
     protected DoctrineOrmEntityProvider $objectProvider;
     protected JoinFinder $joinFinder;
     protected QueryBuilderPreparer $builderPreparer;
-    protected ?LoggerInterface $logger;
+    protected ?LoggerInterface $logger = null;
 
     public function __construct(
         protected readonly DqlConditionFactory $conditionFactory,

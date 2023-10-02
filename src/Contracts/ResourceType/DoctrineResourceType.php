@@ -77,11 +77,12 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return $this->resourceConfig;
     }
 
+    // FIXME: validate after creation
     public function createEntity(CreationDataInterface $entityData): ModifiedEntity
     {
         try {
             return $this->getTransactionService()->executeAndFlushInTransaction(
-                fn () => parent::createEntity($entityData)
+                fn (): ModifiedEntity => parent::createEntity($entityData)
             );
         } catch (Exception $exception) {
             $this->addCreationErrorMessage([]);
@@ -104,6 +105,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         );
     }
 
+    // FIXME: respect getAccessConditions and getDefaultSortMethods somehow
     public function mapPaths(array $conditions, array $sortMethods): void
     {
         parent::mapPaths($conditions, $sortMethods);

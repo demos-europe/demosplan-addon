@@ -92,6 +92,7 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
      *
      * @throws AccessException thrown if the resource type denies the currently logged in user
      *                         the access to the resource type needed to fulfill the request
+     * @deprecated use {@link self::getEntities()} instead
      */
     public function listEntities(array $conditions, array $sortMethods = []): array;
 
