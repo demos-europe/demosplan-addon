@@ -16,6 +16,7 @@ use EDT\JsonApi\PropertyConfig\Builder\IdentifierConfigBuilder;
 use EDT\JsonApi\PropertyConfig\Builder\ToManyRelationshipConfigBuilder;
 use EDT\JsonApi\PropertyConfig\Builder\ToOneRelationshipConfigBuilder;
 use EDT\JsonApi\RequestHandling\ModifiedEntity;
+use EDT\JsonApi\ResourceConfig\Builder\ResourceConfigBuilderInterface;
 use EDT\JsonApi\ResourceConfig\Builder\UnifiedResourceConfigBuilder;
 use EDT\JsonApi\ResourceConfig\ResourceConfigInterface;
 use EDT\JsonApi\ResourceTypes\AbstractResourceType;
@@ -172,11 +173,14 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         $relationshipType = $this->getTypeProvider()->getTypeByIdentifier($path->getTypeName());
         Assert::notNull($relationshipType);
 
-        return $this->getPropertyBuilderFactory()->createToOneWithType(
+        $configBuilder = $this->getPropertyBuilderFactory()->createToOneWithType(
             $this->getEntityClass(),
-            $relationshipType,
+            $relationshipType->getEntityClass(),
             $path
         );
+        $configBuilder->setRelationshipType($relationshipType);
+
+        return $configBuilder;
     }
 
     /**
@@ -195,11 +199,14 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         $relationshipType = $this->getTypeProvider()->getTypeByIdentifier($path->getTypeName());
         Assert::notNull($relationshipType);
 
-        return $this->getPropertyBuilderFactory()->createToManyWithType(
+        $configBuilder = $this->getPropertyBuilderFactory()->createToManyWithType(
             $this->getEntityClass(),
-            $relationshipType,
+            $relationshipType->getEntityClass(),
             $path
         );
+        $configBuilder->setRelationshipType($relationshipType);
+
+        return $configBuilder;
     }
 
     /**
@@ -218,9 +225,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
      * effect (e.g. determining the order of properties in JSON:API responses) you can not rely on
      * these effects; they may be changed in the future.
      *
-     * @return list<AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>|ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>|ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>>|ResourceConfigInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     * @return list<AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>|ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>|ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>>|ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
      */
-    abstract protected function getProperties(): array|ResourceConfigInterface;
+    abstract protected function getProperties(): array|ResourceConfigBuilderInterface;
 
     public function getTransformer(): TransformerAbstract
     {
