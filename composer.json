@@ -10,9 +10,9 @@
     },
     "require": {
         "composer-plugin-api": "^2.0",
-        "demos-europe/edt-dql": "^0.23.0",
-        "demos-europe/edt-jsonapi": "^0.23.0",
-        "demos-europe/edt-paths": "^0.23.0",
+        "demos-europe/edt-dql": "^0.24.0",
+        "demos-europe/edt-jsonapi": "^0.24.0",
+        "demos-europe/edt-paths": "^0.24.0",
         "doctrine/doctrine-bundle": "^2",
         "league/fractal": "^0.19",
         "nesbot/carbon": "^2.0.0",
