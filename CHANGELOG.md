@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- add FileInfoInterface
+
 ## v0.9 (2023-09-14)
 
 - remove GlobalConfigInterface::subdomainsAllowed
