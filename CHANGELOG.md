@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- add ParagraphServiceInterface
+
 ## v0.10 (2023-10-25)
 
 - add FileInfoInterface
