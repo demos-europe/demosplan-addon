@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+## v0.11 (2023-11-06)
+
 - add ParagraphServiceInterface
 
 ## v0.10 (2023-10-25)
