@@ -2,6 +2,14 @@
 
 ## UNRELEASED
 
+## v0.11 (2023-11-06)
+
+- add ParagraphServiceInterface
+
+## v0.10 (2023-10-25)
+
+- add FileInfoInterface
+
 ## v0.9 (2023-09-14)
 
 - remove GlobalConfigInterface::subdomainsAllowed
