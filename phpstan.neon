@@ -60,16 +60,6 @@ parameters:
             path: src/Contracts/ResourceType/DoctrineResourceType.php
 
         -
-            message: "#^Parameter \\#2 \\$relationshipClass of method EDT\\\\JsonApi\\\\Utilities\\\\PropertyBuilderFactory\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface,EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface\\>\\:\\:createToManyWithType\\(\\) expects class\\-string\\<object\\>, EDT\\\\Querying\\\\Contracts\\\\EntityBasedInterface\\<object\\> given\\.$#"
-            count: 1
-            path: src/Contracts/ResourceType/DoctrineResourceType.php
-
-        -
-            message: "#^Parameter \\#2 \\$relationshipClass of method EDT\\\\JsonApi\\\\Utilities\\\\PropertyBuilderFactory\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface,EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface\\>\\:\\:createToOneWithType\\(\\) expects class\\-string\\<object\\>, EDT\\\\Querying\\\\Contracts\\\\EntityBasedInterface\\<object\\> given\\.$#"
-            count: 1
-            path: src/Contracts/ResourceType/DoctrineResourceType.php
-
-        -
             message: "#^In method \"DemosEurope\\\\DemosplanAddon\\\\Controller\\\\APIController\\:\\:handleApiError\", caught \"Exception\" must be rethrown\\. Either catch a more specific exception or add a \"throw\" clause in the \"catch\" block to propagate the exception\\. More info\\: http\\://bit\\.ly/failloud$#"
             count: 1
             path: src/Controller/APIController.php

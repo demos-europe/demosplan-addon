@@ -238,7 +238,12 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         );
     }
 
-    public function getValidationGroups(): array
+    public function getUpdateValidationGroups(): array
+    {
+        return ['Default'];
+    }
+
+    public function getCreationValidationGroups(): array
     {
         return ['Default'];
     }

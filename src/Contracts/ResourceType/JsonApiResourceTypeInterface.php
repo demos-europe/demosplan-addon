@@ -67,7 +67,12 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
     /**
      * @return array<string|GroupSequence> if empty, no validation will be executed, use `Default` to denote the default validation
      */
-    public function getValidationGroups(): array;
+    public function getUpdateValidationGroups(): array;
+
+    /**
+     * @return array<string|GroupSequence> if empty, no validation will be executed, use `Default` to denote the default validation
+     */
+    public function getCreationValidationGroups(): array;
 
     /**
      * Will return all entities matching the given condition with the specified sorting.

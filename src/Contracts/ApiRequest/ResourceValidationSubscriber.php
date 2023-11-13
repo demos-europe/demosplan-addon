@@ -38,7 +38,13 @@ class ResourceValidationSubscriber implements EventSubscriberInterface
 
         Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
         /** @var JsonApiResourceTypeInterface<EntityInterface> $type */
-        $validationGroups = $type->getValidationGroups();
+        if ($event instanceof AfterCreationEvent) {
+            $eventName = 'creation';
+            $validationGroups = $type->getCreationValidationGroups();
+        } else {
+            $eventName = 'update';
+            $validationGroups = $type->getUpdateValidationGroups();
+        }
 
         if ([] === $validationGroups) {
             return;
@@ -47,7 +53,6 @@ class ResourceValidationSubscriber implements EventSubscriberInterface
         $violations = $this->validator->validate($entity, null, $validationGroups);
 
         if (0 !== $violations->count()) {
-            $eventName = $event instanceof AfterCreationEvent ? 'creation' : 'update';
             $message = "Validation of `{$type->getTypeName()}` entity failed after $eventName.";
 
             throw new ResourceViolationException($violations, $validationGroups, $message);
