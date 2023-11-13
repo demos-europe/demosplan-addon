@@ -6,6 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceUpdateFlushEvent;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\FluentRepository;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
@@ -95,7 +96,15 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     public function updateEntity(string $entityId, EntityDataInterface $entityData): ModifiedEntity
     {
         return $this->getTransactionService()->executeAndFlushInTransaction(
-            fn () => parent::updateEntity($entityId, $entityData)
+            function () use ($entityId, $entityData): ModifiedEntity {
+                $modifiedEntity = parent::updateEntity($entityId, $entityData);
+                $this->eventDispatcher->dispatch(new BeforeResourceUpdateFlushEvent(
+                    $this,
+                    $modifiedEntity->getEntity()
+                ));
+
+                return $modifiedEntity;
+            }
         );
     }
 
