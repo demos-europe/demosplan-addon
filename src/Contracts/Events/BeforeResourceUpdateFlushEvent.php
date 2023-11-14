@@ -23,7 +23,7 @@ class BeforeResourceUpdateFlushEvent
     /**
      * @return DoctrineResourceType<EntityInterface>
      */
-    public function getTargetType(): DoctrineResourceType
+    public function getType(): DoctrineResourceType
     {
         return $this->type;
     }

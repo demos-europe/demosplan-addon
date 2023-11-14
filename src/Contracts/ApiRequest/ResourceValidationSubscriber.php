@@ -30,16 +30,11 @@ class ResourceValidationSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param AfterCreationEvent<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, EntityInterface>|AfterUpdateEvent<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, EntityInterface> $event
-     */
     public function validateResource(BeforeResourceCreateFlushEvent|BeforeResourceUpdateFlushEvent $event): void
     {
         $type = $event->getType();
         $entity = $event->getEntity();
 
-        Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
-        /** @var JsonApiResourceTypeInterface<EntityInterface> $type */
         if ($event instanceof BeforeResourceCreateFlushEvent) {
             $eventName = 'creation';
             $validationGroups = $type->getCreationValidationGroups();
