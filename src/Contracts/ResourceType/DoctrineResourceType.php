@@ -315,17 +315,14 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return $this->getJsonApiResourceTypeService()->listEntityIdentifiers($this, $conditions, $sortMethods);
     }
 
-    /**
-     * @throws AccessException
-     */
-    public function assertDirectlyAvailable(JsonApiResourceTypeInterface $type): void
+    public function assertDirectlyAvailable(): void
     {
-        if (!$type->isDirectlyAccessible()) {
-            throw AccessException::typeNotDirectlyAccessible($type);
+        if (!$this->isDirectlyAccessible()) {
+            throw AccessException::typeNotDirectlyAccessible($this);
         }
 
-        if (!$type->isAvailable()) {
-            throw AccessException::typeNotAvailable($type);
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
         }
     }
 }

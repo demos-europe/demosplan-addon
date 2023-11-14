@@ -148,4 +148,9 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
         array $conditions,
         array $sortMethods
     ): array;
+
+    /**
+     * @throws AccessException
+     */
+    public function assertDirectlyAvailable(): void;
 }
