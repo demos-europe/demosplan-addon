@@ -75,33 +75,6 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
     public function getCreationValidationGroups(): array;
 
     /**
-     * Will return all entities matching the given condition with the specified sorting.
-     *
-     * For all properties accessed while filtering/sorting it is checked if:
-     *
-     * * the given type and the types in the property paths are
-     *  {@link self::isAvailable() available at all} and
-     *  {@link TransferableTypeInterface readable}
-     * * the property is available for
-     *  {@link FilteringTypeInterface::getFilteringProperties() filtering}/
-     *  {@link SortingTypeInterface::getSortingProperties() sorting}
-     *
-     * @param array<int,FunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
-     * @param array<int,SortMethodInterface>     $sortMethods Order matters. Lower positions imply
-     *                                                        higher priority. Ie. a second sort method
-     *                                                        will be applied to each subset individually
-     *                                                        that resulted from the first sort method.
-     *                                                        The array keys will be ignored.
-     *
-     * @return array<int,TEntity>
-     *
-     * @throws AccessException thrown if the resource type denies the currently logged in user
-     *                         the access to the resource type needed to fulfill the request
-     * @deprecated use {@link self::getEntities()} instead
-     */
-    public function listEntities(array $conditions, array $sortMethods = []): array;
-
-    /**
      * Unlike {@link FluentRepository::getEntitiesForPage} this method accepts conditions and sort methods using the
      * schema of a resource type instead of the schema of the backing entity.
      *
@@ -123,7 +96,7 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
 
     /**
      * Will return all entities matching the given condition with the specified sorting. The dataObjects array is the data source from which
-     * matching entities will be returned (This is the only difference to the listEntities function above!).
+     * matching entities will be returned.
      *
      * For all properties accessed while filtering/sorting it is checked if:
      *

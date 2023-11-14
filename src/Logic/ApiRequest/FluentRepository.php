@@ -97,8 +97,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
      * You may also need to use it for more exotic expressions covered by conditions like
      * {@link ConditionFactoryInterface::propertyHasSize()} and {@link ConditionFactoryInterface::propertiesEqual()}.
      *
-     * Unlike {@link DplanResourceType::listEntities} this method won't apply any restrictions
-     * beside the provided conditions.
+     * This method won't apply any restrictions beside the provided conditions.
      *
      * @param array<int,ClauseFunctionInterface<bool>> $conditions  will be applied in an `AND` conjunction
      * @param array<int,OrderBySortMethodInterface>    $sortMethods will be applied in the given order
@@ -118,8 +117,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
      * Will provide access to all entities matching the given condition via a paginator.
      * The entities will be sorted by the specified sorting.
      *
-     * Unlike {@link DplanResourceType::listEntities} this method won't apply any restrictions
-     * beside the provided conditions.
+     * This method won't apply any restrictions beside the provided conditions.
      *
      * @param array<int,ClauseFunctionInterface<bool>> $conditions  will be applied in an `AND` conjunction
      * @param array<int,OrderBySortMethodInterface>    $sortMethods will be applied in the given order

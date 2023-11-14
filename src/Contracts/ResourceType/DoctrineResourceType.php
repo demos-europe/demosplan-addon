@@ -295,11 +295,6 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return $this->id->getAsNames();
     }
 
-    public function listEntities(array $conditions, array $sortMethods = []): array
-    {
-        return $this->getJsonApiResourceTypeService()->listEntities($this, $conditions, $sortMethods);
-    }
-
     public function getEntityPaginator(ApiPaginationInterface $pagination, array $conditions, array $sortMethods = []): Pagerfanta
     {
         return $this->getJsonApiResourceTypeService()->getEntityPaginator($this, $pagination, $conditions, $sortMethods);
@@ -318,5 +313,19 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     public function listEntityIdentifiers(array $conditions, array $sortMethods): array
     {
         return $this->getJsonApiResourceTypeService()->listEntityIdentifiers($this, $conditions, $sortMethods);
+    }
+
+    /**
+     * @throws AccessException
+     */
+    public function assertDirectlyAvailable(JsonApiResourceTypeInterface $type): void
+    {
+        if (!$type->isDirectlyAccessible()) {
+            throw AccessException::typeNotDirectlyAccessible($type);
+        }
+
+        if (!$type->isAvailable()) {
+            throw AccessException::typeNotAvailable($type);
+        }
     }
 }
