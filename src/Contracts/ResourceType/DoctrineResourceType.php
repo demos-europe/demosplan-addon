@@ -30,6 +30,8 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\EntityBasedInterface;
 use EDT\Querying\Contracts\PathsBasedInterface;
 use EDT\Querying\Contracts\PropertyPathInterface;
+use EDT\Querying\Contracts\SortMethodInterface;
+use EDT\Querying\Pagination\PagePagination;
 use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
 use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
@@ -82,7 +84,6 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return $this->resourceConfig;
     }
 
-    // FIXME: validate after creation
     public function createEntity(CreationDataInterface $entityData): ModifiedEntity
     {
         try {
@@ -124,12 +125,6 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         $this->getTransactionService()->executeAndFlushInTransaction(
             fn () => parent::deleteEntity($entityIdentifier)
         );
-    }
-
-    // FIXME: respect getAccessConditions and getDefaultSortMethods somehow
-    public function mapPaths(array $conditions, array $sortMethods): void
-    {
-        parent::mapPaths($conditions, $sortMethods);
     }
 
     protected function getRepository(): RepositoryInterface
@@ -297,22 +292,43 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
 
     public function getEntityPaginator(ApiPaginationInterface $pagination, array $conditions, array $sortMethods = []): Pagerfanta
     {
-        return $this->getJsonApiResourceTypeService()->getEntityPaginator($this, $pagination, $conditions, $sortMethods);
+        $this->assertDirectlyAvailable();
+        $this->mapPaths($conditions, $sortMethods);
+        $conditions = array_merge($conditions, $this->getAccessConditions());
+        $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
+        $pagePagination = new PagePagination($pagination->getSize(), $pagination->getNumber());
+
+        return $this->getRepository()->getEntitiesForPage($conditions, $sortMethods, $pagePagination);
     }
 
     public function listPrefilteredEntities(array $dataObjects, array $conditions = [], array $sortMethods = []): array
     {
+        $this->assertDirectlyAvailable();
+        $this->mapPaths($conditions, $sortMethods);
+        $conditions = array_merge($conditions, $this->getAccessConditions());
+        $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
+
         return $this->getJsonApiResourceTypeService()->listPrefilteredEntities($this, $dataObjects, $conditions, $sortMethods);
     }
 
     public function getEntityCount(array $conditions): int
     {
-        return $this->getJsonApiResourceTypeService()->getEntityCount($this, $conditions);
+        $this->assertDirectlyAvailable();
+        $this->mapPaths($conditions, []);
+        $conditions = array_merge($conditions, $this->getAccessConditions());
+
+        return $this->getRepository()->getEntityCount($conditions);
     }
 
     public function listEntityIdentifiers(array $conditions, array $sortMethods): array
     {
-        return $this->getJsonApiResourceTypeService()->listEntityIdentifiers($this, $conditions, $sortMethods);
+        $this->assertDirectlyAvailable();
+        $this->mapPaths($conditions, $sortMethods);
+        $conditions = array_merge($conditions, $this->getAccessConditions());
+        $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
+        $entityIdentifierPropertyPath = $this->getIdentifierPropertyPath();
+
+        return $this->getRepository()->getEntityIdentifiers($conditions, $sortMethods, array_pop($entityIdentifierPropertyPath));
     }
 
     public function assertDirectlyAvailable(): void
@@ -324,5 +340,31 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         if (!$this->isAvailable()) {
             throw AccessException::typeNotAvailable($this);
         }
+    }
+
+    /**
+     * Will return all entities matching the given condition with the specified sorting.
+     *
+     * For all properties accessed while filtering/sorting it is checked if:
+     *
+     * FIXME: is this still true? if not it probably needs to be implemented
+     * * the given type and the types in the property paths are {@link self::isAvailable() available at all} and {@link TransferableTypeInterface readable}
+     * * the property is available for {@link FilteringTypeInterface::getFilteringProperties() filtering}/{@link SortingTypeInterface::getSortingProperties() sorting}
+     *
+     * @param list<ClauseFunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
+     * @param list<SortMethodInterface> $sortMethods Order matters. Lower positions imply higher priority. I.e. a second
+     *                                               sort method will be applied to each subset individually that
+     *                                               resulted from the first sort method.
+     *
+     * @throws AccessException thrown if the resource type denies the currently logged-in user
+     *                         the access to the resource type needed to fulfill the request
+     */
+    public function getEntities(array $conditions, array $sortMethods): array
+    {
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
+        }
+
+        return parent::getEntities($conditions, $sortMethods);
     }
 }

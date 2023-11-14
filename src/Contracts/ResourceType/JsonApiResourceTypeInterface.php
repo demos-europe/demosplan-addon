@@ -57,14 +57,6 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
     public function isDirectlyAccessible(): bool;
 
     /**
-     * @param list<ClauseFunctionInterface<bool>> $conditions
-     * @param list<OrderBySortMethodInterface> $sortMethods
-     *
-     * @throws PathException
-     */
-    public function mapPaths(array $conditions, array $sortMethods): void;
-
-    /**
      * @return array<string|GroupSequence> if empty, no validation will be executed, use `Default` to denote the default validation
      */
     public function getUpdateValidationGroups(): array;

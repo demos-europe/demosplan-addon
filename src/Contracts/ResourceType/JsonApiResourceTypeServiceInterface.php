@@ -21,15 +21,7 @@ use Pagerfanta\Pagerfanta;
  */
 interface JsonApiResourceTypeServiceInterface
 {
-    public function getEntityPaginator(JsonApiResourceTypeInterface $type, ApiPaginationInterface $pagination, array $conditions, array $sortMethods): Pagerfanta;
-
     public function listPrefilteredEntities(JsonApiResourceTypeInterface $type, array $dataObjects, array $conditions, array $sortMethods): array;
-
-    public function getEntityCount(JsonApiResourceTypeInterface $type, array $conditions): int;
-
-    public function listEntityIdentifiers(JsonApiResourceTypeInterface $type, array $conditions, array $sortMethods): array;
-
-    public function getAccessCondition(array $accessConditions): PathsBasedInterface;
 
     public function formatDate(?DateTime $date): ?string;
 
