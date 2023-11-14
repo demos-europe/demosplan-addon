@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\ApiRequest;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceCreateFlushEvent;
+use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceUpdateFlushEvent;
 use DemosEurope\DemosplanAddon\Contracts\ResourceType\JsonApiResourceTypeInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
@@ -23,22 +25,22 @@ class ResourceValidationSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            AfterCreationEvent::class => 'validateResource',
-            AfterUpdateEvent::class => 'validateResource'
+            BeforeResourceCreateFlushEvent::class => 'validateResource',
+            BeforeResourceUpdateFlushEvent::class => 'validateResource'
         ];
     }
 
     /**
      * @param AfterCreationEvent<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, EntityInterface>|AfterUpdateEvent<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, EntityInterface> $event
      */
-    public function validateResource(AfterCreationEvent|AfterUpdateEvent $event): void
+    public function validateResource(BeforeResourceCreateFlushEvent|BeforeResourceUpdateFlushEvent $event): void
     {
         $type = $event->getType();
         $entity = $event->getEntity();
 
         Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
         /** @var JsonApiResourceTypeInterface<EntityInterface> $type */
-        if ($event instanceof AfterCreationEvent) {
+        if ($event instanceof BeforeResourceCreateFlushEvent) {
             $eventName = 'creation';
             $validationGroups = $type->getCreationValidationGroups();
         } else {

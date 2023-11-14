@@ -154,31 +154,9 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
     ): array;
 
     /**
-     * @return TEntity
-     *
-     * @throws AccessException          thrown if the resource type denies the currently logged in user
-     *                                  the access to the resource type needed to fulfill the request
-     * @throws InvalidArgumentException thrown if no entity with the given ID and resource type was found
-     *
-     * @deprecated use {@link self::getEntityByTypeIdentifier()} instead and check {@link self::isDirectlyAccessible()} manually
-     */
-    public function getEntityAsReadTarget(string $id): object;
-
-    /**
      * @param array<int, ClauseFunctionInterface<bool>> $conditions
      */
     public function getEntityCount(array $conditions): int;
-
-    /**
-     * @return TEntity
-     *
-     * @throws AccessException          thrown if the resource type denies the currently logged in user
-     *                                  the access to the resource type needed to fulfill the request
-     * @throws InvalidArgumentException thrown if no entity with the given ID and resource type was found
-     *
-     * @deprecated use {@link IdRetrievableTypeInterface::getEntityByIdentifier} or {@link FluentRepository::getEntityByIdentifier()} instead and call {@link self::isAvailable()} manually, depending on your use case
-     */
-    public function getEntityByTypeIdentifier(string $id): object;
 
     /**
      * @param array<int,FunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter

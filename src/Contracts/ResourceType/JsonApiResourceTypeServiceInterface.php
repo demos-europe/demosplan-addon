@@ -29,8 +29,6 @@ interface JsonApiResourceTypeServiceInterface
 
     public function getEntityCount(JsonApiResourceTypeInterface $type, array $conditions): int;
 
-    public function getEntityByTypeIdentifier(JsonApiResourceTypeInterface $type, string $id): object;
-
     public function listEntityIdentifiers(JsonApiResourceTypeInterface $type, array $conditions, array $sortMethods): array;
 
     public function getAccessCondition(array $accessConditions): PathsBasedInterface;
@@ -46,8 +44,6 @@ interface JsonApiResourceTypeServiceInterface
      * @return ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
      */
     public function processProperties(JsonApiResourceTypeInterface $type, ResourceConfigBuilderInterface $resourceConfigBuilder): ResourceConfigBuilderInterface;
-
-    public function getEntityAsReadTarget(JsonApiResourceTypeInterface $type, string $id): object;
 
     public function isExposedAsRelationship(JsonApiResourceTypeInterface $type): bool;
 

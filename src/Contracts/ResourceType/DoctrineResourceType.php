@@ -6,6 +6,8 @@ namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
 use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
+use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceCreateFlushEvent;
 use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceUpdateFlushEvent;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\FluentRepository;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
@@ -28,6 +30,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\EntityBasedInterface;
 use EDT\Querying\Contracts\PathsBasedInterface;
 use EDT\Querying\Contracts\PropertyPathInterface;
+use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
 use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 use EDT\Wrapping\CreationDataInterface;
@@ -84,7 +87,15 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     {
         try {
             return $this->getTransactionService()->executeAndFlushInTransaction(
-                fn (): ModifiedEntity => parent::createEntity($entityData)
+                function () use ($entityData): ModifiedEntity {
+                    $modifiedEntity = parent::createEntity($entityData);
+                    $this->eventDispatcher->dispatch(new BeforeResourceCreateFlushEvent(
+                        $this,
+                        $modifiedEntity->getEntity()
+                    ));
+
+                    return $modifiedEntity;
+                }
             );
         } catch (Exception $exception) {
             $this->addCreationErrorMessage([]);
@@ -249,12 +260,25 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
 
     public function getUpdateValidationGroups(): array
     {
-        return ['Default'];
+        return [ProcedureInterface::VALIDATION_GROUP_DEFAULT];
     }
 
     public function getCreationValidationGroups(): array
     {
-        return ['Default'];
+        return [ProcedureInterface::VALIDATION_GROUP_DEFAULT];
+    }
+
+    public function getEntity(string $identifier): object
+    {
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
+        }
+
+        try {
+            return parent::getEntity($identifier);
+        } catch (AccessException $e) {
+            throw new \InvalidArgumentException("Could not retrieve entity for type '{$this->getTypeName()}' with ID '$identifier'.", 0, $e);
+        }
     }
 
     /**
@@ -286,19 +310,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return $this->getJsonApiResourceTypeService()->listPrefilteredEntities($this, $dataObjects, $conditions, $sortMethods);
     }
 
-    public function getEntityAsReadTarget(string $id): object
-    {
-        return $this->getJsonApiResourceTypeService()->getEntityAsReadTarget($this, $id);
-    }
-
     public function getEntityCount(array $conditions): int
     {
         return $this->getJsonApiResourceTypeService()->getEntityCount($this, $conditions);
-    }
-
-    public function getEntityByTypeIdentifier(string $id): object
-    {
-        return $this->getJsonApiResourceTypeService()->getEntityByTypeIdentifier($this, $id);
     }
 
     public function listEntityIdentifiers(array $conditions, array $sortMethods): array
