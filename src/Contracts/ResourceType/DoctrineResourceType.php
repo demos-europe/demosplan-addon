@@ -28,16 +28,12 @@ use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
 use EDT\Querying\Contracts\EntityBasedInterface;
-use EDT\Querying\Contracts\PathsBasedInterface;
 use EDT\Querying\Contracts\PropertyPathInterface;
-use EDT\Querying\Contracts\SortMethodInterface;
 use EDT\Querying\Pagination\PagePagination;
 use EDT\Wrapping\Contracts\AccessException;
-use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
 use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 use EDT\Wrapping\CreationDataInterface;
 use EDT\Wrapping\EntityDataInterface;
-use EDT\Wrapping\PropertyBehavior\Relationship\RelationshipReadabilityInterface;
 use Exception;
 use IteratorAggregate;
 use League\Fractal\TransformerAbstract;
@@ -127,6 +123,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         );
     }
 
+    /**
+     * @return FluentRepository<TEntity>
+     */
     protected function getRepository(): RepositoryInterface
     {
         $repository = $this->getEntityManager()->getRepository($this->getEntityClass());
@@ -225,17 +224,6 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     }
 
     /**
-     * @param RelationshipReadabilityInterface<TransferableTypeInterface<PathsBasedInterface, PathsBasedInterface, object>> $readability
-     */
-    protected function isExposedReadability(RelationshipReadabilityInterface $readability): bool
-    {
-        $relationshipType = $readability->getRelationshipType();
-
-        return $relationshipType instanceof ExposableRelationshipTypeInterface
-            && $relationshipType->isExposedAsRelationship();
-    }
-
-    /**
      * Array order: Even though the order of the properties returned within the array may have an
      * effect (e.g. determining the order of properties in JSON:API responses) you can not rely on
      * these effects; they may be changed in the future.
@@ -292,7 +280,10 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
 
     public function getEntityPaginator(ApiPaginationInterface $pagination, array $conditions, array $sortMethods = []): Pagerfanta
     {
-        $this->assertDirectlyAvailable();
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
+        }
+
         $this->mapPaths($conditions, $sortMethods);
         $conditions = array_merge($conditions, $this->getAccessConditions());
         $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
@@ -303,7 +294,10 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
 
     public function listPrefilteredEntities(array $dataObjects, array $conditions = [], array $sortMethods = []): array
     {
-        $this->assertDirectlyAvailable();
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
+        }
+
         $this->mapPaths($conditions, $sortMethods);
         $conditions = array_merge($conditions, $this->getAccessConditions());
         $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
@@ -313,7 +307,10 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
 
     public function getEntityCount(array $conditions): int
     {
-        $this->assertDirectlyAvailable();
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
+        }
+
         $this->mapPaths($conditions, []);
         $conditions = array_merge($conditions, $this->getAccessConditions());
 
@@ -322,24 +319,16 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
 
     public function listEntityIdentifiers(array $conditions, array $sortMethods): array
     {
-        $this->assertDirectlyAvailable();
+        if (!$this->isAvailable()) {
+            throw AccessException::typeNotAvailable($this);
+        }
+
         $this->mapPaths($conditions, $sortMethods);
         $conditions = array_merge($conditions, $this->getAccessConditions());
         $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
         $entityIdentifierPropertyPath = $this->getIdentifierPropertyPath();
 
         return $this->getRepository()->getEntityIdentifiers($conditions, $sortMethods, array_pop($entityIdentifierPropertyPath));
-    }
-
-    public function assertDirectlyAvailable(): void
-    {
-        if (!$this->isDirectlyAccessible()) {
-            throw AccessException::typeNotDirectlyAccessible($this);
-        }
-
-        if (!$this->isAvailable()) {
-            throw AccessException::typeNotAvailable($this);
-        }
     }
 
     /**
@@ -352,7 +341,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
      * * the property is available for {@link FilteringTypeInterface::getFilteringProperties() filtering}/{@link SortingTypeInterface::getSortingProperties() sorting}
      *
      * @param list<ClauseFunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
-     * @param list<SortMethodInterface> $sortMethods Order matters. Lower positions imply higher priority. I.e. a second
+     * @param list<OrderBySortMethodInterface> $sortMethods Order matters. Lower positions imply higher priority. I.e. a second
      *                                               sort method will be applied to each subset individually that
      *                                               resulted from the first sort method.
      *

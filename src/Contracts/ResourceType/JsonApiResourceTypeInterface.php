@@ -10,17 +10,13 @@ use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\MappingException;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
-use EDT\Querying\Contracts\FunctionInterface;
 use EDT\Querying\Contracts\PaginationException;
 use EDT\Querying\Contracts\PathException;
-use EDT\Querying\Contracts\SortMethodInterface;
 use EDT\Wrapping\Contracts\AccessException;
-use EDT\Wrapping\Contracts\Types\ExposableRelationshipTypeInterface;
 use EDT\Wrapping\Contracts\Types\FilteringTypeInterface;
 use EDT\Wrapping\Contracts\Types\SortingTypeInterface;
 use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 use Exception;
-use InvalidArgumentException;
 use Pagerfanta\Pagerfanta;
 use Symfony\Component\Validator\Constraints\GroupSequence;
 
@@ -33,7 +29,7 @@ use Symfony\Component\Validator\Constraints\GroupSequence;
  * @template-extends CreatableResourceTypeInterface<TEntity>
  * @template-extends UpdatableResourceTypeInterface<TEntity>
  */
-interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterface, ResourceTypeInterface, GetableResourceTypeInterface, ListableResourceTypeInterface, DeletableResourceTypeInterface, CreatableResourceTypeInterface, UpdatableResourceTypeInterface
+interface JsonApiResourceTypeInterface extends ResourceTypeInterface, GetableResourceTypeInterface, ListableResourceTypeInterface, DeletableResourceTypeInterface, CreatableResourceTypeInterface, UpdatableResourceTypeInterface
 {
     /**
      * Adds the Message when an error on creating a Resource Type occurs.
@@ -45,16 +41,6 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
     public function addCreationErrorMessage(array $parameters): void;
 
     public function isAvailable(): bool;
-
-    /**
-     * @deprecated use one of the following, depending on your use case:
-     * {@link ListableResourceTypeInterface::isListAllowed()},
-     * {@link CreatableResourceTypeInterface::isCreateAllowed()},
-     * {@link UpdatableResourceTypeInterface::isUpdateAllowed()},
-     * {@link GetableResourceTypeInterface::isGetAllowed()},
-     * {@link DeletableResourceTypeInterface::isDeleteAllowed()}
-     */
-    public function isDirectlyAccessible(): bool;
 
     /**
      * @return array<string|GroupSequence> if empty, no validation will be executed, use `Default` to denote the default validation
@@ -100,8 +86,8 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
      *   {@link SortingTypeInterface::getSortingProperties() sorting}
      *
      * @param array<int,TEntity>                 $dataObjects
-     * @param array<int,FunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
-     * @param array<int,SortMethodInterface>     $sortMethods Order matters. Lower positions imply
+     * @param array<int,ClauseFunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
+     * @param array<int,OrderBySortMethodInterface>     $sortMethods Order matters. Lower positions imply
      *                                                        higher priority. Ie. a second sort method
      *                                                        will be applied to each subset individually
      *                                                        that resulted from the first sort method.
@@ -124,8 +110,8 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
     public function getEntityCount(array $conditions): int;
 
     /**
-     * @param array<int,FunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
-     * @param array<int,SortMethodInterface>     $sortMethods Order matters. Lower positions imply
+     * @param array<int,ClauseFunctionInterface<bool>> $conditions  Always conjuncted as AND. Order does not matter
+     * @param array<int,OrderBySortMethodInterface>     $sortMethods Order matters. Lower positions imply
      *                                                        higher priority. I.e. a second sort method
      *                                                        will be applied to each subset individually
      *                                                        that resulted from the first sort method.
@@ -140,9 +126,4 @@ interface JsonApiResourceTypeInterface extends ExposableRelationshipTypeInterfac
         array $conditions,
         array $sortMethods
     ): array;
-
-    /**
-     * @throws AccessException
-     */
-    public function assertDirectlyAvailable(): void;
 }

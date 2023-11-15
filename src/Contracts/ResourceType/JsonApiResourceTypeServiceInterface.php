@@ -35,7 +35,5 @@ interface JsonApiResourceTypeServiceInterface
      */
     public function processProperties(JsonApiResourceTypeInterface $type, ResourceConfigBuilderInterface $resourceConfigBuilder): ResourceConfigBuilderInterface;
 
-    public function isExposedAsRelationship(JsonApiResourceTypeInterface $type): bool;
-
     public function addCreationErrorMessage(array $parameters): void;
 }

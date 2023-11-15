@@ -32,14 +32,6 @@ parameters:
             path: src/Contracts/ApiRequest/SearchCapableListRequest.php
 
         -
-            message: """
-                #^Call to deprecated method isExposedAsRelationship\\(\\) of class EDT\\\\Wrapping\\\\Contracts\\\\Types\\\\ExposableRelationshipTypeInterface\\:
-                will be removed to reduce usage complexity, evaluate the conditions when returning relationships in methods like \\{@link TransferableTypeInterface\\:\\:getReadability\\(\\)\\} instead$#
-            """
-            count: 1
-            path: src/Contracts/ResourceType/DoctrineResourceType.php
-
-        -
             message: "#^Method DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\DoctrineResourceType\\:\\:createAttribute\\(\\) should return EDT\\\\JsonApi\\\\PropertyConfig\\\\Builder\\\\AttributeConfigBuilder\\<EDT\\\\DqlQuerying\\\\Contracts\\\\ClauseFunctionInterface\\<bool\\>, TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\> but returns EDT\\\\JsonApi\\\\PropertyConfig\\\\Builder\\\\AttributeConfigBuilder\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\>\\.$#"
             count: 1
             path: src/Contracts/ResourceType/DoctrineResourceType.php
@@ -51,11 +43,6 @@ parameters:
 
         -
             message: "#^Method DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\DoctrineResourceType\\:\\:createToOneRelationship\\(\\) should return EDT\\\\JsonApi\\\\PropertyConfig\\\\Builder\\\\ToOneRelationshipConfigBuilder\\<EDT\\\\DqlQuerying\\\\Contracts\\\\ClauseFunctionInterface\\<bool\\>, EDT\\\\DqlQuerying\\\\Contracts\\\\OrderBySortMethodInterface, TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface, TRelationship of object\\> but returns EDT\\\\JsonApi\\\\PropertyConfig\\\\Builder\\\\ToOneRelationshipConfigBuilder\\<EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, EDT\\\\Querying\\\\Contracts\\\\PathsBasedInterface, TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface, object\\>\\.$#"
-            count: 1
-            path: src/Contracts/ResourceType/DoctrineResourceType.php
-
-        -
-            message: "#^Method DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\ResourceType\\\\DoctrineResourceType\\:\\:getRepository\\(\\) should return EDT\\\\JsonApi\\\\InputHandling\\\\RepositoryInterface\\<EDT\\\\DqlQuerying\\\\Contracts\\\\ClauseFunctionInterface\\<bool\\>, EDT\\\\DqlQuerying\\\\Contracts\\\\OrderBySortMethodInterface, TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\> but returns DemosEurope\\\\DemosplanAddon\\\\Logic\\\\ApiRequest\\\\FluentRepository&Doctrine\\\\ORM\\\\EntityRepository\\<TEntity of DemosEurope\\\\DemosplanAddon\\\\Contracts\\\\Entities\\\\EntityInterface\\>\\.$#"
             count: 1
             path: src/Contracts/ResourceType/DoctrineResourceType.php
 
