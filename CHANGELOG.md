@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- introduce AddonViolationsException
+
 ## v0.11 (2023-11-06)
 
 - add ParagraphServiceInterface
