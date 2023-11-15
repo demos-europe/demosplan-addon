@@ -38,6 +38,7 @@ interface ElementsInterface extends UuidEntityInterface, CoreEntityInterface
     public const ELEMENTS_TITLE_FNP_BERICHTIGUNG = 'FNP-Berichtigung';
     public const ELEMENTS_TITLE_TEXTLICHE_FESTSETZUNGEN = 'Textliche Festsetzungen';
     public const ELEMENTS_TITLE_GESAMTSTELLUNGNAHME = 'Gesamtstellungnahme';
+    public const ELEMENTS_TITLE_ERGAENZENDE_UNTERLAGEN = 'Ergänzende Unterlagen';
 
 
 
