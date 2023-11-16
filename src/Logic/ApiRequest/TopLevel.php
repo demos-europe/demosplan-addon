@@ -62,10 +62,7 @@ class TopLevel implements ArrayAccess
         return array_key_exists($offset, $this->data);
     }
 
-    /**
-     * @return mixed
-     */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->data[$offset];
     }

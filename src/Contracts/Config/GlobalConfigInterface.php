@@ -296,11 +296,6 @@ interface GlobalConfigInterface
      */
     public function getFileServiceFilePathAbsolute(): string;
 
-    /**
-     * @throws Exception
-     */
-    public function getDatasheetFilePathAbsolute(): string;
-
     public function getInstanceAbsolutePath(): string;
 
     public function getAllowedMimeTypes(): array;
@@ -321,11 +316,6 @@ interface GlobalConfigInterface
     public function getEntrypointRouteRtedit(): string;
 
     public function getProjectSubmissionType(): string;
-
-    /**
-     * @param string $procedureId
-     */
-    public function getDatasheetVersion($procedureId): int;
 
     public function getKernelEnvironment(): string;
 
@@ -383,13 +373,6 @@ interface GlobalConfigInterface
     public function getSubdomain(): string;
 
     public function setSubdomain(string $subdomain): void;
-
-    /**
-     * Defines which subdomains (aka {@link CustomerInterface}s) are allowed.
-     *
-     * @return array<int,string>
-     */
-    public function getSubdomainsAllowed(): array;
 
     public function getOrgaBrandedRoutes(): array;
 

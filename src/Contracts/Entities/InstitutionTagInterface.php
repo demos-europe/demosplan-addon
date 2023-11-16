@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
 
-interface InstitutionTagInterface extends UuidEntityInterface
+interface InstitutionTagInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getOwningOrganisation(): OrgaInterface;
 

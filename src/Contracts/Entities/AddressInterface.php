@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use DateTimeInterface;
 
-interface AddressInterface extends UuidEntityInterface
+interface AddressInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function setCode(?string $code): self;
 

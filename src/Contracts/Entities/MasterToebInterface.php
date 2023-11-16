@@ -5,7 +5,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use DateTimeInterface;
 
-interface MasterToebInterface extends UuidEntityInterface
+interface MasterToebInterface extends UuidEntityInterface, CoreEntityInterface
 {
     /**
      * @return mixed

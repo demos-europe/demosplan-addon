@@ -6,5 +6,5 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 interface PostProcedureDeletedEventInterface
 {
-
+    public function getProcedureId(): string;
 }
