@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.3
+
+- **fix** Adjust naming of constants in ElementsInterface.php
+
+
 ## UNRELEASED
 
 - **fix** Use correct namespaces
