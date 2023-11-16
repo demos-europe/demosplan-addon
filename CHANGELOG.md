@@ -1,11 +1,8 @@
 # Changelog
 
-## v0.0.3
-
-- **fix** Adjust naming of constants in ElementsInterface.php
-
-
 ## UNRELEASED
+
+- rename in ElementsInterface.php(breaking change)
 
 ## v0.11 (2023-11-06)
 
