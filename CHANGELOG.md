@@ -2,7 +2,7 @@
 
 ## UNRELEASED
 
-- rename in ElementsInterface.php(breaking change)
+- renaming constants in ElementsInterface.php(breaking change)
 
 ## v0.11 (2023-11-06)
 
