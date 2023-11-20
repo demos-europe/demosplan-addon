@@ -29,6 +29,8 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
      */
     public function setId($id);
 
+    public function getId(): ?string;
+
     /**
      * @return int
      */
