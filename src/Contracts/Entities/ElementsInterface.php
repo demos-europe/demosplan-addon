@@ -25,7 +25,8 @@ interface ElementsInterface extends UuidEntityInterface, CoreEntityInterface
     public const ELEMENTS_TITLE_GROBABSTIMMUNGSPAPIER = 'Grobabstimmungspapier';
     public const ELEMENTS_TITLE_GUTACHTEN = 'Gutachten';
     public const ELEMENTS_TITLE_LAPRO_AENDERUNG = 'LaPro-Änderung';
-    public const ELEMENTS_TITLE_NIEDERSCHRIFT_GROBABSTIMMUNG_ARBEITSKREISE = 'Niederschrift (Grobabstimmung, Arbeitskreise)';
+    public const ELEMENTS_TITLE_NIEDERSCHRIFT_GROBABSTIMMUNG_ARBEITSKREISE
+        = 'Niederschrift (Grobabstimmung, Arbeitskreise)';
     public const ELEMENTS_TITLE_NIEDERSCHRIFT_SONSTIGE = 'Niederschrift (sonstige)';
     public const ELEMENTS_TITLE_PLANZEICHNUNG = 'Planzeichnung';
     public const ELEMENTS_TITLE_SCOPING_PAPIER = 'Scopingpapier';
@@ -39,10 +40,18 @@ interface ElementsInterface extends UuidEntityInterface, CoreEntityInterface
     public const ELEMENTS_TITLE_TEXTLICHE_FESTSETZUNGEN = 'Textliche Festsetzungen';
     public const ELEMENTS_TITLE_GESAMTSTELLUNGNAHME = 'Gesamtstellungnahme';
     public const ELEMENTS_TITLE_ERGAENZENDE_UNTERLAGEN = 'Ergänzende Unterlagen';
-
-
-
-
+    public const ELEMENTS_TITLE_VERORDNUNG_TEXT_TEIL_B = 'Verordnung - Text Teil B';
+    public const ELEMENTS_TITLE_NIEDERSCHRIFTEN = 'Niederschriften';
+    public const ELEMENTS_TITLE_UNTERSUCHUNGEN = 'Untersuchungen';
+    public const ELEMENTS_TITLE_UNTERSUCHUNG = 'Untersuchung';
+    public const ELEMENTS_TITLE_VERTEILER_UND_EINLADUNG = 'Verteiler und Einladung';
+    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_0 = 'Arbeitskreispapier';
+    public const ELEMENTS_TITLE_INFOBLATT = 'Infoblatt';
+    public const ELEMENTS_TITLE_INFOBLATT_SCOPING_PAPIER_NUR_SCOPING_PROTOKOLL
+        = 'Infoblatt, Scoping-Papier nur Scoping-Protokoll';
+    public const ELEMENTS_TITLE_STAEDTEBAULICHE_VERTRAEGE_ERGAENZENDE_UNTERLAGEN
+        = 'Städtebauliche Verträge / Ergänzende Unterlagen';
+    public const ELEMENTS_TITLE_PROTOKOLLE_UND_NIEDERSCHRIFTEN = 'Protokoll(e) und Niederschrift(en)';
 
     /**
      * The maximum number of parents (technically) allowed when nesting {@link ElementsInterface} entities.
