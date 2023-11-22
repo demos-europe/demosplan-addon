@@ -15,23 +15,43 @@ interface ElementsInterface extends UuidEntityInterface, CoreEntityInterface
     public const ELEMENTS_CATEGORY_FILE = 'file'; // like "Ergänzende Unterlagen" or "Landschaftsplan-Änderung"
     public const ELEMENTS_CATEGORY_PARAGRAPH = 'paragraph'; // like "Begründung" or "Textliche Festsetzungen"
     public const ELEMENTS_CATEGORY_CATEGORY = 'category'; // created element by customer
-    public const FILE_TYPE_ARBEITSKREISPAPIER = 'Arbeitskreispapier I und II';
-    public const FILE_TYPE_ARBEITSKREISPAPIER_I = 'AKI-Papier';
-    public const FILE_TYPE_ARBEITSKREISPAPIER_II = 'AKII-Papier';
-    public const FILE_TYPE_BEGRUENDUNG = 'Begründung';
-    public const FILE_TYPE_ERGAENZENDE_UNTERLAGE = 'ergänzende Unterlage';
-    public const FILE_TYPE_FNP_AENDERUNG = 'FNP-Änderung';
-    public const FILE_TYPE_GROBABSTIMMUNGSPAPIER = 'Grobabstimmungspapier';
-    public const FILE_TYPE_GUTACHTEN = 'Gutachten';
-    public const FILE_TYPE_LAPRO_AENDERUNG = 'LaPro-Änderung';
-    public const FILE_TYPE_NIEDERSCHRIFT_GROBABSTIMMUNG_ARBEITSKREISE = 'Niederschrift (Grobabstimmung, Arbeitskreise)';
-    public const FILE_TYPE_NIEDERSCHRIFT_SONSTIGE = 'Niederschrift (sonstige)';
-    public const FILE_TYPE_PLANZEICHNUNG = 'Planzeichnung';
-    public const FILE_TYPE_SCOPING_PAPIER = 'Scopingpapier';
-    public const FILE_TYPE_SCOPING_PROTOKOLL = 'Scoping-Protokoll';
-    public const FILE_TYPE_VERORDNUNG = 'Verordnung';
-    public const FILE_TYPE_VERTEILER = 'Verteiler';
-    public const STATEMENT_TYPE_FEHLANZEIGE = 'Fehlanzeige';
+
+    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER = 'Arbeitskreispapier I und II';
+    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_I = 'AKI-Papier';
+    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_II = 'AKII-Papier';
+    public const ELEMENTS_TITLE_BEGRUENDUNG = 'Begründung';
+    public const ELEMENTS_TITLE_ERGAENZENDE_UNTERLAGE = 'ergänzende Unterlage';
+    public const ELEMENTS_TITLE_FNP_AENDERUNG = 'FNP-Änderung';
+    public const ELEMENTS_TITLE_GROBABSTIMMUNGSPAPIER = 'Grobabstimmungspapier';
+    public const ELEMENTS_TITLE_GUTACHTEN = 'Gutachten';
+    public const ELEMENTS_TITLE_LAPRO_AENDERUNG = 'LaPro-Änderung';
+    public const ELEMENTS_TITLE_NIEDERSCHRIFT_GROBABSTIMMUNG_ARBEITSKREISE
+        = 'Niederschrift (Grobabstimmung, Arbeitskreise)';
+    public const ELEMENTS_TITLE_NIEDERSCHRIFT_SONSTIGE = 'Niederschrift (sonstige)';
+    public const ELEMENTS_TITLE_PLANZEICHNUNG = 'Planzeichnung';
+    public const ELEMENTS_TITLE_SCOPING_PAPIER = 'Scopingpapier';
+    public const ELEMENTS_TITLE_SCOPING_PROTOKOLL = 'Scoping-Protokoll';
+    public const ELEMENTS_TITLE_VERORDNUNG = 'Verordnung';
+    public const ELEMENTS_TITLE_VERTEILER = 'Verteiler';
+    public const ELEMENTS_TITLE_FEHLANZEIGE = 'Fehlanzeige';
+    public const ELEMENTS_TITLE_WEITERE_INFORMATION = 'weitere Information';
+    public const ELEMENTS_TITLE_LANDSCHAFTSPLAN_AENDERUNG = 'Landschaftsplan-Änderung';
+    public const ELEMENTS_TITLE_FNP_BERICHTIGUNG = 'FNP-Berichtigung';
+    public const ELEMENTS_TITLE_TEXTLICHE_FESTSETZUNGEN = 'Textliche Festsetzungen';
+    public const ELEMENTS_TITLE_GESAMTSTELLUNGNAHME = 'Gesamtstellungnahme';
+    public const ELEMENTS_TITLE_ERGAENZENDE_UNTERLAGEN = 'Ergänzende Unterlagen';
+    public const ELEMENTS_TITLE_VERORDNUNG_TEXT_TEIL_B = 'Verordnung - Text Teil B';
+    public const ELEMENTS_TITLE_NIEDERSCHRIFTEN = 'Niederschriften';
+    public const ELEMENTS_TITLE_UNTERSUCHUNGEN = 'Untersuchungen';
+    public const ELEMENTS_TITLE_UNTERSUCHUNG = 'Untersuchung';
+    public const ELEMENTS_TITLE_VERTEILER_UND_EINLADUNG = 'Verteiler und Einladung';
+    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_0 = 'Arbeitskreispapier';
+    public const ELEMENTS_TITLE_INFOBLATT = 'Infoblatt';
+    public const ELEMENTS_TITLE_INFOBLATT_SCOPING_PAPIER_NUR_SCOPING_PROTOKOLL
+        = 'Infoblatt, Scoping-Papier nur Scoping-Protokoll';
+    public const ELEMENTS_TITLE_STAEDTEBAULICHE_VERTRAEGE_ERGAENZENDE_UNTERLAGEN
+        = 'Städtebauliche Verträge / Ergänzende Unterlagen';
+    public const ELEMENTS_TITLE_PROTOKOLLE_UND_NIEDERSCHRIFTEN = 'Protokoll(e) und Niederschrift(en)';
 
     /**
      * The maximum number of parents (technically) allowed when nesting {@link ElementsInterface} entities.
