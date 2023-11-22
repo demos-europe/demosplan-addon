@@ -3,6 +3,7 @@
 ## UNRELEASED
 
 - rename and add constants in ElementsInterface.php(breaking change)
+- replace multiple constants by constant array
 
 ## v0.11 (2023-11-06)
 

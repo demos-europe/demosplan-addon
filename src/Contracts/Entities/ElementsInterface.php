@@ -10,48 +10,49 @@ use Doctrine\Common\Collections\Collection;
 
 interface ElementsInterface extends UuidEntityInterface, CoreEntityInterface
 {
-    public const ELEMENTS_CATEGORY_MAP = 'map'; // like "Planzeichnung"
-    public const ELEMENTS_CATEGORY_STATEMENT = 'statement'; // like "Gesamtstellungnahme" or "Fehlanzeige"
-    public const ELEMENTS_CATEGORY_FILE = 'file'; // like "Ergänzende Unterlagen" or "Landschaftsplan-Änderung"
-    public const ELEMENTS_CATEGORY_PARAGRAPH = 'paragraph'; // like "Begründung" or "Textliche Festsetzungen"
-    public const ELEMENTS_CATEGORY_CATEGORY = 'category'; // created element by customer
+    public const ELEMENT_CATEGORIES = [
+        'map' => 'map',
+        'statement' => 'statement',
+        'file' =>  'file',
+        'paragraph' => 'paragraph',
+        'category' => 'category',
+    ];
 
-    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER = 'Arbeitskreispapier I und II';
-    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_I = 'AKI-Papier';
-    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_II = 'AKII-Papier';
-    public const ELEMENTS_TITLE_BEGRUENDUNG = 'Begründung';
-    public const ELEMENTS_TITLE_ERGAENZENDE_UNTERLAGE = 'ergänzende Unterlage';
-    public const ELEMENTS_TITLE_FNP_AENDERUNG = 'FNP-Änderung';
-    public const ELEMENTS_TITLE_GROBABSTIMMUNGSPAPIER = 'Grobabstimmungspapier';
-    public const ELEMENTS_TITLE_GUTACHTEN = 'Gutachten';
-    public const ELEMENTS_TITLE_LAPRO_AENDERUNG = 'LaPro-Änderung';
-    public const ELEMENTS_TITLE_NIEDERSCHRIFT_GROBABSTIMMUNG_ARBEITSKREISE
-        = 'Niederschrift (Grobabstimmung, Arbeitskreise)';
-    public const ELEMENTS_TITLE_NIEDERSCHRIFT_SONSTIGE = 'Niederschrift (sonstige)';
-    public const ELEMENTS_TITLE_PLANZEICHNUNG = 'Planzeichnung';
-    public const ELEMENTS_TITLE_SCOPING_PAPIER = 'Scopingpapier';
-    public const ELEMENTS_TITLE_SCOPING_PROTOKOLL = 'Scoping-Protokoll';
-    public const ELEMENTS_TITLE_VERORDNUNG = 'Verordnung';
-    public const ELEMENTS_TITLE_VERTEILER = 'Verteiler';
-    public const ELEMENTS_TITLE_FEHLANZEIGE = 'Fehlanzeige';
-    public const ELEMENTS_TITLE_WEITERE_INFORMATION = 'weitere Information';
-    public const ELEMENTS_TITLE_LANDSCHAFTSPLAN_AENDERUNG = 'Landschaftsplan-Änderung';
-    public const ELEMENTS_TITLE_FNP_BERICHTIGUNG = 'FNP-Berichtigung';
-    public const ELEMENTS_TITLE_TEXTLICHE_FESTSETZUNGEN = 'Textliche Festsetzungen';
-    public const ELEMENTS_TITLE_GESAMTSTELLUNGNAHME = 'Gesamtstellungnahme';
-    public const ELEMENTS_TITLE_ERGAENZENDE_UNTERLAGEN = 'Ergänzende Unterlagen';
-    public const ELEMENTS_TITLE_VERORDNUNG_TEXT_TEIL_B = 'Verordnung - Text Teil B';
-    public const ELEMENTS_TITLE_NIEDERSCHRIFTEN = 'Niederschriften';
-    public const ELEMENTS_TITLE_UNTERSUCHUNGEN = 'Untersuchungen';
-    public const ELEMENTS_TITLE_UNTERSUCHUNG = 'Untersuchung';
-    public const ELEMENTS_TITLE_VERTEILER_UND_EINLADUNG = 'Verteiler und Einladung';
-    public const ELEMENTS_TITLE_ARBEITSKREISPAPIER_0 = 'Arbeitskreispapier';
-    public const ELEMENTS_TITLE_INFOBLATT = 'Infoblatt';
-    public const ELEMENTS_TITLE_INFOBLATT_SCOPING_PAPIER_NUR_SCOPING_PROTOKOLL
-        = 'Infoblatt, Scoping-Papier nur Scoping-Protokoll';
-    public const ELEMENTS_TITLE_STAEDTEBAULICHE_VERTRAEGE_ERGAENZENDE_UNTERLAGEN
-        = 'Städtebauliche Verträge / Ergänzende Unterlagen';
-    public const ELEMENTS_TITLE_PROTOKOLLE_UND_NIEDERSCHRIFTEN = 'Protokoll(e) und Niederschrift(en)';
+    public const ELEMENT_TITLES = [
+        'arbeitskreispapier' => 'Arbeitskreispapier I und II',
+        'arbeitskreispapier_i' => 'AKI-Papier',
+        'arbeitskreispapier_ii' => 'AKII-Papier',
+        'begruendung' => 'Begründung',
+        'ergaenzende_unterlage' => 'ergänzende Unterlage',
+        'fnp_aenderung' => 'FNP-Änderung',
+        'grobabstimmungspapier' => 'Grobabstimmungspapier',
+        'gutachten' => 'Gutachten',
+        'lapro_aenderung' => 'LaPro-Änderung',
+        'niederschrift_grobabstimmung_arbeitskreise' => 'Niederschrift (Grobabstimmung, Arbeitskreise)',
+        'niederschrift_sonstige' => 'Niederschrift (sonstige)',
+        'planzeichnung' => 'Planzeichnung',
+        'scoping_papier' => 'Scopingpapier',
+        'scoping_protokoll' => 'Scoping-Protokoll',
+        'verordnung' => 'Verordnung',
+        'verteiler' => 'Verteiler',
+        'fehlanzeige' => 'Fehlanzeige',
+        'weitere_information' => 'weitere Information',
+        'landschaftsplan_aenderung' => 'Landschaftsplan-Änderung',
+        'fnp_berichtigung' => 'FNP-Berichtigung',
+        'textliche_festsetzungen' => 'Textliche Festsetzungen',
+        'gesamtstellungnahme' => 'Gesamtstellungnahme',
+        'ergaenzende_unterlagen' => 'Ergänzende Unterlagen',
+        'verordnung_text_teil_b' => 'Verordnung - Text Teil B',
+        'niederschriften' => 'Niederschriften',
+        'untersuchungen' => 'Untersuchungen',
+        'untersuchung' => 'Untersuchung',
+        'verteiler_und_einladung' => 'Verteiler und Einladung',
+        'arbeitskreispapier_0' => 'Arbeitskreispapier',
+        'infoblatt' => 'Infoblatt',
+        'infoblatt_scoping_papier_nur_scoping_protokoll' => 'Infoblatt, Scoping-Papier nur Scoping-Protokoll',
+        'staedtebauliche_vertraege_ergaenzende_unterlagen' => 'Städtebauliche Verträge / Ergänzende Unterlagen',
+        'protokolle_und_niederschriften' => 'Protokoll(e) und Niederschrift(en)',
+    ];
 
     /**
      * The maximum number of parents (technically) allowed when nesting {@link ElementsInterface} entities.
