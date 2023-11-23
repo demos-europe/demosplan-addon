@@ -23,5 +23,5 @@ interface EmailAddressRepositoryInterface
      *
      * @return int the number of deletions
      */
-    public function deleteOrphanEmailAddresses(): int;
+    public function deleteOrphanEmailAddresses(array $toDeleteEmailIds): int;
 }
