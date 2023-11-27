@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+## v0.12 (2023-11-16)
+
 - rename and add constants in ElementsInterface.php(breaking change)
 - replace multiple constants by constant array
 
