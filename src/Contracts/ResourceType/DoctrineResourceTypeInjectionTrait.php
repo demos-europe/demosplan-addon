@@ -11,8 +11,8 @@ use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\Utilities\PropertyBuilderFactory;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\Required;
 
 trait DoctrineResourceTypeInjectionTrait
