@@ -51,8 +51,13 @@ class SearchCapableListRequest extends ListRequest
     {
         $urlParams = $this->requestParser->getUrlParameters();
 
-        $searchParams = $urlParams->get('search', []);
-        if ([] === $searchParams || (array_key_exists('value', $searchParams) && '' === $searchParams['value'])) {
+        $searchParams = $urlParams->get(JsonApiEsServiceInterface::SEARCH, []);
+        if ([] === $searchParams
+            || (
+                array_key_exists(JsonApiEsServiceInterface::VALUE, $searchParams)
+                && '' === $searchParams[JsonApiEsServiceInterface::VALUE]
+            )
+        ) {
             return $this->listResources($type);
         }
 
@@ -60,14 +65,14 @@ class SearchCapableListRequest extends ListRequest
         $sortMethods = $this->getSortMethods($urlParams);
         $pagination = $this->paginationParser->getPagination($urlParams);
 
-
         // we do not need to apply any sorting here, because it needs to be applied later
         $entityIdentifiers = $type->listEntityIdentifiers($conditions, []);
 
         $apiList = $this->jsonApiEsService->optimisticallyGetEsFilteredObjects(
             $type,
             $entityIdentifiers,
-            $searchParams,
+            $searchParams[JsonApiEsServiceInterface::VALUE],
+            $searchParams[JsonApiEsServiceInterface::FIELDS_TO_SEARCH] ?? null,
             $sortMethods,
             $pagination
         );
