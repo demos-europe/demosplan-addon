@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 
 use DateTime;
-use DemosEurope\DemosplanAddon\Contracts\ApiRequest\ApiPaginationInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\ResourceConfig\Builder\ResourceConfigBuilderInterface;
-use EDT\Querying\Contracts\PathsBasedInterface;
-use Pagerfanta\Pagerfanta;
 
 /**
  * Classes implementing this interface are intended as helper classes for implementations of
