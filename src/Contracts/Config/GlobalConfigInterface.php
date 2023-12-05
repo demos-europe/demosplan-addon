@@ -201,6 +201,8 @@ interface GlobalConfigInterface
      */
     public function getProxyPort(): string;
 
+    public function getProjectCoreVersion(): string;
+
     public function getProjectVersion(): string;
 
     public function getProjectShortUrlRedirectRoute(): string;
