@@ -401,7 +401,7 @@ abstract class APIController extends AbstractController
             try {
                 // Checking if the type exists and is a resource type implementation.
                 $type = $this->resourceTypeProvider->getTypeByIdentifier($typeIdentifier);
-                Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class);
+                Assert::isInstanceOf($type, JsonApiResourceTypeInterface::class, "Expected a resource type instance for `$typeIdentifier` implementing %2\$s. Got: %s");
                 /** @var JsonApiResourceTypeInterface<EntityInterface> $type */
 
                 if (!$type->isAvailable()) {
