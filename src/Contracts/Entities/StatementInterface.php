@@ -30,7 +30,17 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
     public const SUBMIT_TYPE_DECLARATION = 'declaration';
     public const SUBMIT_TYPE_UNKNOWN = 'unknown';
     public const SUBMIT_TYPE_UNSPECIFIED = 'unspecified';
-
+    public const SUPPORT_TYPE_E_AKTE = 'eakte';
+    public const SUBMIT_TYPES = [
+        StatementInterface::SUBMIT_TYPE_UNKNOWN,
+        StatementInterface::SUBMIT_TYPE_DECLARATION,
+        StatementInterface::SUBMIT_TYPE_EAKTE,
+        StatementInterface::SUBMIT_TYPE_EMAIL,
+        StatementInterface::SUBMIT_TYPE_FAX,
+        StatementInterface::SUBMIT_TYPE_LETTER,
+        StatementInterface::SUBMIT_TYPE_SYSTEM,
+        StatementInterface::SUBMIT_TYPE_UNSPECIFIED,
+    ];
     /**
      * For documentation, see Statement->publicVerifiedMapping.
      */
