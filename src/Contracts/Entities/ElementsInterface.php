@@ -10,28 +10,49 @@ use Doctrine\Common\Collections\Collection;
 
 interface ElementsInterface extends UuidEntityInterface, CoreEntityInterface
 {
-    public const ELEMENTS_CATEGORY_MAP = 'map'; // like "Planzeichnung"
-    public const ELEMENTS_CATEGORY_STATEMENT = 'statement'; // like "Gesamtstellungnahme" or "Fehlanzeige"
-    public const ELEMENTS_CATEGORY_FILE = 'file'; // like "Ergänzende Unterlagen" or "Landschaftsplan-Änderung"
-    public const ELEMENTS_CATEGORY_PARAGRAPH = 'paragraph'; // like "Begründung" or "Textliche Festsetzungen"
-    public const ELEMENTS_CATEGORY_CATEGORY = 'category'; // created element by customer
-    public const FILE_TYPE_ARBEITSKREISPAPIER = 'Arbeitskreispapier I und II';
-    public const FILE_TYPE_ARBEITSKREISPAPIER_I = 'AKI-Papier';
-    public const FILE_TYPE_ARBEITSKREISPAPIER_II = 'AKII-Papier';
-    public const FILE_TYPE_BEGRUENDUNG = 'Begründung';
-    public const FILE_TYPE_ERGAENZENDE_UNTERLAGE = 'ergänzende Unterlage';
-    public const FILE_TYPE_FNP_AENDERUNG = 'FNP-Änderung';
-    public const FILE_TYPE_GROBABSTIMMUNGSPAPIER = 'Grobabstimmungspapier';
-    public const FILE_TYPE_GUTACHTEN = 'Gutachten';
-    public const FILE_TYPE_LAPRO_AENDERUNG = 'LaPro-Änderung';
-    public const FILE_TYPE_NIEDERSCHRIFT_GROBABSTIMMUNG_ARBEITSKREISE = 'Niederschrift (Grobabstimmung, Arbeitskreise)';
-    public const FILE_TYPE_NIEDERSCHRIFT_SONSTIGE = 'Niederschrift (sonstige)';
-    public const FILE_TYPE_PLANZEICHNUNG = 'Planzeichnung';
-    public const FILE_TYPE_SCOPING_PAPIER = 'Scopingpapier';
-    public const FILE_TYPE_SCOPING_PROTOKOLL = 'Scoping-Protokoll';
-    public const FILE_TYPE_VERORDNUNG = 'Verordnung';
-    public const FILE_TYPE_VERTEILER = 'Verteiler';
-    public const STATEMENT_TYPE_FEHLANZEIGE = 'Fehlanzeige';
+    public const ELEMENT_CATEGORIES = [
+        'map' => 'map',
+        'statement' => 'statement',
+        'file' =>  'file',
+        'paragraph' => 'paragraph',
+        'category' => 'category',
+    ];
+
+    public const ELEMENT_TITLES = [
+        'arbeitskreispapier' => 'Arbeitskreispapier I und II',
+        'arbeitskreispapier_i' => 'AKI-Papier',
+        'arbeitskreispapier_ii' => 'AKII-Papier',
+        'begruendung' => 'Begründung',
+        'ergaenzende_unterlage' => 'ergänzende Unterlage',
+        'fnp_aenderung' => 'FNP-Änderung',
+        'grobabstimmungspapier' => 'Grobabstimmungspapier',
+        'gutachten' => 'Gutachten',
+        'lapro_aenderung' => 'LaPro-Änderung',
+        'niederschrift_grobabstimmung_arbeitskreise' => 'Niederschrift (Grobabstimmung, Arbeitskreise)',
+        'niederschrift_sonstige' => 'Niederschrift (sonstige)',
+        'planzeichnung' => 'Planzeichnung',
+        'scoping_papier' => 'Scopingpapier',
+        'scoping_protokoll' => 'Scoping-Protokoll',
+        'verordnung' => 'Verordnung',
+        'verteiler' => 'Verteiler',
+        'fehlanzeige' => 'Fehlanzeige',
+        'weitere_information' => 'weitere Information',
+        'landschaftsplan_aenderung' => 'Landschaftsplan-Änderung',
+        'fnp_berichtigung' => 'FNP-Berichtigung',
+        'textliche_festsetzungen' => 'Textliche Festsetzungen',
+        'gesamtstellungnahme' => 'Gesamtstellungnahme',
+        'ergaenzende_unterlagen' => 'Ergänzende Unterlagen',
+        'verordnung_text_teil_b' => 'Verordnung - Text Teil B',
+        'niederschriften' => 'Niederschriften',
+        'untersuchungen' => 'Untersuchungen',
+        'untersuchung' => 'Untersuchung',
+        'verteiler_und_einladung' => 'Verteiler und Einladung',
+        'arbeitskreispapier_0' => 'Arbeitskreispapier',
+        'infoblatt' => 'Infoblatt',
+        'infoblatt_scoping_papier_nur_scoping_protokoll' => 'Infoblatt, Scoping-Papier nur Scoping-Protokoll',
+        'staedtebauliche_vertraege_ergaenzende_unterlagen' => 'Städtebauliche Verträge / Ergänzende Unterlagen',
+        'protokolle_und_niederschriften' => 'Protokoll(e) und Niederschrift(en)',
+    ];
 
     /**
      * The maximum number of parents (technically) allowed when nesting {@link ElementsInterface} entities.
