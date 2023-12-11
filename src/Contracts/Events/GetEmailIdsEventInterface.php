@@ -6,5 +6,5 @@ interface GetEmailIdsEventInterface
 {
     public function getEmailIds(): array;
 
-    public function setEmailIds(array $emailIds): void;
+    public function addEmailIds(array $emailIds): void;
 }
