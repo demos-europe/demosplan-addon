@@ -13,9 +13,4 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
  */
 abstract class AddonResourceType extends DoctrineResourceType
 {
-    public function __construct(
-        InterfaceCapeableReflectionSegmentFactory $segmentFactory
-    ) {
-        $this->segmentFactory = $segmentFactory;
-    }
 }

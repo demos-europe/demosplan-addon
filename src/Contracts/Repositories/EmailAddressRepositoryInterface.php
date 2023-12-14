@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Repositories;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\EmailAddressInterface;
+use Doctrine\ORM\ORMException;
 
 interface EmailAddressRepositoryInterface
 {
@@ -24,4 +25,11 @@ interface EmailAddressRepositoryInterface
      * @return int the number of deletions
      */
     public function deleteOrphanEmailAddresses(): int;
+
+    /**
+     * @param array<int, object> $entities
+     *
+     * @throws ORMException
+     */
+    public function persistEntities(array $entities): void;
 }
