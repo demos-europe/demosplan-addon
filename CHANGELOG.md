@@ -2,6 +2,11 @@
 
 ## UNRELEASED
 
+## v0.13 (2023-12-08)
+
+- add submitType const to StatementInterface as well as an const array containing all supported submitTypes
+- needed to validate the submitType choices
+
 ## v0.12 (2023-11-27)
 
 - rename and add constants in ElementsInterface.php(breaking change)
