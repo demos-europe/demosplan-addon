@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Handler;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface;
-use demosplan\DemosPlanCoreBundle\Entity\Statement\Statement;
-use demosplan\DemosPlanCoreBundle\Exception\MessageBagException;
-use Tightenco\Collect\Support\Collection;
 
 interface StatementHandlerInterface
 {

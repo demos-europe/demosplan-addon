@@ -6,5 +6,5 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 interface IsOriginalStatementAvailableEventInterface
 {
-
+    public function setIsOriginalStatementAvailable(bool $isOriginalStatementAvailable): void;
 }
