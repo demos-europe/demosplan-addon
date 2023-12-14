@@ -26,4 +26,19 @@ interface StatementHandlerInterface
      * @return StatementInterface|bool
      */
     public function newStatement(array $data, bool $isDataInput = false);
+
+    /**
+     * Get Statement by Id.
+     *
+     * @param string $id
+     */
+    public function getStatement($id): ?StatementInterface;
+
+    /**
+     * Definitely get Statement by Id.
+     * ToImprove: I would prefer to rename "$this->getStatement()" to "$this->getStatementOrNull()", so that this method
+     *            could only be named "getStatement", but that would be a larger refactoring. This is a first step on
+     *            that path making the change easy.
+     */
+    public function getStatementWithCertainty(string $statementId): StatementInterface;
 }

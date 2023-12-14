@@ -6,5 +6,5 @@ namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
 interface InitializeServiceInterface
 {
-
+    public function initialize(array $context): void;
 }
