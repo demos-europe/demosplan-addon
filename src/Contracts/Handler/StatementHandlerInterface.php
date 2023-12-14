@@ -14,7 +14,7 @@ interface StatementHandlerInterface
     /**
      * Concatenate the text of the given text and the boilerplate-texts of the given tags.
      *
-     * @param string[]|Collection $tagIds IDs of Tags which boilerplates will be concatenated
+     * @param iterable<string> $tagIds IDs of Tags which boilerplates will be concatenated
      * @param string              $considerationText
      *
      * @return string concatenated boilerplates
