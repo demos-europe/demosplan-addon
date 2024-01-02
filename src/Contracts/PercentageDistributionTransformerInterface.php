@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts;
 
-interface PercentageDistributionTransformerInterface
+use DemosEurope\DemosplanAddon\Logic\ApiRequest\Transformer\BaseTransformerInterface;
+
+interface PercentageDistributionTransformerInterface extends BaseTransformerInterface
 {
 
 }

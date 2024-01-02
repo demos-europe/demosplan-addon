@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Services;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface;
+use demosplan\DemosPlanCoreBundle\Entity\Statement\Statement;
 
 interface StatementServiceInterface
 {
@@ -21,4 +22,11 @@ interface StatementServiceInterface
      * @return StatementInterface|false|null if successful: the updated Statement object
      */
     public function updateStatementFromObject($updatedStatement, $ignoreAssignment = false, $ignoreCluster = false, $ignoreOriginal = false);
+
+    /**
+     * Get a specific statement as object.
+     *
+     * @param string $statementId identifies the statement
+     */
+    public function getStatement($statementId): ?StatementInterface;
 }
