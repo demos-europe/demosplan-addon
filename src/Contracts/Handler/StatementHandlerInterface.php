@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts\Handler;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface;
+use demosplan\DemosPlanCoreBundle\Entity\Statement\Statement;
 
 interface StatementHandlerInterface
 {
@@ -41,4 +42,16 @@ interface StatementHandlerInterface
      *            that path making the change easy.
      */
     public function getStatementWithCertainty(string $statementId): StatementInterface;
+
+    /**
+     * Updates a Statement-Object without create a report entry!
+     *
+     * @param StatementInterface $statement
+     * @param bool $ignoreAssignment
+     * @param bool $ignoreCluster
+     * @param bool $ignoreOriginal
+     *
+     * @return StatementInterface|false|null - If successful: the updated Statement as object will be returned
+     */
+    public function updateStatementObject($statement, $ignoreAssignment = false, $ignoreCluster = false, $ignoreOriginal = false);
 }
