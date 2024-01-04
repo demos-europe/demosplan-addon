@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+## v0.14 (2024-01-04)
+
 - add 'GetEmailIdsEventInterface'
 - adjust the method 'deleteOrphanEmailAddresses': add paramater 'emailIds'
 
