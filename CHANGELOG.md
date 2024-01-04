@@ -2,6 +2,11 @@
 
 ## UNRELEASED
 
+## v0.14 (2024-01-04)
+
+- add 'GetEmailIdsEventInterface'
+- adjust the method 'deleteOrphanEmailAddresses': add paramater 'emailIds'
+
 ## v0.13 (2023-12-08)
 
 - add submitType const to StatementInterface as well as an const array containing all supported submitTypes
