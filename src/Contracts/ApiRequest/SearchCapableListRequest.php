@@ -14,6 +14,7 @@ use EDT\JsonApi\RequestHandling\JsonApiSortingParser;
 use EDT\JsonApi\RequestHandling\PaginatorFactory;
 use EDT\JsonApi\RequestHandling\RequestTransformer;
 use EDT\JsonApi\Requests\ListRequest;
+use EDT\JsonApi\Validation\SortValidator;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use League\Fractal\Resource\Collection;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -31,7 +32,8 @@ class SearchCapableListRequest extends ListRequest
         PagePaginationParser $paginationParser,
         RequestTransformer $requestParser,
         SchemaPathProcessor $schemaPathProcessor,
-        protected readonly JsonApiEsServiceInterface $jsonApiEsService
+        protected readonly JsonApiEsServiceInterface $jsonApiEsService,
+        SortValidator $sortValidator
     ) {
         parent::__construct(
             $filterParser,
@@ -40,7 +42,8 @@ class SearchCapableListRequest extends ListRequest
             $paginationParser,
             $requestParser,
             $schemaPathProcessor,
-            $eventDispatcher
+            $eventDispatcher,
+            $sortValidator
         );
     }
 
