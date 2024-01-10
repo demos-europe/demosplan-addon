@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -81,5 +83,4 @@ interface CountyInterface extends UuidEntityInterface, CoreEntityInterface
      * @param StatementFragmentInterface $fragment
      */
     public function removeStatementFragment($fragment);
-
 }

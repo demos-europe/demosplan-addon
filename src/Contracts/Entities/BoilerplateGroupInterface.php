@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
@@ -91,5 +93,4 @@ interface BoilerplateGroupInterface extends UuidEntityInterface, CoreEntityInter
      * @return bool - true, if this there are no boilerpaltes, otherwise false
      */
     public function isEmpty(): bool;
-
 }

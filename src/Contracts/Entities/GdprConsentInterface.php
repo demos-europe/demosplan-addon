@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
@@ -64,5 +66,4 @@ interface GdprConsentInterface extends UuidEntityInterface, CoreEntityInterface
      * @return bool true if the consent was given regarding the submitter data of the statement
      */
     public function isConsentedToSubmitterData(): bool;
-
 }

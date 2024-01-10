@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Repositories;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\GisLayerInterface;
@@ -11,7 +13,7 @@ interface MapRepositoryInterface
      * Delete a single Gislayer form the DB.
      * If the given ID related to a global GisLayer, all Entries which uses this global-ID will be also deleted.     *
      *
-     * @var string $gisLayerId
+     * @param string $gisLayerId
      *
      * @return bool
      *

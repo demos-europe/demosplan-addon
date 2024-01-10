@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTimeInterface;
@@ -21,5 +23,4 @@ interface DraftStatementFileInterface extends UuidEntityInterface
     public function setFile(FileInterface $file): self;
 
     public function getFileString(): ?string;
-
 }

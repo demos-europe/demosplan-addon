@@ -74,7 +74,7 @@ class PermissionConditionBuilder
     }
 
     /**
-     * @param non-empty-string $roles
+     * @param non-empty-string $role
      */
     public function enableIfUserHasRole(string $role): self
     {

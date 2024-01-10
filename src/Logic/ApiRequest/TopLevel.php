@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Logic\ApiRequest;
 
 
@@ -15,6 +17,8 @@ use function reset;
 
 /**
  * @see https://jsonapi.org/format/#document-top-level
+ *
+ * @template-implements ArrayAccess<string, mixed>
  */
 class TopLevel implements ArrayAccess
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Logic\ApiRequest;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use EDT\ConditionFactory\ConditionFactoryInterface;
 use EDT\DqlQuerying\ConditionFactories\DqlConditionFactory;
@@ -16,44 +16,64 @@ use EDT\DqlQuerying\ObjectProviders\DoctrineOrmEntityProvider;
 use EDT\DqlQuerying\SortMethodFactories\SortMethodFactory;
 use EDT\DqlQuerying\Utilities\JoinFinder;
 use EDT\DqlQuerying\Utilities\QueryBuilderPreparer;
+use EDT\JsonApi\InputHandling\RepositoryInterface;
 use EDT\Querying\Contracts\FunctionInterface;
 use EDT\Querying\Contracts\PaginationException;
-use EDT\Querying\Contracts\SortMethodInterface;
 use EDT\Querying\FluentQueries\ConditionDefinition;
 use EDT\Querying\FluentQueries\FluentQuery;
 use EDT\Querying\FluentQueries\SliceDefinition;
 use EDT\Querying\FluentQueries\SortDefinition;
+use EDT\Querying\Pagination\OffsetPagination;
 use EDT\Querying\Pagination\PagePagination;
 use EDT\Querying\Utilities\Iterables;
+use EDT\Querying\Utilities\Reindexer;
 use InvalidArgumentException;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 
-use function is_array;
+use Psr\Log\LoggerInterface;
+use Symfony\Contracts\Service\Attribute\Required;
+use const PHP_INT_MAX;
 
 /**
- * @template T of object
+ * @template TEntity of EntityInterface
+ *
+ * @template-extends ServiceEntityRepository<TEntity>
+ * @template-implements RepositoryInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
  */
-abstract class FluentRepository extends ServiceEntityRepository
+abstract class FluentRepository extends ServiceEntityRepository implements RepositoryInterface
 {
     protected DoctrineOrmEntityProvider $objectProvider;
     protected JoinFinder $joinFinder;
     protected QueryBuilderPreparer $builderPreparer;
-    protected EntityManagerInterface $entityManager;
+    protected ?LoggerInterface $logger = null;
 
     public function __construct(
         protected readonly DqlConditionFactory $conditionFactory,
         ManagerRegistry $registry,
+        protected readonly Reindexer $reindexer,
         protected readonly SortMethodFactory $sortMethodFactory,
         string $entityClass
     ) {
         parent::__construct($registry, $entityClass);
 
-        $this->entityManager = $this->getEntityManager();
-        $metadataFactory = $this->entityManager->getMetadataFactory();
+        $entityManager = $this->getEntityManager();
+        $metadataFactory = $entityManager->getMetadataFactory();
         $this->joinFinder = new JoinFinder($metadataFactory);
         $this->builderPreparer = new QueryBuilderPreparer($entityClass, $metadataFactory, $this->joinFinder);
-        $this->objectProvider = new DoctrineOrmEntityProvider($this->entityManager, $this->builderPreparer);
+        $this->objectProvider = new DoctrineOrmEntityProvider($entityManager, $this->builderPreparer, $entityClass);
+    }
+
+    public function getEntitiesByIdentifiers(
+        array $identifiers,
+        array $conditions,
+        array $sortMethods,
+        array $identifierPropertyPath
+    ): array {
+        $identifierCondition = $this->conditionFactory->propertyHasAnyOfValues($identifiers, $identifierPropertyPath);
+        $conditions[] = $identifierCondition;
+
+        return $this->getEntities($conditions, $sortMethods);
     }
 
     public function createFluentQuery(): FluentQuery
@@ -77,32 +97,32 @@ abstract class FluentRepository extends ServiceEntityRepository
      * You may also need to use it for more exotic expressions covered by conditions like
      * {@link ConditionFactoryInterface::propertyHasSize()} and {@link ConditionFactoryInterface::propertiesEqual()}.
      *
-     * Unlike {@link DplanResourceType::listEntities} this method won't apply any restrictions
-     * beside the provided conditions.
+     * This method won't apply any restrictions beside the provided conditions.
      *
-     * @param array<int,FunctionInterface<bool>> $conditions  will be applied in an `AND` conjunction
-     * @param array<int,SortMethodInterface>     $sortMethods will be applied in the given order
+     * @param array<int,ClauseFunctionInterface<bool>> $conditions  will be applied in an `AND` conjunction
+     * @param array<int,OrderBySortMethodInterface>    $sortMethods will be applied in the given order
      *
-     * @return array<int,T>
+     * @return array<int,TEntity>
      */
     public function getEntities(array $conditions, array $sortMethods, int $offset = 0, int $limit = null): array
     {
-        $entities = $this->objectProvider->getObjects($conditions, $sortMethods, $offset, $limit);
+        $pagination = 0 !== $offset || null !== $limit
+            ? new OffsetPagination($offset, $limit ?? PHP_INT_MAX)
+            : null;
 
-        return is_array($entities) ? $entities : iterator_to_array($entities);
+        return $this->objectProvider->getEntities($conditions, $sortMethods, $pagination);
     }
 
     /**
      * Will provide access to all entities matching the given condition via a paginator.
      * The entities will be sorted by the specified sorting.
      *
-     * Unlike {@link DplanResourceType::listEntities} this method won't apply any restrictions
-     * beside the provided conditions.
+     * This method won't apply any restrictions beside the provided conditions.
      *
      * @param array<int,ClauseFunctionInterface<bool>> $conditions  will be applied in an `AND` conjunction
      * @param array<int,OrderBySortMethodInterface>    $sortMethods will be applied in the given order
      *
-     * @return Pagerfanta<T>
+     * @return Pagerfanta<TEntity>
      */
     public function getEntitiesForPage(
         array $conditions,
@@ -120,7 +140,7 @@ abstract class FluentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param FunctionInterface $conditions
+     * @param list<FunctionInterface<bool>> $conditions
      *
      * @return int<0, max>
      */
@@ -133,10 +153,10 @@ abstract class FluentRepository extends ServiceEntityRepository
 
     /**
      * @param non-empty-string                 $id
-     * @param FunctionInterface                $conditions
+     * @param list<FunctionInterface<bool>>    $conditions
      * @param non-empty-list<non-empty-string> $identifierPropertyPath
      *
-     * @return T
+     * @return TEntity
      */
     public function getEntityByIdentifier(string $id, array $conditions, array $identifierPropertyPath): object
     {
@@ -152,9 +172,9 @@ abstract class FluentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param array<int,FunctionInterface<bool>> $conditions         will be applied in an `AND` conjunction
-     * @param array<int,SortMethodInterface>     $sortMethods        will be applied in the given order
-     * @param non-empty-string                   $identifierProperty
+     * @param array<int,ClauseFunctionInterface<bool>> $conditions         will be applied in an `AND` conjunction
+     * @param array<int,OrderBySortMethodInterface>    $sortMethods        will be applied in the given order
+     * @param non-empty-string                         $identifierProperty
      *
      * @return list<non-empty-string>
      *
@@ -164,9 +184,10 @@ abstract class FluentRepository extends ServiceEntityRepository
     public function getEntityIdentifiers(array $conditions, array $sortMethods, string $identifierProperty): array
     {
         $entityProvider = new DoctrineOrmPartialDTOProvider(
-            $this->entityManager,
+            $this->getEntityManager(),
             $this->builderPreparer,
-            $identifierProperty
+            $this->getEntityName(),
+            [$identifierProperty]
         );
 
         $entities = $entityProvider->getEntities($conditions, $sortMethods, null);
@@ -174,5 +195,51 @@ abstract class FluentRepository extends ServiceEntityRepository
         $partialDtos = array_values($entities);
 
         return array_map(static fn (PartialDTO $dto): string => $dto->getProperty($identifierProperty), $partialDtos);
+    }
+
+    public function reindexEntities(array $entities, array $conditions, array $sortMethods): array
+    {
+        return $this->reindexer->reindexEntities($entities, $conditions, $sortMethods);
+    }
+
+    public function assertMatchingEntities(array $entities, array $conditions): void
+    {
+        foreach ($entities as $entity) {
+            $this->reindexer->assertMatchingEntity($entity, $conditions);
+        }
+    }
+
+    public function isMatchingEntity(object $entity, array $conditions): bool
+    {
+        return $this->reindexer->isMatchingEntity($entity, $conditions);
+    }
+
+    public function assertMatchingEntity(object $entity, array $conditions): void
+    {
+        $this->reindexer->assertMatchingEntity($entity, $conditions);
+    }
+
+    public function deleteEntityByIdentifier(string $entityIdentifier, array $conditions, array $identifierPropertyPath): void
+    {
+        $entity = $this->getEntityByIdentifier($entityIdentifier, $conditions, $identifierPropertyPath);
+        $this->getEntityManager()->remove($entity);
+    }
+
+    protected function getLogger(): LoggerInterface
+    {
+        return $this->logger;
+    }
+
+    /**
+     * Please don't use `@required` for DI. It should only be used in base classes like this one.
+     *
+     * @return $this
+     */
+    #[Required]
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+
+        return $this;
     }
 }

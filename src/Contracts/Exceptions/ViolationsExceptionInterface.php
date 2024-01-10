@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Exceptions;
 
-interface ViolationsExceptionInterface
-{
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
+interface ViolationsExceptionInterface extends \Throwable
+{
+    public function getViolations(): ConstraintViolationListInterface;
 }

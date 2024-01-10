@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Logger;
 
-interface ApiLoggerInterface
+use Psr\Log\LoggerInterface;
+
+interface ApiLoggerInterface extends LoggerInterface
 {
 
 }
