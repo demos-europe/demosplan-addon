@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.16 (2024-01-10)
 - technical release as v0.15 failed in release process
 
 ## v0.15 (2024-01-10)
