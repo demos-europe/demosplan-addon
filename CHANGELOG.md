@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 - update company name in License
+- update edt to version 0.24.36
 
 ## v0.14 (2024-01-04)
 
