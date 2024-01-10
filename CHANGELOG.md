@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- update company name in License
 
 ## v0.14 (2024-01-04)
 
