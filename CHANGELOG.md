@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.17 (2024-01-11)
 
 - improve api error logging
 
