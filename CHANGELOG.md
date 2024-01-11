@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+
+- improve api error logging
+
 ## v0.16 (2024-01-10)
 - technical release as v0.15 failed in release process
 

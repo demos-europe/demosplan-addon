@@ -210,7 +210,7 @@ abstract class APIController extends AbstractController
         $status = Response::HTTP_BAD_REQUEST;
         $message = '';
 
-        $this->logger->error('API exception occurred', [$exception]);
+        $this->logger->error('API exception occurred', ['exception' => $exception, 'backtrace' => debug_backtrace()]);
 
         try {
             $exceptionParentInterfaces = class_implements(get_class($exception));
