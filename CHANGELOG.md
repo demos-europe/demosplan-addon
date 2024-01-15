@@ -1,6 +1,11 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.18 (2024-01-15)
+
+- adjust ProcedureInterface due to method-declaration-changes.
+
 ## v0.17 (2024-01-11)
 
 - improve api error logging
