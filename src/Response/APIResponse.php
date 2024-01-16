@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Response;
 
 use Symfony\Component\HttpFoundation\JsonResponse;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use Doctrine\Common\Collections\Collection;
@@ -19,14 +21,6 @@ interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInte
      * @var int
      */
     public const MAP_HINT_MIN_LENGTH = 50;
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="_ps_id", type="string", length=36, options={"fixed":true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="\demosplan\DemosPlanCoreBundle\Doctrine\Generator\UuidV4Generator")
-     */
 
     /**
      * @param string $id

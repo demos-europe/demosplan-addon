@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Config;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\CustomerInterface;
@@ -198,6 +200,8 @@ interface GlobalConfigInterface
      * @return string should be int
      */
     public function getProxyPort(): string;
+
+    public function getProjectCoreVersion(): string;
 
     public function getProjectVersion(): string;
 

@@ -1,6 +1,31 @@
 # Changelog
 
 ## UNRELEASED
+## v0.17 (2024-01-11)
+
+- improve api error logging
+
+## v0.16 (2024-01-10)
+- technical release as v0.15 failed in release process
+
+## v0.15 (2024-01-10)
+- update company name in License
+- update edt to version 0.24.36
+
+## v0.14 (2024-01-04)
+
+- add 'GetEmailIdsEventInterface'
+- adjust the method 'deleteOrphanEmailAddresses': add paramater 'emailIds'
+
+## v0.13 (2023-12-08)
+
+- add submitType const to StatementInterface as well as an const array containing all supported submitTypes
+- needed to validate the submitType choices
+
+## v0.12 (2023-11-27)
+
+- rename and add constants in ElementsInterface.php(breaking change)
+- replace multiple constants by constant array
 
 - introduce AddonViolationsException
 

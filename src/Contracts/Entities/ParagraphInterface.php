@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
@@ -168,5 +170,4 @@ interface ParagraphInterface extends UuidEntityInterface, CoreEntityInterface
      * @return Collection<int, ParagraphVersionInterface>
      */
     public function getVersions(): Collection;
-
 }

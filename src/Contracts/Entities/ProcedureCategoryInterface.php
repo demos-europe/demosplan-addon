@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 interface ProcedureCategoryInterface extends UuidEntityInterface, CoreEntityInterface
@@ -22,5 +24,4 @@ interface ProcedureCategoryInterface extends UuidEntityInterface, CoreEntityInte
     public function getSlug(): string;
 
     public function setSlug(string $slug): void;
-
 }

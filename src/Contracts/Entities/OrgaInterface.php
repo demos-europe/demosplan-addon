@@ -305,12 +305,12 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     /**
      * Returns all user (of all departments) of this organisation.
      *
-     * @return TightencoCollection[User]
+     * @return TightencoCollection collection of {@link UserInterface} instances
      */
     public function getAllUsersOfDepartments();
 
     /**
-     * @return ArrayCollection|Collection
+     * @return Collection<int, AddressBookEntryInterface>
      */
     public function getAddressBookEntries();
 

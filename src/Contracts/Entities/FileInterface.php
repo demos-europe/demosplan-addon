@@ -222,4 +222,13 @@ interface FileInterface extends UuidEntityInterface, CoreEntityInterface
      * Build a string of file information used in legacy context.
      */
     public function getFileString(): string;
+
+    /**
+     * Get name.
+     *
+     * @deprecated use getFilename() instead
+     *
+     * @return string
+     */
+    public function getName();
 }

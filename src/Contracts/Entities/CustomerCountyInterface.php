@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 interface CustomerCountyInterface extends UuidEntityInterface, CoreEntityInterface
@@ -17,5 +19,4 @@ interface CustomerCountyInterface extends UuidEntityInterface, CoreEntityInterfa
     public function getEmail(): string;
 
     public function setEmail(string $eMail): self;
-
 }

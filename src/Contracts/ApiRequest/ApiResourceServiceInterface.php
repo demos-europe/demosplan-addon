@@ -42,7 +42,7 @@ interface ApiResourceServiceInterface
 
     /**
      * @param iterable|CoreEntityInterface[]|ValueObjectInterface[] $data
-     * @param string $resourceTypeName The value returned by {@link ResourceTypeInterface::getName()}
+     * @param string $resourceTypeName The value returned by {@link ResourceTypeInterface::getTypeName()}
      */
     public function makeCollectionOfResources($data, string $resourceTypeName): Collection;
 
@@ -54,7 +54,7 @@ interface ApiResourceServiceInterface
     public function makeItem($data, string $transformerName, $type = ''): Item;
 
     /**
-     * @param string $resourceTypeName The value returned by {@link ResourceTypeInterface::getName()}
+     * @param string $resourceTypeName The value returned by {@link ResourceTypeInterface::getTypeName()}
      */
     public function makeItemOfResource($data, string $resourceTypeName): Item;
 }

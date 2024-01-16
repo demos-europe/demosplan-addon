@@ -5,10 +5,12 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Logic\ApiRequest;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
 use Doctrine\ORM\QueryBuilder;
+use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\MappingException;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\DqlQuerying\ObjectProviders\DoctrineOrmEntityProvider;
-use EDT\Querying\Contracts\ObjectProviderInterface;
 use EDT\Querying\Contracts\PaginationException;
 use EDT\Querying\FluentQueries\ConditionDefinition;
 use EDT\Querying\FluentQueries\FluentQuery;
@@ -17,33 +19,29 @@ use EDT\Querying\FluentQueries\SortDefinition;
 use InvalidArgumentException;
 
 /**
- * @template T of object
+ * @template TEntity of EntityInterface
  *
- * @template-extends FluentQuery<T>
+ * @template-extends FluentQuery<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
  */
 class DqlFluentQuery extends FluentQuery
 {
     /**
-     * @var DoctrineOrmEntityProvider<T>
-     */
-    protected ObjectProviderInterface $objectProvider;
-
-    /**
-     * @param DoctrineOrmEntityProvider<T> $objectProvider
+     * @param DoctrineOrmEntityProvider<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity> $doctrineEntityProvider
+     * @param ConditionDefinition<ClauseFunctionInterface<bool>> $conditionDefinition
+     * @param SortDefinition<OrderBySortMethodInterface> $sortDefinition
      */
     public function __construct(
-        DoctrineOrmEntityProvider $objectProvider,
+        protected readonly DoctrineOrmEntityProvider $doctrineEntityProvider,
         ConditionDefinition $conditionDefinition,
         SortDefinition $sortDefinition,
         SliceDefinition $sliceDefinition
     ) {
         parent::__construct(
-            $objectProvider,
+            $this->doctrineEntityProvider,
             $conditionDefinition,
             $sortDefinition,
             $sliceDefinition
         );
-        $this->objectProvider = $objectProvider;
     }
 
     /**
@@ -73,7 +71,7 @@ class DqlFluentQuery extends FluentQuery
 
     public function generateEntitiesQueryBuilder(): QueryBuilder
     {
-        return $this->objectProvider->generateQueryBuilder(
+        return $this->doctrineEntityProvider->generateQueryBuilder(
             $this->getConditionDefinition()->getConditions(),
             $this->getSortDefinition()->getSortMethods(),
             $this->getSliceDefinition()->getOffset(),

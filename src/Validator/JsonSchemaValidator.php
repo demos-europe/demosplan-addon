@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Validator;
 
 use DemosEurope\DemosplanAddon\Utilities\Json;
@@ -7,6 +9,7 @@ use JsonException;
 use JsonSchema\Exception\InvalidSchemaException;
 use JsonSchema\Validator;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use Webmozart\Assert\Assert;
 
 class JsonSchemaValidator
 {
@@ -30,7 +33,9 @@ class JsonSchemaValidator
         if (!$validator->isValid()) {
             $errorMsgs = [];
 
-            foreach ($validator->getErrors() as $error) {
+            $errors = $validator->getErrors();
+            Assert::isArray($errors);
+            foreach ($errors as $error) {
                 $errorMsg = 'Json Schema Error. Field "' . $error['property'] . '". ';
                 $errorMsg .= $error['message'];
                 $errorMsgs[] = $errorMsg;
