@@ -820,6 +820,8 @@ interface ProcedureInterface extends SluggedEntityInterface
 
     public function getSubdomain(): string;
 
+    public function isCustomerMasterBlueprint(): bool;
+
     /**
      * @return CustomerInterface|null
      */
