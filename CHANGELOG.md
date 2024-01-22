@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+## v0.18 (2024-01-22)
+- remove unused methods cause plis dataBase is not used anymore
+
 ## v0.17 (2024-01-11)
 
 - improve api error logging
