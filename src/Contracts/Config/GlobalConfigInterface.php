@@ -350,10 +350,6 @@ interface GlobalConfigInterface
 
     public function isProdMode(): bool;
 
-    public function getLgvPlisBaseUrl(): string;
-
-    public function getLgvXplanboxBaseUrl(): string;
-
     public function getGatewayURLintern(): string;
 
     public function getGeoWfsStatementLinien(): string;
