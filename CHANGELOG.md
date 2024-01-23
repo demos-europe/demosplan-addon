@@ -1,8 +1,10 @@
 # Changelog
 
 ## UNRELEASED
+- technical release as v0.18 did not change composer.json version
+
 ## v0.18 (2024-01-22)
-- remove unused methods cause plis dataBase is not used anymore
+- remove unused methods because plis database is not used anymore
 
 ## v0.17 (2024-01-11)
 
