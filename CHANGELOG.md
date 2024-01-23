@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.21 (2024-01-23)
 
 - remove deprecated sensio/framework-extra-bundle
 - explicitly define required symfony packages
