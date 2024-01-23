@@ -6,6 +6,7 @@ namespace DemosEurope\DemosplanAddon\Permission\Validation;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+use Webmozart\Assert\Assert;
 
 class PermissionFilterConstraintValidator extends ConstraintValidator
 {
@@ -17,11 +18,12 @@ class PermissionFilterConstraintValidator extends ConstraintValidator
     }
 
     /**
-     * @param mixed                      $value
-     * @param PermissionFilterConstraint $constraint
+     * @param mixed $value
      */
     public function validate($value, Constraint $constraint): void
     {
+        Assert::isInstanceOf($constraint, PermissionFilterConstraint::class);
+
         try {
             $this->permissionFilterValidator->validateFilter($value);
         } catch (PermissionFilterException $exception) {

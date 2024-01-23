@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Config;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\CustomerInterface;
@@ -199,6 +201,8 @@ interface GlobalConfigInterface
      */
     public function getProxyPort(): string;
 
+    public function getProjectCoreVersion(): string;
+
     public function getProjectVersion(): string;
 
     public function getProjectShortUrlRedirectRoute(): string;
@@ -346,10 +350,6 @@ interface GlobalConfigInterface
 
     public function isProdMode(): bool;
 
-    public function getLgvPlisBaseUrl(): string;
-
-    public function getLgvXplanboxBaseUrl(): string;
-
     public function getGatewayURLintern(): string;
 
     public function getGeoWfsStatementLinien(): string;
@@ -373,13 +373,6 @@ interface GlobalConfigInterface
     public function getSubdomain(): string;
 
     public function setSubdomain(string $subdomain): void;
-
-    /**
-     * Defines which subdomains (aka {@link CustomerInterface}s) are allowed.
-     *
-     * @return array<int,string>
-     */
-    public function getSubdomainsAllowed(): array;
 
     public function getOrgaBrandedRoutes(): array;
 

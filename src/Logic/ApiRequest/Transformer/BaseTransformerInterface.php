@@ -14,7 +14,7 @@ interface BaseTransformerInterface
     public function getClass(): string;
 
     /**
-     * @deprecated use {@link ResourceTypeInterface::getName()} where possible, because it should
+     * @deprecated use {@link ResourceTypeInterface::getTypeName()} where possible, because it should
      *             be the actual source for this information and not the transformer
      */
     public function getType(): string;

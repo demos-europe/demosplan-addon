@@ -1,6 +1,62 @@
 # Changelog
 
 ## UNRELEASED
+## v0.20 (2024-01-23)
+- technical release to heal release problem in previous version
+
+## v0.19 (2024-01-23)
+- technical release as v0.18 did not change composer.json version
+- this release was accidentally released as v1.19 and was withdrawn
+
+## v0.18 (2024-01-22)
+- remove unused methods because plis database is not used anymore
+
+## v0.17 (2024-01-11)
+
+- improve api error logging
+
+## v0.16 (2024-01-10)
+- technical release as v0.15 failed in release process
+
+## v0.15 (2024-01-10)
+- update company name in License
+- update edt to version 0.24.36
+
+## v0.14 (2024-01-04)
+
+- add 'GetEmailIdsEventInterface'
+- adjust the method 'deleteOrphanEmailAddresses': add paramater 'emailIds'
+
+## v0.13 (2023-12-08)
+
+- add submitType const to StatementInterface as well as an const array containing all supported submitTypes
+- needed to validate the submitType choices
+
+## v0.12 (2023-11-27)
+
+- rename and add constants in ElementsInterface.php(breaking change)
+- replace multiple constants by constant array
+
+## v0.11 (2023-11-06)
+
+- add ParagraphServiceInterface
+
+## v0.10 (2023-10-25)
+
+- add FileInfoInterface
+
+## v0.9 (2023-09-14)
+
+- remove GlobalConfigInterface::subdomainsAllowed
+
+## v0.8 (2023-08-23)
+
+- add interface needed for SegmentOracle
+- this also affects DemosPipes so it depends on this version
+
+## v0.7 (2023-08-04)
+
+**feat** Allow addons to utilize FluentRepository  
 
 **feat**
 - remove deprecated sensio/framework-extra-bundle

@@ -6,6 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 
 use DemosEurope\DemosplanAddon\Contracts\MessageSerializableInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Tightenco\Collect\Support\Collection;
 
 interface MessageBagInterface
@@ -71,5 +72,5 @@ interface MessageBagInterface
     /**
      * Generate error messages from a Symfony violation list.
      */
-    public function addViolations(ConstraintViolationList $constraintViolationList): void;
+    public function addViolations(ConstraintViolationListInterface $constraintViolationList): void;
 }

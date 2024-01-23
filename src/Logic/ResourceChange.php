@@ -6,6 +6,8 @@ namespace DemosEurope\DemosplanAddon\Logic;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityChangeInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\EntityInterface;
+use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 
 /**
@@ -15,7 +17,7 @@ use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
  * {@link ResourceChange} instances, containing the affected entities, so that the generic API
  * implementation can automatically update the database.
  *
- * @template T of EntityInterface
+ * @template TEntity of EntityInterface
  */
 class ResourceChange implements EntityChangeInterface
 {
@@ -35,8 +37,8 @@ class ResourceChange implements EntityChangeInterface
     private bool $unrequestedChangesToTargetResource = false;
 
     /**
-     * @param T $targetEntity the entity backing the resource that was targeted by the request
-     * @param ResourceTypeInterface<T> $targetResourceType
+     * @param TEntity $targetEntity the entity backing the resource that was targeted by the request
+     * @param ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity> $targetResourceType
      * @param array<string,mixed> $requestProperties the values in the request that were specified to be set. Additional changes may
      *                                  have been made by the resource type or listeners
      */
@@ -72,7 +74,7 @@ class ResourceChange implements EntityChangeInterface
     }
 
     /**
-     * @return T
+     * @return TEntity
      */
     public function getTargetResource(): object
     {
@@ -80,7 +82,7 @@ class ResourceChange implements EntityChangeInterface
     }
 
     /**
-     * @return ResourceTypeInterface<T>
+     * @return ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
      */
     public function getTargetResourceType(): ResourceTypeInterface
     {

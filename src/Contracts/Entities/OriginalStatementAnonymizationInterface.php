@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
@@ -32,5 +34,4 @@ interface OriginalStatementAnonymizationInterface
     public function isSubmitterAndAuthorMetaDataAnonymized(): bool;
 
     public function setSubmitterAndAuthorMetaDataAnonymized(bool $submitterAndAuthorMetaDataAnonymized): void;
-
 }
