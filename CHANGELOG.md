@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v1.19 (2024-01-23)
 - technical release as v0.18 did not change composer.json version
 
 ## v0.18 (2024-01-22)
