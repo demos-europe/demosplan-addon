@@ -1,8 +1,11 @@
 # Changelog
 
 ## UNRELEASED
-## v1.19 (2024-01-23)
+- technical release to heal release problem in previous version
+
+## v0.19 (2024-01-23)
 - technical release as v0.18 did not change composer.json version
+- this release was accidentally released as v1.19 and was withdrawn
 
 ## v0.18 (2024-01-22)
 - remove unused methods because plis database is not used anymore
