@@ -1,6 +1,12 @@
 # Changelog
 
 ## UNRELEASED
+
+- remove deprecated sensio/framework-extra-bundle
+- explicitly define required symfony packages
+- downgrade bundles to symfony 5.4
+- update other dependencies
+
 ## v0.20 (2024-01-23)
 - technical release to heal release problem in previous version
 
@@ -58,11 +64,6 @@
 
 **feat** Allow addons to utilize FluentRepository  
 
-**feat**
-- remove deprecated sensio/framework-extra-bundle
-- explicitly define required symfony packages
-- downgrade bundles to symfony 5.4
-- update other dependencies
 
 ## v0.6 (2023-07-19)
 
