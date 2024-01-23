@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.20 (2024-01-23)
 - technical release to heal release problem in previous version
 
 ## v0.19 (2024-01-23)

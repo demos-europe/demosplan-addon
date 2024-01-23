@@ -40,5 +40,5 @@
   "scripts": {
     "phpstan": "phpstan analyse"
   },
-  "version": "v1.19"
+  "version": "v0.20"
 }
