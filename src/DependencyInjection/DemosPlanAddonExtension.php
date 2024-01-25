@@ -31,6 +31,10 @@ class DemosPlanAddonExtension extends Extension implements PrependExtensionInter
                     'DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface' => 'demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure',
                     'DemosEurope\DemosplanAddon\Contracts\Entities\FileContainerInterface' => 'demosplan\DemosPlanCoreBundle\Entity\File',
                     'DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface' => 'demosplan\DemosPlanCoreBundle\Entity\User\User',
+                    'DemosEurope\DemosplanAddon\Contracts\Entities\EmailAddressInterface' => 'demosplan\DemosPlanCoreBundle\Entity\EmailAddress',
+                    'DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface' => 'demosplan\DemosPlanCoreBundle\Entity\Statement\Statement',
+                    'DemosEurope\DemosplanAddon\Contracts\Entities\FileInterface' => 'demosplan\DemosPlanCoreBundle\Entity\File',
+
                 )
             ),
         ));
