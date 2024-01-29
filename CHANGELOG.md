@@ -1,10 +1,22 @@
 # Changelog
 
 ## UNRELEASED
+## v0.21 (2024-01-23)
 
-## v0.18 (2024-01-15)
+- remove deprecated sensio/framework-extra-bundle
+- explicitly define required symfony packages
+- downgrade bundles to symfony 5.4
+- update other dependencies
 
-- adjust ProcedureInterface due to method-declaration-changes.
+## v0.20 (2024-01-23)
+- technical release to heal release problem in previous version
+
+## v0.19 (2024-01-23)
+- technical release as v0.18 did not change composer.json version
+- this release was accidentally released as v1.19 and was withdrawn
+
+## v0.18 (2024-01-22)
+- remove unused methods because plis database is not used anymore
 
 ## v0.17 (2024-01-11)
 
@@ -52,6 +64,7 @@
 ## v0.7 (2023-08-04)
 
 **feat** Allow addons to utilize FluentRepository  
+
 
 ## v0.6 (2023-07-19)
 
