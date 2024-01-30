@@ -2,7 +2,7 @@
 
 ## UNRELEASED
 ## v0.21 (2024-01-23)
-
+- Link references of DemosCoreEntities to Interfaces so that addons can use the interfaces
 - remove deprecated sensio/framework-extra-bundle
 - explicitly define required symfony packages
 - downgrade bundles to symfony 5.4
