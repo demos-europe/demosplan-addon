@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\DependencyInjection;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\EmailAddressInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\FileInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -27,13 +32,11 @@ class DemosPlanAddonExtension extends Extension implements PrependExtensionInter
         $container->loadFromExtension('doctrine', array(
             'orm' => array(
                 'resolve_target_entities' => array(
-                    'DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface' => 'demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure',
-                    'DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface' => 'demosplan\DemosPlanCoreBundle\Entity\Statement\Statement',
-                    'DemosEurope\DemosplanAddon\Contracts\Entities\FileContainerInterface' => 'demosplan\DemosPlanCoreBundle\Entity\File',
-                    'DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface' => 'demosplan\DemosPlanCoreBundle\Entity\User\User',
-                    'DemosEurope\DemosplanAddon\Contracts\Entities\EmailAddressInterface' => 'demosplan\DemosPlanCoreBundle\Entity\EmailAddress',
-                    'DemosEurope\DemosplanAddon\Contracts\Entities\FileInterface' => 'demosplan\DemosPlanCoreBundle\Entity\File',
-
+                    ProcedureInterface::class => 'demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure',
+                    StatementInterface::class => 'demosplan\DemosPlanCoreBundle\Entity\Statement\Statement',
+                    UserInterface::class => 'demosplan\DemosPlanCoreBundle\Entity\User\User',
+                    EmailAddressInterface::class => 'demosplan\DemosPlanCoreBundle\Entity\EmailAddress',
+                    FileInterface::class => 'demosplan\DemosPlanCoreBundle\Entity\File',
                 )
             ),
         ));
