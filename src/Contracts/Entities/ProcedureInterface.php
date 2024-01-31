@@ -834,9 +834,8 @@ interface ProcedureInterface extends SluggedEntityInterface
 
     /**
      * @param CustomerInterface|null $customer
-     * @param bool          $handleBothSites
      */
-    public function setCustomer($customer, $handleBothSites = true): ProcedureInterface;
+    public function setCustomer($customer): ProcedureInterface;
 
     public function getProcedureCategories(): Collection;
 
