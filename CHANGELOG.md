@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- remove unnecessary definitions from services yaml
+
 ## v0.22 (2024-01-29)
 
 - adjust ProcedureInterface due to method-declaration-changes.
