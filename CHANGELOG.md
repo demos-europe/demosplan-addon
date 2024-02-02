@@ -2,8 +2,8 @@
 
 ## UNRELEASED
 
-## v0.23 (2024-02-02)
-
+## v0.24 (2024-02-02)
+- technical release to heal release problem in previous version
 - remove unnecessary definitions from services yaml
 
 ## v0.22 (2024-01-29)
