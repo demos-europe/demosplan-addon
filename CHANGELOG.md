@@ -3,6 +3,10 @@
 ## UNRELEASED
 - Link references of DemosCoreEntities to Interfaces so that addons can use the interfaces
 
+## v0.22 (2024-01-29)
+- adjust ProcedureInterface due to method-declaration-changes.
+
+
 ## v0.21 (2024-01-23)
 - remove deprecated sensio/framework-extra-bundle
 - explicitly define required symfony packages
