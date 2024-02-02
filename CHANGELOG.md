@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+## v0.23 (2024-02-02)
+
 - remove unnecessary definitions from services yaml
 
 ## v0.22 (2024-01-29)
