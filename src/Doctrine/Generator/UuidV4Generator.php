@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DemosEurope\DemosplanAddon\Contracts\Doctrine;
+namespace DemosEurope\DemosplanAddon\Doctrine\Generator;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Id\AbstractIdGenerator;
