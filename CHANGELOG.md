@@ -1,7 +1,7 @@
 # Changelog
 
 ## UNRELEASED
-- Link references of DemosCoreEntities to Interfaces so that addons can use the interfaces
+- create UuidV4Generator so that each addon is independent from Core UuidV4Generator
 
 ## v0.22 (2024-01-29)
 - adjust ProcedureInterface due to method-declaration-changes.
