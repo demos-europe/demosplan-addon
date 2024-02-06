@@ -14,9 +14,3 @@ services:
   DemosEurope\DemosplanAddon\Controller\APIController:
     arguments:
       $resourceTypeProvider: '@demosplan\DemosPlanCoreBundle\Logic\ApiRequest\PrefilledResourceTypeProvider'
-
-  DemosEurope\DemosplanAddon\Contracts\Config\GlobalConfigInterface:
-    class: 'demosplan\DemosPlanCoreBundle\Resources\config\GlobalConfig'
-    public: true
-
-  DemosEurope\DemosplanAddon\Permission\PermissionEvaluatorInterface: '@demosplan\DemosPlanCoreBundle\Permissions\Permissions'
