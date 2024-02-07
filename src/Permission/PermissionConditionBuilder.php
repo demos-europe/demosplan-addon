@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Permission;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\RoleInterface;
 use DemosEurope\DemosplanAddon\Permission\Conditions\AllApply;
 use DemosEurope\DemosplanAddon\Permission\Conditions\PropertyHasNotSize;
 use DemosEurope\DemosplanAddon\Permission\Conditions\PropertyHasValue;
@@ -94,7 +95,11 @@ class PermissionConditionBuilder
             [],
             new AllApply([
                 // check ownership
-                new UserHasAnyRole(['RCOMAU', 'RMOPSA', 'RMOPSD', 'RMOPHA', 'RMOHAW']),
+                new UserHasAnyRole([
+                    RoleInterface::CUSTOMER_MASTER_USER,
+                    ...RoleInterface::HEARING_AUTHORITY_ROLES,
+                    ...RoleInterface::PLANNING_AGENCY_ROLES
+                ]),
                 new UserIsAuthorized($procedureUserRestrictedAccess),
                 // check roles
                 new UserHasAnyRole($roles),
@@ -120,7 +125,7 @@ class PermissionConditionBuilder
             [],
             new AllApply([
                 // check ownership
-                new UserHasAnyRole(['RMOPPO']),
+                new UserHasAnyRole([RoleInterface::PRIVATE_PLANNING_AGENCY]),
                 new PropertyIsCurrentProcedureId('orga.administratableProcedures.id'),
                 // check roles
                 new UserHasAnyRole($roles),
@@ -142,7 +147,7 @@ class PermissionConditionBuilder
         $this->conditions[] = new PermissionCondition(
             [],
             new AllApply([
-                new UserHasAnyRole(['RDATA']),
+                new UserHasAnyRole([RoleInterface::PROCEDURE_DATA_INPUT]),
                 new UserIsInCurrentCustomer(),
             ]),
             new PropertyIsCurrentUserId('dataInputOrganisations.users.id')

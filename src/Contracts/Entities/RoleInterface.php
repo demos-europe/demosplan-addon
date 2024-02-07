@@ -6,6 +6,10 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 interface RoleInterface extends UuidEntityInterface, CoreEntityInterface
 {
+    public const HEARING_AUTHORITY_ROLES = [RoleInterface::HEARING_AUTHORITY_ADMIN, RoleInterface::HEARING_AUTHORITY_WORKER];
+    public const PLANNING_AGENCY_ROLES = [RoleInterface::PLANNING_AGENCY_ADMIN, RoleInterface::PLANNING_AGENCY_WORKER];
+    public const PUBLIC_AGENCY_ROLES = [RoleInterface::PUBLIC_AGENCY_COORDINATION, RoleInterface::PUBLIC_AGENCY_WORKER];
+
     /**
      * Fachplaner-Masteruser GLAUTH Kommune.
      *
