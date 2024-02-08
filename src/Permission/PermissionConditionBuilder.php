@@ -98,10 +98,11 @@ class PermissionConditionBuilder
                 new UserHasAnyRole([
                     RoleInterface::CUSTOMER_MASTER_USER,
                     ...RoleInterface::HEARING_AUTHORITY_ROLES,
-                    ...RoleInterface::PLANNING_AGENCY_ROLES,
-                    ... $roles
+                    ...RoleInterface::PLANNING_AGENCY_ROLES
                 ]),
                 new UserIsAuthorized($procedureUserRestrictedAccess),
+                // check roles
+                new UserHasAnyRole($roles),
                 new UserIsInCurrentCustomer(),
             ]),
             new AllApply([
@@ -124,8 +125,10 @@ class PermissionConditionBuilder
             [],
             new AllApply([
                 // check ownership
-                new UserHasAnyRole([RoleInterface::PRIVATE_PLANNING_AGENCY, ...$roles]),
+                new UserHasAnyRole([RoleInterface::PRIVATE_PLANNING_AGENCY]),
                 new PropertyIsCurrentProcedureId('orga.administratableProcedures.id'),
+                // check roles
+                new UserHasAnyRole($roles),
                 new UserIsInCurrentCustomer()
             ]),
             new AllApply([
