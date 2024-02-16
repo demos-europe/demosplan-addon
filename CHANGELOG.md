@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- fix user interface
 
 ## v0.25 (2024-02-06)
 - create UuidV4Generator so that each addon is independent from Core UuidV4Generator
