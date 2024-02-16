@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\CustomerInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 interface CurrentUserInterface
 {
