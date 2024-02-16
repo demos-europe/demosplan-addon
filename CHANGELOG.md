@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.26 (2024-02-16)
 - fix user interface
 
 ## v0.25 (2024-02-06)
