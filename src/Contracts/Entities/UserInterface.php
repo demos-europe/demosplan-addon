@@ -289,7 +289,7 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
 
     public function isPlanner(): bool;
 
-    public function isHearingAuthority(): bool;
+    public function isHearingAuthority(CustomerInterface $customer): bool;
 
     /**
      * Role::ORGANISATION_ADMINISTRATION is not included.
