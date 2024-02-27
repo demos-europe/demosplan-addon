@@ -289,14 +289,14 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
 
     public function isPlanner(): bool;
 
-    public function isHearingAuthority(CustomerInterface $customer): bool;
+    public function isHearingAuthority(?CustomerInterface $customer): bool;
 
     /**
      * Role::ORGANISATION_ADMINISTRATION is not included.
      */
     public function isProcedureAdmin(): bool;
 
-    public function isPlanningAgency(CustomerInterface $customer): bool;
+    public function isPlanningAgency(?CustomerInterface $customer): bool;
 
     public function isPublicAgency(): bool;
 
@@ -595,7 +595,7 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
      */
     public function hasRole($role, CustomerInterface $customer = null): bool;
 
-    public function hasAnyOfRoles(array $roles, CustomerInterface $customer): bool;
+    public function hasAnyOfRoles(array $roles, ?CustomerInterface $customer): bool;
 
     /**
      * Alias for getDplanRolesString.
