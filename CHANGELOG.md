@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- fix user interface method declaration due to changes within core
+
 ## v0.26 (2024-02-16)
 - fix user interface
 
