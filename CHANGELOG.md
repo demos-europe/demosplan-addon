@@ -1,5 +1,7 @@
 # Changelog
 
+- fix user interface again as the previous fix was incomplete
+
 ## UNRELEASED
 
 ## v0.27 (2024-02-27)
