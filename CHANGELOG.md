@@ -1,8 +1,11 @@
 # Changelog
 
-- fix user interface again as the previous fix was incomplete
+
 
 ## UNRELEASED
+
+## v0.28 (2024-02-27)
+- fix user interface again as the previous fix was incomplete
 
 ## v0.27 (2024-02-27)
 - fix user interface method declaration due to changes within core
