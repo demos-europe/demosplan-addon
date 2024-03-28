@@ -53,4 +53,8 @@ interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterfa
     public function setStep(string $step): void;
 
     public function copyValuesFromPhase(ProcedurePhaseInterface $sourcePhase): void;
+
+    public function getIteration(): int;
+
+    public function setIteration(int $iteration);
 }
