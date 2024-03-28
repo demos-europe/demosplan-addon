@@ -3,6 +3,8 @@
 
 
 ## UNRELEASED
+
+## v0.30 (2024-03-28)
 - allow iteration value on a procedure phase
 
 ## v0.29 (2024-03-28)
