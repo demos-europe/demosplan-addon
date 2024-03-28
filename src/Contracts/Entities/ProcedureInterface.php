@@ -143,6 +143,8 @@ interface ProcedureInterface extends SluggedEntityInterface
 
     public function getPhase(): string;
 
+    public function getPhaseObject(): ProcedurePhaseInterface;
+
     /**
      * @return string
      */
@@ -332,6 +334,8 @@ interface ProcedureInterface extends SluggedEntityInterface
      * @return bool
      */
     public function getPublicParticipation();
+
+    public function getPublicParticipationPhaseObject(): ProcedurePhaseInterface;
 
     /**
      * Set pPublicParticipationPhase.

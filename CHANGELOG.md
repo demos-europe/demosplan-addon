@@ -4,6 +4,9 @@
 
 ## UNRELEASED
 
+## v0.29 (2024-03-28)
+- add interfaces to publish procedure phase entity
+
 ## v0.28 (2024-02-27)
 - fix user interface again as the previous fix was incomplete
 
