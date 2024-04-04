@@ -4,7 +4,7 @@
 
 ## UNRELEASED
 
-## v0.30 (2024-03-28)
+## v0.30 (2024-04-04)
 - allow iteration value on a procedure phase and statement
 
 ## v0.29 (2024-03-28)
