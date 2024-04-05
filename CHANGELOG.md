@@ -4,6 +4,7 @@
 
 ## UNRELEASED
 - add interfaces to publish procedure phase entity
+- allow iteration value on a procedure phase and statement
 
 ## v0.28 (2024-02-27)
 - fix user interface again as the previous fix was incomplete
