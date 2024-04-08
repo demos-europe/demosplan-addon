@@ -3,6 +3,8 @@
 
 
 ## UNRELEASED
+
+## v0.30 (2024-04-08)
 - add ProcedurePhaseRepositoryInterface
 
 ## v0.29 (2024-04-05)
