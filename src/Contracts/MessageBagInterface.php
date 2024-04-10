@@ -7,6 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 use DemosEurope\DemosplanAddon\Contracts\MessageSerializableInterface;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
+use demosplan\DemosPlanCoreBundle\Exception\ViolationsException;
 use Tightenco\Collect\Support\Collection;
 
 interface MessageBagInterface
