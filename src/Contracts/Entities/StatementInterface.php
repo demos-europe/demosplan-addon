@@ -155,6 +155,10 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getPrioritySort();
 
+    /**
+     * @return array
+     */
+    public function getCountyNames(): array;
 
     /**
      * Set externId.
@@ -397,6 +401,82 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * @param DateTime $deletedDate
      */
     public function setDeletedDate($deletedDate): StatementInterface;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCounties(): ArrayCollection;
+
+    /**
+     * @param ArrayCollection<int, CountyInterface>|CountyInterface[] $counties
+     */
+    public function setCounties(ArrayCollection|array $counties);
+
+    /**
+     * @param CountyInterface $county
+     * @return bool
+     */
+    public function addCounty(CountyInterface $county): bool;
+
+    /**
+     * Remove County.
+     *
+     * @param CountyInterface $county
+     */
+    public function removeCounty(CountyInterface $county);
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMunicipalities(): ArrayCollection;
+
+    /**
+     * @param ArrayCollection<int, MunicipalityInterface>|MunicipalityInterface[] $municipalities
+     */
+    public function setMunicipalities(array|ArrayCollection $municipalities);
+
+    /**
+     * @param MunicipalityInterface $municipality
+     * @return bool
+     */
+    public function addMunicipality($municipality): bool;
+
+    /**
+     * @return Collection
+     */
+    public function getFragments(): Collection;
+
+    /**
+     * @param StatementFragmentInterface[] $fragments
+     */
+    public function setFragments(array $fragments);
+
+    /**
+     * @param StatementFragmentInterface $fragment
+     * @return void
+     */
+    public function removeFragment(StatementFragmentInterface $fragment): void;
+
+    /**
+     * @param StatementFragmentInterface $fragment
+     * @return void
+     */
+    public function addFragment(StatementFragmentInterface $fragment): void;
+
+    /**
+     * @return int|null
+     */
+    public function getFragmentsFilteredCount(): ?int;
+
+    /**
+     * @return int
+     */
+    public function getFragmentsCount(): int;
+
+    /**
+     * @param int|null $fragmentsFilteredCount
+     */
+    public function setFragmentsFilteredCount(?int $fragmentsFilteredCount);
 
     /**
      * @return array<int,string>
@@ -1375,6 +1455,12 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
     public function getSimilarStatementSubmitters(): Collection;
 
     /**
+     * @param ProcedurePersonInterface $similarStatementSubmitter
+     * @return void
+     */
+    public function addSimilarStatementSubmitter(ProcedurePersonInterface $similarStatementSubmitter): void;
+
+    /**
      * @param Collection<int, ProcedurePersonInterface> $similarStatementSubmitters
      */
     public function setSimilarStatementSubmitters(Collection $similarStatementSubmitters): StatementInterface;
@@ -1394,4 +1480,35 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * TODO: move out of contract and core
      */
     public function incrementSegmentationPiRetries(): void;
+
+    /**
+     * @param GdprConsentInterface|null $gdprConsent
+     */
+    public function setGdprConsent(?GdprConsentInterface $gdprConsent);
+
+    /**
+     * @return bool
+     */
+    public function hasBeenSubmittedAndAuthoredByUnregisteredCitizen(): bool;
+
+    /**
+     * @return bool
+     */
+    public function hasBeenSubmittedAndAuthoredByRegisteredCitizen(): bool;
+
+    /**
+     * @return bool
+     */
+    public function hasBeenSubmittedAndAuthoredByInvitableInstitutionKoordinator(): bool;
+
+    /**
+     * @return bool
+     */
+    public function hasBeenAuthoredByInstitutionSachbearbeiterAndSubmittedByInstitutionKoordinator(): bool;
+
+    /**
+     * @deprecated use {@link StatementInterface::getId()} instead
+     * @return string|null
+     */
+    public function getIdent(): ?string;
 }

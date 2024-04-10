@@ -5,7 +5,19 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 use demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure;
+use EDT\PathBuilding\End;
 
+/**
+ * @property string $key
+ * @property string $step
+ * @property string $name
+ * @property DateTime $designatedEndDate
+ * @property DateTime $designatedSwitchDate
+ * @property string $designatedPhase
+ * @property string $permissionSet
+ * @property DateTime $startDate
+ * @property DateTime $endDate
+ */
 interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public function getName(): string;

@@ -73,4 +73,10 @@ interface MessageBagInterface
      * Generate error messages from a Symfony violation list.
      */
     public function addViolations(ConstraintViolationListInterface $constraintViolationList): void;
+
+    /**
+     * @param ViolationsException $e
+     * @return void
+     */
+    public function addViolationExceptions(ViolationsException $e): void;
 }
