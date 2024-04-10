@@ -6,7 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
 use demosplan\DemosPlanCoreBundle\Permissions\ResolvablePermissionCollection;
-use SessionIdInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
 
@@ -135,10 +135,10 @@ interface PermissionsInterface
     /**
      * @deprecated see deprecation on property userInvitedInProcedure
      * @param ProcedureInterface $procedure
-     * @param SessionIdInterface $session
+     * @param Session $session
      * @return void
      */
-    public function evaluateUserInvitedInProcedure(ProcedureInterface $procedure, SessionIdInterface $session): void;
+    public function evaluateUserInvitedInProcedure(ProcedureInterface $procedure, Session $session): void;
 
     /**
      * @return ResolvablePermissionCollection[]
