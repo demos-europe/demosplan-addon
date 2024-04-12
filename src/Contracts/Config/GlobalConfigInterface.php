@@ -396,9 +396,6 @@ interface GlobalConfigInterface
 
     public function isAdvancedSupport(): bool;
 
-    /**
-     * @return array
-     */
     public function getExternalLinks(): array;
 
     /**
@@ -406,14 +403,8 @@ interface GlobalConfigInterface
      */
     public function getSubdomainMap(): array;
 
-    /**
-     * @return string
-     */
     public function getLgvPlisBaseUrl(): string;
 
-    /**
-     * @return string
-     */
     public function getLgvXplanboxBaseUrl(): string;
 
     public function getXPlanLayerBaseUrl(): string;

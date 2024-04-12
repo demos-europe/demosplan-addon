@@ -1454,10 +1454,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getSimilarStatementSubmitters(): Collection;
 
-    /**
-     * @param ProcedurePersonInterface $similarStatementSubmitter
-     * @return void
-     */
     public function addSimilarStatementSubmitter(ProcedurePersonInterface $similarStatementSubmitter): void;
 
     /**
@@ -1481,34 +1477,18 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function incrementSegmentationPiRetries(): void;
 
-    /**
-     * @param GdprConsentInterface|null $gdprConsent
-     */
     public function setGdprConsent(?GdprConsentInterface $gdprConsent);
 
-    /**
-     * @return bool
-     */
     public function hasBeenSubmittedAndAuthoredByUnregisteredCitizen(): bool;
 
-    /**
-     * @return bool
-     */
     public function hasBeenSubmittedAndAuthoredByRegisteredCitizen(): bool;
 
-    /**
-     * @return bool
-     */
     public function hasBeenSubmittedAndAuthoredByInvitableInstitutionKoordinator(): bool;
 
-    /**
-     * @return bool
-     */
     public function hasBeenAuthoredByInstitutionSachbearbeiterAndSubmittedByInstitutionKoordinator(): bool;
 
     /**
      * @deprecated use {@link StatementInterface::getId()} instead
-     * @return string|null
      */
     public function getIdent(): ?string;
 }

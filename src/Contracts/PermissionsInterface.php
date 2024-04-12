@@ -134,9 +134,6 @@ interface PermissionsInterface
 
     /**
      * @deprecated see deprecation on property userInvitedInProcedure
-     * @param ProcedureInterface $procedure
-     * @param Session $session
-     * @return void
      */
     public function evaluateUserInvitedInProcedure(ProcedureInterface $procedure, Session $session): void;
 

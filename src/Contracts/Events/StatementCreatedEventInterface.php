@@ -8,9 +8,6 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface;
 
 interface StatementCreatedEventInterface
 {
-    /**
-     * @return StatementInterface
-     */
     public function getStatement(): StatementInterface;
 
 }

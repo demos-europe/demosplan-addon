@@ -75,9 +75,5 @@ interface MessageBagInterface
      */
     public function addViolations(ConstraintViolationListInterface $constraintViolationList): void;
 
-    /**
-     * @param ViolationsException $e
-     * @return void
-     */
     public function addViolationExceptions(ViolationsException $e): void;
 }
