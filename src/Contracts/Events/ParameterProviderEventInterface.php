@@ -10,6 +10,9 @@ interface ParameterProviderEventInterface
 
     public function getParameters();
 
-    public function setParameters(array $parameters);
+    /**
+     * @param array $parameter
+     */
+    public function setParameters($parameters);
 
 }

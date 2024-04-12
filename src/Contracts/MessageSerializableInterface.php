@@ -8,14 +8,23 @@ interface MessageSerializableInterface
 {
     public function getSeverity(): string;
 
-    public function setSeverity(string $severity): MessageSerializableInterface;
+    /**
+     * @param string $severity
+     */
+    public function setSeverity($severity): MessageSerializableInterface;
 
     public function getText(): string;
 
-    public function setText(string $text): MessageSerializableInterface;
+    /**
+     * @param string $text
+     */
+    public function setText($text): MessageSerializableInterface;
 
     public function getTextParameters(): array;
 
-    public function setTextParameters(array $textParameters);
+    /**
+     * @param array $textParameters
+     */
+    public function setTextParameters($textParameters);
 
 }

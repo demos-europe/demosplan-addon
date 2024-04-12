@@ -7,6 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use demosplan\DemosPlanCoreBundle\Exception\InvalidDataException;
 use Exception;
 
 interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
@@ -399,32 +400,48 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setDeletedDate($deletedDate): StatementInterface;
 
-    public function getCounties(): ArrayCollection;
+    /**
+     * @return ArrayCollection
+     */
+    public function getCounties();
 
     /**
      * @param ArrayCollection<int, CountyInterface>|CountyInterface[] $counties
      */
-    public function setCounties(ArrayCollection|array $counties);
+    public function setCounties($counties);
 
-    public function addCounty(CountyInterface $county): bool;
+    /**
+     * @param CountyInterface $county
+     */
+    public function addCounty($county): bool;
 
-    public function removeCounty(CountyInterface $county);
+    /**
+     * @param CountyInterface $county
+     */
+    public function removeCounty($county);
 
-    public function getMunicipalities(): ArrayCollection;
+    /**
+     * @return ArrayCollection
+     */
+    public function getMunicipalities();
 
     /**
      * @param ArrayCollection<int, MunicipalityInterface>|MunicipalityInterface[] $municipalities
      */
-    public function setMunicipalities(array|ArrayCollection $municipalities);
+    public function setMunicipalities($municipalities);
 
-    public function addMunicipality(MunicipalityInterface $municipality): bool;
+    /**
+     * @param MunicipalityInterface $municipality
+     * @return bool
+     */
+    public function addMunicipality($municipality): bool;
 
     public function getFragments(): Collection;
 
     /**
      * @param StatementFragmentInterface[] $fragments
      */
-    public function setFragments(array $fragments);
+    public function setFragments($fragments);
 
     public function removeFragment(StatementFragmentInterface $fragment): void;
 
@@ -434,7 +451,10 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 
     public function getFragmentsCount(): int;
 
-    public function setFragmentsFilteredCount(?int $fragmentsFilteredCount);
+    /**
+     * @param int|null $fragmentsFilteredCount
+     */
+    public function setFragmentsFilteredCount($fragmentsFilteredCount);
 
     /**
      * @return array<int,string>
@@ -1435,7 +1455,11 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function incrementSegmentationPiRetries(): void;
 
-    public function setGdprConsent(?GdprConsentInterface $gdprConsent);
+    /**
+     * @param GdprConsentInterface|null $gdprConsent
+     * @throws InvalidDataException
+     */
+    public function setGdprConsent($gdprConsent);
 
     public function hasBeenSubmittedAndAuthoredByUnregisteredCitizen(): bool;
 
