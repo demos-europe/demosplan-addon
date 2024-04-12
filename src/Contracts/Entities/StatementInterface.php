@@ -155,9 +155,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getPrioritySort();
 
-    /**
-     * @return array
-     */
     public function getCountyNames(): array;
 
     /**
@@ -402,9 +399,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setDeletedDate($deletedDate): StatementInterface;
 
-    /**
-     * @return ArrayCollection
-     */
     public function getCounties(): ArrayCollection;
 
     /**
@@ -412,22 +406,10 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setCounties(ArrayCollection|array $counties);
 
-    /**
-     * @param CountyInterface $county
-     * @return bool
-     */
     public function addCounty(CountyInterface $county): bool;
 
-    /**
-     * Remove County.
-     *
-     * @param CountyInterface $county
-     */
     public function removeCounty(CountyInterface $county);
 
-    /**
-     * @return ArrayCollection
-     */
     public function getMunicipalities(): ArrayCollection;
 
     /**
@@ -435,15 +417,8 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setMunicipalities(array|ArrayCollection $municipalities);
 
-    /**
-     * @param MunicipalityInterface $municipality
-     * @return bool
-     */
-    public function addMunicipality($municipality): bool;
+    public function addMunicipality(MunicipalityInterface $municipality): bool;
 
-    /**
-     * @return Collection
-     */
     public function getFragments(): Collection;
 
     /**
@@ -451,31 +426,14 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setFragments(array $fragments);
 
-    /**
-     * @param StatementFragmentInterface $fragment
-     * @return void
-     */
     public function removeFragment(StatementFragmentInterface $fragment): void;
 
-    /**
-     * @param StatementFragmentInterface $fragment
-     * @return void
-     */
     public function addFragment(StatementFragmentInterface $fragment): void;
 
-    /**
-     * @return int|null
-     */
     public function getFragmentsFilteredCount(): ?int;
 
-    /**
-     * @return int
-     */
     public function getFragmentsCount(): int;
 
-    /**
-     * @param int|null $fragmentsFilteredCount
-     */
     public function setFragmentsFilteredCount(?int $fragmentsFilteredCount);
 
     /**
