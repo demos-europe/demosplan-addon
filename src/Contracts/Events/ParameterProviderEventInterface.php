@@ -6,13 +6,10 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 interface ParameterProviderEventInterface
 {
-    public function getView();
+    public function getView(): string;
 
-    public function getParameters();
+    public function getParameters(): array;
 
-    /**
-     * @param array $parameter
-     */
-    public function setParameters($parameters);
+    public function setParameters(array $parameters);
 
 }
