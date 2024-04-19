@@ -7,6 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 use DemosEurope\DemosplanAddon\Contracts\Entities\FileInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\FileInfoInterface;
 use demosplan\DemosPlanCoreBundle\Entity\File;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @method FileInfoInterface getFileInfoFromFileString($fileString)
@@ -36,4 +37,14 @@ interface FileServiceInterface
      * @return FileInterface|null
      */
     public function getFileById($fileId);
+
+    /**
+     * Is the given mimetype allowed in global settings?
+     *
+     * @param string $mimeType
+     * @param string $temporaryFilePath
+     *
+     * @throws FileException
+     */
+    public function checkMimeTypeAllowed($mimeType, $temporaryFilePath);
 }
