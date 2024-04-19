@@ -1,9 +1,9 @@
 # Changelog
 
+## UNRELEASED
+
 ## v0.31 (2024-04-19)
 - add method to FileServiceInterface
-
-## UNRELEASED
 
 ## v0.30 (2024-04-08)
 - add ProcedurePhaseRepositoryInterface
