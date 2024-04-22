@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add EDT dependencies (demos-europe/edt-extra)
 
 ## v0.31 (2024-04-19)
 - add method to FileServiceInterface
