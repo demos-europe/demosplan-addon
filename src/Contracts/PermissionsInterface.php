@@ -16,7 +16,7 @@ interface PermissionsInterface
     /**
      * Initialize all permissions that do not depend on a procedure.
      */
-    public function initPermissions(UserInterface $user, array $context = null): self;
+    public function initPermissions(UserInterface $user): self;
 
     /**
      * Ist die Organisation des angemeldeten Nutzers Inhaberin des Verfahrens?
@@ -51,12 +51,6 @@ interface PermissionsInterface
      */
     public function hasPermissionsetWrite($scope = null): bool;
 
-    /**
-     * Setzt das Menue-Highlight eines einzelnen Permissions.
-     *
-     * @param string $permission
-     */
-    public function setMenuhighlighting($permission);
 
     /**
      * Infos zu einem bestimmten Permission
