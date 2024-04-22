@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- menu highlighting not done via permissions any more
 
 ## v0.31 (2024-04-19)
 - add method to FileServiceInterface
