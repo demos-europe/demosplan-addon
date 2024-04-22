@@ -10,6 +10,7 @@
   },
   "require": {
     "composer-plugin-api": "^2.0",
+    "demos-europe/edt-extra": "^0.24.0",
     "demos-europe/edt-dql": "^0.24.0",
     "demos-europe/edt-jsonapi": "^0.24.0",
     "demos-europe/edt-paths": "^0.24.0",
