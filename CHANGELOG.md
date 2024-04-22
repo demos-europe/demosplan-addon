@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.32 (2024-04-22)
 - menu highlighting not done via permissions any more
 
 ## v0.31 (2024-04-19)
