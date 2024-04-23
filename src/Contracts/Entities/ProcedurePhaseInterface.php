@@ -5,7 +5,6 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
 use demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure;
-use EDT\PathBuilding\End;
 
 /**
  * @property string $key
