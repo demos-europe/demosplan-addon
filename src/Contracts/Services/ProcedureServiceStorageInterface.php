@@ -36,5 +36,5 @@ interface ProcedureServiceStorageInterface
      * @throws TransactionRequiredException
      * @throws Exception
      */
-    public function administrationEditHandler($data, $checkMandatoryErrors = true)
+    public function administrationEditHandler($data, $checkMandatoryErrors = true);
 }
