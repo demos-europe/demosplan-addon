@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add event interface
+
 ## v0.32 (2024-04-22)
 - menu highlighting not done via permissions any more
 
