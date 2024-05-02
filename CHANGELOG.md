@@ -1,7 +1,7 @@
 # Changelog
 
 ## UNRELEASED
-- add interface for new event DeleteEmailImportedStatementEvent
+- add interface for new event StatementPreDeleteEventInterface
 ## v0.32 (2024-04-22)
 - menu highlighting not done via permissions any more
 
