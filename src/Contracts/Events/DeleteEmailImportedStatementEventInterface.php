@@ -4,7 +4,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\StatementInterface;
 
-interface DeleteEmailImportedStatementEventInterface
+interface StatementPreDeleteEventInterface
 {
     public function getStatement(): StatementInterface;
 }
