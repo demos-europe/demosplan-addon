@@ -403,10 +403,6 @@ interface GlobalConfigInterface
      */
     public function getSubdomainMap(): array;
 
-    public function getLgvPlisBaseUrl(): string;
-
-    public function getLgvXplanboxBaseUrl(): string;
-
     public function getXPlanLayerBaseUrl(): string;
 
     public function getInternalPhaseTranslationKey(string $phaseKey): ?string;

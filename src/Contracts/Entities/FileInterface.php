@@ -19,11 +19,6 @@ interface FileInterface extends UuidEntityInterface, CoreEntityInterface
     public function setIdent($ident);
 
     /**
-     * @deprecated use {@link File::getId()} instead
-     */
-    public function getIdent(): ?string;
-
-    /**
      * @param string $hash
      *
      * @return FileInterface

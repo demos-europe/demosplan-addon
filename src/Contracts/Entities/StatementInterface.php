@@ -156,8 +156,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getPrioritySort();
 
-    public function getCountyNames(): array;
-
     /**
      * Set externId.
      *
@@ -399,62 +397,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * @param DateTime $deletedDate
      */
     public function setDeletedDate($deletedDate): StatementInterface;
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getCounties();
-
-    /**
-     * @param ArrayCollection<int, CountyInterface>|CountyInterface[] $counties
-     */
-    public function setCounties($counties);
-
-    /**
-     * @param CountyInterface $county
-     */
-    public function addCounty($county): bool;
-
-    /**
-     * @param CountyInterface $county
-     */
-    public function removeCounty($county);
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getMunicipalities();
-
-    /**
-     * @param ArrayCollection<int, MunicipalityInterface>|MunicipalityInterface[] $municipalities
-     */
-    public function setMunicipalities($municipalities);
-
-    /**
-     * @param MunicipalityInterface $municipality
-     * @return bool
-     */
-    public function addMunicipality($municipality): bool;
-
-    public function getFragments(): Collection;
-
-    /**
-     * @param StatementFragmentInterface[] $fragments
-     */
-    public function setFragments($fragments);
-
-    public function removeFragment(StatementFragmentInterface $fragment): void;
-
-    public function addFragment(StatementFragmentInterface $fragment): void;
-
-    public function getFragmentsFilteredCount(): ?int;
-
-    public function getFragmentsCount(): int;
-
-    /**
-     * @param int|null $fragmentsFilteredCount
-     */
-    public function setFragmentsFilteredCount($fragmentsFilteredCount);
 
     /**
      * @return array<int,string>
@@ -1455,12 +1397,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function incrementSegmentationPiRetries(): void;
 
-    /**
-     * @param GdprConsentInterface|null $gdprConsent
-     * @throws InvalidDataException
-     */
-    public function setGdprConsent($gdprConsent);
-
     public function hasBeenSubmittedAndAuthoredByUnregisteredCitizen(): bool;
 
     public function hasBeenSubmittedAndAuthoredByRegisteredCitizen(): bool;
@@ -1469,8 +1405,4 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 
     public function hasBeenAuthoredByInstitutionSachbearbeiterAndSubmittedByInstitutionKoordinator(): bool;
 
-    /**
-     * @deprecated use {@link StatementInterface::getId()} instead
-     */
-    public function getIdent(): ?string;
 }
