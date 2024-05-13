@@ -3,6 +3,10 @@
 ## UNRELEASED
 - update deprecated Tightenco\Collect to Illuminate\Support\Collection
 
+
+## v0.33 (2024-05-13)
+- add EDT dependencies (demos-europe/edt-extra)
+
 ## v0.32 (2024-04-22)
 - menu highlighting not done via permissions any more
 
