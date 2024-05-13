@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- update deprecated Tightenco\Collect to Illuminate\Support\Collection
+
 ## v0.32 (2024-04-22)
 - menu highlighting not done via permissions any more
 
