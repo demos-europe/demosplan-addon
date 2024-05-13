@@ -41,7 +41,7 @@
     "symfony/var-dumper": "5.*.*",
     "symfony/var-exporter": "5.*.*",
     "symfony/yaml": "5.*.*",
-    "illuminate/collections": "^11.7"
+    "illuminate/collections": "^10.48"
   },
   "require-dev": {
     "composer/composer": "^2.1",
