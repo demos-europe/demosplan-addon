@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.33 (2024-05-13)
 - add EDT dependencies (demos-europe/edt-extra)
 
 ## v0.32 (2024-04-22)
