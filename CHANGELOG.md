@@ -1,8 +1,9 @@
 # Changelog
 
 ## UNRELEASED
-- add StatementCreatedViaExcelEventInterface 
 
+## v0.34 (2024-05-16)
+- add StatementCreatedViaExcelEventInterface 
 
 ## v0.33 (2024-05-13)
 - add EDT dependencies (demos-europe/edt-extra)
