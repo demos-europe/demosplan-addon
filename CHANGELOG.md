@@ -1,7 +1,7 @@
 # Changelog
 
 ## UNRELEASED
-- add event interface
+- add StatementCreatedViaExcelEventInterface 
 
 
 ## v0.33 (2024-05-13)
