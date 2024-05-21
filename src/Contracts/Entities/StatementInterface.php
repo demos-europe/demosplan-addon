@@ -7,6 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use demosplan\DemosPlanCoreBundle\Exception\InvalidDataException;
 use Exception;
 
 interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
@@ -154,7 +155,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * @return string
      */
     public function getPrioritySort();
-
 
     /**
      * Set externId.
@@ -1374,6 +1374,8 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getSimilarStatementSubmitters(): Collection;
 
+    public function addSimilarStatementSubmitter(ProcedurePersonInterface $similarStatementSubmitter): void;
+
     /**
      * @param Collection<int, ProcedurePersonInterface> $similarStatementSubmitters
      */
@@ -1394,4 +1396,13 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * TODO: move out of contract and core
      */
     public function incrementSegmentationPiRetries(): void;
+
+    public function hasBeenSubmittedAndAuthoredByUnregisteredCitizen(): bool;
+
+    public function hasBeenSubmittedAndAuthoredByRegisteredCitizen(): bool;
+
+    public function hasBeenSubmittedAndAuthoredByInvitableInstitutionKoordinator(): bool;
+
+    public function hasBeenAuthoredByInstitutionSachbearbeiterAndSubmittedByInstitutionKoordinator(): bool;
+
 }

@@ -201,6 +201,11 @@ interface GlobalConfigInterface
      */
     public function getProxyPort(): string;
 
+    /**
+     * @return string[]
+     */
+    public function getProxyTrusted(): array;
+
     public function getProjectCoreVersion(): string;
 
     public function getProjectVersion(): string;
@@ -390,6 +395,8 @@ interface GlobalConfigInterface
     public function getMapEnableWmtsExport(): bool;
 
     public function isAdvancedSupport(): bool;
+
+    public function getExternalLinks(): array;
 
     /**
      * @return array<string,string>

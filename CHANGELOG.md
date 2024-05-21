@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+-add some missed Methods in different interface
 
 ## v0.34 (2024-05-16)
 - add StatementCreatedViaExcelEventInterface 
