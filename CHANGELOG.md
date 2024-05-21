@@ -1,8 +1,8 @@
 # Changelog
 
-- add methods to SingleDocumentHandlerInterface
-
 ## UNRELEASED
+## v0.35 (2024-05-21)
+- add methods to SingleDocumentHandlerInterface
 - add interface for new event StatementPreDeleteEventInterface
 
 ## v0.34 (2024-05-16)
