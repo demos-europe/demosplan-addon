@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add methods to SingleDocumentHandlerInterface
 
 ## v0.24 (2024-02-02)
 - technical release to heal release problem in previous version
