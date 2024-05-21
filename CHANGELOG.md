@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add interface for new event StatementPreDeleteEventInterface
 
 ## v0.34 (2024-05-16)
 - add StatementCreatedViaExcelEventInterface 
