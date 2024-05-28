@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add BoilerplatefactoryInterface and BoilerplateCategoryFactoryInterface
+
 ## v0.24.1 (2024-05-21)
 - add methods to SingleDocumentHandlerInterface
 
