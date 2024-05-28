@@ -36,6 +36,9 @@
 ## v0.25 (2024-02-06)
 - create UuidV4Generator so that each addon is independent from Core UuidV4Generator
 
+## v0.24.2 (2024.05.28)
+- add BoilerplatefactoryInterface and BoilerplateCategoryFactoryInterface
+
 ## v0.24.1 (2024-05-21)
 - add methods to SingleDocumentHandlerInterface
 
@@ -44,9 +47,11 @@
 - remove unnecessary definitions from services yaml
 
 ## v0.22 (2024-01-29)
+
 - adjust ProcedureInterface due to method-declaration-changes.
 
 ## v0.21 (2024-01-23)
+
 - remove deprecated sensio/framework-extra-bundle
 - explicitly define required symfony packages
 - downgrade bundles to symfony 5.4
