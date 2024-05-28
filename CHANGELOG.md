@@ -36,9 +36,6 @@
 ## v0.25 (2024-02-06)
 - create UuidV4Generator so that each addon is independent from Core UuidV4Generator
 
-## v0.24.1 (2024-05-21)
-- add methods to SingleDocumentHandlerInterface
-
 ## v0.24.2 (2024.05.28)
 - add BoilerplatefactoryInterface and BoilerplateCategoryFactoryInterface
 
