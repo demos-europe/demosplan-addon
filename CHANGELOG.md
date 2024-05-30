@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add FileServiceInterface::checkMimeTypeAllowed 
 
 ## v0.24.2 (2024.05.28)
 - add BoilerplatefactoryInterface and BoilerplateCategoryFactoryInterface
