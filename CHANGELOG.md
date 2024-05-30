@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.24.3 (2024-05-30)
 - add FileServiceInterface::checkMimeTypeAllowed 
 
 ## v0.24.2 (2024.05.28)
