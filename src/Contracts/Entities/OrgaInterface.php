@@ -9,7 +9,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Tightenco\Collect\Support\Collection as TightencoCollection;
+use Illuminate\Support\Collection as IlluminateCollection;
 
 /**
  * additional methods inherited from SluggedEntity are not part of this interface
@@ -252,14 +252,14 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     public function addNotification($notification): self;
 
     /**
-     * @return ArrayCollection|TightencoCollection
+     * @return ArrayCollection|IlluminateCollection
      */
     public function getAllUsers();
 
     /**
      * Returns all users of this organisation, which are not deleted === true.
      */
-    public function getUsers(): TightencoCollection;
+    public function getUsers(): IlluminateCollection;
 
     /**
      * @param array<int,UserInterface> $users
@@ -276,7 +276,7 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
      */
     public function removeUser(UserInterface $user): self;
 
-    public function getDepartments(): TightencoCollection;
+    public function getDepartments(): IlluminateCollection;
 
     /**
      * @param array<int,DepartmentInterface> $departments
@@ -305,7 +305,7 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     /**
      * Returns all user (of all departments) of this organisation.
      *
-     * @return TightencoCollection collection of {@link UserInterface} instances
+     * @return IlluminateCollection collection of {@link UserInterface} instances
      */
     public function getAllUsersOfDepartments();
 
