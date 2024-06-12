@@ -3,6 +3,12 @@
 ## UNRELEASED
 - update deprecated Tightenco\Collect to Illuminate\Support\Collection
 
+## v0.35 (2024-05-21)
+- add methods to SingleDocumentHandlerInterface
+- add interface for new event StatementPreDeleteEventInterface
+
+## v0.34 (2024-05-16)
+- add StatementCreatedViaExcelEventInterface 
 
 ## v0.33 (2024-05-13)
 - add EDT dependencies (demos-europe/edt-extra)
