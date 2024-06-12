@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.36 (2024-06-12)
 - update deprecated Tightenco\Collect to Illuminate\Support\Collection
 
 ## v0.35 (2024-05-21)
