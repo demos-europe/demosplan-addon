@@ -13,6 +13,7 @@ use EDT\JsonApi\RequestHandling\FilterParserInterface;
 use EDT\JsonApi\RequestHandling\JsonApiSortingParser;
 use EDT\JsonApi\RequestHandling\PaginatorFactory;
 use EDT\JsonApi\RequestHandling\RequestTransformer;
+use EDT\JsonApi\RequestHandling\RequestWithBody;
 use EDT\JsonApi\Requests\ListRequest;
 use EDT\JsonApi\Validation\SortValidator;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
@@ -30,7 +31,7 @@ class SearchCapableListRequest extends ListRequest
         JsonApiSortingParser $sortingParser,
         PaginatorFactory $paginatorFactory,
         PagePaginationParser $paginationParser,
-        RequestTransformer $requestParser,
+        private readonly RequestWithBody $requestParser,
         SchemaPathProcessor $schemaPathProcessor,
         protected readonly JsonApiEsServiceInterface $jsonApiEsService,
         SortValidator $sortValidator
@@ -52,7 +53,10 @@ class SearchCapableListRequest extends ListRequest
      */
     public function searchResources(JsonApiResourceTypeInterface $type): Collection
     {
-        $urlParams = $this->requestParser->getUrlParameters();
+        //$urlParams = $this->requestParser->getUrlParameters();
+
+        $urlParams = $this->requestParser->query;
+
 
         $searchParams = $urlParams->get(JsonApiEsServiceInterface::SEARCH, []);
         if ([] === $searchParams
