@@ -35,6 +35,13 @@ interface ProcedureInterface extends SluggedEntityInterface
     public const PARTICIPATIONSTATE_FINISHED = 'finished';
 
     /**
+     * Value to define the default procedure non participation state.
+     *
+     * @var string
+     */
+    public const PARTICIPATIONSTATE_CONFIGURATION = 'configuration';
+
+    /**
      * Value to define that users may provide an access token to participate.
      *
      * @value string

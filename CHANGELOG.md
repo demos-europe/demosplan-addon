@@ -1,6 +1,10 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.35.1 (2024-07-01)
+- add constant to ProcedureInterface signaling a non participating-state
+
 ## v0.35 (2024-05-21)
 - add methods to SingleDocumentHandlerInterface
 - add interface for new event StatementPreDeleteEventInterface
