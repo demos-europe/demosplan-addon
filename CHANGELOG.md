@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.37 (2024-07-02)
 - Add type declaration to StatementInterface::getUserName()
 
 ## v0.36 (2024-06-12)
