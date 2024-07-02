@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add type declaration to StatementInterface::getUserName()
+
 ## v0.36 (2024-06-12)
 - update deprecated Tightenco\Collect to Illuminate\Support\Collection
 
