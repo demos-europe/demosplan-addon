@@ -2,7 +2,7 @@
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
-interface AccessControllInterface
+interface AccessControlInterface
 {
     public function getPermissionName(): string;
     public function setPermissionName(string $permission): void;
