@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add getter and setter to placeinterface
+- add solved as a parameter in resourcetype
 
 ## v0.37 (2024-07-02)
 - Add type declaration to StatementInterface::getUserName()
