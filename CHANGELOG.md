@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.38 (2024-07-18)
 - Add getter and setter to placeinterface
 - add solved as a parameter in resourcetype
 
