@@ -1,6 +1,14 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.38 (2024-07-18)
+- Add getter and setter to placeinterface
+- add solved as a parameter in resourcetype
+
+## v0.37 (2024-07-02)
+- Add type declaration to StatementInterface::getUserName()
+
 ## v0.36 (2024-06-12)
 - update deprecated Tightenco\Collect to Illuminate\Support\Collection
 
