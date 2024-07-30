@@ -40,6 +40,9 @@ use League\Fractal\TransformerAbstract;
 use Pagerfanta\Pagerfanta;
 use Webmozart\Assert\Assert;
 use function is_array;
+use EDT\Wrapping\ResourceBehavior\ResourceInstantiability;
+use EDT\Wrapping\ResourceBehavior\ResourceUpdatability;
+use EDT\Wrapping\ResourceBehavior\ResourceReadability;
 
 /**
  * @template TEntity of EntityInterface
@@ -355,5 +358,30 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         }
 
         return parent::getEntities($conditions, $sortMethods);
+    }
+
+    public function getReadability(): ResourceReadability
+    {
+        return $this->getResourceConfig()->getReadability();
+    }
+
+    public function getFilteringProperties(): array
+    {
+        return $this->getResourceConfig()->getFilteringProperties();
+    }
+
+    public function getSortingProperties(): array
+    {
+        return $this->getResourceConfig()->getSortingProperties();
+    }
+
+    public function getUpdatability(): ResourceUpdatability
+    {
+        return $this->getResourceConfig()->getUpdatability();
+    }
+
+    protected function getInstantiability(): ResourceInstantiability
+    {
+        return $this->getResourceConfig()->getInstantiability();
     }
 }
