@@ -18,6 +18,7 @@ use EDT\JsonApi\Validation\SortValidator;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use League\Fractal\Resource\Collection;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @template-extends ListRequest<ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
@@ -30,7 +31,7 @@ class SearchCapableListRequest extends ListRequest
         JsonApiSortingParser $sortingParser,
         PaginatorFactory $paginatorFactory,
         PagePaginationParser $paginationParser,
-        RequestTransformer $requestParser,
+        Request $request,
         SchemaPathProcessor $schemaPathProcessor,
         protected readonly JsonApiEsServiceInterface $jsonApiEsService,
         SortValidator $sortValidator
@@ -40,7 +41,7 @@ class SearchCapableListRequest extends ListRequest
             $sortingParser,
             $paginatorFactory,
             $paginationParser,
-            $requestParser,
+            $request,
             $schemaPathProcessor,
             $eventDispatcher,
             $sortValidator
@@ -52,7 +53,7 @@ class SearchCapableListRequest extends ListRequest
      */
     public function searchResources(JsonApiResourceTypeInterface $type): Collection
     {
-        $urlParams = $this->requestParser->getUrlParameters();
+        $urlParams = $this->request->query;
 
         $searchParams = $urlParams->get(JsonApiEsServiceInterface::SEARCH, []);
         if ([] === $searchParams
@@ -87,7 +88,7 @@ class SearchCapableListRequest extends ListRequest
         $collection = new Collection($entities, $type->getTransformer(), $type->getTypeName());
         $collection->setMeta($meta);
         if (null !== $paginator) {
-            $collection->setPaginator($this->paginatorFactory->createPaginatorAdapter($paginator));
+            $collection->setPaginator($this->paginatorFactory->createPaginatorAdapter($paginator, $this->request));
         }
 
         return $collection;
