@@ -12,13 +12,15 @@ use EDT\JsonApi\Pagination\PagePaginationParser;
 use EDT\JsonApi\RequestHandling\FilterParserInterface;
 use EDT\JsonApi\RequestHandling\JsonApiSortingParser;
 use EDT\JsonApi\RequestHandling\PaginatorFactory;
-use EDT\JsonApi\RequestHandling\RequestTransformer;
 use EDT\JsonApi\Requests\ListRequest;
+use EDT\JsonApi\Requests\RequestException;
 use EDT\JsonApi\Validation\SortValidator;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use League\Fractal\Resource\Collection;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * @template-extends ListRequest<ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
@@ -34,7 +36,8 @@ class SearchCapableListRequest extends ListRequest
         Request $request,
         SchemaPathProcessor $schemaPathProcessor,
         protected readonly JsonApiEsServiceInterface $jsonApiEsService,
-        SortValidator $sortValidator
+        SortValidator $sortValidator,
+        readonly private RequestStack $requestStack
     ) {
         parent::__construct(
             $filterParser,
@@ -48,12 +51,27 @@ class SearchCapableListRequest extends ListRequest
         );
     }
 
+    protected function getRequest(): Request
+    {
+        $request = $this->requestStack->getCurrentRequest();
+        if (null === $request) {
+            throw RequestException::noRequest();
+        }
+
+        return $request;
+    }
+
+    public function getUrlParameters(): ParameterBag
+    {
+        return $this->getRequest()->query;
+    }
+
     /**
      * @param JsonApiResourceTypeInterface<EntityInterface> $type
      */
     public function searchResources(JsonApiResourceTypeInterface $type): Collection
     {
-        $urlParams = $this->request->query;
+        $urlParams = $this->getUrlParameters();
 
         $searchParams = $urlParams->get(JsonApiEsServiceInterface::SEARCH, []);
         if ([] === $searchParams
