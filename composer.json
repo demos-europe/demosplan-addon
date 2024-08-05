@@ -10,6 +10,7 @@
   },
   "require": {
     "composer-plugin-api": "^2.0",
+    "demos-europe/edt-extra": "^0.24.0",
     "demos-europe/edt-dql": "^0.24.0",
     "demos-europe/edt-jsonapi": "^0.24.0",
     "demos-europe/edt-paths": "^0.24.0",
@@ -41,7 +42,7 @@
     "symfony/var-dumper": "5.*.*",
     "symfony/var-exporter": "5.*.*",
     "symfony/yaml": "5.*.*",
-    "tightenco/collect": "~8.83.0"
+    "illuminate/collections": "^10.48"
   },
   "require-dev": {
     "composer/composer": "^2.1",
@@ -60,5 +61,5 @@
   "scripts": {
     "phpstan": "phpstan analyse"
   },
-  "version": "v0.24.3"
+  "version": "v0.38"
 }

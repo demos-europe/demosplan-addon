@@ -193,10 +193,8 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 
     /**
      * Returns the name of the author!
-     *
-     * @return string
      */
-    public function getUserName();
+    public function getUserName(): ?string;
 
     /**
      * Set oId.

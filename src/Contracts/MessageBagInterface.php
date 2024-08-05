@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Contracts;
 
 use DemosEurope\DemosplanAddon\Contracts\MessageSerializableInterface;
+use Illuminate\Support\Collection;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use Tightenco\Collect\Support\Collection;
 
 interface MessageBagInterface
 {

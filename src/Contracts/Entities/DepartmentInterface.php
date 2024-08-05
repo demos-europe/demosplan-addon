@@ -7,7 +7,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Tightenco\Collect\Support\Collection;
+use Illuminate\Support\Collection;
 
 interface DepartmentInterface extends UuidEntityInterface, CoreEntityInterface
 {

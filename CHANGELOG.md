@@ -1,25 +1,61 @@
 # Changelog
 
 ## UNRELEASED
-## v0.24.3 (2024-05-30)
-- add FileServiceInterface::checkMimeTypeAllowed 
 
-## v0.24.2 (2024.05.28)
-- add BoilerplatefactoryInterface and BoilerplateCategoryFactoryInterface
+## v0.38 (2024-07-18)
+- Add getter and setter to placeinterface
+- add solved as a parameter in resourcetype
 
-## v0.24.1 (2024-05-21)
+## v0.37 (2024-07-02)
+- Add type declaration to StatementInterface::getUserName()
+
+## v0.36 (2024-06-12)
+- update deprecated Tightenco\Collect to Illuminate\Support\Collection
+
+## v0.35 (2024-05-21)
 - add methods to SingleDocumentHandlerInterface
+- add interface for new event StatementPreDeleteEventInterface
+
+## v0.34 (2024-05-16)
+- add StatementCreatedViaExcelEventInterface 
+
+## v0.33 (2024-05-13)
+- add EDT dependencies (demos-europe/edt-extra)
+
+## v0.32 (2024-04-22)
+- menu highlighting not done via permissions any more
+
+## v0.31 (2024-04-19)
+- add method to FileServiceInterface
+
+## v0.30 (2024-04-08)
+- add ProcedurePhaseRepositoryInterface
+
+## v0.29 (2024-04-05)
+- add interfaces to publish procedure phase entity
+- allow iteration value on a procedure phase and statement
+
+## v0.28 (2024-02-27)
+- fix user interface again as the previous fix was incomplete
+
+## v0.27 (2024-02-27)
+- fix user interface method declaration due to changes within core
+
+## v0.26 (2024-02-16)
+- fix user interface
+
+## v0.25 (2024-02-06)
+- create UuidV4Generator so that each addon is independent from Core UuidV4Generator
 
 ## v0.24 (2024-02-02)
 - technical release to heal release problem in previous version
 - remove unnecessary definitions from services yaml
 
 ## v0.22 (2024-01-29)
-
 - adjust ProcedureInterface due to method-declaration-changes.
 
-## v0.21 (2024-01-23)
 
+## v0.21 (2024-01-23)
 - remove deprecated sensio/framework-extra-bundle
 - explicitly define required symfony packages
 - downgrade bundles to symfony 5.4
