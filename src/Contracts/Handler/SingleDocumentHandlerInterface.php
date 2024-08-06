@@ -25,4 +25,6 @@ interface SingleDocumentHandlerInterface
      * @throws ReflectionException
      */
     public function administrationDocumentEditHandler($data);
+
+    public function administrationDocumentDeleteHandler($data);
 }

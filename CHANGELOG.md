@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.39 (2024-08-06)
+- Add ParagraphHandlerInterface
+- Add method administrationDocumentDeleteHandler to SingleDocumentHandlerInterface
+
 ## v0.38 (2024-07-18)
 - Add getter and setter to placeinterface
 - add solved as a parameter in resourcetype
