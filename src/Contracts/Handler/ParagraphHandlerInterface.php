@@ -12,5 +12,4 @@ interface ParagraphHandlerInterface
     public function administrationDocumentEditHandler($procedureId, $data, $elementId);
 
     public function administrationDocumentDeleteHandler(ProcedureInterface $procedure, ElementsInterface $element);
-
 }
