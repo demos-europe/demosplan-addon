@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+- upgrade EDT dependencies from 0.24.42 to 0.25
+- add missing methods in DoctrineResourceType
+- pass correct request to parent class retrieved via request stack
 
 ## v0.39 (2024-08-06)
 - Add ParagraphHandlerInterface
