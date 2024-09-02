@@ -33,7 +33,6 @@ class SearchCapableListRequest extends ListRequest
         JsonApiSortingParser $sortingParser,
         PaginatorFactory $paginatorFactory,
         PagePaginationParser $paginationParser,
-        Request $request,
         SchemaPathProcessor $schemaPathProcessor,
         protected readonly JsonApiEsServiceInterface $jsonApiEsService,
         SortValidator $sortValidator,
@@ -44,26 +43,11 @@ class SearchCapableListRequest extends ListRequest
             $sortingParser,
             $paginatorFactory,
             $paginationParser,
-            $request,
+            $this->requestStack->getCurrentRequest(),
             $schemaPathProcessor,
             $eventDispatcher,
             $sortValidator
         );
-    }
-
-    protected function getRequest(): Request
-    {
-        $request = $this->requestStack->getCurrentRequest();
-        if (null === $request) {
-            throw RequestException::noRequest();
-        }
-
-        return $request;
-    }
-
-    public function getUrlParameters(): ParameterBag
-    {
-        return $this->getRequest()->query;
     }
 
     /**
@@ -71,7 +55,7 @@ class SearchCapableListRequest extends ListRequest
      */
     public function searchResources(JsonApiResourceTypeInterface $type): Collection
     {
-        $urlParams = $this->getUrlParameters();
+        $urlParams = $this->request->query;
 
         $searchParams = $urlParams->get(JsonApiEsServiceInterface::SEARCH, []);
         if ([] === $searchParams
