@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add default Map setting values to the CustomerInterface
+- Move Customer constants into the CustomerInterface
 
 ## v0.38 (2024-07-18)
 - Add getter and setter to placeinterface
