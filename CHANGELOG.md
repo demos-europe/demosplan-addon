@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.39 (2024-09-20)
 - Add default Map setting values to the CustomerInterface
 - Move Customer constants into the CustomerInterface
 
