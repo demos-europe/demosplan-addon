@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.40 (2024-09-20)
+- Add default Map setting values to the CustomerInterface
+- Move Customer constants into the CustomerInterface
+
 ## v0.39 (2024-08-06)
 - Add ParagraphHandlerInterface
 - Add method administrationDocumentDeleteHandler to SingleDocumentHandlerInterface
