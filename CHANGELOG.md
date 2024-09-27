@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.41 (2024-09-27)
 - upgrade EDT dependencies from 0.24.42 to 0.25
 - add missing methods in DoctrineResourceType
 - pass correct request to parent class retrieved via request stack
