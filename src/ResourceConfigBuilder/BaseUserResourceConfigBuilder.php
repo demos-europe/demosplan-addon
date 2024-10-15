@@ -52,6 +52,10 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,UserInterface> $twinUser
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,ProcedureInterface> $authorizedProcedures
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $providedByIdentityProvider
+ * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $totpSecret
+ * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $totpEnabled
+ * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $authCode
+ * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $authCodeEmailEnabled
  */
 class BaseUserResourceConfigBuilder extends MagicResourceConfigBuilder
 {

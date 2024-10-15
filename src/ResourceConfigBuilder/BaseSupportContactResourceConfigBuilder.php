@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\ResourceConfigBuilder;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\CustomerInterface;
-use DemosEurope\DemosplanAddon\Contracts\Entities\EmailAddressInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\SupportContactInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
@@ -24,7 +23,7 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  *
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $title
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $phoneNumber
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SupportContactInterface,EmailAddressInterface> $eMailAddress
+ * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $eMailAddress
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $text
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $visible
  * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SupportContactInterface,CustomerInterface> $customer

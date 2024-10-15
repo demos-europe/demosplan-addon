@@ -6,7 +6,6 @@ namespace DemosEurope\DemosplanAddon\ResourceConfigBuilder;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureSettingsInterface;
-use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\PropertyConfig\Builder\AttributeConfigBuilderInterface;
@@ -44,14 +43,6 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $links
  * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,ProcedureInterface> $procedure
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $pictogram
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPhase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPublicPhase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedSwitchDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPublicSwitchDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,UserInterface> $designatedPhaseChangeUser
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,UserInterface> $designatedPublicPhaseChangeUser
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedEndDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPublicEndDate
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $sendMailsToCounties
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planningArea
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $scales

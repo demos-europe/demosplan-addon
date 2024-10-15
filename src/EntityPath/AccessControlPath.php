@@ -16,17 +16,14 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * create an extending class and add them there.
  *
  * @property-read End $id
- * @property-read End $title
- * @property-read End $phoneNumber
- * @property-read End $eMailAddress
- * @property-read End $text
- * @property-read End $visible
+ * @property-read End $permission
+ * @property-read End $creationDate
+ * @property-read End $modificationDate
+ * @property-read OrgaPath $organisation
+ * @property-read RolePath $role
  * @property-read CustomerPath $customer
- * @property-read End $supportType
- * @property-read End $createdAt
- * @property-read End $updatedAt
  */
-class SupportContactPath implements PropertyAutoPathInterface
+class AccessControlPath implements PropertyAutoPathInterface
 {
 	use PropertyAutoPathTrait;
 }

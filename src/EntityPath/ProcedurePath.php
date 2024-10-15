@@ -21,8 +21,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $orgaName
  * @property-read OrgaPath $orga
  * @property-read End $desc
- * @property-read End $phase
- * @property-read End $step
+ * @property-read ProcedurePhasePath $phase
  * @property-read End $logo
  * @property-read End $externId
  * @property-read End $plisId
@@ -33,10 +32,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $externalName
  * @property-read End $externalDesc
  * @property-read End $publicParticipation
- * @property-read End $publicParticipationPhase
- * @property-read End $publicParticipationStep
- * @property-read End $publicParticipationStartDate
- * @property-read End $publicParticipationEndDate
+ * @property-read ProcedurePhasePath $publicParticipationPhase
  * @property-read End $publicParticipationContact
  * @property-read End $publicParticipationPublicationEnabled
  * @property-read End $locationName
@@ -44,8 +40,6 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $municipalCode
  * @property-read End $ars
  * @property-read End $createdDate
- * @property-read End $startDate
- * @property-read End $endDate
  * @property-read End $closedDate
  * @property-read End $deletedDate
  * @property-read OrgaPath $organisation

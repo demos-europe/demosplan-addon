@@ -42,6 +42,10 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read UserPath $twinUser
  * @property-read ProcedurePath $authorizedProcedures
  * @property-read End $providedByIdentityProvider
+ * @property-read End $totpSecret
+ * @property-read End $totpEnabled
+ * @property-read End $authCode
+ * @property-read End $authCodeEmailEnabled
  */
 class UserPath implements PropertyAutoPathInterface
 {
