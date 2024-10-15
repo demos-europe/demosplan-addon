@@ -31,6 +31,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $deleteDate
  * @property-read RolePath $roles
  * @property-read CategoryPath $categories
+ * @property-read CustomerPath $customer
  */
 class GlobalContentPath implements PropertyAutoPathInterface
 {

@@ -19,6 +19,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $pId
  * @property-read End $context
  * @property-read End $namespace
+ * @property-read CustomerPath $customer
  * @property-read End $idents
  */
 class ManualListSortPath implements PropertyAutoPathInterface

@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add AccessControlInterface
+- Update ResourceConfigBuilder and EntityPath classes
 
 ## v0.41 (2024-09-27)
 - upgrade EDT dependencies from 0.24.42 to 0.25

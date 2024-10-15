@@ -37,14 +37,6 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $links
  * @property-read ProcedurePath $procedure
  * @property-read End $pictogram
- * @property-read End $designatedPhase
- * @property-read End $designatedPublicPhase
- * @property-read End $designatedSwitchDate
- * @property-read End $designatedPublicSwitchDate
- * @property-read UserPath $designatedPhaseChangeUser
- * @property-read UserPath $designatedPublicPhaseChangeUser
- * @property-read End $designatedEndDate
- * @property-read End $designatedPublicEndDate
  * @property-read End $sendMailsToCounties
  * @property-read End $planningArea
  * @property-read End $scales

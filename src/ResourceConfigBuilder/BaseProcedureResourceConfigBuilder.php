@@ -15,6 +15,7 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\PlaceInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureBehaviorDefinitionInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureCategoryInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
+use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedurePhaseInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureSettingsInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureTypeInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureUiDefinitionInterface;
@@ -45,8 +46,7 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $orgaName
  * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureInterface,OrgaInterface> $orga
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $desc
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $phase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $step
+ * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureInterface,ProcedurePhaseInterface> $phase
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $logo
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $externId
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $plisId
@@ -57,10 +57,7 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $externalName
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $externalDesc
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipation
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipationPhase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipationStep
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipationStartDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipationEndDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureInterface,ProcedurePhaseInterface> $publicParticipationPhase
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipationContact
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $publicParticipationPublicationEnabled
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $locationName
@@ -68,8 +65,6 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $municipalCode
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $ars
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $startDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $endDate
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $closedDate
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $deletedDate
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureInterface,OrgaInterface> $organisation
