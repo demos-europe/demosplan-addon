@@ -361,6 +361,10 @@ interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInte
     public function setPictogram($pictogram);
 
     public function getPictogram(): ?string;
+    public function setPictogramCopyright(string $pictogramCopyright): ProcedureSettingsInterface;
+    public function getPictogramCopyright(): string;
+    public function setPictogramAltText(string $pictogramAltText): ProcedureSettingsInterface;
+    public function getPictogramAltText(): string;
 
     /**
      * Returns the internal phase to which will be switch, when the time(dateOfSwitchPhase) has come.
