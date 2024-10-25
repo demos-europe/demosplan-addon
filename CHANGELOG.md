@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+## v0.42 (2024-10-25)
+- update ProcedureSettingsInterface to be up to date with new core implementations
+
 ## v0.41 (2024-09-27)
 - upgrade EDT dependencies from 0.24.42 to 0.25
 - add missing methods in DoctrineResourceType
