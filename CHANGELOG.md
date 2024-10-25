@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.42 (2024-10-25)
 - update ProcedureSettingsInterface to be up to date with new core implementations
 
 ## v0.41 (2024-09-27)
