@@ -34,6 +34,9 @@ use EDT\Wrapping\Contracts\AccessException;
 use EDT\Wrapping\Contracts\Types\TransferableTypeInterface;
 use EDT\Wrapping\CreationDataInterface;
 use EDT\Wrapping\EntityDataInterface;
+use EDT\Wrapping\ResourceBehavior\ResourceInstantiability;
+use EDT\Wrapping\ResourceBehavior\ResourceReadability;
+use EDT\Wrapping\ResourceBehavior\ResourceUpdatability;
 use Exception;
 use IteratorAggregate;
 use League\Fractal\TransformerAbstract;
@@ -235,7 +238,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     public function getTransformer(): TransformerAbstract
     {
         return new DynamicTransformer(
-            $this,
+            $this->getTypeName(),
+            $this->getEntityClass(),
+            $this->getReadability(),
             $this->getMessageFormatter(),
             $this->getApiLogger()
         );
@@ -355,5 +360,30 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         }
 
         return parent::getEntities($conditions, $sortMethods);
+    }
+
+    public function getReadability(): ResourceReadability
+    {
+        return $this->getResourceConfig()->getReadability();
+    }
+
+    public function getFilteringProperties(): array
+    {
+        return $this->getResourceConfig()->getFilteringProperties();
+    }
+
+    public function getSortingProperties(): array
+    {
+        return $this->getResourceConfig()->getSortingProperties();
+    }
+
+    public function getUpdatability(): ResourceUpdatability
+    {
+        return $this->getResourceConfig()->getUpdatability();
+    }
+
+    protected function getInstantiability(): ResourceInstantiability
+    {
+        return $this->getResourceConfig()->getInstantiability();
     }
 }

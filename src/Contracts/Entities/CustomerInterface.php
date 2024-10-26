@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Collection;
 
 interface CustomerInterface extends UuidEntityInterface, CoreEntityInterface
 {
+    final public const GROUP_UPDATE = 'group_update';
+    final public const DEFAULT_BASE_LAYER_URL = 'https://sgx.geodatenzentrum.de/wms_basemapde';
+    final public const DEFAULT_BASE_LAYER_LAYERS = 'de_basemapde_web_raster_farbe';
+    final public const DEFAULT_MAP_ATTRIBUTION = '© basemap.de / BKG ({currentYear})';
+
     public function setId(string $id);
 
     /**

@@ -2,6 +2,36 @@
 
 ## UNRELEASED
 
+## v0.42 (2024-10-25)
+- update ProcedureSettingsInterface to be up to date with new core implementations
+
+## v0.41 (2024-09-27)
+- upgrade EDT dependencies from 0.24.42 to 0.25
+- add missing methods in DoctrineResourceType
+- pass correct request to parent class retrieved via request stack
+
+## v0.40 (2024-09-20)
+- Add default Map setting values to the CustomerInterface
+- Move Customer constants into the CustomerInterface
+
+## v0.39 (2024-08-06)
+- Add ParagraphHandlerInterface
+- Add method administrationDocumentDeleteHandler to SingleDocumentHandlerInterface
+
+## v0.38 (2024-07-18)
+- Add getter and setter to placeinterface
+- add solved as a parameter in resourcetype
+
+## v0.37 (2024-07-02)
+- Add type declaration to StatementInterface::getUserName()
+
+## v0.36 (2024-06-12)
+- update deprecated Tightenco\Collect to Illuminate\Support\Collection
+
+## v0.35 (2024-05-21)
+- add methods to SingleDocumentHandlerInterface
+- add interface for new event StatementPreDeleteEventInterface
+
 ## v0.34 (2024-05-16)
 - add StatementCreatedViaExcelEventInterface 
 

@@ -10,10 +10,10 @@
   },
   "require": {
     "composer-plugin-api": "^2.0",
-    "demos-europe/edt-extra": "^0.24.0",
-    "demos-europe/edt-dql": "^0.24.0",
-    "demos-europe/edt-jsonapi": "^0.24.0",
-    "demos-europe/edt-paths": "^0.24.0",
+    "demos-europe/edt-extra": "^0.25",
+    "demos-europe/edt-dql": "^0.25",
+    "demos-europe/edt-jsonapi": "^0.25",
+    "demos-europe/edt-paths": "^0.25",
     "doctrine/doctrine-bundle": "^2",
     "nesbot/carbon": "^2.0.0",
     "php": "^8.1",
@@ -42,7 +42,7 @@
     "symfony/var-dumper": "6.4.*",
     "symfony/var-exporter": "6.4.*",
     "symfony/yaml": "6.4.*",
-    "tightenco/collect": "~8.83.0"
+    "illuminate/collections": "^10.48"
   },
   "require-dev": {
     "composer/composer": "^2.1",
@@ -61,5 +61,5 @@
   "scripts": {
     "phpstan": "phpstan analyse"
   },
-  "version": "v0.34"
+  "version": "v0.42"
 }

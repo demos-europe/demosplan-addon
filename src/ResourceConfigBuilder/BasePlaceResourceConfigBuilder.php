@@ -22,6 +22,7 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,PlaceInterface>
  *
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,PlaceInterface> $description
+ * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,PlaceInterface> $solved
  * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,PlaceInterface,ProcedureInterface> $procedure
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,PlaceInterface> $name
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,PlaceInterface> $sortIndex

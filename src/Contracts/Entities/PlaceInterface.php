@@ -20,4 +20,8 @@ interface PlaceInterface extends CoreEntityInterface
     public function getDescription(): string;
 
     public function setDescription(string $description);
+
+    public function getSolved(): bool;
+
+    public function setSolved(bool $solved): self;
 }
