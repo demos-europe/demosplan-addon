@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add OrgaResourceTypeInterface
 
 ## v0.42 (2024-10-25)
 - update ProcedureSettingsInterface to be up to date with new core implementations
