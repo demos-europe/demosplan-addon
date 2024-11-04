@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface
 
 ## v0.42 (2024-10-25)
