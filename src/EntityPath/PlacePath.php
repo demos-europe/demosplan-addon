@@ -16,6 +16,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * create an extending class and add them there.
  *
  * @property-read End $description
+ * @property-read End $solved
  * @property-read ProcedurePath $procedure
  * @property-read End $name
  * @property-read End $sortIndex

@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add AccessControlInterface
+- Update ResourceConfigBuilder and EntityPath classes
 
 ## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\ResourceConfigBuilder;
 
+use DemosEurope\DemosplanAddon\Contracts\Entities\CustomerInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ManualListSortInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\PropertyConfig\Builder\AttributeConfigBuilderInterface;
+use EDT\JsonApi\PropertyConfig\Builder\ToOneRelationshipConfigBuilderInterface;
 use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
 
 /**
@@ -22,6 +24,7 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $pId
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $context
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $namespace
+ * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ManualListSortInterface,CustomerInterface> $customer
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $idents
  */
 class BaseManualListSortResourceConfigBuilder extends MagicResourceConfigBuilder
