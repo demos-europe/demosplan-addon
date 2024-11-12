@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+-add getProceduresWithEndedParticipation to ProcedureServiceInterface
 
 ## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface
