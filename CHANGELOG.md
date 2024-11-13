@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.44 (2024-11-13)
 -add getProceduresWithEndedParticipation to ProcedureServiceInterface
 
 ## v0.43 (2024-11-04)
