@@ -9,8 +9,6 @@ use Doctrine\Common\Collections\Collection;
 
 interface InstitutionTagInterface extends UuidEntityInterface, CoreEntityInterface
 {
-    public function getOwningOrganisation(): OrgaInterface;
-
     /**
      * @return Collection<int, OrgaInterface>
      */
@@ -33,4 +31,5 @@ interface InstitutionTagInterface extends UuidEntityInterface, CoreEntityInterfa
     public function getLabel(): string;
 
     public function setLabel(string $label): void;
+    public function setCategory(InstitutionTagCategoryInterface $category): void;
 }
