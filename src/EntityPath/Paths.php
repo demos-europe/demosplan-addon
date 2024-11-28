@@ -519,6 +519,11 @@ class Paths
 		return InstitutionTagPath::startPath();
 	}
 
+    public static function institutionTagCategory(): InstitutionTagCategoryPath
+    {
+        return InstitutionTagCategoryPath::startPath();
+    }
+
 
 	public static function supportContact(): SupportContactPath
 	{
