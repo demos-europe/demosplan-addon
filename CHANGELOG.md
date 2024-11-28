@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add InstitutionTagCategoryInterface and related Path
+- Adjust OrgaInterface and InstitutionTagInterface (owning orga for institution tags no longer exist)
 
 ## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface
