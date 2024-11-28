@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.44 (2024-11-28)
 - add InstitutionTagCategoryInterface and related Path
 - Adjust OrgaInterface and InstitutionTagInterface (owning orga for institution tags no longer exist)
 
