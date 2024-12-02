@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.44 (2024-12-02)
 - add interface for new method needed to set accessPermissions via addon
 
 ## v0.43 (2024-11-04)
