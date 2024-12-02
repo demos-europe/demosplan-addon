@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+## v0.45 (2024-12-02)
+- add interface for new method needed to set accessPermissions via addon
+
 ## v0.44 (2024-11-28)
 - add InstitutionTagCategoryInterface and related Path
 - Adjust OrgaInterface and InstitutionTagInterface (owning orga for institution tags no longer exist)
