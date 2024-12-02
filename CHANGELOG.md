@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add interface for new method needed to set accessPermissions via addon
 
 ## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface
