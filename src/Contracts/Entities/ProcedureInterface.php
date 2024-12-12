@@ -687,6 +687,8 @@ interface ProcedureInterface extends SluggedEntityInterface
      */
     public function getTopics();
 
+    public function detachAllTopics(): void;
+
     /**
      * @return Collection<int, OrgaInterface>
      */
