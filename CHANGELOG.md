@@ -2,6 +2,13 @@
 
 ## UNRELEASED
 
+## v0.44 (2024-11-28)
+- add InstitutionTagCategoryInterface and related Path
+- Adjust OrgaInterface and InstitutionTagInterface (owning orga for institution tags no longer exist)
+
+## v0.43 (2024-11-04)
+- add OrgaResourceTypeInterface
+
 ## v0.42 (2024-10-25)
 - update ProcedureSettingsInterface to be up to date with new core implementations
 
