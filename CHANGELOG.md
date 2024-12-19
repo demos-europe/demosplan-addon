@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.47 (2024-12-19)
 - fix error in interface
 
 ## v0.46 (2024-12-19)
