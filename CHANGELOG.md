@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add CoordinatesViewportInterface and MapProjectionConverterInterface for map related tasks
 
 ## v0.45 (2024-12-02)
 - add interface for new method needed to set accessPermissions via addon
