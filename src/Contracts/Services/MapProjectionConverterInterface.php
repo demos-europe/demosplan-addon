@@ -28,7 +28,7 @@ interface MapProjectionConverterInterface
      */
     public function convertViewport(string $viewport, Proj $currentProjection, Proj $newProjection, string $returnType = self::ARRAY_RETURN_TYPE): array|string;
 
-    public function convertCoordinatesViewport(CoordinatesViewportInterface $coordinatesViewport, string $sourceProjectionString, string $targetProjectionString): CoordinatesViewport;
+    public function convertCoordinatesViewport(CoordinatesViewportInterface $coordinatesViewport, string $sourceProjectionString, string $targetProjectionString): CoordinatesViewportInterface;
 
     public function convertCoordinate(string $coordinate, Proj $currentProjection, Proj $newProjection, string $returnType = self::ARRAY_RETURN_TYPE);
 

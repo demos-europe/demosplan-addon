@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- fix error in interface
+
 ## v0.46 (2024-12-19)
 - add CoordinatesViewportInterface and MapProjectionConverterInterface for map related tasks
 
