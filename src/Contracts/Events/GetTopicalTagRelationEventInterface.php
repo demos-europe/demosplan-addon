@@ -6,18 +6,11 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 interface GetTopicalTagRelationEventInterface
 {
-    /**
-     * @return array<int, string> list of tag ids to provide isTopicalFor
-     */
-    public function getTagIdsToProvideIsTopicalFor(): array;
+    public function getTagIdToProvideIsTopicalFor(): string;
 
-    /**
-     * @var array<string, bool> $tagIdsToProvideIsTopicalFor <tagId, isTopical>
-     */
-    public function setTagIdsToProvideIsTopicalFor(array $tagIdsToProvideIsTopicalFor): void;
+    public function setTagIdToProvideIsTopicalFor(string $tagIdToProvideIsTopicalFor): void;
 
-    /**
-     * @return array<string, bool> <tagId, isTopical>
-     */
-    public function getTagIdsToIsTopicalMap(): array;
+    public function getIsTopicalResult(): bool;
+
+    public function setIsTopical(bool $isTopical): void;
 }
