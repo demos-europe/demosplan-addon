@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add method getBoilerplatesOfCategory to ProcedureServiceInterface
+
 ## v0.47 (2024-12-19)
 - fix error in interface
 
@@ -13,6 +15,7 @@
 ## v0.44 (2024-11-28)
 - add InstitutionTagCategoryInterface and related Path
 - Adjust OrgaInterface and InstitutionTagInterface (owning orga for institution tags no longer exist)
+- Add method getBoilerplatesOfCategory to ProcedureServiceInterface
 
 ## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface
