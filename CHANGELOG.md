@@ -1,7 +1,20 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.48 (2025-01-22)
+unrelated changes
 - Add method getBoilerplatesOfCategory to ProcedureServiceInterface
+
+related feature changes: 
+ - Add method detachAllTopics to ProcedureInterface
+ - Add DeleteTagEventInterface
+ - Add ExcelImporterHandleImportedTagsRecordsEventInterface
+ - Add ExcelImporterHandleSegmentsEventInterface
+ - Add ExcelImporterPrePersistTagsEventInterface
+ - Add GetTopicalTagRelationEventInterface
+ - Add method getUsedBluePrintId to ProcedureCreatedEventInterface
+ - Add TagResourceTypeInterface
 
 ## v0.47 (2024-12-19)
 - fix error in interface

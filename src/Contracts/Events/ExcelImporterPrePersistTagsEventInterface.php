@@ -6,5 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
 interface ExcelImporterPrePersistTagsEventInterface
 {
+    public function getSegments(): array;
 
+    public function getTags(): array;
 }
