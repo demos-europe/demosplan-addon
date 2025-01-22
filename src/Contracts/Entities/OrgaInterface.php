@@ -420,13 +420,4 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     public function addAssignedTag(InstitutionTagInterface $tag): void;
 
     public function removeAssignedTag(InstitutionTagInterface $tag): void;
-
-    public function addOwnInstitutionTag(InstitutionTagInterface $tag): void;
-
-    /**
-    * @return Collection<int, InstitutionTagInterface>
-    */
-    public function getOwnInstitutionTags(): Collection;
-
-    public function removeOwnInstitutionTag(InstitutionTagInterface $tag): void;
 }
