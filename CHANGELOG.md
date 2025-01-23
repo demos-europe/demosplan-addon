@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 - Add method getBoilerplatesOfCategory to ProcedureServiceInterface
+- Add BoilerplateCategoryRepositoryInterface
+- Add BoilerplateRepositoryInterface
 
 ## v0.47 (2024-12-19)
 - fix error in interface
