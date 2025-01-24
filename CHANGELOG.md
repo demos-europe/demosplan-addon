@@ -3,10 +3,7 @@
 ## UNRELEASED
 
 ## v0.48 (2025-01-22)
-unrelated changes
-- Add method getBoilerplatesOfCategory to ProcedureServiceInterface
-
-related feature changes: 
+ - Add method getBoilerplatesOfCategory to ProcedureServiceInterface 
  - Add method detachAllTopics to ProcedureInterface
  - Add DeleteTagEventInterface
  - Add ExcelImporterHandleImportedTagsRecordsEventInterface
