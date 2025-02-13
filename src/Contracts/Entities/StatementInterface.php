@@ -13,6 +13,7 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 {
     public const IMPORT_VALIDATION = 'import';
     public const DEFAULT_VALIDATION = 'Default';
+    public const BASE_STATEMENT_CLASS_VALIDATION = 'Statement';
     public const MANUAL_CREATE_VALIDATION = 'manual_create';
 
     public const INTERNAL = 'internal';

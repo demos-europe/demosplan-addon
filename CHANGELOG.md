@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.48 (2025-02-13)
+- add base statement validation group name to statementInterface
 - Add method getBoilerplatesOfCategory to ProcedureServiceInterface
 
 ## v0.47 (2024-12-19)
