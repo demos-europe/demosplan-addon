@@ -2,8 +2,7 @@
 
 ## UNRELEASED
 
-## v0.48 (2025-01-22)
- - Add method getBoilerplatesOfCategory to ProcedureServiceInterface 
+## v0.49 (2025-01-22)
  - Add method detachAllTopics to ProcedureInterface
  - Add DeleteTagEventInterface
  - Add ExcelImporterHandleImportedTagsRecordsEventInterface
@@ -12,6 +11,10 @@
  - Add GetTopicalTagRelationEventInterface
  - Add method getUsedBluePrintId to ProcedureCreatedEventInterface
  - Add TagResourceTypeInterface
+
+## v0.48 (2025-02-13)
+- add base statement validation group name to statementInterface
+- Add method getBoilerplatesOfCategory to ProcedureServiceInterface
 
 ## v0.47 (2024-12-19)
 - fix error in interface
