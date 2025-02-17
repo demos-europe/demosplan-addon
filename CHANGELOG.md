@@ -2,6 +2,16 @@
 
 ## UNRELEASED
 
+## v0.49 (2025-01-22)
+ - Add method detachAllTopics to ProcedureInterface
+ - Add DeleteTagEventInterface
+ - Add ExcelImporterHandleImportedTagsRecordsEventInterface
+ - Add ExcelImporterHandleSegmentsEventInterface
+ - Add ExcelImporterPrePersistTagsEventInterface
+ - Add GetTopicalTagRelationEventInterface
+ - Add method getUsedBluePrintId to ProcedureCreatedEventInterface
+ - Add TagResourceTypeInterface
+
 ## v0.48 (2025-02-13)
 - add base statement validation group name to statementInterface
 - Add method getBoilerplatesOfCategory to ProcedureServiceInterface
