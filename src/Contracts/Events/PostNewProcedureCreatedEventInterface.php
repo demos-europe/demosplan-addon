@@ -11,4 +11,6 @@ interface PostNewProcedureCreatedEventInterface
     public function getProcedure(): ProcedureInterface;
 
     public function getToken(): ?string;
+
+    public function getUsedBluePrintId(): string;
 }

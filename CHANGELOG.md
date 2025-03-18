@@ -2,9 +2,33 @@
 
 ## UNRELEASED
 
+## v0.49 (2025-01-22)
+ - Add method detachAllTopics to ProcedureInterface
+ - Add DeleteTagEventInterface
+ - Add ExcelImporterHandleImportedTagsRecordsEventInterface
+ - Add ExcelImporterHandleSegmentsEventInterface
+ - Add ExcelImporterPrePersistTagsEventInterface
+ - Add GetTopicalTagRelationEventInterface
+ - Add method getUsedBluePrintId to ProcedureCreatedEventInterface
+ - Add TagResourceTypeInterface
+
+## v0.48 (2025-02-13)
+- add base statement validation group name to statementInterface
+- Add method getBoilerplatesOfCategory to ProcedureServiceInterface
+
+## v0.47 (2024-12-19)
+- fix error in interface
+
+## v0.46 (2024-12-19)
+- add CoordinatesViewportInterface and MapProjectionConverterInterface for map related tasks
+
+## v0.45 (2024-12-02)
+- add interface for new method needed to set accessPermissions via addon
+
 ## v0.44 (2024-11-28)
 - add InstitutionTagCategoryInterface and related Path
 - Adjust OrgaInterface and InstitutionTagInterface (owning orga for institution tags no longer exist)
+- Add method getBoilerplatesOfCategory to ProcedureServiceInterface
 
 ## v0.43 (2024-11-04)
 - add OrgaResourceTypeInterface
