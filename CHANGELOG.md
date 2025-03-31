@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add ManualOriginalStatementCreatedEventInterface
 
 ## v0.49 (2025-01-22)
  - Add method detachAllTopics to ProcedureInterface
