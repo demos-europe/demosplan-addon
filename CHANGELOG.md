@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+## v0.50 (2025-03-31)
+- add ManualOriginalStatementCreatedEventInterface
+
 ## v0.49 (2025-01-22)
  - Add method detachAllTopics to ProcedureInterface
  - Add DeleteTagEventInterface
