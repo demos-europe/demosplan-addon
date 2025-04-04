@@ -31,3 +31,4 @@ interface CoreServiceInterface
 
     public function setDoctrine(ManagerRegistry $doctrine);
 }
+
