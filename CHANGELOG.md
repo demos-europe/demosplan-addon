@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+## v0.51 (2025-04-04)
+- add OrgaServiceInterface
+
 ## v0.50 (2025-03-31)
 - add ManualOriginalStatementCreatedEventInterface
 
