@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.52 (2025-04-16)
 - update return type of getRecords in ExcelImporterHandleImportedTagsRecordsEventInterface
 
 ## v0.51 (2025-04-04)
