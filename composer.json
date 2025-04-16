@@ -43,7 +43,8 @@
     "symfony/var-dumper": "5.*.*",
     "symfony/var-exporter": "5.*.*",
     "symfony/yaml": "5.*.*",
-    "illuminate/collections": "^10.48"
+    "illuminate/collections": "^10.48",
+    "league/csv": "^9.18"
   },
   "require-dev": {
     "composer/composer": "^2.1",

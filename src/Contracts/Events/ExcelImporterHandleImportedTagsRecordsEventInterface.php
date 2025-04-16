@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Events;
 
-use IteratorIterator;
+use League\Csv\MapIterator;
 
 interface ExcelImporterHandleImportedTagsRecordsEventInterface
 {
@@ -15,6 +15,6 @@ interface ExcelImporterHandleImportedTagsRecordsEventInterface
 
     public function setTags(array $tags): void;
 
-    public function getRecords(): IteratorIterator;
+    public function getRecords(): MapIterator;
 
 }
