@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- update return type of getRecords in ExcelImporterHandleImportedTagsRecordsEventInterface
 
 ## v0.51 (2025-04-04)
 - add OrgaServiceInterface
