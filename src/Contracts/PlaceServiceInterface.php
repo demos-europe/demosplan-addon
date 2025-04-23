@@ -8,5 +8,5 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\PlaceInterface;
 
 interface PlaceServiceInterface
 {
-    public function findFirstOrderedBySortIndex(string $procedureId): PlaceInterface;
+    public function findFirstOrderedBySortIndex(string $procedureId): ?PlaceInterface;
 }
