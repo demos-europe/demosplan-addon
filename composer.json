@@ -43,7 +43,8 @@
     "symfony/var-dumper": "^6.0",
     "symfony/var-exporter": "^6.0",
     "symfony/yaml": "^6.0",
-    "illuminate/collections": "^10.48"
+    "illuminate/collections": "^10.48",
+    "league/csv": "^9.18"
   },
   "require-dev": {
     "composer/composer": "^2.1",
@@ -62,5 +63,5 @@
   "scripts": {
     "phpstan": "phpstan analyse"
   },
-  "version": "v0.49"
+  "version": "v0.53"
 }

@@ -2,6 +2,18 @@
 
 ## UNRELEASED
 
+## v0.53 (2025-04-23)
+ - fix wrong return type on find a place of a procedure
+
+## v0.52 (2025-04-16)
+- update return type of getRecords in ExcelImporterHandleImportedTagsRecordsEventInterface
+
+## v0.51 (2025-04-04)
+- add OrgaServiceInterface
+
+## v0.50 (2025-03-31)
+- add ManualOriginalStatementCreatedEventInterface
+
 ## v0.49 (2025-01-22)
  - Add method detachAllTopics to ProcedureInterface
  - Add DeleteTagEventInterface
