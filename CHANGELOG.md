@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- update to symfony 6
 
 ## v0.53 (2025-04-23)
  - fix wrong return type on find a place of a procedure
