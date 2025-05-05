@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.54 (2025-05-05)
 - update to symfony 6
 
 ## v0.53 (2025-04-23)
