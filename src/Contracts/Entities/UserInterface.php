@@ -150,7 +150,7 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
     /**
      * Symfony > 6 needs getUserIdentifier() for auth system.
      */
-    public function getUserIdentifier(): ?string;
+    public function getUserIdentifier(): string;
 
     public function setPassword(?string $password): void;
 

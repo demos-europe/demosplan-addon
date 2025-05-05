@@ -57,7 +57,7 @@ class SearchCapableListRequest extends ListRequest
     {
         $urlParams = $this->request->query;
 
-        $searchParams = $urlParams->get(JsonApiEsServiceInterface::SEARCH, []);
+        $searchParams = $urlParams->all(JsonApiEsServiceInterface::SEARCH, []);
         if ([] === $searchParams
             || (
                 array_key_exists(JsonApiEsServiceInterface::VALUE, $searchParams)
