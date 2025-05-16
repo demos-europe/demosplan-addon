@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add new Interface RecommendationRequestEventInterface
+
 ## v0.54 (2025-05-05)
 - update to symfony 6
 
