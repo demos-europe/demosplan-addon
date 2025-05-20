@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- Add new UpdateTagenEventInterface
+
 ## v0.54 (2025-05-05)
 - update to symfony 6
 
