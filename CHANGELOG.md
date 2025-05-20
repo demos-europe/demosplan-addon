@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.55 (2025-05-20)
 - Add new UpdateTagenEventInterface
 
 ## v0.54 (2025-05-05)
