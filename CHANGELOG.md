@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+## v0.56 (2025-05-23)
+- add new Interface RecommendationRequestEventInterface
+
 ## v0.55 (2025-05-20)
 - Add new UpdateTagenEventInterface
 
