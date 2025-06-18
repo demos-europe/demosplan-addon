@@ -13,4 +13,5 @@ interface ProcedureServiceInterface
     public function getMasterTemplateId(): string;
     public function deleteProcedure($procedureIds): void;
     public function getBoilerplatesOfCategory($procedureId, $category): array;
+    public function updateProcedure($data, bool $createReports = true);
 }

@@ -950,6 +950,6 @@ interface ProcedureInterface extends SluggedEntityInterface
     public function getSegmentPlaces(): Collection;
 
     public function addSegmentPlace(PlaceInterface $place): void;
-
-
+    public function getDemosPipesPiRetries(): int;
+    public function incrementDemosPipesPiRetries(): void;
 }
