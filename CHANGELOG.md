@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add UserRepositoryInterface
 
 ## v0.56 (2025-05-23)
 - add new Interface RecommendationRequestEventInterface
