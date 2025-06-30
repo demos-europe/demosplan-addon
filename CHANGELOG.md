@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.57 (2025-06-30)
 - add UserRepositoryInterface
 
 ## v0.56 (2025-05-23)
