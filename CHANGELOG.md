@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+- add UserAccessControlServiceInterface
+- add UserAccessControlInterface
+ 
 ## v0.57 (2025-06-30)
 - add UserRepositoryInterface
 
