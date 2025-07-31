@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add CustomerServiceInterface
+
 ## v0.58 (2025-07-28)
 - add UserAccessControlServiceInterface
 - add UserAccessControlInterface
