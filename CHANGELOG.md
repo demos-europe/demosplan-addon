@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.59 (2025-07-31)
 - add CustomerServiceInterface
 
 ## v0.58 (2025-07-28)
