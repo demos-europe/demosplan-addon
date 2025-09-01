@@ -1,6 +1,10 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.60 (2025-09-01)
+- add updateProcedureObject to ProcedureServiceInterface
+
 ## v0.59 (2025-07-31)
 - add CustomerServiceInterface
 
