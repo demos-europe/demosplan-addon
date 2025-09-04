@@ -134,6 +134,10 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 
     public function getOriginalId(): ?string;
 
+    public function getPiSegmentsProposalResourceUrl(): ?string;
+
+    public function setPiSegmentsProposalResourceUrl(?string $piSegmentsProposalResourceUrl): void;
+
     /**
      * Set priority.
      *
