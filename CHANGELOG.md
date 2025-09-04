@@ -1,10 +1,10 @@
 # Changelog
 
-## v0.XX (2025-09-01)
+## UNRELEASED
+
+## v0.61 (2025-09-04)
 - move SegmentTransformerInterface from core to middle-layer for usage in addon.
 - add missing method to StatementInterface for method in already in use by addons.
-
-## UNRELEASED
 
 ## v0.60 (2025-09-01)
 - add updateProcedureObject to ProcedureServiceInterface
