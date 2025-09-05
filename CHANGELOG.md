@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.XX (2025-09-05)
+- add SegmentFactoryInterface to allow Segment create/setup via addon
+
 ## UNRELEASED
 
 ## v0.61 (2025-09-04)
