@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.XX (2025-09-05)
-- add SegmentFactoryInterface to allow Segment create/setup via addon
-
 ## UNRELEASED
+
+## v0.62 (2025-09-05)
+- add SegmentFactoryInterface to allow Segment create/setup via addon
 
 ## v0.61 (2025-09-04)
 - move SegmentTransformerInterface from core to middle-layer for usage in addon.
