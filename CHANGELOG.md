@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.63 (2025-09-08)
+- add TagServiceInterface to prepare service usage within addon.
+- Add new method to StatementInterface::getStatementsCreatedFromOriginal -this method is new within the core.
+
 ## UNRELEASED
 
 ## v0.62 (2025-09-05)
