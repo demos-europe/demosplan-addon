@@ -1388,6 +1388,8 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
 
     public function removeSimilarStatementSubmitter(ProcedurePersonInterface $procedurePerson): void;
 
+    public function getStatementsCreatedFromOriginal(): ArrayCollection|Collection;
+
     /**
      * TODO: move out of contract and core
      */
