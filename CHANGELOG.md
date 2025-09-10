@@ -2,7 +2,11 @@
 
 ## UNRELEASED
 
+## v0.64 (2025-09-10)
+- add StatementSegmentResourceTypeInterface to prepare ResourceType usage within addon.
+
 ## v0.63 (2025-09-08)
+- Core Version v4.11.0 depend on this version or greater as it implements the TagServiceInterface.
 - add TagServiceInterface to prepare service usage within addon.
 - Add new method to StatementInterface::getStatementsCreatedFromOriginal -this method is new within the core.
 
