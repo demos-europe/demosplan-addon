@@ -21,17 +21,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureProposalInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureProposalInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $additionalExplanation
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $coordinate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureProposalInterface,UserInterface> $user
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureProposalInterface> $status
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureProposalInterface,FileInterface> $files
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $name
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $description
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $additionalExplanation
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $coordinate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureProposalInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<ProcedureProposalInterface> $status
+ * @property-read ToManyRelationshipConfigBuilderInterface<ProcedureProposalInterface,FileInterface> $files
  */
 class BaseProcedureProposalResourceConfigBuilder extends MagicResourceConfigBuilder
 {

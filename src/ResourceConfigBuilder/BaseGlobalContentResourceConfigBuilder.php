@@ -20,24 +20,24 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GlobalContentInterface>
+ * @template-extends MagicResourceConfigBuilder<GlobalContentInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $type
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $picture
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $pictitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $pdf
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $pdftitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $enabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GlobalContentInterface> $deleteDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GlobalContentInterface,RoleInterface> $roles
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GlobalContentInterface,CategoryInterface> $categories
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $type
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $title
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $description
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $text
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $picture
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $pictitle
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $pdf
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $pdftitle
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $enabled
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<GlobalContentInterface> $deleteDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<GlobalContentInterface,RoleInterface> $roles
+ * @property-read ToManyRelationshipConfigBuilderInterface<GlobalContentInterface,CategoryInterface> $categories
  */
 class BaseGlobalContentResourceConfigBuilder extends MagicResourceConfigBuilder
 {

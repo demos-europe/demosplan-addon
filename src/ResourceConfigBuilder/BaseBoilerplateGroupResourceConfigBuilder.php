@@ -21,12 +21,12 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateGroupInterface>
+ * @template-extends MagicResourceConfigBuilder<BoilerplateGroupInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateGroupInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateGroupInterface> $createDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateGroupInterface,ProcedureInterface> $procedure
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateGroupInterface,BoilerplateInterface> $boilerplates
+ * @property-read AttributeConfigBuilderInterface<BoilerplateGroupInterface> $title
+ * @property-read AttributeConfigBuilderInterface<BoilerplateGroupInterface> $createDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<BoilerplateGroupInterface,ProcedureInterface> $procedure
+ * @property-read ToManyRelationshipConfigBuilderInterface<BoilerplateGroupInterface,BoilerplateInterface> $boilerplates
  */
 class BaseBoilerplateGroupResourceConfigBuilder extends MagicResourceConfigBuilder
 {

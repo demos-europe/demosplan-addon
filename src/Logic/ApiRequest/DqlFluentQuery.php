@@ -21,14 +21,12 @@ use InvalidArgumentException;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends FluentQuery<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends FluentQuery<TEntity>
  */
 class DqlFluentQuery extends FluentQuery
 {
     /**
-     * @param DoctrineOrmEntityProvider<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity> $doctrineEntityProvider
-     * @param ConditionDefinition<ClauseFunctionInterface<bool>> $conditionDefinition
-     * @param SortDefinition<OrderBySortMethodInterface> $sortDefinition
+     * @param DoctrineOrmEntityProvider<TEntity> $doctrineEntityProvider
      */
     public function __construct(
         protected readonly DoctrineOrmEntityProvider $doctrineEntityProvider,

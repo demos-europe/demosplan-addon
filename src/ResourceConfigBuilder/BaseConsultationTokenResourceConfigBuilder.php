@@ -20,16 +20,16 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ConsultationTokenInterface>
+ * @template-extends MagicResourceConfigBuilder<ConsultationTokenInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ConsultationTokenInterface> $note
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ConsultationTokenInterface,StatementInterface> $originalStatement
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ConsultationTokenInterface,MailSendInterface> $sentEmail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ConsultationTokenInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ConsultationTokenInterface> $modificationDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ConsultationTokenInterface,StatementInterface> $statement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ConsultationTokenInterface> $token
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ConsultationTokenInterface> $manuallyCreated
+ * @property-read AttributeConfigBuilderInterface<ConsultationTokenInterface> $note
+ * @property-read ToOneRelationshipConfigBuilderInterface<ConsultationTokenInterface,StatementInterface> $originalStatement
+ * @property-read ToOneRelationshipConfigBuilderInterface<ConsultationTokenInterface,MailSendInterface> $sentEmail
+ * @property-read AttributeConfigBuilderInterface<ConsultationTokenInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<ConsultationTokenInterface> $modificationDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ConsultationTokenInterface,StatementInterface> $statement
+ * @property-read AttributeConfigBuilderInterface<ConsultationTokenInterface> $token
+ * @property-read AttributeConfigBuilderInterface<ConsultationTokenInterface> $manuallyCreated
  */
 class BaseConsultationTokenResourceConfigBuilder extends MagicResourceConfigBuilder
 {

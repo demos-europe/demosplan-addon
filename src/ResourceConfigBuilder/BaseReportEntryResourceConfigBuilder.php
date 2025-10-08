@@ -19,21 +19,21 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ReportEntryInterface>
+ * @template-extends MagicResourceConfigBuilder<ReportEntryInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $category
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $group
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $level
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $userId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $userName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $sessionId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $identifierType
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $identifier
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $mimeType
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $message
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $incoming
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ReportEntryInterface> $createDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ReportEntryInterface,CustomerInterface> $customer
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $category
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $group
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $level
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $userId
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $userName
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $sessionId
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $identifierType
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $identifier
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $mimeType
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $message
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $incoming
+ * @property-read AttributeConfigBuilderInterface<ReportEntryInterface> $createDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ReportEntryInterface,CustomerInterface> $customer
  */
 class BaseReportEntryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

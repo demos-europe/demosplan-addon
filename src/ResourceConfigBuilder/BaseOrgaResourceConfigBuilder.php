@@ -29,39 +29,39 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface>
+ * @template-extends MagicResourceConfigBuilder<OrgaInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $gatewayName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $code
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $ccEmail2
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $emailReviewerAdmin
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $showname
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $showlist
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $gwId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $competence
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $email2
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $contactPerson
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $paperCopy
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $paperCopySpec
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,AddressInterface> $addresses
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $dataProtection
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaInterface> $imprint
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,UserInterface> $users
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,DepartmentInterface> $departments
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,ProcedureInterface> $procedures
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,ProcedureInterface> $procedureInvitations
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,AddressBookEntryInterface> $addressBookEntries
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,OrgaStatusInCustomerInterface> $statusInCustomers
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,MasterToebInterface> $masterToeb
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,BrandingInterface> $branding
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,ProcedureInterface> $administratableProcedures
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,InstitutionTagInterface> $assignedTags
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,SlugInterface> $currentSlug
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,SlugInterface> $slugs
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $name
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $gatewayName
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $code
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $ccEmail2
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $emailReviewerAdmin
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $showname
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $showlist
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $gwId
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $competence
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $email2
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $contactPerson
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $paperCopy
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $paperCopySpec
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,AddressInterface> $addresses
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $dataProtection
+ * @property-read AttributeConfigBuilderInterface<OrgaInterface> $imprint
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,UserInterface> $users
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,DepartmentInterface> $departments
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,ProcedureInterface> $procedures
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,ProcedureInterface> $procedureInvitations
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,AddressBookEntryInterface> $addressBookEntries
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,OrgaStatusInCustomerInterface> $statusInCustomers
+ * @property-read ToOneRelationshipConfigBuilderInterface<OrgaInterface,MasterToebInterface> $masterToeb
+ * @property-read ToOneRelationshipConfigBuilderInterface<OrgaInterface,BrandingInterface> $branding
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,ProcedureInterface> $administratableProcedures
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,InstitutionTagInterface> $assignedTags
+ * @property-read ToOneRelationshipConfigBuilderInterface<OrgaInterface,SlugInterface> $currentSlug
+ * @property-read ToManyRelationshipConfigBuilderInterface<OrgaInterface,SlugInterface> $slugs
  */
 class BaseOrgaResourceConfigBuilder extends MagicResourceConfigBuilder
 {

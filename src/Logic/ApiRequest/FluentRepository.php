@@ -39,7 +39,7 @@ use const PHP_INT_MAX;
  * @template TEntity of EntityInterface
  *
  * @template-extends ServiceEntityRepository<TEntity>
- * @template-implements RepositoryInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-implements RepositoryInterface<TEntity>
  */
 abstract class FluentRepository extends ServiceEntityRepository implements RepositoryInterface
 {

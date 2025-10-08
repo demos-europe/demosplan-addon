@@ -20,12 +20,12 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,PriorityAreaInterface>
+ * @template-extends MagicResourceConfigBuilder<PriorityAreaInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,PriorityAreaInterface> $key
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,PriorityAreaInterface> $type
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,PriorityAreaInterface,StatementInterface> $statements
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,PriorityAreaInterface,StatementFragmentInterface> $statementFragments
+ * @property-read AttributeConfigBuilderInterface<PriorityAreaInterface> $key
+ * @property-read AttributeConfigBuilderInterface<PriorityAreaInterface> $type
+ * @property-read ToManyRelationshipConfigBuilderInterface<PriorityAreaInterface,StatementInterface> $statements
+ * @property-read ToManyRelationshipConfigBuilderInterface<PriorityAreaInterface,StatementFragmentInterface> $statementFragments
  */
 class BasePriorityAreaResourceConfigBuilder extends MagicResourceConfigBuilder
 {

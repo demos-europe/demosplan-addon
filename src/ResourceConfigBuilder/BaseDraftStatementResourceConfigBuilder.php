@@ -29,55 +29,55 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface>
+ * @template-extends MagicResourceConfigBuilder<DraftStatementInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $number
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $text
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,ParagraphVersionInterface> $paragraph
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,SingleDocumentVersionInterface> $document
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,ElementsInterface> $element
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $polygon
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $file
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,DraftStatementFileInterface> $files
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $mapFile
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,OrgaInterface> $organisation
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $oName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $dName
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,DepartmentInterface> $department
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,UserInterface> $user
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $uName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $uStreet
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $houseNumber
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $uPostalCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $uCity
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $uEmail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $uFeedback
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $feedback
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $externId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $rejectedReason
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $negativ
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $submitted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $released
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $showToAll
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $rejected
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $publicAllowed
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $publicUseName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $publicDraftStatement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $represents
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $phase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $deletedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $lastModifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $submittedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $releasedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $rejectedDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,DraftStatementVersionInterface> $versions
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementInterface,StatementAttributeInterface> $statementAttributes
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $miscData
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementInterface> $anonymous
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $number
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $title
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $text
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,ParagraphVersionInterface> $paragraph
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,SingleDocumentVersionInterface> $document
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,ElementsInterface> $element
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $polygon
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $file
+ * @property-read ToManyRelationshipConfigBuilderInterface<DraftStatementInterface,DraftStatementFileInterface> $files
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $mapFile
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,OrgaInterface> $organisation
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $oName
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $dName
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,DepartmentInterface> $department
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $uName
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $uStreet
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $houseNumber
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $uPostalCode
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $uCity
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $uEmail
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $uFeedback
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $feedback
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $externId
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $rejectedReason
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $negativ
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $submitted
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $released
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $showToAll
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $rejected
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $publicAllowed
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $publicUseName
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $publicDraftStatement
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $represents
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $phase
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $deletedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $lastModifiedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $submittedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $releasedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $rejectedDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<DraftStatementInterface,DraftStatementVersionInterface> $versions
+ * @property-read ToManyRelationshipConfigBuilderInterface<DraftStatementInterface,StatementAttributeInterface> $statementAttributes
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $miscData
+ * @property-read AttributeConfigBuilderInterface<DraftStatementInterface> $anonymous
  */
 class BaseDraftStatementResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -17,15 +17,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OpenGeoDbShortTableInterface>
+ * @template-extends MagicResourceConfigBuilder<OpenGeoDbShortTableInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $uniqueId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $postcode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $city
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $municipalCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $state
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $lat
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OpenGeoDbShortTableInterface> $lon
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $uniqueId
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $postcode
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $city
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $municipalCode
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $state
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $lat
+ * @property-read AttributeConfigBuilderInterface<OpenGeoDbShortTableInterface> $lon
  */
 class BaseOpenGeoDbShortTableResourceConfigBuilder extends MagicResourceConfigBuilder
 {

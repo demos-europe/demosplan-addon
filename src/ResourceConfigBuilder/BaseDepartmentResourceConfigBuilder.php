@@ -21,17 +21,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DepartmentInterface>
+ * @template-extends MagicResourceConfigBuilder<DepartmentInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DepartmentInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DepartmentInterface> $code
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DepartmentInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DepartmentInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DepartmentInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DepartmentInterface> $gwId
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DepartmentInterface,OrgaInterface> $orgas
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DepartmentInterface,AddressInterface> $addresses
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DepartmentInterface,UserInterface> $users
+ * @property-read AttributeConfigBuilderInterface<DepartmentInterface> $name
+ * @property-read AttributeConfigBuilderInterface<DepartmentInterface> $code
+ * @property-read AttributeConfigBuilderInterface<DepartmentInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<DepartmentInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<DepartmentInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<DepartmentInterface> $gwId
+ * @property-read ToManyRelationshipConfigBuilderInterface<DepartmentInterface,OrgaInterface> $orgas
+ * @property-read ToManyRelationshipConfigBuilderInterface<DepartmentInterface,AddressInterface> $addresses
+ * @property-read ToManyRelationshipConfigBuilderInterface<DepartmentInterface,UserInterface> $users
  */
 class BaseDepartmentResourceConfigBuilder extends MagicResourceConfigBuilder
 {

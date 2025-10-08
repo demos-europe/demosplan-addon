@@ -23,17 +23,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateInterface>
+ * @template-extends MagicResourceConfigBuilder<BoilerplateInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateInterface,ProcedureInterface> $procedure
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateInterface,BoilerplateCategoryInterface> $categories
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateInterface,BoilerplateGroupInterface> $group
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateInterface,TagInterface> $tags
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<BoilerplateInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<BoilerplateInterface,ProcedureInterface> $procedure
+ * @property-read ToManyRelationshipConfigBuilderInterface<BoilerplateInterface,BoilerplateCategoryInterface> $categories
+ * @property-read ToOneRelationshipConfigBuilderInterface<BoilerplateInterface,BoilerplateGroupInterface> $group
+ * @property-read ToManyRelationshipConfigBuilderInterface<BoilerplateInterface,TagInterface> $tags
+ * @property-read AttributeConfigBuilderInterface<BoilerplateInterface> $title
+ * @property-read AttributeConfigBuilderInterface<BoilerplateInterface> $text
+ * @property-read AttributeConfigBuilderInterface<BoilerplateInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<BoilerplateInterface> $modifyDate
  */
 class BaseBoilerplateResourceConfigBuilder extends MagicResourceConfigBuilder
 {

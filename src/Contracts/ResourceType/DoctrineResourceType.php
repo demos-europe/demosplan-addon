@@ -47,7 +47,7 @@ use function is_array;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends AbstractResourceType<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends AbstractResourceType<TEntity>
  * @template-implements JsonApiResourceTypeInterface<TEntity>
  * @template-implements IteratorAggregate<int, non-empty-string>
  *
@@ -59,7 +59,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     use DoctrineResourceTypeInjectionTrait;
 
     /**
-     * @var ResourceConfigInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>|null
+     * @var ResourceConfigInterface<TEntity>|null
      */
     private ?ResourceConfigInterface $resourceConfig = null;
 
@@ -164,7 +164,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     }
 
     /**
-     * @return AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>
+     * @return AttributeConfigBuilder<TEntity>
      */
     protected function createAttribute(PropertyPathInterface $path): AttributeConfigBuilder
     {
@@ -177,9 +177,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     /**
      * @template TRelationship of object
      *
-     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TRelationship> $path
+     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<TRelationship> $path
      *
-     * @return ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, TRelationship>
+     * @return ToOneRelationshipConfigBuilder<TEntity, TRelationship>
      */
     protected function createToOneRelationship(
         PropertyPathInterface&ResourceTypeInterface $path
@@ -203,9 +203,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     /**
      * @template TRelationship of object
      *
-     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TRelationship> $path
+     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<TRelationship> $path
      *
-     * @return ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, TRelationship>
+     * @return ToManyRelationshipConfigBuilder<TEntity, TRelationship>
      */
     protected function createToManyRelationship(
         PropertyPathInterface&ResourceTypeInterface $path
@@ -231,7 +231,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
      * effect (e.g. determining the order of properties in JSON:API responses) you can not rely on
      * these effects; they may be changed in the future.
      *
-     * @return list<AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>|ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>|ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>>|ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     * @return list<AttributeConfigBuilder<TEntity>|ToOneRelationshipConfigBuilder<TEntity, object>|ToManyRelationshipConfigBuilder<TEntity, object>>|ResourceConfigBuilderInterface<TEntity>
      */
     abstract protected function getProperties(): array|ResourceConfigBuilderInterface;
 

@@ -22,9 +22,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * @template-extends ListRequest<ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
- */
 class SearchCapableListRequest extends ListRequest
 {
     public function __construct(

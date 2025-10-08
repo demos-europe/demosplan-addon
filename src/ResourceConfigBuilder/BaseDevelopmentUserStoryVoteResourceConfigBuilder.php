@@ -21,15 +21,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryVoteInterface>
+ * @template-extends MagicResourceConfigBuilder<DevelopmentUserStoryVoteInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryVoteInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryVoteInterface,OrgaInterface> $orga
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryVoteInterface,UserInterface> $user
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryVoteInterface,DevelopmentUserStoryInterface> $userStory
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryVoteInterface> $numberOfVotes
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryVoteInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryVoteInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryVoteInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<DevelopmentUserStoryVoteInterface,OrgaInterface> $orga
+ * @property-read ToOneRelationshipConfigBuilderInterface<DevelopmentUserStoryVoteInterface,UserInterface> $user
+ * @property-read ToOneRelationshipConfigBuilderInterface<DevelopmentUserStoryVoteInterface,DevelopmentUserStoryInterface> $userStory
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryVoteInterface> $numberOfVotes
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryVoteInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryVoteInterface> $createDate
  */
 class BaseDevelopmentUserStoryVoteResourceConfigBuilder extends MagicResourceConfigBuilder
 {

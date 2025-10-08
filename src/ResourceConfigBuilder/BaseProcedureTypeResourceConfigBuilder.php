@@ -23,16 +23,16 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureTypeInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureTypeInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureTypeInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureTypeInterface> $modificationDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureTypeInterface,ProcedureInterface> $procedures
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureTypeInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureTypeInterface> $description
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureTypeInterface,StatementFormDefinitionInterface> $statementFormDefinition
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureTypeInterface,ProcedureBehaviorDefinitionInterface> $procedureBehaviorDefinition
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureTypeInterface,ProcedureUiDefinitionInterface> $procedureUiDefinition
+ * @property-read AttributeConfigBuilderInterface<ProcedureTypeInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureTypeInterface> $modificationDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<ProcedureTypeInterface,ProcedureInterface> $procedures
+ * @property-read AttributeConfigBuilderInterface<ProcedureTypeInterface> $name
+ * @property-read AttributeConfigBuilderInterface<ProcedureTypeInterface> $description
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureTypeInterface,StatementFormDefinitionInterface> $statementFormDefinition
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureTypeInterface,ProcedureBehaviorDefinitionInterface> $procedureBehaviorDefinition
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureTypeInterface,ProcedureUiDefinitionInterface> $procedureUiDefinition
  */
 class BaseProcedureTypeResourceConfigBuilder extends MagicResourceConfigBuilder
 {

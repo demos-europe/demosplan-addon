@@ -19,24 +19,24 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementMetaInterface>
+ * @template-extends MagicResourceConfigBuilder<StatementMetaInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementMetaInterface,StatementInterface> $statement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $authorName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $authorFeedback
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $submitUId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $submitName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $orgaName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $orgaDepartmentName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $caseWorkerName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $orgaStreet
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $houseNumber
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $orgaPostalCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $orgaCity
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $orgaEmail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $authoredDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $submitOrgaId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementMetaInterface> $miscData
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementMetaInterface,StatementInterface> $statement
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $authorName
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $authorFeedback
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $submitUId
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $submitName
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $orgaName
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $orgaDepartmentName
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $caseWorkerName
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $orgaStreet
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $houseNumber
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $orgaPostalCode
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $orgaCity
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $orgaEmail
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $authoredDate
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $submitOrgaId
+ * @property-read AttributeConfigBuilderInterface<StatementMetaInterface> $miscData
  */
 class BaseStatementMetaResourceConfigBuilder extends MagicResourceConfigBuilder
 {

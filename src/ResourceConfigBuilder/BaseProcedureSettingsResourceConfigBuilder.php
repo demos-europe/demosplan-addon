@@ -21,44 +21,44 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureSettingsInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $mapExtent
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $startScale
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $availableScale
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $boundingBox
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $informationUrl
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $defaultLayer
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $territory
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $coordinate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planEnable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planText
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planPDF
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planPara1PDF
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planPara2PDF
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planDrawText
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planDrawPDF
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $emailTitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $emailText
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $emailCc
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $links
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $pictogram
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPhase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPublicPhase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedSwitchDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPublicSwitchDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,UserInterface> $designatedPhaseChangeUser
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,UserInterface> $designatedPublicPhaseChangeUser
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedEndDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $designatedPublicEndDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $sendMailsToCounties
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $planningArea
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $scales
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $legalNotice
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $copyright
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSettingsInterface> $mapHint
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSettingsInterface,ProcedureInterface> $allowedSegmentAccessProcedures
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $mapExtent
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $startScale
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $availableScale
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $boundingBox
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $informationUrl
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $defaultLayer
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $territory
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $coordinate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planEnable
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planText
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planPDF
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planPara1PDF
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planPara2PDF
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planDrawText
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planDrawPDF
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $emailTitle
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $emailText
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $emailCc
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $links
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureSettingsInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $pictogram
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $designatedPhase
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $designatedPublicPhase
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $designatedSwitchDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $designatedPublicSwitchDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureSettingsInterface,UserInterface> $designatedPhaseChangeUser
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureSettingsInterface,UserInterface> $designatedPublicPhaseChangeUser
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $designatedEndDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $designatedPublicEndDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $sendMailsToCounties
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $planningArea
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $scales
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $legalNotice
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $copyright
+ * @property-read AttributeConfigBuilderInterface<ProcedureSettingsInterface> $mapHint
+ * @property-read ToManyRelationshipConfigBuilderInterface<ProcedureSettingsInterface,ProcedureInterface> $allowedSegmentAccessProcedures
  */
 class BaseProcedureSettingsResourceConfigBuilder extends MagicResourceConfigBuilder
 {

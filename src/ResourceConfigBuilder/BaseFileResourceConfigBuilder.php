@@ -19,28 +19,28 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FileInterface>
+ * @template-extends MagicResourceConfigBuilder<FileInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $hash
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $path
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $filename
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $tags
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $author
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $application
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $mimetype
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $created
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $modified
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $validUntil
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $statDown
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $infected
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $lastVScan
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $blocked
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileInterface> $size
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FileInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $hash
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $name
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $description
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $path
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $filename
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $tags
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $author
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $application
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $mimetype
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $created
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $modified
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $validUntil
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $statDown
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $infected
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $lastVScan
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $blocked
+ * @property-read AttributeConfigBuilderInterface<FileInterface> $size
+ * @property-read ToOneRelationshipConfigBuilderInterface<FileInterface,ProcedureInterface> $procedure
  */
 class BaseFileResourceConfigBuilder extends MagicResourceConfigBuilder
 {

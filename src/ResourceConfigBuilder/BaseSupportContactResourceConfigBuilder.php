@@ -20,17 +20,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SupportContactInterface>
+ * @template-extends MagicResourceConfigBuilder<SupportContactInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $phoneNumber
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SupportContactInterface,EmailAddressInterface> $eMailAddress
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $visible
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SupportContactInterface,CustomerInterface> $customer
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $supportType
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $createdAt
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SupportContactInterface> $updatedAt
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $title
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $phoneNumber
+ * @property-read ToOneRelationshipConfigBuilderInterface<SupportContactInterface,EmailAddressInterface> $eMailAddress
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $text
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $visible
+ * @property-read ToOneRelationshipConfigBuilderInterface<SupportContactInterface,CustomerInterface> $customer
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $supportType
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $createdAt
+ * @property-read AttributeConfigBuilderInterface<SupportContactInterface> $updatedAt
  */
 class BaseSupportContactResourceConfigBuilder extends MagicResourceConfigBuilder
 {

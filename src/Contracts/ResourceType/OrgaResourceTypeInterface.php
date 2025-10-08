@@ -9,7 +9,7 @@ use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 
 /**
- * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, OrgaInterface>
+ * @template-extends ResourceTypeInterface<OrgaInterface>
  */
 interface OrgaResourceTypeInterface extends PropertyAutoPathInterface, ResourceTypeInterface
 {

@@ -19,17 +19,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FileContainerInterface>
+ * @template-extends MagicResourceConfigBuilder<FileContainerInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $entityId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $entityClass
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $entityField
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $fileString
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FileContainerInterface,FileInterface> $file
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FileContainerInterface> $publicAllowed
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $entityId
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $entityClass
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $entityField
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $order
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $fileString
+ * @property-read ToOneRelationshipConfigBuilderInterface<FileContainerInterface,FileInterface> $file
+ * @property-read AttributeConfigBuilderInterface<FileContainerInterface> $publicAllowed
  */
 class BaseFileContainerResourceConfigBuilder extends MagicResourceConfigBuilder
 {

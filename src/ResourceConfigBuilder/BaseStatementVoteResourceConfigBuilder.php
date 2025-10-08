@@ -20,25 +20,25 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementVoteInterface>
+ * @template-extends MagicResourceConfigBuilder<StatementVoteInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementVoteInterface,StatementInterface> $statement
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementVoteInterface,UserInterface> $user
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $firstName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $lastName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $active
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $deletedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $manual
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $createdByCitizen
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $organisationName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $departmentName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $userName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $userMail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $userPostcode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVoteInterface> $userCity
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementVoteInterface,StatementInterface> $statement
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementVoteInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $firstName
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $lastName
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $active
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $deletedDate
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $manual
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $createdByCitizen
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $organisationName
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $departmentName
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $userName
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $userMail
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $userPostcode
+ * @property-read AttributeConfigBuilderInterface<StatementVoteInterface> $userCity
  */
 class BaseStatementVoteResourceConfigBuilder extends MagicResourceConfigBuilder
 {

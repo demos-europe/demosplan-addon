@@ -20,15 +20,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureBehaviorDefinitionInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureBehaviorDefinitionInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureBehaviorDefinitionInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureBehaviorDefinitionInterface> $modificationDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureBehaviorDefinitionInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureBehaviorDefinitionInterface,ProcedureTypeInterface> $procedureType
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureBehaviorDefinitionInterface> $allowedToEnableMap
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureBehaviorDefinitionInterface> $hasPriorityArea
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureBehaviorDefinitionInterface> $participationGuestOnly
+ * @property-read AttributeConfigBuilderInterface<ProcedureBehaviorDefinitionInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureBehaviorDefinitionInterface> $modificationDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureBehaviorDefinitionInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureBehaviorDefinitionInterface,ProcedureTypeInterface> $procedureType
+ * @property-read AttributeConfigBuilderInterface<ProcedureBehaviorDefinitionInterface> $allowedToEnableMap
+ * @property-read AttributeConfigBuilderInterface<ProcedureBehaviorDefinitionInterface> $hasPriorityArea
+ * @property-read AttributeConfigBuilderInterface<ProcedureBehaviorDefinitionInterface> $participationGuestOnly
  */
 class BaseProcedureBehaviorDefinitionResourceConfigBuilder extends MagicResourceConfigBuilder
 {
