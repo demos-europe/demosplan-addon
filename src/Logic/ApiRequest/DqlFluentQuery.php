@@ -30,7 +30,7 @@ class DqlFluentQuery extends FluentQuery
      */
     public function __construct(
         protected readonly DoctrineOrmEntityProvider $doctrineEntityProvider,
-        ConditionDefinition $conditionDefinition,
+        DqlConditionDefinition $conditionDefinition,
         SortDefinition $sortDefinition,
         SliceDefinition $sliceDefinition
     ) {
