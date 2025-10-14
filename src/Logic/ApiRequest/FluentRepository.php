@@ -80,7 +80,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
     {
         return new DqlFluentQuery(
             $this->objectProvider,
-            new DqlConditionFactory($this->conditionFactory, true),
+            new DqlConditionDefinition($this->conditionFactory, true),
             new SortDefinition($this->sortMethodFactory),
             new SliceDefinition()
         );
