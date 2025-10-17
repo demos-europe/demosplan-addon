@@ -324,9 +324,26 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
             }
         }
 
-        // Only map paths on predefined types (they implement PathAdjustableInterface)
-        if ([] !== $predefinedConditions || [] !== $sortMethods) {
-            $this->mapPaths($predefinedConditions, $sortMethods);
+        // Separate predefined from DQL sort methods
+        $predefinedSortMethods = [];
+        $dqlSortMethods = [];
+
+        foreach ($sortMethods as $sortMethod) {
+            // Predefined sort methods: EDT\Querying\SortMethodFactories\SortMethodInterface
+            // DQL sort methods: EDT\DqlQuerying\Contracts\OrderBySortMethodInterface
+            // Note: DQL sorts extend predefined sorts, so check for OrderBySortMethodInterface to identify DQL
+            if ($sortMethod instanceof \EDT\DqlQuerying\Contracts\OrderBySortMethodInterface) {
+                $dqlSortMethods[] = $sortMethod;
+            } else {
+                // Everything else is predefined (including EDT\Querying\SortMethodFactories\SortMethod)
+                $predefinedSortMethods[] = $sortMethod;
+            }
+        }
+
+        // EDT 0.26: Map paths on predefined types BEFORE conversion
+        // Both conditions and sort methods need path mapping if they're predefined types
+        if ([] !== $predefinedConditions || [] !== $predefinedSortMethods) {
+            $this->mapPaths($predefinedConditions, $predefinedSortMethods);
         }
 
         // Convert predefined conditions to DQL
@@ -342,15 +359,18 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
             $dqlConditions = array_merge($dqlConditions, $convertedConditions);
         }
 
-        // Convert predefined sort methods to DQL
-        $dqlSortMethods = [];
-        if ([] !== $sortMethods) {
+        // EDT 0.26: Convert predefined sort methods to DQL
+        // After mapPaths(), the predefined sorts have updated paths
+        // We convert them to strings (with mapped paths) and re-parse with DQL factory
+        if ([] !== $predefinedSortMethods) {
             if (null === $this->sortMethodConverter) {
                 $repository = $this->getRepository();
                 $dqlSortMethodFactory = $repository->getSortMethodFactory();
                 $this->sortMethodConverter = SortMethodConverter::createDefault($this->getEdtValidator(), $dqlSortMethodFactory);
             }
-            $dqlSortMethods = $this->sortMethodConverter->convertSortMethods($sortMethods);
+
+            $convertedSortMethods = $this->sortMethodConverter->convertSortMethods($predefinedSortMethods);
+            $dqlSortMethods = array_merge($dqlSortMethods, $convertedSortMethods);
         }
 
         return [
