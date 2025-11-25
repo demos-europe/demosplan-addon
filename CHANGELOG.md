@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.65 (2025-11-25)
 - **BEAA2-27**: Add ProcedureEditTemplateVarsEventInterface to allow addons to extend procedure edit page template variables
 
 ## v0.64 (2025-09-10)
