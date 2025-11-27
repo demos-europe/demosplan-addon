@@ -26,49 +26,49 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface>
+ * @template-extends MagicResourceConfigBuilder<DraftStatementVersionInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,DraftStatementInterface> $draftStatement
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $number
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $text
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,ParagraphVersionInterface> $paragraph
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,SingleDocumentVersionInterface> $document
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,ElementsInterface> $element
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $polygon
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $file
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $mapFile
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,OrgaInterface> $organisation
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $oName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $dName
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,DepartmentInterface> $department
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DraftStatementVersionInterface,UserInterface> $user
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $uName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $uStreet
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $uPostalCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $uCity
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $uEmail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $feedback
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $externId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $rejectedReason
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $negativ
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $submitted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $released
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $showToAll
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $rejected
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $publicAllowed
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $publicUseName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $publicDraftStatement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $phase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $versionDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $deletedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $lastModifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $submittedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $releasedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DraftStatementVersionInterface> $rejectedDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,DraftStatementInterface> $draftStatement
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $number
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $title
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $text
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,ParagraphVersionInterface> $paragraph
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,SingleDocumentVersionInterface> $document
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,ElementsInterface> $element
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $polygon
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $file
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $mapFile
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,OrgaInterface> $organisation
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $oName
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $dName
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,DepartmentInterface> $department
+ * @property-read ToOneRelationshipConfigBuilderInterface<DraftStatementVersionInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $uName
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $uStreet
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $uPostalCode
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $uCity
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $uEmail
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $feedback
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $externId
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $rejectedReason
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $negativ
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $submitted
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $released
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $showToAll
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $rejected
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $publicAllowed
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $publicUseName
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $publicDraftStatement
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $phase
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $versionDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $deletedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $lastModifiedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $submittedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $releasedDate
+ * @property-read AttributeConfigBuilderInterface<DraftStatementVersionInterface> $rejectedDate
  */
 class BaseDraftStatementVersionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

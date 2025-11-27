@@ -31,38 +31,38 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface>
+ * @template-extends MagicResourceConfigBuilder<StatementFragmentInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,StatementInterface> $statement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $displayId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $text
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,TagInterface> $tags
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $voteAdvice
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $vote
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $created
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $modified
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $assignedToFbDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,DepartmentInterface> $department
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $considerationAdvice
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $consideration
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,CountyInterface> $counties
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,PriorityAreaInterface> $priorityAreas
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,MunicipalityInterface> $municipalities
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,DepartmentInterface> $archivedDepartment
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $archivedOrgaName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $archivedDepartmentName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $archivedVoteUserName
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,UserInterface> $assignee
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,StatementFragmentVersionInterface> $versions
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $sortIndex
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,UserInterface> $modifiedByUser
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,DepartmentInterface> $modifiedByDepartment
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFragmentInterface> $status
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,UserInterface> $lastClaimed
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,ElementsInterface> $element
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,ParagraphVersionInterface> $paragraph
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFragmentInterface,SingleDocumentVersionInterface> $document
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,StatementInterface> $statement
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $displayId
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $text
+ * @property-read ToManyRelationshipConfigBuilderInterface<StatementFragmentInterface,TagInterface> $tags
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $voteAdvice
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $vote
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $created
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $modified
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $assignedToFbDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,DepartmentInterface> $department
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $considerationAdvice
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $consideration
+ * @property-read ToManyRelationshipConfigBuilderInterface<StatementFragmentInterface,CountyInterface> $counties
+ * @property-read ToManyRelationshipConfigBuilderInterface<StatementFragmentInterface,PriorityAreaInterface> $priorityAreas
+ * @property-read ToManyRelationshipConfigBuilderInterface<StatementFragmentInterface,MunicipalityInterface> $municipalities
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,DepartmentInterface> $archivedDepartment
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $archivedOrgaName
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $archivedDepartmentName
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $archivedVoteUserName
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,UserInterface> $assignee
+ * @property-read ToManyRelationshipConfigBuilderInterface<StatementFragmentInterface,StatementFragmentVersionInterface> $versions
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $sortIndex
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,UserInterface> $modifiedByUser
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,DepartmentInterface> $modifiedByDepartment
+ * @property-read AttributeConfigBuilderInterface<StatementFragmentInterface> $status
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,UserInterface> $lastClaimed
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,ElementsInterface> $element
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,ParagraphVersionInterface> $paragraph
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFragmentInterface,SingleDocumentVersionInterface> $document
  */
 class BaseStatementFragmentResourceConfigBuilder extends MagicResourceConfigBuilder
 {

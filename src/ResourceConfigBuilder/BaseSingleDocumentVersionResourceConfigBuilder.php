@@ -21,24 +21,24 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentVersionInterface>
+ * @template-extends MagicResourceConfigBuilder<SingleDocumentVersionInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentVersionInterface,SingleDocumentInterface> $singleDocument
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentVersionInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentVersionInterface,ElementsInterface> $element
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $category
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $symbol
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $document
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $statementEnabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $visible
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $versionDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentVersionInterface> $deleteDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<SingleDocumentVersionInterface,SingleDocumentInterface> $singleDocument
+ * @property-read ToOneRelationshipConfigBuilderInterface<SingleDocumentVersionInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<SingleDocumentVersionInterface,ElementsInterface> $element
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $category
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $order
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $title
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $text
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $symbol
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $document
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $statementEnabled
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $visible
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $versionDate
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentVersionInterface> $deleteDate
  */
 class BaseSingleDocumentVersionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -11,7 +11,7 @@ use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 
 /**
- * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TagInterface>
+ * @template-extends ResourceTypeInterface<TagInterface>
  */
 interface TagResourceTypeInterface extends PropertyAutoPathInterface, ResourceTypeInterface
 {

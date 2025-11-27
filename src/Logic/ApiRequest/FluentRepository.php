@@ -39,7 +39,7 @@ use const PHP_INT_MAX;
  * @template TEntity of EntityInterface
  *
  * @template-extends ServiceEntityRepository<TEntity>
- * @template-implements RepositoryInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-implements RepositoryInterface<TEntity>
  */
 abstract class FluentRepository extends ServiceEntityRepository implements RepositoryInterface
 {
@@ -80,7 +80,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
     {
         return new DqlFluentQuery(
             $this->objectProvider,
-            new ConditionDefinition($this->conditionFactory, true),
+            new DqlConditionDefinition($this->conditionFactory, true),
             new SortDefinition($this->sortMethodFactory),
             new SliceDefinition()
         );
@@ -241,5 +241,23 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
         $this->logger = $logger;
 
         return $this;
+    }
+
+    /**
+     * EDT 0.26: Public getter for condition factory
+     * Needed by DoctrineResourceType to create ConditionConverter
+     */
+    public function getConditionFactory(): DqlConditionFactory
+    {
+        return $this->conditionFactory;
+    }
+
+    /**
+     * EDT 0.26: Public getter for sort method factory
+     * Needed by DoctrineResourceType to create SortMethodConverter
+     */
+    public function getSortMethodFactory(): SortMethodFactory
+    {
+        return $this->sortMethodFactory;
     }
 }

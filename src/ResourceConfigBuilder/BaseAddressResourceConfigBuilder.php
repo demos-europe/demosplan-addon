@@ -17,24 +17,24 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,AddressInterface>
+ * @template-extends MagicResourceConfigBuilder<AddressInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $code
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $street
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $street1
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $postalcode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $city
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $region
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $state
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $postofficebox
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $phone
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $fax
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $email
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $url
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressInterface> $houseNumber
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $code
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $street
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $street1
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $postalcode
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $city
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $region
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $state
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $postofficebox
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $phone
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $fax
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $email
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $url
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<AddressInterface> $houseNumber
  */
 class BaseAddressResourceConfigBuilder extends MagicResourceConfigBuilder
 {

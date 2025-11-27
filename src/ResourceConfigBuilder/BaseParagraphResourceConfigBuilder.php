@@ -22,23 +22,23 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphInterface>
+ * @template-extends MagicResourceConfigBuilder<ParagraphInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphInterface,ParagraphInterface> $parent
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphInterface,ParagraphInterface> $children
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphInterface,ElementsInterface> $element
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $category
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $visible
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $lockReason
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphInterface> $deleteDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphInterface,ParagraphVersionInterface> $versions
+ * @property-read ToOneRelationshipConfigBuilderInterface<ParagraphInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<ParagraphInterface,ParagraphInterface> $parent
+ * @property-read ToManyRelationshipConfigBuilderInterface<ParagraphInterface,ParagraphInterface> $children
+ * @property-read ToOneRelationshipConfigBuilderInterface<ParagraphInterface,ElementsInterface> $element
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $category
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $title
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $text
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $order
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $visible
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $lockReason
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ParagraphInterface> $deleteDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<ParagraphInterface,ParagraphVersionInterface> $versions
  */
 class BaseParagraphResourceConfigBuilder extends MagicResourceConfigBuilder
 {

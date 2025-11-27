@@ -19,11 +19,11 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MailAttachmentInterface>
+ * @template-extends MagicResourceConfigBuilder<MailAttachmentInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MailAttachmentInterface,MailSendInterface> $mailSend
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailAttachmentInterface> $filename
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailAttachmentInterface> $deleteOnSent
+ * @property-read ToOneRelationshipConfigBuilderInterface<MailAttachmentInterface,MailSendInterface> $mailSend
+ * @property-read AttributeConfigBuilderInterface<MailAttachmentInterface> $filename
+ * @property-read AttributeConfigBuilderInterface<MailAttachmentInterface> $deleteOnSent
  */
 class BaseMailAttachmentResourceConfigBuilder extends MagicResourceConfigBuilder
 {

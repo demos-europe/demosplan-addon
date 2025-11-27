@@ -19,10 +19,10 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BrandingInterface>
+ * @template-extends MagicResourceConfigBuilder<BrandingInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BrandingInterface> $cssvars
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BrandingInterface,FileInterface> $logo
+ * @property-read AttributeConfigBuilderInterface<BrandingInterface> $cssvars
+ * @property-read ToOneRelationshipConfigBuilderInterface<BrandingInterface,FileInterface> $logo
  */
 class BaseBrandingResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -21,7 +21,7 @@ use InvalidArgumentException;
 /**
  * Instances of this class will load specific properties only and wrap them in a {@link PartialDTO}.
  *
- * @template-extends DoctrineOrmEntityProvider<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, PartialDto>
+ * @template-extends DoctrineOrmEntityProvider<PartialDto>
  */
 class DoctrineOrmPartialDTOProvider extends DoctrineOrmEntityProvider
 {

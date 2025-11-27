@@ -12,6 +12,7 @@ use EDT\JsonApi\Utilities\PropertyBuilderFactory;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\Required;
 
@@ -27,6 +28,7 @@ trait DoctrineResourceTypeInjectionTrait
     protected ?JsonApiResourceTypeServiceInterface $jsonApiResourceTypeService = null;
     protected ?TypeProviderInterface $typeProvider = null;
     protected ?ApiLoggerInterface $apiLogger = null;
+    protected ?ValidatorInterface $edtValidator = null;
 
     #[Required]
     public function setSchemaPathProcessor(SchemaPathProcessor $schemaPathProcessor): void
@@ -136,5 +138,20 @@ trait DoctrineResourceTypeInjectionTrait
     protected function getApiLogger(): ApiLoggerInterface
     {
         return $this->apiLogger;
+    }
+
+    /**
+     * EDT 0.26: Validator injection for ConditionConverter
+     * Named edtValidator to avoid conflicts with ResourceType-specific validator properties
+     */
+    #[Required]
+    public function setEdtValidator(ValidatorInterface $edtValidator): void
+    {
+        $this->edtValidator = $edtValidator;
+    }
+
+    protected function getEdtValidator(): ValidatorInterface
+    {
+        return $this->edtValidator;
     }
 }

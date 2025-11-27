@@ -17,12 +17,12 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ManualListSortInterface>
+ * @template-extends MagicResourceConfigBuilder<ManualListSortInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $pId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $context
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $namespace
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ManualListSortInterface> $idents
+ * @property-read AttributeConfigBuilderInterface<ManualListSortInterface> $pId
+ * @property-read AttributeConfigBuilderInterface<ManualListSortInterface> $context
+ * @property-read AttributeConfigBuilderInterface<ManualListSortInterface> $namespace
+ * @property-read AttributeConfigBuilderInterface<ManualListSortInterface> $idents
  */
 class BaseManualListSortResourceConfigBuilder extends MagicResourceConfigBuilder
 {

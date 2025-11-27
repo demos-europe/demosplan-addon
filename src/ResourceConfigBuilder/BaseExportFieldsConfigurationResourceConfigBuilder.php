@@ -19,39 +19,39 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ExportFieldsConfigurationInterface>
+ * @template-extends MagicResourceConfigBuilder<ExportFieldsConfigurationInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ExportFieldsConfigurationInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $modificationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $idExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $statementNameExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $creationDateExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $procedureNameExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $procedurePhaseExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $votesNumExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $userStateExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $userGroupExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $userOrganisationExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $userPositionExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $institutionExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $publicParticipationExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $orgaNameExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $departmentNameExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $submitterNameExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $showInPublicAreaExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $documentExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $paragraphExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $filesExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $attachmentsExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $priorityExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $emailExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $phoneNumberExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $streetExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $streetNumberExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $postalCodeExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $cityExportable
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ExportFieldsConfigurationInterface> $institutionOrCitizenExportable
+ * @property-read ToOneRelationshipConfigBuilderInterface<ExportFieldsConfigurationInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $modificationDate
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $idExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $statementNameExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $creationDateExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $procedureNameExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $procedurePhaseExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $votesNumExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $userStateExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $userGroupExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $userOrganisationExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $userPositionExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $institutionExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $publicParticipationExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $orgaNameExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $departmentNameExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $submitterNameExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $showInPublicAreaExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $documentExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $paragraphExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $filesExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $attachmentsExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $priorityExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $emailExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $phoneNumberExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $streetExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $streetNumberExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $postalCodeExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $cityExportable
+ * @property-read AttributeConfigBuilderInterface<ExportFieldsConfigurationInterface> $institutionOrCitizenExportable
  */
 class BaseExportFieldsConfigurationResourceConfigBuilder extends MagicResourceConfigBuilder
 {

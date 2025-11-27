@@ -21,14 +21,14 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateCategoryInterface>
+ * @template-extends MagicResourceConfigBuilder<BoilerplateCategoryInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateCategoryInterface,ProcedureInterface> $procedure
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,BoilerplateCategoryInterface,BoilerplateInterface> $boilerplates
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateCategoryInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateCategoryInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateCategoryInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,BoilerplateCategoryInterface> $modifyDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<BoilerplateCategoryInterface,ProcedureInterface> $procedure
+ * @property-read ToManyRelationshipConfigBuilderInterface<BoilerplateCategoryInterface,BoilerplateInterface> $boilerplates
+ * @property-read AttributeConfigBuilderInterface<BoilerplateCategoryInterface> $title
+ * @property-read AttributeConfigBuilderInterface<BoilerplateCategoryInterface> $description
+ * @property-read AttributeConfigBuilderInterface<BoilerplateCategoryInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<BoilerplateCategoryInterface> $modifyDate
  */
 class BaseBoilerplateCategoryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

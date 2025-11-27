@@ -16,7 +16,7 @@ use EDT\Querying\Contracts\EntityBasedInterface;
 interface GetPropertiesEventInterface
 {
     /**
-     * @return ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     * @return ResourceConfigBuilderInterface<TEntity>
      */
     public function getConfigBuilder(): ResourceConfigBuilderInterface;
 

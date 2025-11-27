@@ -10,9 +10,12 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
 use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceCreateFlushEvent;
 use DemosEurope\DemosplanAddon\Contracts\Events\BeforeResourceUpdateFlushEvent;
 use DemosEurope\DemosplanAddon\Logic\ApiRequest\FluentRepository;
+use EDT\ConditionFactory\DrupalFilterInterface;
 use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
 use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
+use EDT\JsonApi\InputHandling\ConditionConverter;
 use EDT\JsonApi\InputHandling\RepositoryInterface;
+use EDT\JsonApi\InputHandling\SortMethodConverter;
 use EDT\JsonApi\OutputHandling\DynamicTransformer;
 use EDT\JsonApi\PropertyConfig\Builder\AttributeConfigBuilder;
 use EDT\JsonApi\PropertyConfig\Builder\IdentifierConfigBuilder;
@@ -47,7 +50,7 @@ use function is_array;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends AbstractResourceType<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends AbstractResourceType<TEntity>
  * @template-implements JsonApiResourceTypeInterface<TEntity>
  * @template-implements IteratorAggregate<int, non-empty-string>
  *
@@ -59,9 +62,23 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     use DoctrineResourceTypeInjectionTrait;
 
     /**
-     * @var ResourceConfigInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>|null
+     * @var ResourceConfigInterface<TEntity>|null
      */
     private ?ResourceConfigInterface $resourceConfig = null;
+
+    /**
+     * EDT 0.26: Converter for predefined conditions to DQL conditions
+     *
+     * @var ConditionConverter<ClauseFunctionInterface<bool>>|null
+     */
+    private ?ConditionConverter $conditionConverter = null;
+
+    /**
+     * EDT 0.26: Converter for predefined sort methods to DQL sort methods
+     *
+     * @var SortMethodConverter<OrderBySortMethodInterface>|null
+     */
+    private ?SortMethodConverter $sortMethodConverter = null;
 
     protected function getResourceConfig(): ResourceConfigInterface
     {
@@ -164,7 +181,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     }
 
     /**
-     * @return AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>
+     * @return AttributeConfigBuilder<TEntity>
      */
     protected function createAttribute(PropertyPathInterface $path): AttributeConfigBuilder
     {
@@ -177,9 +194,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     /**
      * @template TRelationship of object
      *
-     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TRelationship> $path
+     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<TRelationship> $path
      *
-     * @return ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, TRelationship>
+     * @return ToOneRelationshipConfigBuilder<TEntity, TRelationship>
      */
     protected function createToOneRelationship(
         PropertyPathInterface&ResourceTypeInterface $path
@@ -203,9 +220,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     /**
      * @template TRelationship of object
      *
-     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TRelationship> $path
+     * @param PropertyPathInterface&EntityBasedInterface<TRelationship>&ResourceTypeInterface<TRelationship> $path
      *
-     * @return ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, TRelationship>
+     * @return ToManyRelationshipConfigBuilder<TEntity, TRelationship>
      */
     protected function createToManyRelationship(
         PropertyPathInterface&ResourceTypeInterface $path
@@ -231,7 +248,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
      * effect (e.g. determining the order of properties in JSON:API responses) you can not rely on
      * these effects; they may be changed in the future.
      *
-     * @return list<AttributeConfigBuilder<ClauseFunctionInterface<bool>, TEntity>|ToOneRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>|ToManyRelationshipConfigBuilder<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity, object>>|ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     * @return list<AttributeConfigBuilder<TEntity>|ToOneRelationshipConfigBuilder<TEntity, object>|ToManyRelationshipConfigBuilder<TEntity, object>>|ResourceConfigBuilderInterface<TEntity>
      */
     abstract protected function getProperties(): array|ResourceConfigBuilderInterface;
 
@@ -283,18 +300,157 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         return $this->id->getAsNames();
     }
 
+    /**
+     * EDT 0.26: Separate predefined from DQL conditions and map paths only on predefined ones.
+     *
+     * mapPaths() expects PathAdjustableInterface which predefined types implement but DQL types don't.
+     * We must separate conditions first, map only predefined, then convert all predefined to DQL.
+     *
+     * @param array<int, DrupalFilterInterface|ClauseFunctionInterface<bool>> $conditions
+     * @param array<int, mixed> $sortMethods
+     * @return array{conditions: array<int, ClauseFunctionInterface<bool>>, sortMethods: array<int, OrderBySortMethodInterface>}
+     */
+    protected function mapAndConvertConditionsAndSorts(array $conditions, array $sortMethods): array
+    {
+        // Separate predefined from DQL conditions
+        $predefinedConditions = [];
+        $dqlConditions = [];
+
+        foreach ($conditions as $condition) {
+            if ($condition instanceof DrupalFilterInterface) {
+                $predefinedConditions[] = $condition;
+            } else {
+                $dqlConditions[] = $condition;
+            }
+        }
+
+        // Separate predefined from DQL sort methods
+        $predefinedSortMethods = [];
+        $dqlSortMethods = [];
+
+        foreach ($sortMethods as $sortMethod) {
+            // Predefined sort methods: EDT\Querying\SortMethodFactories\SortMethodInterface
+            // DQL sort methods: EDT\DqlQuerying\Contracts\OrderBySortMethodInterface
+            // Note: DQL sorts extend predefined sorts, so check for OrderBySortMethodInterface to identify DQL
+            if ($sortMethod instanceof \EDT\DqlQuerying\Contracts\OrderBySortMethodInterface) {
+                $dqlSortMethods[] = $sortMethod;
+            } else {
+                // Everything else is predefined (including EDT\Querying\SortMethodFactories\SortMethod)
+                $predefinedSortMethods[] = $sortMethod;
+            }
+        }
+
+        // EDT 0.26: Map paths on predefined types BEFORE conversion
+        // Both conditions and sort methods need path mapping if they're predefined types
+        if ([] !== $predefinedConditions || [] !== $predefinedSortMethods) {
+            $this->mapPaths($predefinedConditions, $predefinedSortMethods);
+        }
+
+        // Convert predefined conditions to DQL
+        if ([] !== $predefinedConditions) {
+            // Initialize converter lazily
+            if (null === $this->conditionConverter) {
+                $repository = $this->getRepository();
+                $dqlConditionFactory = $repository->getConditionFactory();
+                $this->conditionConverter = ConditionConverter::createDefault($this->getEdtValidator(), $dqlConditionFactory);
+            }
+
+            $convertedConditions = $this->conditionConverter->convertConditions($predefinedConditions);
+            $dqlConditions = array_merge($dqlConditions, $convertedConditions);
+        }
+
+        // EDT 0.26: Convert predefined sort methods to DQL
+        // After mapPaths(), the predefined sorts have updated paths
+        // We convert them to strings (with mapped paths) and re-parse with DQL factory
+        if ([] !== $predefinedSortMethods) {
+            if (null === $this->sortMethodConverter) {
+                $repository = $this->getRepository();
+                $dqlSortMethodFactory = $repository->getSortMethodFactory();
+                $this->sortMethodConverter = SortMethodConverter::createDefault($this->getEdtValidator(), $dqlSortMethodFactory);
+            }
+
+            $convertedSortMethods = $this->sortMethodConverter->convertSortMethods($predefinedSortMethods);
+            $dqlSortMethods = array_merge($dqlSortMethods, $convertedSortMethods);
+        }
+
+        return [
+            'conditions' => $dqlConditions,
+            'sortMethods' => $dqlSortMethods,
+        ];
+    }
+
+    /**
+     * EDT 0.26: Convert predefined conditions (DrupalFilterInterface) to DQL conditions (ClauseFunctionInterface).
+     *
+     * @deprecated Use mapAndConvertConditionsAndSorts() instead to properly handle path mapping
+     *
+     * @param array<int, DrupalFilterInterface|ClauseFunctionInterface<bool>> $conditions
+     * @return array<int, ClauseFunctionInterface<bool>>
+     */
+    protected function convertPredefinedConditionsToDql(array $conditions): array
+    {
+        $result = $this->mapAndConvertConditionsAndSorts($conditions, []);
+        return $result['conditions'];
+    }
+
+    /**
+     * EDT 0.26: Convert predefined sort methods to DQL sort methods (OrderBySortMethodInterface).
+     *
+     * In EDT 0.26, sort methods from JSON:API come as predefined types, but FluentRepository
+     * expects DQL sort methods. We need to convert before merging with default sort methods.
+     *
+     * @param array<int, mixed> $sortMethods
+     * @return array<int, OrderBySortMethodInterface>
+     */
+    protected function convertPredefinedSortMethodsToDql(array $sortMethods): array
+    {
+        if ([] === $sortMethods) {
+            return [];
+        }
+
+        // Initialize converter lazily
+        if (null === $this->sortMethodConverter) {
+            // Get DqlSortMethodFactory from repository
+            $repository = $this->getRepository();
+            $dqlSortMethodFactory = $repository->getSortMethodFactory();
+
+            // Create converter that converts FROM predefined TO DQL
+            $this->sortMethodConverter = SortMethodConverter::createDefault($this->getEdtValidator(), $dqlSortMethodFactory);
+        }
+
+        // Convert all sort methods (assuming they're all predefined from JSON:API)
+        return $this->sortMethodConverter->convertSortMethods($sortMethods);
+    }
+
     public function getEntityPaginator(ApiPaginationInterface $pagination, array $conditions, array $sortMethods = []): Pagerfanta
     {
         if (!$this->isAvailable()) {
             throw AccessException::typeNotAvailable($this);
         }
 
-        $this->mapPaths($conditions, $sortMethods);
-        $conditions = array_merge($conditions, $this->getAccessConditions());
-        $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
+        // EDT 0.26: Separate, map, and convert predefined to DQL
+        $converted = $this->mapAndConvertConditionsAndSorts($conditions, $sortMethods);
+        $conditions = array_merge($converted['conditions'], $this->getAccessConditions());
+        $sortMethods = array_merge($converted['sortMethods'], $this->getDefaultSortMethods());
         $pagePagination = new PagePagination($pagination->getSize(), $pagination->getNumber());
 
         return $this->getRepository()->getEntitiesForPage($conditions, $sortMethods, $pagePagination);
+    }
+
+    /**
+     * EDT 0.26: Override to apply condition and sort method conversion.
+     *
+     * AbstractResourceType has a getEntitiesForPage() method that directly calls the repository.
+     * We need to override it to convert predefined conditions/sorts to DQL before passing to repository.
+     */
+    public function getEntitiesForPage(array $conditions, array $sortMethods, PagePagination $pagination): Pagerfanta
+    {
+        // EDT 0.26: Separate, map, and convert predefined to DQL
+        $converted = $this->mapAndConvertConditionsAndSorts($conditions, $sortMethods);
+        $conditions = array_merge($converted['conditions'], $this->getAccessConditions());
+        $sortMethods = array_merge($converted['sortMethods'], $this->getDefaultSortMethods());
+
+        return $this->getRepository()->getEntitiesForPage($conditions, $sortMethods, $pagination);
     }
 
     public function listPrefilteredEntities(array $dataObjects, array $conditions = [], array $sortMethods = []): array
@@ -303,9 +459,10 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
             throw AccessException::typeNotAvailable($this);
         }
 
-        $this->mapPaths($conditions, $sortMethods);
-        $conditions = array_merge($conditions, $this->getAccessConditions());
-        $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
+        // EDT 0.26: Separate, map, and convert predefined to DQL
+        $converted = $this->mapAndConvertConditionsAndSorts($conditions, $sortMethods);
+        $conditions = array_merge($converted['conditions'], $this->getAccessConditions());
+        $sortMethods = array_merge($converted['sortMethods'], $this->getDefaultSortMethods());
 
         return $this->getJsonApiResourceTypeService()->listPrefilteredEntities($this, $dataObjects, $conditions, $sortMethods);
     }
@@ -317,6 +474,8 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
         }
 
         $this->mapPaths($conditions, []);
+        // EDT 0.26: Convert predefined conditions to DQL before merging with access conditions
+        $conditions = $this->convertPredefinedConditionsToDql($conditions);
         $conditions = array_merge($conditions, $this->getAccessConditions());
 
         return $this->getRepository()->getEntityCount($conditions);
@@ -328,9 +487,10 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
             throw AccessException::typeNotAvailable($this);
         }
 
-        $this->mapPaths($conditions, $sortMethods);
-        $conditions = array_merge($conditions, $this->getAccessConditions());
-        $sortMethods = array_merge($sortMethods, $this->getDefaultSortMethods());
+        // EDT 0.26: Separate, map, and convert predefined to DQL
+        $converted = $this->mapAndConvertConditionsAndSorts($conditions, $sortMethods);
+        $conditions = array_merge($converted['conditions'], $this->getAccessConditions());
+        $sortMethods = array_merge($converted['sortMethods'], $this->getDefaultSortMethods());
         $entityIdentifierPropertyPath = $this->getIdentifierPropertyPath();
 
         return $this->getRepository()->getEntityIdentifiers($conditions, $sortMethods, array_pop($entityIdentifierPropertyPath));
@@ -359,7 +519,12 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
             throw AccessException::typeNotAvailable($this);
         }
 
-        return parent::getEntities($conditions, $sortMethods);
+        // EDT 0.26: Separate, map, and convert predefined to DQL
+        $converted = $this->mapAndConvertConditionsAndSorts($conditions, $sortMethods);
+        $conditions = array_merge($converted['conditions'], $this->getAccessConditions());
+        $sortMethods = array_merge($converted['sortMethods'], $this->getDefaultSortMethods());
+
+        return $this->getRepository()->getEntities($conditions, $sortMethods);
     }
 
     public function getReadability(): ResourceReadability

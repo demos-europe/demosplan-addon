@@ -26,9 +26,9 @@ interface JsonApiResourceTypeServiceInterface
      * @template TEntity of EntityInterface
      *
      * @param JsonApiResourceTypeInterface<TEntity> $type
-     * @param ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity> $resourceConfigBuilder
+     * @param ResourceConfigBuilderInterface<TEntity> $resourceConfigBuilder
      *
-     * @return ResourceConfigBuilderInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     * @return ResourceConfigBuilderInterface<TEntity>
      */
     public function processProperties(JsonApiResourceTypeInterface $type, ResourceConfigBuilderInterface $resourceConfigBuilder): ResourceConfigBuilderInterface;
 

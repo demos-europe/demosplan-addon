@@ -19,26 +19,26 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,NewsInterface>
+ * @template-extends MagicResourceConfigBuilder<NewsInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $pId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $picture
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $pictitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $pdf
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $pdftitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $enabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $deleteDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,NewsInterface,RoleInterface> $roles
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $designatedSwitchDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $designatedState
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NewsInterface> $determinedToSwitch
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $pId
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $title
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $description
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $text
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $picture
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $pictitle
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $pdf
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $pdftitle
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $enabled
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $deleteDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<NewsInterface,RoleInterface> $roles
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $designatedSwitchDate
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $designatedState
+ * @property-read AttributeConfigBuilderInterface<NewsInterface> $determinedToSwitch
  */
 class BaseNewsResourceConfigBuilder extends MagicResourceConfigBuilder
 {

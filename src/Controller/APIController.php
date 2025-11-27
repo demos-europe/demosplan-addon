@@ -283,7 +283,7 @@ abstract class APIController extends AbstractController
     }
 
     /**
-     * @param ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, EntityInterface> $resourceType
+     * @param ResourceTypeInterface<EntityInterface> $resourceType
      * @deprecated use {@link ApiResourceServiceInterface::makeItemOfResource()} and call {@link APIController::renderResource()} instead
      */
     protected function renderItemOfResource($data, ResourceTypeInterface $resourceType, int $httpResponseStatusCode = Response::HTTP_OK): APIResponse

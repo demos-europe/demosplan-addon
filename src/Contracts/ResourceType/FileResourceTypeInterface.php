@@ -11,7 +11,7 @@ use EDT\JsonApi\ResourceTypes\ResourceTypeInterface;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 
 /**
- * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, FileInterface>
+ * @template-extends ResourceTypeInterface<FileInterface>
  */
 interface FileResourceTypeInterface extends PropertyAutoPathInterface, ResourceTypeInterface
 {

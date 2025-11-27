@@ -19,18 +19,18 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ForumEntryFileInterface>
+ * @template-extends MagicResourceConfigBuilder<ForumEntryFileInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $entryId
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ForumEntryFileInterface,ForumEntryInterface> $entry
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $blocked
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $string
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryFileInterface> $hash
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $entryId
+ * @property-read ToOneRelationshipConfigBuilderInterface<ForumEntryFileInterface,ForumEntryInterface> $entry
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $blocked
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $order
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $string
+ * @property-read AttributeConfigBuilderInterface<ForumEntryFileInterface> $hash
  */
 class BaseForumEntryFileResourceConfigBuilder extends MagicResourceConfigBuilder
 {

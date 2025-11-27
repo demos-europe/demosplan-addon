@@ -20,17 +20,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryInterface>
+ * @template-extends MagicResourceConfigBuilder<DevelopmentUserStoryInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryInterface,DevelopmentReleaseInterface> $release
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentUserStoryInterface,ForumThreadInterface> $thread
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $onlineVotes
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $offlineVotes
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentUserStoryInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<DevelopmentUserStoryInterface,DevelopmentReleaseInterface> $release
+ * @property-read ToOneRelationshipConfigBuilderInterface<DevelopmentUserStoryInterface,ForumThreadInterface> $thread
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $onlineVotes
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $offlineVotes
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $description
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $title
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentUserStoryInterface> $createDate
  */
 class BaseDevelopmentUserStoryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

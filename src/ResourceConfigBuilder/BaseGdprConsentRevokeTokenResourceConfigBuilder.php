@@ -21,11 +21,11 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GdprConsentRevokeTokenInterface>
+ * @template-extends MagicResourceConfigBuilder<GdprConsentRevokeTokenInterface>
  *
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GdprConsentRevokeTokenInterface,StatementInterface> $statements
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GdprConsentRevokeTokenInterface> $token
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GdprConsentRevokeTokenInterface,EmailAddressInterface> $emailAddress
+ * @property-read ToManyRelationshipConfigBuilderInterface<GdprConsentRevokeTokenInterface,StatementInterface> $statements
+ * @property-read AttributeConfigBuilderInterface<GdprConsentRevokeTokenInterface> $token
+ * @property-read ToOneRelationshipConfigBuilderInterface<GdprConsentRevokeTokenInterface,EmailAddressInterface> $emailAddress
  */
 class BaseGdprConsentRevokeTokenResourceConfigBuilder extends MagicResourceConfigBuilder
 {

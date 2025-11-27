@@ -21,21 +21,21 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphVersionInterface>
+ * @template-extends MagicResourceConfigBuilder<ParagraphVersionInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphVersionInterface,ParagraphInterface> $paragraph
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphVersionInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ParagraphVersionInterface,ElementsInterface> $element
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $category
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $visible
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $versionDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ParagraphVersionInterface> $deleteDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ParagraphVersionInterface,ParagraphInterface> $paragraph
+ * @property-read ToOneRelationshipConfigBuilderInterface<ParagraphVersionInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<ParagraphVersionInterface,ElementsInterface> $element
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $category
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $title
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $text
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $order
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $visible
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $versionDate
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ParagraphVersionInterface> $deleteDate
  */
 class BaseParagraphVersionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

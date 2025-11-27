@@ -21,37 +21,37 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MasterToebVersionInterface>
+ * @template-extends MagicResourceConfigBuilder<MasterToebVersionInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MasterToebVersionInterface,MasterToebInterface> $masterToeb
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $gatewayGroup
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $orgaName
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MasterToebVersionInterface,OrgaInterface> $orga
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MasterToebVersionInterface,DepartmentInterface> $department
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $departmentName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $sign
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $email
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $ccEmail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $contactPerson
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $memo
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $comment
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $registered
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtHHMitte
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtEimsbuettel
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtAltona
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtHHNord
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtWandsbek
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtBergedorf
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtHarburg
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $districtBsu
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $documentRoughAgreement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $documentAgreement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $documentNotice
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $documentAssessment
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MasterToebVersionInterface> $versionDate
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<MasterToebVersionInterface,MasterToebInterface> $masterToeb
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $gatewayGroup
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $orgaName
+ * @property-read ToOneRelationshipConfigBuilderInterface<MasterToebVersionInterface,OrgaInterface> $orga
+ * @property-read ToOneRelationshipConfigBuilderInterface<MasterToebVersionInterface,DepartmentInterface> $department
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $departmentName
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $sign
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $email
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $ccEmail
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $contactPerson
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $memo
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $comment
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $registered
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtHHMitte
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtEimsbuettel
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtAltona
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtHHNord
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtWandsbek
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtBergedorf
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtHarburg
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $districtBsu
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $documentRoughAgreement
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $documentAgreement
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $documentNotice
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $documentAssessment
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<MasterToebVersionInterface> $versionDate
  */
 class BaseMasterToebVersionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -19,20 +19,20 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CategoryInterface>
+ * @template-extends MagicResourceConfigBuilder<CategoryInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $picture
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $pictitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $enabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $deleteDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CategoryInterface,GlobalContentInterface> $globalContents
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CategoryInterface> $custom
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $name
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $title
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $description
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $picture
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $pictitle
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $enabled
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $deleteDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<CategoryInterface,GlobalContentInterface> $globalContents
+ * @property-read AttributeConfigBuilderInterface<CategoryInterface> $custom
  */
 class BaseCategoryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

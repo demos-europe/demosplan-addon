@@ -22,23 +22,23 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentInterface>
+ * @template-extends MagicResourceConfigBuilder<SingleDocumentInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentInterface,ElementsInterface> $element
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $category
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $symbol
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $document
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $statementEnabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $visible
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SingleDocumentInterface> $deleteDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SingleDocumentInterface,SingleDocumentVersionInterface> $versions
+ * @property-read ToOneRelationshipConfigBuilderInterface<SingleDocumentInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<SingleDocumentInterface,ElementsInterface> $element
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $category
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $order
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $title
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $text
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $symbol
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $document
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $statementEnabled
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $visible
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<SingleDocumentInterface> $deleteDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<SingleDocumentInterface,SingleDocumentVersionInterface> $versions
  */
 class BaseSingleDocumentResourceConfigBuilder extends MagicResourceConfigBuilder
 {

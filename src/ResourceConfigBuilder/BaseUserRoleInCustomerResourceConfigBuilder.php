@@ -20,11 +20,11 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserRoleInCustomerInterface>
+ * @template-extends MagicResourceConfigBuilder<UserRoleInCustomerInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserRoleInCustomerInterface,UserInterface> $user
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserRoleInCustomerInterface,RoleInterface> $role
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserRoleInCustomerInterface,CustomerInterface> $customer
+ * @property-read ToOneRelationshipConfigBuilderInterface<UserRoleInCustomerInterface,UserInterface> $user
+ * @property-read ToOneRelationshipConfigBuilderInterface<UserRoleInCustomerInterface,RoleInterface> $role
+ * @property-read ToOneRelationshipConfigBuilderInterface<UserRoleInCustomerInterface,CustomerInterface> $customer
  */
 class BaseUserRoleInCustomerResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -20,16 +20,16 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ForumEntryInterface>
+ * @template-extends MagicResourceConfigBuilder<ForumEntryInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ForumEntryInterface,ForumThreadInterface> $thread
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ForumEntryInterface,UserInterface> $user
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryInterface> $userRoles
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryInterface> $initialEntry
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumEntryInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ForumEntryInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<ForumEntryInterface,ForumThreadInterface> $thread
+ * @property-read ToOneRelationshipConfigBuilderInterface<ForumEntryInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<ForumEntryInterface> $userRoles
+ * @property-read AttributeConfigBuilderInterface<ForumEntryInterface> $text
+ * @property-read AttributeConfigBuilderInterface<ForumEntryInterface> $initialEntry
+ * @property-read AttributeConfigBuilderInterface<ForumEntryInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ForumEntryInterface> $modifyDate
  */
 class BaseForumEntryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

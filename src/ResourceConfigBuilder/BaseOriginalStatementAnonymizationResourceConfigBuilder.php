@@ -20,15 +20,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OriginalStatementAnonymizationInterface>
+ * @template-extends MagicResourceConfigBuilder<OriginalStatementAnonymizationInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OriginalStatementAnonymizationInterface> $created
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OriginalStatementAnonymizationInterface,StatementInterface> $statement
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OriginalStatementAnonymizationInterface,UserInterface> $createdBy
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OriginalStatementAnonymizationInterface> $attachmentsDeleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OriginalStatementAnonymizationInterface> $textVersionHistoryDeleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OriginalStatementAnonymizationInterface> $textPassagesAnonymized
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OriginalStatementAnonymizationInterface> $submitterAndAuthorMetaDataAnonymized
+ * @property-read AttributeConfigBuilderInterface<OriginalStatementAnonymizationInterface> $created
+ * @property-read ToOneRelationshipConfigBuilderInterface<OriginalStatementAnonymizationInterface,StatementInterface> $statement
+ * @property-read ToOneRelationshipConfigBuilderInterface<OriginalStatementAnonymizationInterface,UserInterface> $createdBy
+ * @property-read AttributeConfigBuilderInterface<OriginalStatementAnonymizationInterface> $attachmentsDeleted
+ * @property-read AttributeConfigBuilderInterface<OriginalStatementAnonymizationInterface> $textVersionHistoryDeleted
+ * @property-read AttributeConfigBuilderInterface<OriginalStatementAnonymizationInterface> $textPassagesAnonymized
+ * @property-read AttributeConfigBuilderInterface<OriginalStatementAnonymizationInterface> $submitterAndAuthorMetaDataAnonymized
  */
 class BaseOriginalStatementAnonymizationResourceConfigBuilder extends MagicResourceConfigBuilder
 {

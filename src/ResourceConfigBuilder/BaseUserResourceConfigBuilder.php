@@ -25,33 +25,33 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface>
+ * @template-extends MagicResourceConfigBuilder<UserInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $dmId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $gender
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $firstname
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $lastname
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $email
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $login
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $password
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $alternativeLoginPassword
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $salt
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $language
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $lastLogin
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $gwId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $flags
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,OrgaInterface> $orga
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,DepartmentInterface> $departments
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,UserRoleInCustomerInterface> $roleInCustomers
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,AddressInterface> $addresses
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,SurveyVoteInterface> $surveyVotes
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,UserInterface> $twinUser
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,ProcedureInterface> $authorizedProcedures
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $providedByIdentityProvider
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $dmId
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $gender
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $title
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $firstname
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $lastname
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $email
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $login
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $password
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $alternativeLoginPassword
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $salt
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $language
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $lastLogin
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $gwId
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $flags
+ * @property-read ToManyRelationshipConfigBuilderInterface<UserInterface,OrgaInterface> $orga
+ * @property-read ToManyRelationshipConfigBuilderInterface<UserInterface,DepartmentInterface> $departments
+ * @property-read ToManyRelationshipConfigBuilderInterface<UserInterface,UserRoleInCustomerInterface> $roleInCustomers
+ * @property-read ToManyRelationshipConfigBuilderInterface<UserInterface,AddressInterface> $addresses
+ * @property-read ToManyRelationshipConfigBuilderInterface<UserInterface,SurveyVoteInterface> $surveyVotes
+ * @property-read ToOneRelationshipConfigBuilderInterface<UserInterface,UserInterface> $twinUser
+ * @property-read ToManyRelationshipConfigBuilderInterface<UserInterface,ProcedureInterface> $authorizedProcedures
+ * @property-read AttributeConfigBuilderInterface<UserInterface> $providedByIdentityProvider
  */
 class BaseUserResourceConfigBuilder extends MagicResourceConfigBuilder
 {

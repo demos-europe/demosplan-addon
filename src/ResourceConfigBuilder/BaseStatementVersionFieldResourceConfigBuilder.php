@@ -19,16 +19,16 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementVersionFieldInterface>
+ * @template-extends MagicResourceConfigBuilder<StatementVersionFieldInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $userIdent
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $userName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $sessionIdent
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $type
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $value
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementVersionFieldInterface> $created
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementVersionFieldInterface,StatementInterface> $statement
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $userIdent
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $userName
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $sessionIdent
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $name
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $type
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $value
+ * @property-read AttributeConfigBuilderInterface<StatementVersionFieldInterface> $created
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementVersionFieldInterface,StatementInterface> $statement
  */
 class BaseStatementVersionFieldResourceConfigBuilder extends MagicResourceConfigBuilder
 {

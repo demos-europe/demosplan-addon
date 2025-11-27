@@ -17,13 +17,13 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ContextualHelpInterface>
+ * @template-extends MagicResourceConfigBuilder<ContextualHelpInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ContextualHelpInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ContextualHelpInterface> $key
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ContextualHelpInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ContextualHelpInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ContextualHelpInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ContextualHelpInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<ContextualHelpInterface> $key
+ * @property-read AttributeConfigBuilderInterface<ContextualHelpInterface> $text
+ * @property-read AttributeConfigBuilderInterface<ContextualHelpInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ContextualHelpInterface> $modifyDate
  */
 class BaseContextualHelpResourceConfigBuilder extends MagicResourceConfigBuilder
 {

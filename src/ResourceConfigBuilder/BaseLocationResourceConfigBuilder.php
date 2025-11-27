@@ -17,14 +17,14 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,LocationInterface>
+ * @template-extends MagicResourceConfigBuilder<LocationInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,LocationInterface> $postcode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,LocationInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,LocationInterface> $municipalCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,LocationInterface> $ars
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,LocationInterface> $lat
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,LocationInterface> $lon
+ * @property-read AttributeConfigBuilderInterface<LocationInterface> $postcode
+ * @property-read AttributeConfigBuilderInterface<LocationInterface> $name
+ * @property-read AttributeConfigBuilderInterface<LocationInterface> $municipalCode
+ * @property-read AttributeConfigBuilderInterface<LocationInterface> $ars
+ * @property-read AttributeConfigBuilderInterface<LocationInterface> $lat
+ * @property-read AttributeConfigBuilderInterface<LocationInterface> $lon
  */
 class BaseLocationResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -19,11 +19,11 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureCoupleTokenInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureCoupleTokenInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureCoupleTokenInterface,ProcedureInterface> $sourceProcedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureCoupleTokenInterface,ProcedureInterface> $targetProcedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureCoupleTokenInterface> $token
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureCoupleTokenInterface,ProcedureInterface> $sourceProcedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureCoupleTokenInterface,ProcedureInterface> $targetProcedure
+ * @property-read AttributeConfigBuilderInterface<ProcedureCoupleTokenInterface> $token
  */
 class BaseProcedureCoupleTokenResourceConfigBuilder extends MagicResourceConfigBuilder
 {

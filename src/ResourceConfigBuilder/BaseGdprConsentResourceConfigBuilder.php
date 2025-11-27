@@ -20,14 +20,14 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GdprConsentInterface>
+ * @template-extends MagicResourceConfigBuilder<GdprConsentInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GdprConsentInterface,StatementInterface> $statement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GdprConsentInterface> $consentReceived
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GdprConsentInterface> $consentReceivedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GdprConsentInterface> $consentRevoked
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GdprConsentInterface> $consentRevokedDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GdprConsentInterface,UserInterface> $consentee
+ * @property-read ToOneRelationshipConfigBuilderInterface<GdprConsentInterface,StatementInterface> $statement
+ * @property-read AttributeConfigBuilderInterface<GdprConsentInterface> $consentReceived
+ * @property-read AttributeConfigBuilderInterface<GdprConsentInterface> $consentReceivedDate
+ * @property-read AttributeConfigBuilderInterface<GdprConsentInterface> $consentRevoked
+ * @property-read AttributeConfigBuilderInterface<GdprConsentInterface> $consentRevokedDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<GdprConsentInterface,UserInterface> $consentee
  */
 class BaseGdprConsentResourceConfigBuilder extends MagicResourceConfigBuilder
 {

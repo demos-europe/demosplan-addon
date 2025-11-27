@@ -22,13 +22,13 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFormDefinitionInterface>
+ * @template-extends MagicResourceConfigBuilder<StatementFormDefinitionInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFormDefinitionInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFormDefinitionInterface> $modificationDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFormDefinitionInterface,StatementFieldDefinitionInterface> $fieldDefinitions
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFormDefinitionInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFormDefinitionInterface,ProcedureTypeInterface> $procedureType
+ * @property-read AttributeConfigBuilderInterface<StatementFormDefinitionInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<StatementFormDefinitionInterface> $modificationDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<StatementFormDefinitionInterface,StatementFieldDefinitionInterface> $fieldDefinitions
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFormDefinitionInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFormDefinitionInterface,ProcedureTypeInterface> $procedureType
  */
 class BaseStatementFormDefinitionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

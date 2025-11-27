@@ -17,18 +17,18 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,EntityContentChangeInterface>
+ * @template-extends MagicResourceConfigBuilder<EntityContentChangeInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $created
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $modified
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $userId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $userName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $entityType
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $entityId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $entityField
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $preUpdate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $postUpdate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,EntityContentChangeInterface> $contentChange
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $created
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $modified
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $userId
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $userName
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $entityType
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $entityId
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $entityField
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $preUpdate
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $postUpdate
+ * @property-read AttributeConfigBuilderInterface<EntityContentChangeInterface> $contentChange
  */
 class BaseEntityContentChangeResourceConfigBuilder extends MagicResourceConfigBuilder
 {

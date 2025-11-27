@@ -26,27 +26,27 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface>
+ * @template-extends MagicResourceConfigBuilder<CustomerInterface>
  *
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,CustomerCountyInterface> $customerCounties
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $imprint
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,UserRoleInCustomerInterface> $userRoles
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,OrgaStatusInCustomerInterface> $orgaStatuses
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $dataProtection
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $termsOfUse
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $xplanning
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,ProcedureInterface> $defaultProcedureBlueprint
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $mapAttribution
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $baseLayerUrl
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $baseLayerLayers
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,BrandingInterface> $branding
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $accessibilityExplanation
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,VideoInterface> $signLanguageOverviewVideos
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $signLanguageOverviewDescription
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $overviewDescriptionInSimpleLanguage
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,CustomerInterface,SupportContactInterface> $contacts
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,CustomerInterface> $subdomain
+ * @property-read ToManyRelationshipConfigBuilderInterface<CustomerInterface,CustomerCountyInterface> $customerCounties
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $imprint
+ * @property-read ToManyRelationshipConfigBuilderInterface<CustomerInterface,UserRoleInCustomerInterface> $userRoles
+ * @property-read ToManyRelationshipConfigBuilderInterface<CustomerInterface,OrgaStatusInCustomerInterface> $orgaStatuses
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $dataProtection
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $termsOfUse
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $xplanning
+ * @property-read ToOneRelationshipConfigBuilderInterface<CustomerInterface,ProcedureInterface> $defaultProcedureBlueprint
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $mapAttribution
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $baseLayerUrl
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $baseLayerLayers
+ * @property-read ToOneRelationshipConfigBuilderInterface<CustomerInterface,BrandingInterface> $branding
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $accessibilityExplanation
+ * @property-read ToManyRelationshipConfigBuilderInterface<CustomerInterface,VideoInterface> $signLanguageOverviewVideos
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $signLanguageOverviewDescription
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $overviewDescriptionInSimpleLanguage
+ * @property-read ToManyRelationshipConfigBuilderInterface<CustomerInterface,SupportContactInterface> $contacts
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $name
+ * @property-read AttributeConfigBuilderInterface<CustomerInterface> $subdomain
  */
 class BaseCustomerResourceConfigBuilder extends MagicResourceConfigBuilder
 {

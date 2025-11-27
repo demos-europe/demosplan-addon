@@ -21,16 +21,16 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedurePersonInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedurePersonInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedurePersonInterface> $streetName
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedurePersonInterface> $streetNumber
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedurePersonInterface> $city
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedurePersonInterface> $postalCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedurePersonInterface> $emailAddress
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedurePersonInterface,StatementInterface> $similarForeignStatements
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedurePersonInterface> $fullName
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedurePersonInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<ProcedurePersonInterface> $streetName
+ * @property-read AttributeConfigBuilderInterface<ProcedurePersonInterface> $streetNumber
+ * @property-read AttributeConfigBuilderInterface<ProcedurePersonInterface> $city
+ * @property-read AttributeConfigBuilderInterface<ProcedurePersonInterface> $postalCode
+ * @property-read AttributeConfigBuilderInterface<ProcedurePersonInterface> $emailAddress
+ * @property-read ToManyRelationshipConfigBuilderInterface<ProcedurePersonInterface,StatementInterface> $similarForeignStatements
+ * @property-read AttributeConfigBuilderInterface<ProcedurePersonInterface> $fullName
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedurePersonInterface,ProcedureInterface> $procedure
  */
 class BaseProcedurePersonResourceConfigBuilder extends MagicResourceConfigBuilder
 {

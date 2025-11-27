@@ -19,11 +19,11 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,NotificationReceiverInterface>
+ * @template-extends MagicResourceConfigBuilder<NotificationReceiverInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NotificationReceiverInterface> $label
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,NotificationReceiverInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,NotificationReceiverInterface> $email
+ * @property-read AttributeConfigBuilderInterface<NotificationReceiverInterface> $label
+ * @property-read ToOneRelationshipConfigBuilderInterface<NotificationReceiverInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<NotificationReceiverInterface> $email
  */
 class BaseNotificationReceiverResourceConfigBuilder extends MagicResourceConfigBuilder
 {

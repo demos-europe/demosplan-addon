@@ -19,27 +19,27 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MailSendInterface>
+ * @template-extends MagicResourceConfigBuilder<MailSendInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $idRef
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $template
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $to
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $from
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $cc
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $bcc
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $content
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $sendDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $scope
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $status
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $context
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $context2
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $sendAttempt
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $lastStatusDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $errorCode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,MailSendInterface> $errorMessage
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,MailSendInterface,MailAttachmentInterface> $attachments
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $idRef
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $template
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $to
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $from
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $cc
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $bcc
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $title
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $content
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $sendDate
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $scope
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $status
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $context
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $context2
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $sendAttempt
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $lastStatusDate
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $errorCode
+ * @property-read AttributeConfigBuilderInterface<MailSendInterface> $errorMessage
+ * @property-read ToManyRelationshipConfigBuilderInterface<MailSendInterface,MailAttachmentInterface> $attachments
  */
 class BaseMailSendResourceConfigBuilder extends MagicResourceConfigBuilder
 {
