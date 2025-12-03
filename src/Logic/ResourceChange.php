@@ -38,7 +38,7 @@ class ResourceChange implements EntityChangeInterface
 
     /**
      * @param TEntity $targetEntity the entity backing the resource that was targeted by the request
-     * @param ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity> $targetResourceType
+     * @param ResourceTypeInterface<TEntity> $targetResourceType
      * @param array<string,mixed> $requestProperties the values in the request that were specified to be set. Additional changes may
      *                                  have been made by the resource type or listeners
      */
@@ -82,7 +82,7 @@ class ResourceChange implements EntityChangeInterface
     }
 
     /**
-     * @return ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     * @return ResourceTypeInterface<TEntity>
      */
     public function getTargetResourceType(): ResourceTypeInterface
     {

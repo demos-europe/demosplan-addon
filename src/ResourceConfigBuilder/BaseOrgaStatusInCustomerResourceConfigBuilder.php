@@ -21,12 +21,12 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaStatusInCustomerInterface>
+ * @template-extends MagicResourceConfigBuilder<OrgaStatusInCustomerInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaStatusInCustomerInterface,OrgaInterface> $orga
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaStatusInCustomerInterface,OrgaTypeInterface> $orgaType
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaStatusInCustomerInterface,CustomerInterface> $customer
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,OrgaStatusInCustomerInterface> $status
+ * @property-read ToOneRelationshipConfigBuilderInterface<OrgaStatusInCustomerInterface,OrgaInterface> $orga
+ * @property-read ToOneRelationshipConfigBuilderInterface<OrgaStatusInCustomerInterface,OrgaTypeInterface> $orgaType
+ * @property-read ToOneRelationshipConfigBuilderInterface<OrgaStatusInCustomerInterface,CustomerInterface> $customer
+ * @property-read AttributeConfigBuilderInterface<OrgaStatusInCustomerInterface> $status
  */
 class BaseOrgaStatusInCustomerResourceConfigBuilder extends MagicResourceConfigBuilder
 {

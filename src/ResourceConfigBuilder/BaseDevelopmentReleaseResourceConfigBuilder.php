@@ -17,16 +17,16 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,DevelopmentReleaseInterface>
+ * @template-extends MagicResourceConfigBuilder<DevelopmentReleaseInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $description
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $phase
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $startDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $endDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,DevelopmentReleaseInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $description
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $title
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $phase
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $startDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $endDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<DevelopmentReleaseInterface> $createDate
  */
 class BaseDevelopmentReleaseResourceConfigBuilder extends MagicResourceConfigBuilder
 {

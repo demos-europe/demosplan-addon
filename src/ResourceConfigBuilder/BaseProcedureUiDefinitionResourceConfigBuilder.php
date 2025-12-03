@@ -20,17 +20,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureUiDefinitionInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureUiDefinitionInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $modificationDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureUiDefinitionInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureUiDefinitionInterface,ProcedureTypeInterface> $procedureType
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $mapHintDefault
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $statementFormHintStatement
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $statementFormHintPersonalData
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $statementFormHintRecheck
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureUiDefinitionInterface> $statementPublicSubmitConfirmationText
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $modificationDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureUiDefinitionInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureUiDefinitionInterface,ProcedureTypeInterface> $procedureType
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $mapHintDefault
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $statementFormHintStatement
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $statementFormHintPersonalData
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $statementFormHintRecheck
+ * @property-read AttributeConfigBuilderInterface<ProcedureUiDefinitionInterface> $statementPublicSubmitConfirmationText
  */
 class BaseProcedureUiDefinitionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

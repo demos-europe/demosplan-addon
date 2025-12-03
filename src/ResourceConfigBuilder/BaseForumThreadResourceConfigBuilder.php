@@ -17,15 +17,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ForumThreadInterface>
+ * @template-extends MagicResourceConfigBuilder<ForumThreadInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $ident
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $url
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $closed
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $closingReason
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $progression
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ForumThreadInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $ident
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $url
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $closed
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $closingReason
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $progression
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ForumThreadInterface> $modifyDate
  */
 class BaseForumThreadResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -19,18 +19,18 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSubscriptionInterface>
+ * @template-extends MagicResourceConfigBuilder<ProcedureSubscriptionInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ProcedureSubscriptionInterface,UserInterface> $user
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $userEmail
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $postcode
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $city
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $distance
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $modifiedDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureSubscriptionInterface> $deletedDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<ProcedureSubscriptionInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $userEmail
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $postcode
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $city
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $distance
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<ProcedureSubscriptionInterface> $deletedDate
  */
 class BaseProcedureSubscriptionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

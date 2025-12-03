@@ -17,12 +17,12 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SessionsInterface>
+ * @template-extends MagicResourceConfigBuilder<SessionsInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SessionsInterface> $sess_id
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SessionsInterface> $sess_data
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SessionsInterface> $sess_lifetime
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SessionsInterface> $sess_time
+ * @property-read AttributeConfigBuilderInterface<SessionsInterface> $sess_id
+ * @property-read AttributeConfigBuilderInterface<SessionsInterface> $sess_data
+ * @property-read AttributeConfigBuilderInterface<SessionsInterface> $sess_lifetime
+ * @property-read AttributeConfigBuilderInterface<SessionsInterface> $sess_time
  */
 class BaseSessionsResourceConfigBuilder extends MagicResourceConfigBuilder
 {

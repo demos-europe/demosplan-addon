@@ -12,7 +12,7 @@ use EDT\JsonApi\ResourceTypes\CreatableTypeInterface;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends CreatableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends CreatableTypeInterface<TEntity>
  */
 interface CreatableResourceTypeInterface extends CreatableTypeInterface
 {

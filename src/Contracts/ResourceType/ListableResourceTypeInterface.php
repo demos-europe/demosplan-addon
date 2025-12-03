@@ -12,7 +12,7 @@ use EDT\JsonApi\ResourceTypes\ListableTypeInterface;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends ListableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends ListableTypeInterface<TEntity>
  */
 interface ListableResourceTypeInterface extends ListableTypeInterface
 {

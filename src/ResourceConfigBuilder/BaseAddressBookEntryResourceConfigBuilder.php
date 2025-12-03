@@ -19,13 +19,13 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,AddressBookEntryInterface>
+ * @template-extends MagicResourceConfigBuilder<AddressBookEntryInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressBookEntryInterface> $name
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,AddressBookEntryInterface,OrgaInterface> $organisation
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressBookEntryInterface> $emailAddress
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressBookEntryInterface> $createdDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,AddressBookEntryInterface> $modifiedDate
+ * @property-read AttributeConfigBuilderInterface<AddressBookEntryInterface> $name
+ * @property-read ToOneRelationshipConfigBuilderInterface<AddressBookEntryInterface,OrgaInterface> $organisation
+ * @property-read AttributeConfigBuilderInterface<AddressBookEntryInterface> $emailAddress
+ * @property-read AttributeConfigBuilderInterface<AddressBookEntryInterface> $createdDate
+ * @property-read AttributeConfigBuilderInterface<AddressBookEntryInterface> $modifiedDate
  */
 class BaseAddressBookEntryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

@@ -21,18 +21,18 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GisLayerCategoryInterface>
+ * @template-extends MagicResourceConfigBuilder<GisLayerCategoryInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GisLayerCategoryInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GisLayerCategoryInterface> $name
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GisLayerCategoryInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GisLayerCategoryInterface> $modifyDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GisLayerCategoryInterface,GisLayerInterface> $gisLayers
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GisLayerCategoryInterface,GisLayerCategoryInterface> $parent
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,GisLayerCategoryInterface,GisLayerCategoryInterface> $children
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GisLayerCategoryInterface> $treeOrder
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GisLayerCategoryInterface> $visible
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,GisLayerCategoryInterface> $layerWithChildrenHidden
+ * @property-read ToOneRelationshipConfigBuilderInterface<GisLayerCategoryInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<GisLayerCategoryInterface> $name
+ * @property-read AttributeConfigBuilderInterface<GisLayerCategoryInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<GisLayerCategoryInterface> $modifyDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<GisLayerCategoryInterface,GisLayerInterface> $gisLayers
+ * @property-read ToOneRelationshipConfigBuilderInterface<GisLayerCategoryInterface,GisLayerCategoryInterface> $parent
+ * @property-read ToManyRelationshipConfigBuilderInterface<GisLayerCategoryInterface,GisLayerCategoryInterface> $children
+ * @property-read AttributeConfigBuilderInterface<GisLayerCategoryInterface> $treeOrder
+ * @property-read AttributeConfigBuilderInterface<GisLayerCategoryInterface> $visible
+ * @property-read AttributeConfigBuilderInterface<GisLayerCategoryInterface> $layerWithChildrenHidden
  */
 class BaseGisLayerCategoryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

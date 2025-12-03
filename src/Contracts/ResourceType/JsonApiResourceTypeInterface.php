@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints\GroupSequence;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends ResourceTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends ResourceTypeInterface<TEntity>
  * @template-extends GetableResourceTypeInterface<TEntity>
  * @template-extends ListableResourceTypeInterface<TEntity>
  * @template-extends CreatableResourceTypeInterface<TEntity>

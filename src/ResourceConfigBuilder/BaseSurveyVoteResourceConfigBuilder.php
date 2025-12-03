@@ -20,14 +20,14 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SurveyVoteInterface>
+ * @template-extends MagicResourceConfigBuilder<SurveyVoteInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SurveyVoteInterface> $isAgreed
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SurveyVoteInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SurveyVoteInterface> $textReview
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SurveyVoteInterface> $createdDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SurveyVoteInterface,SurveyInterface> $survey
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SurveyVoteInterface,UserInterface> $user
+ * @property-read AttributeConfigBuilderInterface<SurveyVoteInterface> $isAgreed
+ * @property-read AttributeConfigBuilderInterface<SurveyVoteInterface> $text
+ * @property-read AttributeConfigBuilderInterface<SurveyVoteInterface> $textReview
+ * @property-read AttributeConfigBuilderInterface<SurveyVoteInterface> $createdDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<SurveyVoteInterface,SurveyInterface> $survey
+ * @property-read ToOneRelationshipConfigBuilderInterface<SurveyVoteInterface,UserInterface> $user
  */
 class BaseSurveyVoteResourceConfigBuilder extends MagicResourceConfigBuilder
 {

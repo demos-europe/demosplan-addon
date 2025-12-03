@@ -22,29 +22,29 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ElementsInterface>
+ * @template-extends MagicResourceConfigBuilder<ElementsInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $elementParentId
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ElementsInterface,ElementsInterface> $parent
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $pId
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ElementsInterface,ProcedureInterface> $procedure
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $category
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $icon
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $iconTitle
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $file
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $order
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $enabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $deleted
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $modifyDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $deleteDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ElementsInterface,SingleDocumentInterface> $documents
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ElementsInterface,ElementsInterface> $children
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,ElementsInterface,OrgaInterface> $organisations
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $designatedSwitchDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ElementsInterface> $permission
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $elementParentId
+ * @property-read ToOneRelationshipConfigBuilderInterface<ElementsInterface,ElementsInterface> $parent
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $pId
+ * @property-read ToOneRelationshipConfigBuilderInterface<ElementsInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $category
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $title
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $icon
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $iconTitle
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $text
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $file
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $order
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $enabled
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $deleted
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $modifyDate
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $deleteDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<ElementsInterface,SingleDocumentInterface> $documents
+ * @property-read ToManyRelationshipConfigBuilderInterface<ElementsInterface,ElementsInterface> $children
+ * @property-read ToManyRelationshipConfigBuilderInterface<ElementsInterface,OrgaInterface> $organisations
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $designatedSwitchDate
+ * @property-read AttributeConfigBuilderInterface<ElementsInterface> $permission
  */
 class BaseElementsResourceConfigBuilder extends MagicResourceConfigBuilder
 {

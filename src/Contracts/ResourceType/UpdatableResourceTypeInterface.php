@@ -12,7 +12,7 @@ use EDT\JsonApi\ResourceTypes\UpdatableTypeInterface;
 /**
  * @template TEntity of EntityInterface
  *
- * @template-extends UpdatableTypeInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+ * @template-extends UpdatableTypeInterface<TEntity>
  */
 interface UpdatableResourceTypeInterface extends UpdatableTypeInterface
 {

@@ -21,17 +21,17 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SettingInterface>
+ * @template-extends MagicResourceConfigBuilder<SettingInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SettingInterface> $ident
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SettingInterface,ProcedureInterface> $procedure
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SettingInterface,UserInterface> $user
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SettingInterface,OrgaInterface> $orga
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SettingInterface> $orgaId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SettingInterface> $key
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SettingInterface> $content
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SettingInterface> $created
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SettingInterface> $modified
+ * @property-read AttributeConfigBuilderInterface<SettingInterface> $ident
+ * @property-read ToOneRelationshipConfigBuilderInterface<SettingInterface,ProcedureInterface> $procedure
+ * @property-read ToOneRelationshipConfigBuilderInterface<SettingInterface,UserInterface> $user
+ * @property-read ToOneRelationshipConfigBuilderInterface<SettingInterface,OrgaInterface> $orga
+ * @property-read AttributeConfigBuilderInterface<SettingInterface> $orgaId
+ * @property-read AttributeConfigBuilderInterface<SettingInterface> $key
+ * @property-read AttributeConfigBuilderInterface<SettingInterface> $content
+ * @property-read AttributeConfigBuilderInterface<SettingInterface> $created
+ * @property-read AttributeConfigBuilderInterface<SettingInterface> $modified
  */
 class BaseSettingResourceConfigBuilder extends MagicResourceConfigBuilder
 {

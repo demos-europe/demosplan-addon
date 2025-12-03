@@ -19,13 +19,13 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,HashedQueryInterface>
+ * @template-extends MagicResourceConfigBuilder<HashedQueryInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,HashedQueryInterface> $hash
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,HashedQueryInterface> $storedQuery
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,HashedQueryInterface> $created
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,HashedQueryInterface> $modified
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,HashedQueryInterface,ProcedureInterface> $procedure
+ * @property-read AttributeConfigBuilderInterface<HashedQueryInterface> $hash
+ * @property-read AttributeConfigBuilderInterface<HashedQueryInterface> $storedQuery
+ * @property-read AttributeConfigBuilderInterface<HashedQueryInterface> $created
+ * @property-read AttributeConfigBuilderInterface<HashedQueryInterface> $modified
+ * @property-read ToOneRelationshipConfigBuilderInterface<HashedQueryInterface,ProcedureInterface> $procedure
  */
 class BaseHashedQueryResourceConfigBuilder extends MagicResourceConfigBuilder
 {

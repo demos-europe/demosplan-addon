@@ -21,15 +21,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,VideoInterface>
+ * @template-extends MagicResourceConfigBuilder<VideoInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,VideoInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,VideoInterface> $modificationDate
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,VideoInterface,UserInterface> $uploader
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,VideoInterface,CustomerInterface> $customerContext
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,VideoInterface,FileInterface> $file
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,VideoInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,VideoInterface> $description
+ * @property-read AttributeConfigBuilderInterface<VideoInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<VideoInterface> $modificationDate
+ * @property-read ToOneRelationshipConfigBuilderInterface<VideoInterface,UserInterface> $uploader
+ * @property-read ToOneRelationshipConfigBuilderInterface<VideoInterface,CustomerInterface> $customerContext
+ * @property-read ToOneRelationshipConfigBuilderInterface<VideoInterface,FileInterface> $file
+ * @property-read AttributeConfigBuilderInterface<VideoInterface> $title
+ * @property-read AttributeConfigBuilderInterface<VideoInterface> $description
  */
 class BaseVideoResourceConfigBuilder extends MagicResourceConfigBuilder
 {

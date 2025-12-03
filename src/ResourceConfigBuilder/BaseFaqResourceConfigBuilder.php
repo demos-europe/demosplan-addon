@@ -21,15 +21,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FaqInterface>
+ * @template-extends MagicResourceConfigBuilder<FaqInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FaqInterface> $title
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FaqInterface> $text
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FaqInterface> $enabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FaqInterface> $createDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,FaqInterface> $modifyDate
- * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FaqInterface,RoleInterface> $roles
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,FaqInterface,FaqCategoryInterface> $faqCategory
+ * @property-read AttributeConfigBuilderInterface<FaqInterface> $title
+ * @property-read AttributeConfigBuilderInterface<FaqInterface> $text
+ * @property-read AttributeConfigBuilderInterface<FaqInterface> $enabled
+ * @property-read AttributeConfigBuilderInterface<FaqInterface> $createDate
+ * @property-read AttributeConfigBuilderInterface<FaqInterface> $modifyDate
+ * @property-read ToManyRelationshipConfigBuilderInterface<FaqInterface,RoleInterface> $roles
+ * @property-read ToOneRelationshipConfigBuilderInterface<FaqInterface,FaqCategoryInterface> $faqCategory
  */
 class BaseFaqResourceConfigBuilder extends MagicResourceConfigBuilder
 {

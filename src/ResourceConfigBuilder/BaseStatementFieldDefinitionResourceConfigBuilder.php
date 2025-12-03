@@ -19,15 +19,15 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFieldDefinitionInterface>
+ * @template-extends MagicResourceConfigBuilder<StatementFieldDefinitionInterface>
  *
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFieldDefinitionInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFieldDefinitionInterface> $modificationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFieldDefinitionInterface> $name
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,StatementFieldDefinitionInterface,StatementFormDefinitionInterface> $statementFormDefinition
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFieldDefinitionInterface> $orderNumber
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFieldDefinitionInterface> $enabled
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,StatementFieldDefinitionInterface> $required
+ * @property-read AttributeConfigBuilderInterface<StatementFieldDefinitionInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<StatementFieldDefinitionInterface> $modificationDate
+ * @property-read AttributeConfigBuilderInterface<StatementFieldDefinitionInterface> $name
+ * @property-read ToOneRelationshipConfigBuilderInterface<StatementFieldDefinitionInterface,StatementFormDefinitionInterface> $statementFormDefinition
+ * @property-read AttributeConfigBuilderInterface<StatementFieldDefinitionInterface> $orderNumber
+ * @property-read AttributeConfigBuilderInterface<StatementFieldDefinitionInterface> $enabled
+ * @property-read AttributeConfigBuilderInterface<StatementFieldDefinitionInterface> $required
  */
 class BaseStatementFieldDefinitionResourceConfigBuilder extends MagicResourceConfigBuilder
 {

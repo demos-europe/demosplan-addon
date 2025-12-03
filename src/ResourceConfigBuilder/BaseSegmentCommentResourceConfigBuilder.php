@@ -21,13 +21,13 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * To add additional properties, you may want to
  * create an extending class and add them there.
  *
- * @template-extends MagicResourceConfigBuilder<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SegmentCommentInterface>
+ * @template-extends MagicResourceConfigBuilder<SegmentCommentInterface>
  *
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SegmentCommentInterface,SegmentInterface> $segment
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SegmentCommentInterface,UserInterface> $submitter
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,SegmentCommentInterface,PlaceInterface> $place
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SegmentCommentInterface> $creationDate
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,SegmentCommentInterface> $text
+ * @property-read ToOneRelationshipConfigBuilderInterface<SegmentCommentInterface,SegmentInterface> $segment
+ * @property-read ToOneRelationshipConfigBuilderInterface<SegmentCommentInterface,UserInterface> $submitter
+ * @property-read ToOneRelationshipConfigBuilderInterface<SegmentCommentInterface,PlaceInterface> $place
+ * @property-read AttributeConfigBuilderInterface<SegmentCommentInterface> $creationDate
+ * @property-read AttributeConfigBuilderInterface<SegmentCommentInterface> $text
  */
 class BaseSegmentCommentResourceConfigBuilder extends MagicResourceConfigBuilder
 {
