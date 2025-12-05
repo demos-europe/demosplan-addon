@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- remove CoreServieceInterface in SegmentServiceInterface as it is not needed anymore
 
 ## v0.64 (2025-09-10)
 - add StatementSegmentResourceTypeInterface to prepare ResourceType usage within addon.

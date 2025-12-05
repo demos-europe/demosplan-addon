@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 
-interface SegmentServiceInterface extends CoreServiceInterface
+interface SegmentServiceInterface
 {
     /**
      * @return array<SegmentInterface>
