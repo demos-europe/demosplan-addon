@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add `FileServiceInterface::saveBinaryFileContent()` method for saving binary file content directly
 
 ## v0.64 (2025-09-10)
 - add StatementSegmentResourceTypeInterface to prepare ResourceType usage within addon.
