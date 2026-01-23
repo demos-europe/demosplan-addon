@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.65 (2026-01-23)
 - add `FileServiceInterface::saveBinaryFileContent()` method for saving binary file content directly
 
 ## v0.64 (2025-09-10)
