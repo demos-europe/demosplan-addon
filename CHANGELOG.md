@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add new GlobalConfigInterface methods to set the parameter name of the procedureId passed/used by core_procedure_slug  
+  getProjectShortUrlRedirectParam, getProjectShortUrlRedirectParamLoggedin
 ## v0.65 (2026-01-23)
 - add `FileServiceInterface::saveBinaryFileContent()` method for saving binary file content directly
 
