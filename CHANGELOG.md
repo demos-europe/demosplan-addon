@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.66 (2026-02-20)
 - add `FileServiceInterface::deleteFile()` method for deleting files physically and from database
 
 ## v0.65 (2026-01-23)
