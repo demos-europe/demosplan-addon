@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.67 (2026-02-20)
 - extend `ElementsServiceInterface` with `getElementsAdminList()`, `getElementObject()` and `addElement()` methods
 
 ## v0.66 (2026-02-20)
