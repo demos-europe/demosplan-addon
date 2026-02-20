@@ -6,6 +6,7 @@ namespace DemosEurope\DemosplanAddon\Contracts;
 
 use DemosEurope\DemosplanAddon\Contracts\Entities\FileInterface;
 use DemosEurope\DemosplanAddon\Contracts\ValueObject\FileInfoInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Throwable;
 
@@ -75,6 +76,17 @@ interface FileServiceInterface
      * @throws FileException
      */
     public function checkMimeTypeAllowed($mimeType, $temporaryFilePath);
+
+    /**
+     * Delete a file physically from storage and remove its database record.
+     *
+     * @param string $hash The file hash or ID (_f_ident)
+     *
+     * @return bool True on successful deletion, false otherwise
+     *
+     * @throws Exception
+     */
+    public function deleteFile(string $hash): bool;
 
     /**
      * Save file from binary content (e.g., already decoded base64 content).
