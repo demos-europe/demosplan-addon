@@ -12,8 +12,16 @@ class APIResponse extends JsonResponse
     {
         parent::__construct($data, $status, $headers, $json);
 
+        $this->configure();
+    }
+
+    protected function configure() {
         $this->setEncodingOptions(JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_OBJECT_AS_ARRAY);
+
         $this->headers->set('Content-Type', 'application/vnd.api+json; charset=utf-8');
+        $this->headers->set('Cache-Control', 'no-cache');
+        $this->headers->set('Pragma', 'no-cache');
+        $this->headers->set('Expires', '0');
     }
 }
 
