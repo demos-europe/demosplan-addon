@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- extend `ElementsServiceInterface` with `getElementsAdminList()`, `getElementObject()` and `addElement()` methods
 
 ## v0.66 (2026-02-20)
 - add `FileServiceInterface::deleteFile()` method for deleting files physically and from database
