@@ -3,6 +3,15 @@
 ## UNRELEASED
 - remove CoreServieceInterface in SegmentServiceInterface as it is not needed anymore
 
+## v0.67 (2026-02-20)
+- extend `ElementsServiceInterface` with `getElementsAdminList()`, `getElementObject()` and `addElement()` methods
+
+## v0.66 (2026-02-20)
+- add `FileServiceInterface::deleteFile()` method for deleting files physically and from database
+
+## v0.65 (2026-01-23)
+- add `FileServiceInterface::saveBinaryFileContent()` method for saving binary file content directly
+
 ## v0.64 (2025-09-10)
 - add StatementSegmentResourceTypeInterface to prepare ResourceType usage within addon.
 
