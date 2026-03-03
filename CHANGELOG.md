@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+## v0.68 (2026-03-03)
+- add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
+
 ## v0.67 (2026-02-20)
 - extend `ElementsServiceInterface` with `getElementsAdminList()`, `getElementObject()` and `addElement()` methods
 
