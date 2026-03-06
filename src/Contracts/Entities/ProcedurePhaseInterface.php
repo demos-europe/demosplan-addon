@@ -40,9 +40,9 @@ interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterfa
 
     public function setDesignatedSwitchDate(?DateTime $designatedSwitchDate): void;
 
-    public function getPhaseDefinition(): ?ProcedurePhaseDefinitionInterface;
+    public function getPhaseDefinition(): ProcedurePhaseDefinitionInterface;
 
-    public function setPhaseDefinition(?ProcedurePhaseDefinitionInterface $phaseDefinition): void;
+    public function setPhaseDefinition(ProcedurePhaseDefinitionInterface $phaseDefinition): void;
 
     public function getDesignatedPhaseDefinition(): ?ProcedurePhaseDefinitionInterface;
 
