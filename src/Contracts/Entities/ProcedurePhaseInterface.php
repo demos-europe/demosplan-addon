@@ -1,10 +1,10 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure;
 
 interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterface
 {
@@ -39,6 +39,14 @@ interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterfa
     public function getDesignatedSwitchDate(): ?DateTime;
 
     public function setDesignatedSwitchDate(?DateTime $designatedSwitchDate): void;
+
+    public function getPhaseDefinition(): ?ProcedurePhaseDefinitionInterface;
+
+    public function setPhaseDefinition(?ProcedurePhaseDefinitionInterface $phaseDefinition): void;
+
+    public function getDesignatedPhaseDefinition(): ?ProcedurePhaseDefinitionInterface;
+
+    public function setDesignatedPhaseDefinition(?ProcedurePhaseDefinitionInterface $designatedPhaseDefinition): void;
 
     public function getDesignatedPhaseChangeUser(): ?UserInterface;
 
