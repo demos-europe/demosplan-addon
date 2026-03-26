@@ -620,6 +620,10 @@ interface DraftStatementInterface extends UuidEntityInterface, CoreEntityInterfa
      */
     public function getPhase();
 
+    public function getPhaseDefinition(): ProcedurePhaseDefinitionInterface;
+
+    public function setPhaseDefinition(ProcedurePhaseDefinitionInterface $phaseDefinition): void;
+
     /**
      * Set createdDate.
      *

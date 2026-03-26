@@ -132,48 +132,9 @@ interface ProcedureInterface extends SluggedEntityInterface
      */
     public function getDesc();
 
-    /**
-     * Set pPhase.
-     *
-     * @param string $phase
-     *
-     * @return ProcedureInterface
-     */
-    public function setPhase($phase);
-
-    public function getPhase(): string;
-
     public function getPhaseObject(): ProcedurePhaseInterface;
 
-    /**
-     * @return string
-     */
-    public function getPhaseName();
-
-    /**
-     * @param string $phaseName
-     */
-    public function setPhaseName($phaseName);
-
     public function getPhasePermissionset(): string;
-
-    public function setPhasePermissionset(string $phasePermissionset): ProcedureInterface;
-
-    /**
-     * Set pStep.
-     *
-     * @param string $step
-     *
-     * @return ProcedureInterface
-     */
-    public function setStep($step);
-
-    /**
-     * Get pStep.
-     *
-     * @return string
-     */
-    public function getStep();
 
     /**
      * Set pLogo.
@@ -337,46 +298,7 @@ interface ProcedureInterface extends SluggedEntityInterface
 
     public function getPublicParticipationPhaseObject(): ProcedurePhaseInterface;
 
-    /**
-     * Set pPublicParticipationPhase.
-     *
-     * @param string $publicParticipationPhase
-     *
-     * @return ProcedureInterface
-     */
-    public function setPublicParticipationPhase($publicParticipationPhase);
-
-    public function getPublicParticipationPhase(): string;
-
-    /**
-     * @return string
-     */
-    public function getPublicParticipationPhaseName();
-
-    /**
-     * @param string $publicParticipationPhaseName
-     */
-    public function setPublicParticipationPhaseName($publicParticipationPhaseName);
-
     public function getPublicParticipationPhasePermissionset(): string;
-
-    public function setPublicParticipationPhasePermissionset(string $publicParticipationPhasePermissionset): ProcedureInterface;
-
-    /**
-     * Set pPublicParticipationStep.
-     *
-     * @param string $publicParticipationStep
-     *
-     * @return ProcedureInterface
-     */
-    public function setPublicParticipationStep($publicParticipationStep);
-
-    /**
-     * Get pPublicParticipationStep.
-     *
-     * @return string
-     */
-    public function getPublicParticipationStep();
 
     /**
      * Set pPublicParticipationStart.

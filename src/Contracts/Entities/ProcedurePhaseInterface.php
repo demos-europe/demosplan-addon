@@ -8,18 +8,6 @@ use DateTime;
 
 interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterface
 {
-    public function getName(): string;
-
-    public function setName(string $name): void;
-
-    public function getKey(): string;
-
-    public function setKey(string $key): void;
-
-    public function getPermissionSet(): string;
-
-    public function setPermissionSet(string $permissionSet): void;
-
     public function getStartDate(): DateTime;
 
     public function setStartDate(DateTime $startDate): void;
@@ -55,10 +43,6 @@ interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterfa
     public function getDesignatedEndDate(): ?DateTime;
 
     public function setDesignatedEndDate(?DateTime $designatedEndDate): void;
-
-    public function getStep(): string;
-
-    public function setStep(string $step): void;
 
     public function copyValuesFromPhase(ProcedurePhaseInterface $sourcePhase): void;
 
