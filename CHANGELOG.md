@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- remove CoreServieceInterface in SegmentServiceInterface as it is not needed anymore
 
 ## v0.68 (2026-03-03)
 - add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
