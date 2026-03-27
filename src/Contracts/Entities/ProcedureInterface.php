@@ -185,22 +185,6 @@ interface ProcedureInterface extends SluggedEntityInterface
     public function getPlisId();
 
     /**
-     * Set pClosed.
-     *
-     * @param bool $closed
-     *
-     * @return ProcedureInterface
-     */
-    public function setClosed($closed);
-
-    /**
-     * Get pClosed.
-     *
-     * @return bool
-     */
-    public function getClosed();
-
-    /**
      * Set deleted.
      *
      * @param bool $deleted
@@ -506,22 +490,6 @@ interface ProcedureInterface extends SluggedEntityInterface
      * @return int
      */
     public function getEndDateTimestamp();
-
-    /**
-     * Set pClosedDate.
-     *
-     * @param DateTime $closedDate
-     *
-     * @return ProcedureInterface
-     */
-    public function setClosedDate($closedDate);
-
-    /**
-     * Get pClosedDate.
-     *
-     * @return DateTime
-     */
-    public function getClosedDate();
 
     /**
      * Set pDeletedDate.

@@ -24,6 +24,10 @@ interface ProcedurePhaseDefinitionInterface extends UuidEntityInterface
 
     public function setParticipationState(?string $participationState): void;
 
+    public function isClosingPhase(): bool;
+
+    public function setClosingPhase(bool $closingPhase): void;
+
     public function getOrderInAudience(): int;
 
     public function setOrderInAudience(int $orderInAudience): void;
