@@ -604,22 +604,6 @@ interface DraftStatementInterface extends UuidEntityInterface, CoreEntityInterfa
      */
     public function setRepresents($represents);
 
-    /**
-     * Set phase.
-     *
-     * @param string $phase
-     *
-     * @return DraftStatementInterface
-     */
-    public function setPhase($phase);
-
-    /**
-     * Get phase.
-     *
-     * @return string
-     */
-    public function getPhase();
-
     public function getPhaseDefinition(): ProcedurePhaseDefinitionInterface;
 
     public function setPhaseDefinition(ProcedurePhaseDefinitionInterface $phaseDefinition): void;
