@@ -288,18 +288,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getPId();
 
-    /**
-     * Set phase.
-     *
-     * @param string $phase
-     */
-    public function setPhase($phase): StatementInterface;
-
-    /**
-     * Get phase.
-     */
-    public function getPhase(): string;
-
     public function getPhaseDefinition(): ProcedurePhaseDefinitionInterface;
 
     public function setPhaseDefinition(ProcedurePhaseDefinitionInterface $phaseDefinition): void;
