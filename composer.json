@@ -10,8 +10,7 @@
   },
   "require": {
     "composer-plugin-api": "^2.0",
-    "api-platform/doctrine-orm": "*",
-    "api-platform/symfony": "^3.4",
+    "api-platform/core": "^3.4",
     "demos-europe/edt-extra": "^0.25",
     "demos-europe/edt-dql": "^0.25",
     "demos-europe/edt-jsonapi": "^0.25",
