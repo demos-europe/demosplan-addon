@@ -625,4 +625,10 @@ class Paths
 	{
 		return PlatformFaqPath::startPath();
 	}
+
+
+	public static function recommendationVersion(): RecommendationVersionPath
+	{
+		return RecommendationVersionPath::startPath();
+	}
 }
