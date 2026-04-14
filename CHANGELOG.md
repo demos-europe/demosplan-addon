@@ -4,6 +4,9 @@
 ## v0.69 (2026-04-14)
 - add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
 
+## v0.69 (2026-04-13)
+- Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
+
 ## v0.68 (2026-03-03)
 - add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
 
