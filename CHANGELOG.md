@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.70 (2026-04-14)
 - add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
 
 ## v0.68 (2026-03-03)
