@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+## v0.68.1 (2026-04-23)
+- add `isLocked()` and `setLocked()` to `PlaceInterface` for the new segment lock feature (segments on workflow places with `locked=true` become read-only for users without the lock administration permission)
+- add `locked` attribute to `BasePlaceResourceConfigBuilder` so it is reachable via the JSON:API `Place` resource
+
 ## v0.68 (2026-03-03)
 - add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
 
