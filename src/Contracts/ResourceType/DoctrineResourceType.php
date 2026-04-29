@@ -63,6 +63,9 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
      */
     private ?ResourceConfigInterface $resourceConfig = null;
 
+    /**
+     * @return ResourceConfigInterface<ClauseFunctionInterface<bool>, OrderBySortMethodInterface, TEntity>
+     */
     protected function getResourceConfig(): ResourceConfigInterface
     {
         if (null === $this->resourceConfig) {
@@ -156,7 +159,7 @@ abstract class DoctrineResourceType extends AbstractResourceType implements Json
     }
 
     /**
-     * @return IdentifierConfigBuilder<TEntity>
+     * @return IdentifierConfigBuilder<TEntity, ClauseFunctionInterface<bool>>
      */
     protected function createIdentifier(): IdentifierConfigBuilder
     {
