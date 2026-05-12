@@ -27,5 +27,7 @@ interface ProcedurePhaseDefinitionServiceInterface
 
     public function findEvaluatingDefinition(string $audience, ?CustomerInterface $customer): ?ProcedurePhaseDefinitionInterface;
 
+    public function findInitialDefinition(string $audience, ?CustomerInterface $customer): ?ProcedurePhaseDefinitionInterface;
+
     public function findByNameAndAudienceAndCustomer(string $name, string $audience, CustomerInterface $customer): ?ProcedurePhaseDefinitionInterface;
 }
