@@ -7,6 +7,8 @@ namespace DemosEurope\DemosplanAddon\Contracts\ResourceType;
 use DemosEurope\DemosplanAddon\Contracts\Logger\ApiLoggerInterface;
 use DemosEurope\DemosplanAddon\Contracts\Services\TransactionServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use EDT\DqlQuerying\Contracts\ClauseFunctionInterface;
+use EDT\DqlQuerying\Contracts\OrderBySortMethodInterface;
 use EDT\JsonApi\RequestHandling\MessageFormatter;
 use EDT\JsonApi\Utilities\PropertyBuilderFactory;
 use EDT\Wrapping\Contracts\TypeProviderInterface;
@@ -56,6 +58,9 @@ trait DoctrineResourceTypeInjectionTrait
         $this->propertyBuilderFactory = $propertyBuilderFactory;
     }
 
+    /**
+     * @return PropertyBuilderFactory<ClauseFunctionInterface<bool>, OrderBySortMethodInterface>
+     */
     protected function getPropertyBuilderFactory(): PropertyBuilderFactory
     {
         return $this->propertyBuilderFactory;
