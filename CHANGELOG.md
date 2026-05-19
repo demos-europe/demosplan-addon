@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.71 (2026-05-19)
 - upgrade to edt 0.28 to support attributes instead of annotations
 
 ## v0.70 (2026-04-14)
