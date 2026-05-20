@@ -4,6 +4,9 @@
 - add `isLocked()` and `setLocked()` to `PlaceInterface` for the new segment lock feature (segments on workflow places with `locked=true` become read-only for users without the lock administration permission)
 - add `locked` attribute to `BasePlaceResourceConfigBuilder` so it is reachable via the JSON:API `Place` resource
 
+## v0.71 (2026-05-19)
+- upgrade to edt 0.28 to support attributes instead of annotations
+
 ## v0.70 (2026-04-14)
 - add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
 
