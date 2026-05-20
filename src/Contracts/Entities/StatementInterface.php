@@ -599,6 +599,13 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
     public function getRecommendation(): string;
 
     /**
+     * Returns all recommendation versions including a virtual "current" version.
+     *
+     * @return Collection<int, RecommendationVersionInterface>
+     */
+    public function getRecommendationVersions(): Collection;
+
+    /**
      * @param string $additionalRecommendationParagraphText
      */
     public function addRecommendationParagraph($additionalRecommendationParagraphText): StatementInterface;
