@@ -1,6 +1,22 @@
 # Changelog
 
 ## UNRELEASED
+### BREAKING CHANGES
+Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string keys + YAML config to a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces must migrate accordingly.
+- `ProcedurePhaseInterface::getPhaseDefinition` return type changed to non-nullable
+- removed `setPhase()` / `getPhase()` from `StatementInterface` and `DraftStatementInterface` (use `getPhaseDefinition()` / `setPhaseDefinition()`)
+- removed `closed` / `closedDate` from `ProcedureInterface` (replaced by `closingPhase` on `ProcedurePhaseDefinitionInterface`)
+- removed phase key / name / step / permissionSet getters and setters from `ProcedurePhaseInterface` (now carried by the phase definition)
+- removed designated phase string methods from `ProcedureSettingsInterface`
+- removed YAML-backed phase methods from `GlobalConfigInterface`
+
+### Added
+- `ProcedurePhaseDefinitionInterface`; `ProcedurePhaseInterface` and `StatementInterface` extended accordingly
+- `ProcedurePhaseDefinitionServiceInterface` (contracts), including `findInitialDefinition` and further phase lookup methods
+- `ProcedurePhaseDefinitionResourceTypeInterface` (contracts)
+- `closingPhase` on `ProcedurePhaseDefinitionInterface`
+- `getPhaseDefinition` on `DraftStatementInterface`
+
 ## v0.70 (2026-04-14)
 - add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
 
