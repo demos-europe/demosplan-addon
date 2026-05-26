@@ -367,34 +367,6 @@ interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInte
     public function getPictogramAltText(): string;
 
     /**
-     * Returns the internal phase to which will be switch, when the time(dateOfSwitchPhase) has come.
-     *
-     * @return string
-     */
-    public function getDesignatedPhase();
-
-    /**
-     * @param string $designatedPhase
-     *
-     * @return $this
-     */
-    public function setDesignatedPhase($designatedPhase);
-
-    /**
-     * Returns the external phase to which will be switch, when the time(dateOfSwitchPublicPhase) has come.
-     *
-     * @return string
-     */
-    public function getDesignatedPublicPhase();
-
-    /**
-     * @param string $designatedPublicPhase
-     *
-     * @return mixed
-     */
-    public function setDesignatedPublicPhase($designatedPublicPhase);
-
-    /**
      * Returns the date which is defined for switching the current phase of the procedure to the designated phase.
      * Null is a valid value in this case and indicates that no date is set.
      *

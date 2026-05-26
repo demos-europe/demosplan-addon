@@ -5,6 +5,34 @@
 ## v0.69 (2026-04-13)
 - Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
 
+## v0.72 (2026-05-26)
+### BREAKING CHANGES
+Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string keys + YAML config to
+a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces must migrate accordingly.
+- removed `setPhase()` / `getPhase()` from `StatementInterface` and `DraftStatementInterface` (use `getPhaseDefinition()` / `setPhaseDefinition()`)
+- removed `closed` / `closedDate` from `ProcedureInterface` (replaced by `closingPhase` on `ProcedurePhaseDefinitionInterface`)
+- removed phase key / name / step / permissionSet getters and setters from `ProcedurePhaseInterface` (now carried by the phase definition)
+- removed designated phase string methods from `ProcedureSettingsInterface`
+- removed YAML-backed phase methods from `GlobalConfigInterface`
+
+### Added
+- `ProcedurePhaseDefinitionInterface`; `ProcedurePhaseInterface` and `StatementInterface` extended accordingly
+- `ProcedurePhaseDefinitionServiceInterface` (contracts), including `findInitialDefinition` and further phase lookup methods
+- `ProcedurePhaseDefinitionResourceTypeInterface` (contracts)
+- `closingPhase` on `ProcedurePhaseDefinitionInterface`
+- `getPhaseDefinition` on `DraftStatementInterface`
+- add new GlobalConfigInterface methods to set the parameter name of the procedureId passed/used by core_procedure_slug  
+  getProjectShortUrlRedirectParam, getProjectShortUrlRedirectParamLoggedin
+
+### Fixed
+- return HTTP 500 instead of 400 for PHP `Error` throwables in `APIController::handleApiError()`
+
+## v0.71 (2026-05-19)
+- upgrade to edt 0.28 to support attributes instead of annotations
+
+## v0.70 (2026-04-14)
+- add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
+
 ## v0.68 (2026-03-03)
 - add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
 
