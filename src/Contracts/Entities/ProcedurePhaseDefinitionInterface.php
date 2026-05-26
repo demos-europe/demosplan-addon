@@ -14,6 +14,9 @@ interface ProcedurePhaseDefinitionInterface extends UuidEntityInterface
 
     public function getAudience(): string;
 
+    /**
+     * @param string $audience one of {@see StatementInterface::INTERNAL}, {@see StatementInterface::EXTERNAL}
+     */
     public function setAudience(string $audience): void;
 
     public function getPermissionSet(): string;
