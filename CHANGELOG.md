@@ -1,9 +1,10 @@
 # Changelog
 
 ## UNRELEASED
-
-## v0.69 (2026-04-13)
 - Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
+  Originally shipped as v0.69 (2026-04-13), which was released by mistake: the bridge depends on
+  EDT changes that were still blocked at the time by the Doctrine ORM v3 upgrade (DPLAN-17129). With that
+  blocker resolved in EDT 0.27/0.28 (addon v0.71), this work is unblocked and re-introduced here.
 
 ## v0.72 (2026-05-26)
 ### BREAKING CHANGES
@@ -32,6 +33,9 @@ a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces mus
 
 ## v0.70 (2026-04-14)
 - add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
+
+## v0.69 (2026-04-13)
+- Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
 
 ## v0.68 (2026-03-03)
 - add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
