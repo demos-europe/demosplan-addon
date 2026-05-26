@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- return HTTP 500 instead of 400 for PHP `Error` throwables in `APIController::handleApiError()`
+
 ## v0.71 (2026-05-19)
 - upgrade to edt 0.28 to support attributes instead of annotations
 
