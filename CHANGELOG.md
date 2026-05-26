@@ -2,8 +2,8 @@
 
 ## UNRELEASED
 ### BREAKING CHANGES
-Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string keys + YAML config to a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces must migrate accordingly.
-- `ProcedurePhaseInterface::getPhaseDefinition` return type changed to non-nullable
+Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string keys + YAML config to
+a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces must migrate accordingly.
 - removed `setPhase()` / `getPhase()` from `StatementInterface` and `DraftStatementInterface` (use `getPhaseDefinition()` / `setPhaseDefinition()`)
 - removed `closed` / `closedDate` from `ProcedureInterface` (replaced by `closingPhase` on `ProcedurePhaseDefinitionInterface`)
 - removed phase key / name / step / permissionSet getters and setters from `ProcedurePhaseInterface` (now carried by the phase definition)
@@ -16,6 +16,14 @@ Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string
 - `ProcedurePhaseDefinitionResourceTypeInterface` (contracts)
 - `closingPhase` on `ProcedurePhaseDefinitionInterface`
 - `getPhaseDefinition` on `DraftStatementInterface`
+- add new GlobalConfigInterface methods to set the parameter name of the procedureId passed/used by core_procedure_slug  
+  getProjectShortUrlRedirectParam, getProjectShortUrlRedirectParamLoggedin
+
+### Fixed
+- return HTTP 500 instead of 400 for PHP `Error` throwables in `APIController::handleApiError()`
+
+## v0.71 (2026-05-19)
+- upgrade to edt 0.28 to support attributes instead of annotations
 
 ## v0.70 (2026-04-14)
 - add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface

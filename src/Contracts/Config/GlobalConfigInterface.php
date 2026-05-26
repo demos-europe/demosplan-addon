@@ -209,6 +209,10 @@ interface GlobalConfigInterface
 
     public function getProjectShortUrlRedirectRouteLoggedin(): string;
 
+    public function getProjectShortUrlRedirectParam(): string;
+
+    public function getProjectShortUrlRedirectParamLoggedin(): string;
+
     public function getGatewayRedirectURL(): string;
 
     public function getGatewayRegisterURL(): string;
