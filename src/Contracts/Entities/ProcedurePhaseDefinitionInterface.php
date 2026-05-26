@@ -21,10 +21,16 @@ interface ProcedurePhaseDefinitionInterface extends UuidEntityInterface
 
     public function getPermissionSet(): string;
 
+    /**
+     * @param string $permissionSet one of {'hidden', 'read', 'write'}
+     */
     public function setPermissionSet(string $permissionSet): void;
 
     public function getParticipationState(): ?string;
 
+    /**
+     * @param string|null $participationState one of {'finished', 'participateWithToken'} or null if not set
+     */
     public function setParticipationState(?string $participationState): void;
 
     public function isClosingPhase(): bool;
