@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.72 (2026-05-26)
 ### BREAKING CHANGES
 Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string keys + YAML config to
 a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces must migrate accordingly.
