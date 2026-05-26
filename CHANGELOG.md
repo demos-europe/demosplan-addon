@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 - return HTTP 500 instead of 400 for PHP `Error` throwables in `APIController::handleApiError()`
+- add new GlobalConfigInterface methods to set the parameter name of the procedureId passed/used by core_procedure_slug  
+  getProjectShortUrlRedirectParam, getProjectShortUrlRedirectParamLoggedin
 
 ## v0.71 (2026-05-19)
 - upgrade to edt 0.28 to support attributes instead of annotations
