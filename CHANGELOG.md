@@ -1,8 +1,25 @@
 # Changelog
 
 ## UNRELEASED
+- return HTTP 500 instead of 400 for PHP `Error` throwables in `APIController::handleApiError()`
 - add new GlobalConfigInterface methods to set the parameter name of the procedureId passed/used by core_procedure_slug  
   getProjectShortUrlRedirectParam, getProjectShortUrlRedirectParamLoggedin
+
+## v0.71 (2026-05-19)
+- upgrade to edt 0.28 to support attributes instead of annotations
+
+## v0.70 (2026-04-14)
+- add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
+
+## v0.68 (2026-03-03)
+- add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
+
+## v0.67 (2026-02-20)
+- extend `ElementsServiceInterface` with `getElementsAdminList()`, `getElementObject()` and `addElement()` methods
+
+## v0.66 (2026-02-20)
+- add `FileServiceInterface::deleteFile()` method for deleting files physically and from database
+
 ## v0.65 (2026-01-23)
 - add `FileServiceInterface::saveBinaryFileContent()` method for saving binary file content directly
 
