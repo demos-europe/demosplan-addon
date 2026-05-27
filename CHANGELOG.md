@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.73 (2026-05-27)
 - Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
   Originally shipped as v0.69 (2026-04-13), which was released by mistake: the bridge depends on
   EDT changes that were still blocked at the time by the Doctrine ORM v3 upgrade (DPLAN-17129). With that
