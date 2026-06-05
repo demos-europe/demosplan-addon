@@ -52,7 +52,7 @@ class DoctrineOrmPartialDTOProvider extends DoctrineOrmEntityProvider
      *
      * @throws MappingException
      */
-    public function getObjects(array $conditions, array $sortMethods = [], int $offset = 0, int $limit = null): iterable
+    public function getObjects(array $conditions, array $sortMethods = [], int $offset = 0, ?int $limit = null): iterable
     {
         $queryBuilder = $this->generateQueryBuilder($conditions, $sortMethods, $offset, $limit);
         $this->replaceSelect($queryBuilder);

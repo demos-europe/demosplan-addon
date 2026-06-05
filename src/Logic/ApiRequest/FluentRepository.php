@@ -104,7 +104,7 @@ abstract class FluentRepository extends ServiceEntityRepository implements Repos
      *
      * @return array<int,TEntity>
      */
-    public function getEntities(array $conditions, array $sortMethods, int $offset = 0, int $limit = null): array
+    public function getEntities(array $conditions, array $sortMethods, int $offset = 0, ?int $limit = null): array
     {
         $pagination = 0 !== $offset || null !== $limit
             ? new OffsetPagination($offset, $limit ?? PHP_INT_MAX)

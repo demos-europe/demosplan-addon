@@ -206,7 +206,7 @@ abstract class APIController extends AbstractController
      *
      * Also add messages to message bag.
      */
-    public function handleApiError(Throwable $exception = null): APIResponse
+    public function handleApiError(?Throwable $exception = null): APIResponse
     {
         $status = Response::HTTP_BAD_REQUEST;
         $message = '';
