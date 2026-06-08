@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.74 (2026-06-08)
 ### Fixed
 - Declare nullable parameters explicitly (`?Type $param = null`) across the contracts and API-request
   layer to silence the PHP 8.4 / Symfony "implicitly marking parameter as nullable" deprecations.
