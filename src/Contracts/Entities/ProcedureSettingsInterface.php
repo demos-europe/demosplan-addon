@@ -344,7 +344,7 @@ interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInte
      *
      * @return ProcedureSettingsInterface
      */
-    public function setProcedure(ProcedureInterface $procedure = null);
+    public function setProcedure(?ProcedureInterface $procedure = null);
 
     /**
      * Get p.

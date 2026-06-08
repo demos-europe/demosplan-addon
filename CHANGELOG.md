@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+### Fixed
+- Declare nullable parameters explicitly (`?Type $param = null`) across the contracts and API-request
+  layer to silence the PHP 8.4 / Symfony "implicitly marking parameter as nullable" deprecations.
 
 ## v0.73 (2026-05-27)
 - Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
