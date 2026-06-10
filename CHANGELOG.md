@@ -1,6 +1,10 @@
 # Changelog
 
 ## UNRELEASED
+
+- add new SegmentTagsChangedEventInterface
+- Core versions > v4.44.0 will depend on min this version
+
 ## v0.74 (2026-06-08)
 ### Fixed
 - Declare nullable parameters explicitly (`?Type $param = null`) across the contracts and API-request
