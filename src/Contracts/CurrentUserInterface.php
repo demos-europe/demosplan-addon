@@ -15,7 +15,7 @@ interface CurrentUserInterface
      */
     public function getUser(): UserInterface;
 
-    public function setUser(UserInterface $user, CustomerInterface $customer = null): void;
+    public function setUser(UserInterface $user, ?CustomerInterface $customer = null): void;
 
     public function getPermissions(): PermissionsInterface;
 
