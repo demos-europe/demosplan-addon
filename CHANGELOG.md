@@ -1,8 +1,11 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.75 (2026-06-11)
 - add `isLocked()` and `setLocked()` to `PlaceInterface` for the new segment lock feature (segments on workflow places with `locked=true` become read-only for users without the lock administration permission)
 - add `locked` attribute to `BasePlaceResourceConfigBuilder` so it is reachable via the JSON:API `Place` resource
+- core versions > v4.44.0 will depend on a version greater or equal to this.
 
 ## v0.74 (2026-06-08)
 ### Fixed
