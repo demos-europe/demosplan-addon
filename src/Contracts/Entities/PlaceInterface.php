@@ -24,4 +24,8 @@ interface PlaceInterface extends CoreEntityInterface
     public function getSolved(): bool;
 
     public function setSolved(bool $solved): self;
+
+    public function isLocked(): bool;
+
+    public function setLocked(bool $locked): self;
 }
