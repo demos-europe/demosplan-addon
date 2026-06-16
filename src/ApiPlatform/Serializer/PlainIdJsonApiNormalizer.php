@@ -50,13 +50,51 @@ final class PlainIdJsonApiNormalizer implements NormalizerInterface, Denormalize
     {
         $data = $this->decorated->normalize($object, $format, $context);
 
-        if (is_array($data) && isset($data['data']['id'])) {
-            $iri = $data['data']['id'];
-            $parts = explode('/', $iri);
-            $data['data']['id'] = end($parts);
+        if (!is_array($data)) {
+            return $data;
         }
 
+        // Primary resource ID
+        if (isset($data['data']['id'])) {
+            $data['data']['id'] = $this->stripIriPrefix($data['data']['id']);
+        }
+
+        // Relationship linkage IDs
+        $relationships = $data['data']['relationships'] ?? [];
+        foreach ($relationships as &$relationship) {
+            $linkage = $relationship['data'] ?? null;
+
+            if (null === $linkage || !is_array($linkage)) {
+                continue;
+            }
+
+            // to-one: { "type": "...", "id": "..." }
+            if (isset($linkage['id'])) {
+                $relationship['data']['id'] = $this->stripIriPrefix($linkage['id']);
+                continue;
+            }
+
+            // to-many: [{ "type": "...", "id": "..." }, ...]
+            foreach ($linkage as &$item) {
+                if (isset($item['id'])) {
+                    $item['id'] = $this->stripIriPrefix($item['id']);
+                }
+            }
+            unset($item);
+            $relationship['data'] = $linkage;
+        }
+        unset($relationship);
+
+        $data['data']['relationships'] = $relationships;
+
         return $data;
+    }
+
+    private function stripIriPrefix(string $iri): string
+    {
+        $parts = explode('/', $iri);
+
+        return end($parts);
     }
 
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
