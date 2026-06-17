@@ -35,9 +35,6 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 final class PlainIdJsonApiNormalizer implements NormalizerInterface, DenormalizerInterface, SerializerAwareInterface
 {
-    /** @var array<string, class-string|null> */
-    private array $resourceClassCache = [];
-
     public function __construct(
         private readonly NormalizerInterface&DenormalizerInterface $decorated,
         private readonly IriConverterInterface $iriConverter,
@@ -54,14 +51,12 @@ final class PlainIdJsonApiNormalizer implements NormalizerInterface, Denormalize
             return $data;
         }
 
-        // Primary resource ID
         if (isset($data['data']['id'])) {
             $data['data']['id'] = $this->stripIriPrefix($data['data']['id']);
         }
 
-        // Relationship linkage IDs
         $relationships = $data['data']['relationships'] ?? [];
-        foreach ($relationships as &$relationship) {
+        foreach ($relationships as $relKey => $relationship) {
             $linkage = $relationship['data'] ?? null;
 
             if (null === $linkage || !is_array($linkage)) {
@@ -70,31 +65,22 @@ final class PlainIdJsonApiNormalizer implements NormalizerInterface, Denormalize
 
             // to-one: { "type": "...", "id": "..." }
             if (isset($linkage['id'])) {
-                $relationship['data']['id'] = $this->stripIriPrefix($linkage['id']);
+                $relationships[$relKey]['data']['id'] = $this->stripIriPrefix($linkage['id']);
                 continue;
             }
 
             // to-many: [{ "type": "...", "id": "..." }, ...]
-            foreach ($linkage as &$item) {
+            foreach ($linkage as $i => $item) {
                 if (isset($item['id'])) {
-                    $item['id'] = $this->stripIriPrefix($item['id']);
+                    $linkage[$i]['id'] = $this->stripIriPrefix($item['id']);
                 }
             }
-            unset($item);
-            $relationship['data'] = $linkage;
+            $relationships[$relKey]['data'] = $linkage;
         }
-        unset($relationship);
 
         $data['data']['relationships'] = $relationships;
 
         return $data;
-    }
-
-    private function stripIriPrefix(string $iri): string
-    {
-        $parts = explode('/', $iri);
-
-        return end($parts);
     }
 
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
@@ -105,106 +91,64 @@ final class PlainIdJsonApiNormalizer implements NormalizerInterface, Denormalize
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (is_array($data)) {
-            $data = $this->expandRelationshipIds($data);
+            foreach (($data['data']['relationships'] ?? []) as $relKey => $relationship) {
+                $linkage = $relationship['data'] ?? null;
+                if (!is_array($linkage)) {
+                    continue;
+                }
+
+                // Normalise to-one (assoc) and to-many (list) into a uniform list for processing
+                $isToOne = isset($linkage['type'], $linkage['id']);
+                $items   = $isToOne ? [$linkage] : $linkage;
+
+                foreach ($items as $i => $item) {
+                    if (isset($item['type'], $item['id']) && !str_starts_with($item['id'], '/')) {
+                        $resourceClass = $this->findResourceClass($item['type']);
+                        if (null !== $resourceClass) {
+                            $items[$i]['id'] = $this->iriConverter->getIriFromResource(
+                                $resourceClass,
+                                context: ['uri_variables' => ['id' => $item['id']]]
+                            );
+                        }
+                    }
+                }
+
+                $data['data']['relationships'][$relKey]['data'] = $isToOne ? $items[0] : $items;
+            }
         }
 
         return $this->decorated->denormalize($data, $type, $format, $context);
     }
 
-    /**
-     * Walk all relationship linkage objects in the JSON:API body and expand any plain
-     * UUIDs to full IRIs so the inner ItemNormalizer can resolve them via IriConverter.
-     *
-     * @param array<mixed> $data
-     * @return array<mixed>
-     */
-    private function expandRelationshipIds(array $data): array
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        $relationships = $data['data']['relationships'] ?? [];
-
-        foreach ($relationships as &$relationship) {
-            $linkage = $relationship['data'] ?? null;
-
-            if (null === $linkage || !is_array($linkage)) {
-                continue;
-            }
-
-            // to-one: { "type": "Statement", "id": "uuid" }
-            if (isset($linkage['type'], $linkage['id'])) {
-                $relationship['data'] = $this->expandLinkage($linkage);
-                continue;
-            }
-
-            // to-many: [{ "type": "Statement", "id": "uuid" }, ...]
-            foreach ($linkage as &$item) {
-                if (isset($item['type'], $item['id'])) {
-                    $item = $this->expandLinkage($item);
-                }
-            }
-            unset($item);
-            $relationship['data'] = $linkage;
-        }
-        unset($relationship);
-
-        $data['data']['relationships'] = $relationships;
-
-        return $data;
-    }
-
-    /**
-     * @param array{type: string, id: string} $item
-     * @return array{type: string, id: string}
-     */
-    private function expandLinkage(array $item): array
-    {
-        // Already a routable IRI — leave it alone
-        if (str_starts_with($item['id'], '/')) {
-            return $item;
-        }
-
-        $resourceClass = $this->findResourceClass($item['type']);
-
-        if (null !== $resourceClass) {
-            $item['id'] = $this->iriConverter->getIriFromResource(
-                $resourceClass,
-                context: ['uri_variables' => ['id' => $item['id']]]
-            );
-        }
-
-        return $item;
+        return $this->decorated->supportsDenormalization($data, $type, $format, $context);
     }
 
     /**
      * Resolve a JSON:API short name (e.g. "Statement") to its PHP resource class
      * (e.g. StatementResource::class) by iterating the API Platform resource registry.
-     * Results are cached for the lifetime of the request.
      *
      * @return class-string|null
      */
     private function findResourceClass(string $shortName): ?string
     {
-        if (array_key_exists($shortName, $this->resourceClassCache)) {
-            return $this->resourceClassCache[$shortName];
-        }
-
         foreach ($this->resourceNameCollectionFactory->create() as $resourceClass) {
             foreach ($this->resourceMetadataCollectionFactory->create($resourceClass) as $apiResource) {
                 if ($apiResource->getShortName() === $shortName) {
-                    $this->resourceClassCache[$shortName] = $resourceClass;
-
                     return $resourceClass;
                 }
             }
         }
 
-        $this->resourceClassCache[$shortName] = null;
-
         return null;
     }
 
-    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    private function stripIriPrefix(string $iri): string
     {
-        return $this->decorated->supportsDenormalization($data, $type, $format, $context);
+        $parts = explode('/', $iri);
+
+        return end($parts);
     }
 
     public function setSerializer(SerializerInterface $serializer): void
