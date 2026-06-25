@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.76 (2026-06-25)
 - add `ProcedurePhaseDefinitionMarkedAsDeletedEventInterface` so addons can listen for soft-deletion of a `ProcedurePhaseDefinition` and clean up their own related entities
 
 ## v0.75 (2026-06-11)
