@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+### Fixed
+- extend `PlainIdJsonApiNormalizer` to strip IRI prefixes from relationship id fields on normalization (GET) and restore plain UUIDs to full IRIs on denormalization (POST/PATCH)
+
 ## v0.76 (2026-06-25)
 - add `ProcedurePhaseDefinitionMarkedAsDeletedEventInterface` so addons can listen for soft-deletion of a `ProcedurePhaseDefinition` and clean up their own related entities
 
