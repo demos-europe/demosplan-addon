@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.77 (2026-06-30)
 ### Fixed
 - extend `PlainIdJsonApiNormalizer` to strip IRI prefixes from relationship id fields on normalization (GET) and restore plain UUIDs to full IRIs on denormalization (POST/PATCH)
 
