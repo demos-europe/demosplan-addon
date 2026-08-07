@@ -2,7 +2,27 @@
 
 ## UNRELEASED
 
+### BREAKING CHANGES
+Renamed the `UserFilterSet` contract layer to `Bookmark`. The entity holds a named, per-user,
+per-procedure pointer at a stored query; since DPLAN-17722 that query also carries column selection,
+column order and sort, so "filter set" described less than the thing actually does.
+
+- `Contracts\Entities\UserFilterSetInterface` → `BookmarkInterface`
+- `EntityPath\UserFilterSetPath` → `BookmarkPath`
+- `EntityPath\Paths::userFilterSet()` → `Paths::bookmark()`
+- `ResourceConfigBuilder\BaseUserFilterSetResourceConfigBuilder` → `BaseBookmarkResourceConfigBuilder`
+
+Migration is a no-op in practice: no addon references any of these symbols, and
+`UserFilterSetInterface` was an empty marker interface implemented only by core. Core renames the
+entity and the `user_filter_set` table to `bookmark` alongside this release.
+
+The `$filterSet` relationship keeps its name for now — it maps to the `filter_set_id` column and is
+part of the published JSON:API surface of the `UserFilterSet` resource type, which is unchanged.
+
 ## v0.77 (2026-06-30)
+
+### Changed
+
 ### Fixed
 - extend `PlainIdJsonApiNormalizer` to strip IRI prefixes from relationship id fields on normalization (GET) and restore plain UUIDs to full IRIs on denormalization (POST/PATCH)
 
