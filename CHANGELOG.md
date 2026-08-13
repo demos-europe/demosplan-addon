@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+## v0.78 (2026-08-13)
 - add `setProcedurePermissions()` to `PermissionsInterface` so procedure-scoped permissions can be (re)loaded from outside a request context
 
 ## v0.77 (2026-06-30)
