@@ -1,8 +1,8 @@
 # Changelog
 
 ## UNRELEASED
-## v0.78 (2026-08-13)
-- add `setProcedurePermissions()` to `PermissionsInterface` so procedure-scoped permissions can be (re)loaded from outside a request context
+
+## v0.79 (2026-08-20)
 
 ### BREAKING CHANGES
 Renamed the `UserFilterSet` contract layer to `Bookmark`. The entity holds a named, per-user,
@@ -21,9 +21,10 @@ entity and the `user_filter_set` table to `bookmark` alongside this release.
 The `$filterSet` relationship keeps its name for now — it maps to the `filter_set_id` column and is
 part of the published JSON:API surface of the `UserFilterSet` resource type, which is unchanged.
 
-## v0.77 (2026-06-30)
+## v0.78 (2026-08-13)
+- add `setProcedurePermissions()` to `PermissionsInterface` so procedure-scoped permissions can be (re)loaded from outside a request context
 
-### Changed
+## v0.77 (2026-06-30)
 
 ### Fixed
 - extend `PlainIdJsonApiNormalizer` to strip IRI prefixes from relationship id fields on normalization (GET) and restore plain UUIDs to full IRIs on denormalization (POST/PATCH)
