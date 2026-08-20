@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+## v0.78 (2026-08-13)
+- add `setProcedurePermissions()` to `PermissionsInterface` so procedure-scoped permissions can be (re)loaded from outside a request context
 
 ### BREAKING CHANGES
 Renamed the `UserFilterSet` contract layer to `Bookmark`. The entity holds a named, per-user,
