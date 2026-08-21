@@ -1307,7 +1307,7 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getParagraphParentTitleOrDocumentParentTitle(): ?string;
 
-    public function setDraftsListJson(string $json): void;
+    public function setDraftsListJson(?string $json): void;
 
     /**
      * @return string May be empty if none was set yet

@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- widen `StatementInterface::setDraftsListJson()` parameter from `string` to `?string` to match the nullable `drafts_info_json` column
+
 
 ## v0.79 (2026-08-20)
 
