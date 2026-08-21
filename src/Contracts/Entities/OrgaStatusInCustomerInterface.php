@@ -30,4 +30,12 @@ interface OrgaStatusInCustomerInterface extends UuidEntityInterface, CoreEntityI
     public function getStatus(): string;
 
     public function setStatus(string $status);
+
+    /**
+     * Whether this orga may be listed in the public-agency invitation list for the customer/orgaType
+     * this row represents.
+     */
+    public function getShowlist(): bool;
+
+    public function setShowlist(bool $showlist): self;
 }
