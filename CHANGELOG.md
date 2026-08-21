@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add the two-factor accessors to `UserInterface` (`isTotpEnabled()`, `setTotpEnabled()`, `getTotpSecret()`, `setTotpSecret()`, `isEmailAuthEnabled()`, `setAuthCodeEmailEnabled()`, `getEmailAuthCode()`, `setEmailAuthCode()`), so the second factor of a user can be read and reset through the contract instead of the concrete entity
+
 ## v0.78 (2026-08-13)
 - add `setProcedurePermissions()` to `PermissionsInterface` so procedure-scoped permissions can be (re)loaded from outside a request context
 

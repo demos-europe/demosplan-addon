@@ -699,4 +699,26 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
 
     public function setProvidedByIdentityProvider(bool $providedByIdentityProvider): void;
 
+    /**
+     * Whether the user authenticates with a TOTP app as second factor.
+     */
+    public function isTotpEnabled(): bool;
+
+    public function setTotpEnabled(bool $totpEnabled): void;
+
+    public function getTotpSecret(): ?string;
+
+    public function setTotpSecret(?string $totpSecret): void;
+
+    /**
+     * Whether the user authenticates with a code sent by email as second factor.
+     */
+    public function isEmailAuthEnabled(): bool;
+
+    public function setAuthCodeEmailEnabled(bool $authCodeEmailEnabled): void;
+
+    public function getEmailAuthCode(): string;
+
+    public function setEmailAuthCode(string $authCode): void;
+
 }
