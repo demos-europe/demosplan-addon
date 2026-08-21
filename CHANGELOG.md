@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- remove CoreServieceInterface in SegmentServiceInterface as it is not needed anymore
 
 ## v0.79 (2026-08-20)
 
