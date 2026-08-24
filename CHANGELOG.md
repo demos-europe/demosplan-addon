@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- Add `TagListCsvExportEventInterface`
 
 ## v0.79 (2026-08-20)
 
