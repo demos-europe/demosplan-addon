@@ -1,6 +1,7 @@
 # Changelog
 
 ## UNRELEASED
+- add `getShowlist()`/`setShowlist()` to `OrgaStatusInCustomerInterface` and the `showlist` property to `OrgaStatusInCustomerPath`: the flag deciding whether an organisation is listed in the public-agency invitation list moves from `Orga` to `OrgaStatusInCustomer`, making it a per-customer setting. `Paths::orga()->statusInCustomers->showlist` only resolves with this release.
 
 ## v0.79 (2026-08-20)
 
