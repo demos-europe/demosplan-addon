@@ -21,7 +21,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read HashedQueryPath $filterSet
  * @property-read ProcedurePath $procedure
  */
-class UserFilterSetPath implements PropertyAutoPathInterface
+class BookmarkPath implements PropertyAutoPathInterface
 {
 	use PropertyAutoPathTrait;
 }
