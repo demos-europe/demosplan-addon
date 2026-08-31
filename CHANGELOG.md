@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 ### Changed
+
+## v0.81 (2026-08-31)
 - raise `api-platform/core` to `^4.3` and the PHP floor to `^8.2` (API Platform v4 requires `php >=8.2`).
   No source changes were needed: every `ApiPlatform\*` class the bridge imports still exists in v4.3,
   and `ProviderInterface::provide()` is unchanged. Consumers must add `"symfony/type-info": "^7.4"` to
