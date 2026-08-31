@@ -60,3 +60,20 @@ parameters:
             message: "#^Parameter \\#1 \\$configs \\(array\\<string, mixed\\>\\) of method DemosEurope\\\\DemosplanAddon\\\\DependencyInjection\\\\AbstractAddonExtension\\:\\:load\\(\\) should be contravariant with parameter \\$configs \\(array\\) of method Symfony\\\\Component\\\\DependencyInjection\\\\Extension\\\\ExtensionInterface\\:\\:load\\(\\)$#"
             count: 2
             path: src/DependencyInjection/AbstractAddonExtension.php
+
+        # symfony/serializer 6.4 declares `$context` only as a comment on the supports*() interface
+        # methods (`/* , array $context = [] */`) — the documented forward-compatibility pattern; it
+        # becomes a real parameter in 7.0. The decorated service is API Platform's JsonApi
+        # ItemNormalizer, which does declare `array $context = []`, so forwarding the context is
+        # correct against the implementation and harmless at runtime (PHP ignores surplus arguments
+        # to userland methods). Only the narrower 6.4 interface signature is static-only offended.
+        # Obsolete once PlainIdJsonApiNormalizer is dropped for api_platform.jsonapi.use_iri_as_id.
+        -
+            message: "#^Method Symfony\\\\Component\\\\Serializer\\\\Normalizer\\\\NormalizerInterface\\:\\:supportsNormalization\\(\\) invoked with 3 parameters, 1\\-2 required\\.$#"
+            count: 1
+            path: src/ApiPlatform/Serializer/PlainIdJsonApiNormalizer.php
+
+        -
+            message: "#^Method Symfony\\\\Component\\\\Serializer\\\\Normalizer\\\\DenormalizerInterface\\:\\:supportsDenormalization\\(\\) invoked with 4 parameters, 2\\-3 required\\.$#"
+            count: 1
+            path: src/ApiPlatform/Serializer/PlainIdJsonApiNormalizer.php
