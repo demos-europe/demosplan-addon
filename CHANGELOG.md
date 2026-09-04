@@ -1,6 +1,21 @@
 # Changelog
 
 ## UNRELEASED
+### Changed
+
+## v0.81 (2026-08-31)
+- raise `api-platform/core` to `^4.3` and the PHP floor to `^8.2` (API Platform v4 requires `php >=8.2`).
+  No source changes were needed: every `ApiPlatform\*` class the bridge imports still exists in v4.3,
+  and `ProviderInterface::provide()` is unchanged. Consumers must add `"symfony/type-info": "^7.4"` to
+  their root `composer.json` — API Platform >=4.1 requires that component, it has no 6.x release, and
+  Symfony Flex's `PackageFilter` strips `symfony/*` packages outside a pinned `extra.symfony.require`
+  unless they are required at root. No Symfony 7 upgrade is required.
+- pin `symfony/serializer` to `6.*.*` explicitly. The bridge imports `Symfony\Component\Serializer\*`
+  but never declared the dependency, so it resolved to 7.x here while consumers run 6.4 — static
+  analysis was checking a version that is not the one being shipped against.
+
+## v0.80 (2026-08-26)
+- add `getShowlist()`/`setShowlist()` to `OrgaStatusInCustomerInterface` and the `showlist` property to `OrgaStatusInCustomerPath`: the flag deciding whether an organisation is listed in the public-agency invitation list moves from `Orga` to `OrgaStatusInCustomer`, making it a per-customer setting. `Paths::orga()->statusInCustomers->showlist` only resolves with this release.
 - Add `TagListCsvExportEventInterface`
 
 ## v0.79 (2026-08-20)
