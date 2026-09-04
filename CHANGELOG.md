@@ -3,6 +3,9 @@
 ## UNRELEASED
 ### Changed
 
+## v0.82 (2026-09-04)
+- Add `TagListCsvExportEventInterface`
+
 ## v0.81 (2026-08-31)
 - raise `api-platform/core` to `^4.3` and the PHP floor to `^8.2` (API Platform v4 requires `php >=8.2`).
   No source changes were needed: every `ApiPlatform\*` class the bridge imports still exists in v4.3,
@@ -16,7 +19,6 @@
 
 ## v0.80 (2026-08-26)
 - add `getShowlist()`/`setShowlist()` to `OrgaStatusInCustomerInterface` and the `showlist` property to `OrgaStatusInCustomerPath`: the flag deciding whether an organisation is listed in the public-agency invitation list moves from `Orga` to `OrgaStatusInCustomer`, making it a per-customer setting. `Paths::orga()->statusInCustomers->showlist` only resolves with this release.
-- Add `TagListCsvExportEventInterface`
 
 ## v0.79 (2026-08-20)
 
