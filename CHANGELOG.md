@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 ### Changed
+- add pictogram copyright and alt text getters to ProcedureInterface
 
 ## v0.82 (2026-09-04)
 - Add `TagListCsvExportEventInterface`
