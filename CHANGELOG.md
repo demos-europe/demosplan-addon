@@ -1,6 +1,15 @@
 # Changelog
 
 ## UNRELEASED
+
+## minor release plan v0.71.1 ( fixme )
+- adjust docblock of preexisting StatementPreDeleteEventInterface
+- introduce AssessableStatementDeletedEventInterface
+
+- introduce SegmentAssignmentSavedEventInterface
+- introduce SegmentRecommendationsSavedEventInterface
+- introduce StatementsExportedEventInterface
+
 ## v0.71 (2026-05-19)
 - upgrade to edt 0.28 to support attributes instead of annotations
 
