@@ -6,7 +6,7 @@
 - adjust docblock of preexisting StatementPreDeleteEventInterface
 - introduce AssessableStatementDeletedEventInterface
 
-- introduce SegmentAssignmentSavedEventInterface
+- introduce SegmentAssignmentOrPlaceChangeEventInterface
 - introduce SegmentRecommendationsSavedEventInterface
 - introduce StatementsExportedEventInterface
 

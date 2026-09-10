@@ -13,7 +13,7 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
  * {@see getSegment()} already reflects the new values; {@see getPreviousAssignee()} and
  * {@see getPreviousPlace()} carry what they were before this change.
  */
-interface SegmentAssignmentSavedEventInterface
+interface SegmentAssignmentOrPlaceChangeEventInterface
 {
     public function getSegment(): SegmentInterface;
 
