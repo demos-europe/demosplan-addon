@@ -151,17 +151,6 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
     public function getPriority(): string;
 
     /**
-     * Get prioritySort.
-     *
-     * Rewrites emptystrings with "zzz" in order to move them last
-     * in sorted elasticsearch lists.
-     *
-     * @return string
-     */
-    public function getPrioritySort();
-
-
-    /**
      * Set externId.
      *
      * @param string $externId

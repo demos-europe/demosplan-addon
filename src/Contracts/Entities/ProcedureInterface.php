@@ -169,22 +169,6 @@ interface ProcedureInterface extends SluggedEntityInterface
     public function getExternId();
 
     /**
-     * Set pPlisId.
-     *
-     * @param string $plisId
-     *
-     * @return ProcedureInterface
-     */
-    public function setPlisId($plisId);
-
-    /**
-     * Get pPlisId.
-     *
-     * @return string
-     */
-    public function getPlisId();
-
-    /**
      * Set deleted.
      *
      * @param bool $deleted
