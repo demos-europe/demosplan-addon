@@ -3,6 +3,9 @@
 ## UNRELEASED
 ### Changed
 - add pictogram copyright and alt text getters to ProcedureInterface
+- drop the `@deprecated` tag from `PermissionIdentifier`: it pointed at enums implementing
+  `PermissionIdentifierInterface`, which cannot express permission names that are first known at
+  runtime, e.g. read from an addon manifest. The class stays the right choice for those.
 
 ## v0.82 (2026-09-04)
 - Add `TagListCsvExportEventInterface`
