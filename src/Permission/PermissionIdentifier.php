@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace DemosEurope\DemosplanAddon\Permission;
 
 /**
- * @deprecated use enums implementing {@link PermissionIdentifierInterface} instead
+ * Identifies a permission whose name is only known at runtime, e.g. because it was read from an
+ * addon manifest. Permissions known at compile time are to be identified by an enum implementing
+ * {@link PermissionIdentifierInterface} instead.
  */
 class PermissionIdentifier implements PermissionIdentifierInterface
 {
