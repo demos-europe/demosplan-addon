@@ -6,6 +6,8 @@
 - drop the `@deprecated` tag from `PermissionIdentifier`: it pointed at enums implementing
   `PermissionIdentifierInterface`, which cannot express permission names that are first known at
   runtime, e.g. read from an addon manifest. The class stays the right choice for those.
+- remove `CoreServiceInterface` from `SegmentServiceInterface`: addons no longer get the core service
+  through the segment service.
 
 ## v0.82 (2026-09-04)
 - Add `TagListCsvExportEventInterface`
