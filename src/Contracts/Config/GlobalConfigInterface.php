@@ -209,6 +209,10 @@ interface GlobalConfigInterface
 
     public function getProjectShortUrlRedirectRouteLoggedin(): string;
 
+    public function getProjectShortUrlRedirectParam(): string;
+
+    public function getProjectShortUrlRedirectParamLoggedin(): string;
+
     public function getGatewayRedirectURL(): string;
 
     public function getGatewayRegisterURL(): string;
@@ -223,52 +227,6 @@ interface GlobalConfigInterface
     public function getMapPublicAvailableScales();
 
     public function getMapPublicSearchAutozoom(): string;
-
-    /**
-     * @param string $permissionset "all" || "read||write"
-     * @param bool $includePreviewed if set to true this function will include internal phases with the 'previewed' property set to 'true' regardless of the permissionset of these
-     */
-    public function getInternalPhases($permissionset = 'all', bool $includePreviewed = false): array;
-
-    /**
-     * @param string $permissionset "all" || "read||write"
-     * @param bool $includePreviewed if set to true this function will include external phases with the 'previewed' property set to 'true' regardless of the permissionset of these
-     */
-    public function getExternalPhases($permissionset = 'all', bool $includePreviewed = false): array;
-
-    /**
-     * Keys der Phasen als array.
-     *
-     * @param string $permissionset "all" || "read||write"
-     */
-    public function getInternalPhaseKeys($permissionset = 'all'): array;
-
-    /**
-     * Keys der Phasen als array.
-     *
-     * @param string $permissionset "all" || "read||write"
-     */
-    public function getExternalPhaseKeys($permissionset = 'all'): array;
-
-    /**
-     * @param string $permissionset "all" || "read||write"
-     */
-    public function getInternalPhasesAssoc($permissionset = 'all'): array;
-
-    /**
-     * @param string $permissionset "all" || "read||write"
-     */
-    public function getExternalPhasesAssoc($permissionset = 'all'): array;
-
-    /**
-     * Returns phase name based on key with internal phases being checked first for a match.
-     */
-    public function getPhaseNameWithPriorityInternal(string $key): string;
-
-    /**
-     * Returns phase name based on key with external phases being checked first for a match.
-     */
-    public function getPhaseNameWithPriorityExternal(string $key): string;
 
     public function getMapPublicBaselayer(): string;
 
@@ -398,8 +356,5 @@ interface GlobalConfigInterface
 
     public function getXPlanLayerBaseUrl(): string;
 
-    public function getInternalPhaseTranslationKey(string $phaseKey): ?string;
-
-    public function getExternalPhaseTranslationKey(string $phaseKey): ?string;
 }
 

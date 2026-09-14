@@ -91,6 +91,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $piSegmentsProposalResourceUrl
  * @property-read ProcedurePersonPath $similarStatementSubmitters
  * @property-read End $anonymous
+ * @property-read RecommendationVersionPath $recommendationVersions
  */
 class StatementPath implements PropertyAutoPathInterface
 {

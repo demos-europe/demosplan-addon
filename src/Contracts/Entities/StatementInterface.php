@@ -288,17 +288,9 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function getPId();
 
-    /**
-     * Set phase.
-     *
-     * @param string $phase
-     */
-    public function setPhase($phase): StatementInterface;
+    public function getPhaseDefinition(): ProcedurePhaseDefinitionInterface;
 
-    /**
-     * Get phase.
-     */
-    public function getPhase(): string;
+    public function setPhaseDefinition(ProcedurePhaseDefinitionInterface $phaseDefinition): void;
 
     /**
      * Set status.
@@ -597,6 +589,13 @@ interface StatementInterface extends UuidEntityInterface, CoreEntityInterface
      * Get recommendation.
      */
     public function getRecommendation(): string;
+
+    /**
+     * Returns all recommendation versions including a virtual "current" version.
+     *
+     * @return Collection<int, RecommendationVersionInterface>
+     */
+    public function getRecommendationVersions(): Collection;
 
     /**
      * @param string $additionalRecommendationParagraphText

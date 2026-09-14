@@ -530,14 +530,14 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
      *
      * @return Collection<int, RoleInterface>
      */
-    public function getDplanroles(CustomerInterface $customer = null): Collection;
+    public function getDplanroles(?CustomerInterface $customer = null): Collection;
 
     /**
      * Returns an array of the code of roles the user has with a specified customer (current is default).
      *
      * @return string[]
      */
-    public function getDplanRolesArray(CustomerInterface $customer = null): array;
+    public function getDplanRolesArray(?CustomerInterface $customer = null): array;
 
     /**
      * This function is needed to clear the roles cache to prevent roles being still present
@@ -593,7 +593,7 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
      *
      * @param string $role
      */
-    public function hasRole($role, CustomerInterface $customer = null): bool;
+    public function hasRole($role, ?CustomerInterface $customer = null): bool;
 
     public function hasAnyOfRoles(array $roles, ?CustomerInterface $customer): bool;
 

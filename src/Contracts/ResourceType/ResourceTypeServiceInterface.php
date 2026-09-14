@@ -19,5 +19,5 @@ interface ResourceTypeServiceInterface
      *
      * @see https://symfony.com/doc/4.4/validation/groups.html
      */
-    public function validateObject(object $entity, array $groups = null): void;
+    public function validateObject(object $entity, ?array $groups = null): void;
 }

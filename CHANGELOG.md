@@ -1,7 +1,110 @@
 # Changelog
 
 ## UNRELEASED
-- remove CoreServieceInterface in SegmentServiceInterface as it is not needed anymore
+### Changed
+- add pictogram copyright and alt text getters to ProcedureInterface
+- drop the `@deprecated` tag from `PermissionIdentifier`: it pointed at enums implementing
+  `PermissionIdentifierInterface`, which cannot express permission names that are first known at
+  runtime, e.g. read from an addon manifest. The class stays the right choice for those.
+- remove `CoreServiceInterface` from `SegmentServiceInterface`: addons no longer get the core service
+  through the segment service.
+
+## v0.82 (2026-09-04)
+- Add `TagListCsvExportEventInterface`
+
+## v0.81 (2026-08-31)
+- raise `api-platform/core` to `^4.3` and the PHP floor to `^8.2` (API Platform v4 requires `php >=8.2`).
+  No source changes were needed: every `ApiPlatform\*` class the bridge imports still exists in v4.3,
+  and `ProviderInterface::provide()` is unchanged. Consumers must add `"symfony/type-info": "^7.4"` to
+  their root `composer.json` — API Platform >=4.1 requires that component, it has no 6.x release, and
+  Symfony Flex's `PackageFilter` strips `symfony/*` packages outside a pinned `extra.symfony.require`
+  unless they are required at root. No Symfony 7 upgrade is required.
+- pin `symfony/serializer` to `6.*.*` explicitly. The bridge imports `Symfony\Component\Serializer\*`
+  but never declared the dependency, so it resolved to 7.x here while consumers run 6.4 — static
+  analysis was checking a version that is not the one being shipped against.
+
+## v0.80 (2026-08-26)
+- add `getShowlist()`/`setShowlist()` to `OrgaStatusInCustomerInterface` and the `showlist` property to `OrgaStatusInCustomerPath`: the flag deciding whether an organisation is listed in the public-agency invitation list moves from `Orga` to `OrgaStatusInCustomer`, making it a per-customer setting. `Paths::orga()->statusInCustomers->showlist` only resolves with this release.
+
+## v0.79 (2026-08-20)
+
+### BREAKING CHANGES
+Renamed the `UserFilterSet` contract layer to `Bookmark`. The entity holds a named, per-user,
+per-procedure pointer at a stored query; since DPLAN-17722 that query also carries column selection,
+column order and sort, so "filter set" described less than the thing actually does.
+
+- `Contracts\Entities\UserFilterSetInterface` → `BookmarkInterface`
+- `EntityPath\UserFilterSetPath` → `BookmarkPath`
+- `EntityPath\Paths::userFilterSet()` → `Paths::bookmark()`
+- `ResourceConfigBuilder\BaseUserFilterSetResourceConfigBuilder` → `BaseBookmarkResourceConfigBuilder`
+
+Migration is a no-op in practice: no addon references any of these symbols, and
+`UserFilterSetInterface` was an empty marker interface implemented only by core. Core renames the
+entity and the `user_filter_set` table to `bookmark` alongside this release.
+
+The `$filterSet` relationship keeps its name for now — it maps to the `filter_set_id` column and is
+part of the published JSON:API surface of the `UserFilterSet` resource type, which is unchanged.
+
+## v0.78 (2026-08-13)
+- add `setProcedurePermissions()` to `PermissionsInterface` so procedure-scoped permissions can be (re)loaded from outside a request context
+
+## v0.77 (2026-06-30)
+
+### Fixed
+- extend `PlainIdJsonApiNormalizer` to strip IRI prefixes from relationship id fields on normalization (GET) and restore plain UUIDs to full IRIs on denormalization (POST/PATCH)
+
+## v0.76 (2026-06-25)
+- add `ProcedurePhaseDefinitionMarkedAsDeletedEventInterface` so addons can listen for soft-deletion of a `ProcedurePhaseDefinition` and clean up their own related entities
+
+## v0.75 (2026-06-11)
+- add `isLocked()` and `setLocked()` to `PlaceInterface` for the new segment lock feature (segments on workflow places with `locked=true` become read-only for users without the lock administration permission)
+- add `locked` attribute to `BasePlaceResourceConfigBuilder` so it is reachable via the JSON:API `Place` resource
+- core versions > v4.44.0 will depend on a version greater or equal to this.
+
+## v0.74 (2026-06-08)
+### Fixed
+- Declare nullable parameters explicitly (`?Type $param = null`) across the contracts and API-request
+  layer to silence the PHP 8.4 / Symfony "implicitly marking parameter as nullable" deprecations.
+
+## v0.73 (2026-05-27)
+- Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
+  Originally shipped as v0.69 (2026-04-13), which was released by mistake: the bridge depends on
+  EDT changes that were still blocked at the time by the Doctrine ORM v3 upgrade (DPLAN-17129). With that
+  blocker resolved in EDT 0.27/0.28 (addon v0.71), this work is unblocked and re-introduced here.
+
+## v0.72 (2026-05-26)
+### BREAKING CHANGES
+Phase handling on `Procedure` / `Statement` / `DraftStatement` moves from string keys + YAML config to
+a `ProcedurePhaseDefinition` entity. Implementers of the affected interfaces must migrate accordingly.
+- removed `setPhase()` / `getPhase()` from `StatementInterface` and `DraftStatementInterface` (use `getPhaseDefinition()` / `setPhaseDefinition()`)
+- removed `closed` / `closedDate` from `ProcedureInterface` (replaced by `closingPhase` on `ProcedurePhaseDefinitionInterface`)
+- removed phase key / name / step / permissionSet getters and setters from `ProcedurePhaseInterface` (now carried by the phase definition)
+- removed designated phase string methods from `ProcedureSettingsInterface`
+- removed YAML-backed phase methods from `GlobalConfigInterface`
+
+### Added
+- `ProcedurePhaseDefinitionInterface`; `ProcedurePhaseInterface` and `StatementInterface` extended accordingly
+- `ProcedurePhaseDefinitionServiceInterface` (contracts), including `findInitialDefinition` and further phase lookup methods
+- `ProcedurePhaseDefinitionResourceTypeInterface` (contracts)
+- `closingPhase` on `ProcedurePhaseDefinitionInterface`
+- `getPhaseDefinition` on `DraftStatementInterface`
+- add new GlobalConfigInterface methods to set the parameter name of the procedureId passed/used by core_procedure_slug  
+  getProjectShortUrlRedirectParam, getProjectShortUrlRedirectParamLoggedin
+
+### Fixed
+- return HTTP 500 instead of 400 for PHP `Error` throwables in `APIController::handleApiError()`
+
+## v0.71 (2026-05-19)
+- upgrade to edt 0.28 to support attributes instead of annotations
+
+## v0.70 (2026-04-14)
+- add RecommendationVersionInterface, RecommendationVersionPath, and getRecommendationVersions() to StatementInterface
+
+## v0.69 (2026-04-13)
+- Adds API Platform bridge infrastructure to demosplan-addon, enabling gradual migration from EDT to API Platform.
+
+## v0.68 (2026-03-03)
+- add SegmentXlsxExportColumnsEventInterface and SegmentXlsxExportDataEventInterface
 
 ## v0.67 (2026-02-20)
 - extend `ElementsServiceInterface` with `getElementsAdminList()`, `getElementObject()` and `addElement()` methods

@@ -1,25 +1,13 @@
-<?php declare(strict_types=1);
+<?php
 
+declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\Contracts\Entities;
 
 use DateTime;
-use demosplan\DemosPlanCoreBundle\Entity\Procedure\Procedure;
 
 interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterface
 {
-    public function getName(): string;
-
-    public function setName(string $name): void;
-
-    public function getKey(): string;
-
-    public function setKey(string $key): void;
-
-    public function getPermissionSet(): string;
-
-    public function setPermissionSet(string $permissionSet): void;
-
     public function getStartDate(): DateTime;
 
     public function setStartDate(DateTime $startDate): void;
@@ -40,6 +28,14 @@ interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterfa
 
     public function setDesignatedSwitchDate(?DateTime $designatedSwitchDate): void;
 
+    public function getPhaseDefinition(): ProcedurePhaseDefinitionInterface;
+
+    public function setPhaseDefinition(ProcedurePhaseDefinitionInterface $phaseDefinition): void;
+
+    public function getDesignatedPhaseDefinition(): ?ProcedurePhaseDefinitionInterface;
+
+    public function setDesignatedPhaseDefinition(?ProcedurePhaseDefinitionInterface $designatedPhaseDefinition): void;
+
     public function getDesignatedPhaseChangeUser(): ?UserInterface;
 
     public function setDesignatedPhaseChangeUser(?UserInterface $designatedPhaseChangeUser): void;
@@ -47,10 +43,6 @@ interface ProcedurePhaseInterface extends UuidEntityInterface, CoreEntityInterfa
     public function getDesignatedEndDate(): ?DateTime;
 
     public function setDesignatedEndDate(?DateTime $designatedEndDate): void;
-
-    public function getStep(): string;
-
-    public function setStep(string $step): void;
 
     public function copyValuesFromPhase(ProcedurePhaseInterface $sourcePhase): void;
 

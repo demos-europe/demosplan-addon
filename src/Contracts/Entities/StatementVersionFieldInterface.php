@@ -127,7 +127,7 @@ interface StatementVersionFieldInterface extends UuidEntityInterface
      *
      * @return StatementVersionFieldInterface
      */
-    public function setStatement(StatementInterface $statement = null);
+    public function setStatement(?StatementInterface $statement = null);
 
     /**
      * Get st.

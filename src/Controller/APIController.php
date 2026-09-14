@@ -32,6 +32,7 @@ use EDT\Wrapping\Contracts\PropertyAccessException;
 use EDT\Wrapping\Contracts\TypeRetrievalAccessException;
 use EDT\Wrapping\TypeProviders\PrefilledTypeProvider;
 use EDT\Wrapping\Utilities\SchemaPathProcessor;
+use Error;
 use Exception;
 use InvalidArgumentException;
 use JsonSchema\Exception\ResourceNotFoundException;
@@ -205,7 +206,7 @@ abstract class APIController extends AbstractController
      *
      * Also add messages to message bag.
      */
-    public function handleApiError(Throwable $exception = null): APIResponse
+    public function handleApiError(?Throwable $exception = null): APIResponse
     {
         $status = Response::HTTP_BAD_REQUEST;
         $message = '';
@@ -242,6 +243,10 @@ abstract class APIController extends AbstractController
                 case in_array(DuplicateInternIdExceptionImterface::class, $exceptionParentInterfaces, true):
                     $status = Response::HTTP_BAD_REQUEST;
                     $message = 'error.unique.procedure.internid';
+                    break;
+                case $exception instanceof Error:
+                    $status = Response::HTTP_INTERNAL_SERVER_ERROR;
+                    $message = 'error.api.generic';
                     break;
                 default:
                     $message = 'error.api.generic';

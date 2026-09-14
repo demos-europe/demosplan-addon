@@ -304,9 +304,9 @@ class Paths
 	}
 
 
-	public static function userFilterSet(): UserFilterSetPath
+	public static function bookmark(): BookmarkPath
 	{
-		return UserFilterSetPath::startPath();
+		return BookmarkPath::startPath();
 	}
 
 
@@ -624,5 +624,11 @@ class Paths
 	public static function platformFaq(): PlatformFaqPath
 	{
 		return PlatformFaqPath::startPath();
+	}
+
+
+	public static function recommendationVersion(): RecommendationVersionPath
+	{
+		return RecommendationVersionPath::startPath();
 	}
 }

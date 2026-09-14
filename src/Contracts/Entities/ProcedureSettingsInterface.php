@@ -344,7 +344,7 @@ interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInte
      *
      * @return ProcedureSettingsInterface
      */
-    public function setProcedure(ProcedureInterface $procedure = null);
+    public function setProcedure(?ProcedureInterface $procedure = null);
 
     /**
      * Get p.
@@ -365,34 +365,6 @@ interface ProcedureSettingsInterface extends UuidEntityInterface, CoreEntityInte
     public function getPictogramCopyright(): string;
     public function setPictogramAltText(string $pictogramAltText): ProcedureSettingsInterface;
     public function getPictogramAltText(): string;
-
-    /**
-     * Returns the internal phase to which will be switch, when the time(dateOfSwitchPhase) has come.
-     *
-     * @return string
-     */
-    public function getDesignatedPhase();
-
-    /**
-     * @param string $designatedPhase
-     *
-     * @return $this
-     */
-    public function setDesignatedPhase($designatedPhase);
-
-    /**
-     * Returns the external phase to which will be switch, when the time(dateOfSwitchPublicPhase) has come.
-     *
-     * @return string
-     */
-    public function getDesignatedPublicPhase();
-
-    /**
-     * @param string $designatedPublicPhase
-     *
-     * @return mixed
-     */
-    public function setDesignatedPublicPhase($designatedPublicPhase);
 
     /**
      * Returns the date which is defined for switching the current phase of the procedure to the designated phase.
