@@ -519,12 +519,6 @@ interface UserInterface extends SecurityUserInterface, UuidEntityInterface, Pass
      */
     public function setRolesAllowed($roles): void;
 
-    public function getTwinUser(): ?self;
-
-    public function hasTwinUser(): bool;
-
-    public function setTwinUser(?self $twinUser): self;
-
     /**
      * Returns collection of roles the user has with a specified customer (current is default).
      *
