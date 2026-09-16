@@ -9,15 +9,25 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\SegmentInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\UserInterface;
 
 /**
- * Dispatched after a segment's assignee and/or workflow place has actually changed.
- * {@see getSegment()} already reflects the new values; {@see getPreviousAssignee()} and
- * {@see getPreviousPlace()} carry what they were before this change.
+ * Dispatched after one or more segments' assignee and/or workflow place has actually changed,
+ * single-segment or bulk. Each entry in {@see getSegments()} already reflects its new values;
+ * {@see getPreviousAssignees()} and {@see getPreviousPlaces()} carry what each segment held
+ * immediately before this change, keyed by segment id.
  */
 interface SegmentAssignmentOrPlaceChangeEventInterface
 {
-    public function getSegment(): SegmentInterface;
+    /**
+     * @return array<int, SegmentInterface>
+     */
+    public function getSegments(): array;
 
-    public function getPreviousAssignee(): ?UserInterface;
+    /**
+     * @return array<string, ?UserInterface>
+     */
+    public function getPreviousAssignees(): array;
 
-    public function getPreviousPlace(): ?PlaceInterface;
+    /**
+     * @return array<string, ?PlaceInterface>
+     */
+    public function getPreviousPlaces(): array;
 }
