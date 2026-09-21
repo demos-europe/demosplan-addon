@@ -615,6 +615,10 @@ interface ProcedureInterface extends SluggedEntityInterface
 
     public function getPictogram(): ?string;
 
+    public function getPictogramAltText(): string;
+
+    public function getPictogramCopyright(): string;
+
     /**
      * @return Collection<int, NotificationReceiverInterface>
      */

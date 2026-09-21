@@ -19,6 +19,7 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read OrgaPath $orga
  * @property-read OrgaTypePath $orgaType
  * @property-read CustomerPath $customer
+ * @property-read End $showlist
  * @property-read End $status
  */
 class OrgaStatusInCustomerPath implements PropertyAutoPathInterface

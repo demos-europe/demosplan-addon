@@ -111,6 +111,11 @@ interface PermissionsInterface
     public function setProcedure(?ProcedureInterface $procedure);
 
     /**
+     * Load the permissions of the currently set procedure.
+     */
+    public function setProcedurePermissions(): void;
+
+    /**
      * Enable a set of permissions.
      *
      * @param array $permissions permission names

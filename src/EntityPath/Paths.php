@@ -304,9 +304,9 @@ class Paths
 	}
 
 
-	public static function userFilterSet(): UserFilterSetPath
+	public static function bookmark(): BookmarkPath
 	{
-		return UserFilterSetPath::startPath();
+		return BookmarkPath::startPath();
 	}
 
 
