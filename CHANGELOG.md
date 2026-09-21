@@ -2,7 +2,7 @@
 
 ## UNRELEASED
 
-## minor release plan v0.71.1 ( fixme )
+## v0.71.1 (2026-09-21)
 - adjust docblock of preexisting StatementPreDeleteEventInterface
 - introduce AssessableStatementDeletedEventInterface
 
