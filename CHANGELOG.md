@@ -1,8 +1,6 @@
 # Changelog
 
 ## UNRELEASED
-
-## v0.83 (2026-09-23)
 ### Changed
 - add new SegmentTagsChangedEventInterface
 - Core versions > v4.44.0 will depend on min this version
