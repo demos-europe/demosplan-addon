@@ -2,10 +2,10 @@
 
 ## UNRELEASED
 
+## v0.83 (2026-09-23)
+### Changed
 - add new SegmentTagsChangedEventInterface
 - Core versions > v4.44.0 will depend on min this version
-
-### Changed
 - add pictogram copyright and alt text getters to ProcedureInterface
 - drop the `@deprecated` tag from `PermissionIdentifier`: it pointed at enums implementing
   `PermissionIdentifierInterface`, which cannot express permission names that are first known at
