@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace DemosEurope\DemosplanAddon\EntityPath;
 
-use DemosEurope\DemosplanAddon\EntityPath\UserPath as UserPath1;
 use EDT\PathBuilding\End;
 use EDT\PathBuilding\PropertyAutoPathInterface;
 use EDT\PathBuilding\PropertyAutoPathTrait;
@@ -39,7 +38,6 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read UserRoleInCustomerPath $roleInCustomers
  * @property-read AddressPath $addresses
  * @property-read SurveyVotePath $surveyVotes
- * @property-read UserPath $twinUser
  * @property-read ProcedurePath $authorizedProcedures
  * @property-read End $providedByIdentityProvider
  */

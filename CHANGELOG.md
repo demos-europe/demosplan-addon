@@ -12,6 +12,17 @@
 - remove `CoreServiceInterface` from `SegmentServiceInterface`: addons no longer get the core service
   through the segment service.
 
+### BREAKING CHANGES
+Removed the contract surface of features being retired from core. Consumers bumping to this version
+must drop references to the removed symbols (implements clauses, type hints, base classes, factory
+calls); concrete methods on implementing classes may remain, as PHP allows extra methods beyond
+the interface.
+- removed `MasterToebInterface`, `MasterToebVersionInterface`, `MasterToebPath`, `MasterToebVersionPath`, `Paths::masterToeb()` / `masterToebVersion()`, `BaseMasterToebResourceConfigBuilder`, `BaseMasterToebVersionResourceConfigBuilder`, and `OrgaInterface::getMasterToeb()` / `setMasterToeb()`
+- removed `UserInterface::getTwinUser()` / `hasTwinUser()` / `setTwinUser()`, the `twinUser` entry in `UserPath` and `BaseUserResourceConfigBuilder`
+- removed `ProcedureInterface::getPlisId()` / `setPlisId()` and the `plisId` entries in `ProcedurePath` and `BaseProcedureResourceConfigBuilder`
+- removed `StatementInterface::getPrioritySort()`
+- removed `GlobalConfigInterface::getGatewayURLintern()` and `getXPlanLayerBaseUrl()`
+
 ## v0.82 (2026-09-04)
 - Add `TagListCsvExportEventInterface`
 

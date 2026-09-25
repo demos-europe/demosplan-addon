@@ -49,7 +49,6 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $step
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $logo
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $externId
- * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $plisId
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $closed
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $deleted
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,ProcedureInterface> $master

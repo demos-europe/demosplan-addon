@@ -41,7 +41,6 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read ProcedurePath $procedureInvitations
  * @property-read AddressBookEntryPath $addressBookEntries
  * @property-read OrgaStatusInCustomerPath $statusInCustomers
- * @property-read MasterToebPath $masterToeb
  * @property-read BrandingPath $branding
  * @property-read ProcedurePath $administratableProcedures
  * @property-read InstitutionTagPath $assignedTags
