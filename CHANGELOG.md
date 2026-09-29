@@ -5,7 +5,8 @@
 - MCP tool contracts in `Contracts\Mcp`: `McpToolProviderInterface` (autoconfigured with the
   `dplan.mcp.tool_provider` tag) lets any addon contribute tools to an MCP server,
   `McpToolDefinition` names a tool and its behaviour hints, `McpProcedureContextInterface` enters
-  a procedure for a tool call
+  a procedure for a tool call; its `requirePermission()` takes core permission names and addon
+  `PermissionIdentifierInterface`s
 
 ## v0.83 (2026-09-23)
 ### Changed
