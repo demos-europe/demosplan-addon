@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add `MailServiceInterface` so addons can queue mails via the core mail service
+
 ## v0.83 (2026-09-23)
 ### Changed
 - add new SegmentTagsChangedEventInterface
