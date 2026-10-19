@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.84 (2026-10-19)
 - add `MailServiceInterface` so addons can queue mails via the core mail service
 
 ## v0.83 (2026-09-23)
