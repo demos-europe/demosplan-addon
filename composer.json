@@ -16,7 +16,7 @@
     "demos-europe/edt-paths": "^0.28",
     "api-platform/core": "^4.3",
     "doctrine/doctrine-bundle": "^2",
-    "php": "^8.2",
+    "php": "^8.2.35 || ^8.3.36 || ^8.4.27",
     "proj4php/proj4php": "^2.0",
     "ramsey/uuid": "^4",
     "symfony/cache": "6.*.*",
