@@ -420,4 +420,12 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
     public function addAssignedTag(InstitutionTagInterface $tag): void;
 
     public function removeAssignedTag(InstitutionTagInterface $tag): void;
+
+    /**
+     * Explicitly chosen AI mode, null if none was chosen.
+     * Use {@link \DemosEurope\DemosplanAddon\Contracts\Ai\AiModeResolverInterface} for the effective mode.
+     */
+    public function getAiMode(): ?string;
+
+    public function setAiMode(?string $aiMode): self;
 }
