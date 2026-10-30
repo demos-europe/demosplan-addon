@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 - require PHP `^8.2.35 || ^8.3.36 || ^8.4.27` (PHP2Shell fixes, CVE-2026-109618/109619)
+- add `Contracts/Ai`: `AiModes::NONE`, `AiModeProviderInterface` (addons declare further modes and a default) and `AiModeResolverInterface` for the per-orga AI mode
+- add `getAiMode()`/`setAiMode()` to `OrgaInterface`
 
 ## v0.84 (2026-10-19)
 - add `MailServiceInterface` so addons can queue mails via the core mail service
