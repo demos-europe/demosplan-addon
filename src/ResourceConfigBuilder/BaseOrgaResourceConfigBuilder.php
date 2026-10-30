@@ -9,7 +9,6 @@ use DemosEurope\DemosplanAddon\Contracts\Entities\AddressInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\BrandingInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\DepartmentInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\InstitutionTagInterface;
-use DemosEurope\DemosplanAddon\Contracts\Entities\MasterToebInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\OrgaInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\OrgaStatusInCustomerInterface;
 use DemosEurope\DemosplanAddon\Contracts\Entities\ProcedureInterface;
@@ -56,7 +55,6 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,ProcedureInterface> $procedureInvitations
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,AddressBookEntryInterface> $addressBookEntries
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,OrgaStatusInCustomerInterface> $statusInCustomers
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,MasterToebInterface> $masterToeb
  * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,BrandingInterface> $branding
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,ProcedureInterface> $administratableProcedures
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,OrgaInterface,InstitutionTagInterface> $assignedTags

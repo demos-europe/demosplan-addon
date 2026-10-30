@@ -94,12 +94,6 @@ class Paths
 	}
 
 
-	public static function masterToeb(): MasterToebPath
-	{
-		return MasterToebPath::startPath();
-	}
-
-
 	public static function branding(): BrandingPath
 	{
 		return BrandingPath::startPath();
@@ -463,12 +457,6 @@ class Paths
 	public static function paragraph(): ParagraphPath
 	{
 		return ParagraphPath::startPath();
-	}
-
-
-	public static function masterToebVersion(): MasterToebVersionPath
-	{
-		return MasterToebVersionPath::startPath();
 	}
 
 
