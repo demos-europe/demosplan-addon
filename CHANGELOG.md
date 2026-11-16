@@ -1,6 +1,9 @@
 # Changelog
 
 ## UNRELEASED
+### Added
+- `Contracts\Services\CustomerUrlGeneratorInterface` generates absolute urls for the host of a given customer outside of a request
+
 ## v0.85 (2026-10-30)
 - require PHP `^8.2.35 || ^8.3.36 || ^8.4.27` (PHP2Shell fixes, CVE-2026-109618/109619)
 - add `Contracts/Ai`: `AiModes::NONE`, `AiModeProviderInterface` (addons declare further modes and a default) and `AiModeResolverInterface` for the per-orga AI mode
