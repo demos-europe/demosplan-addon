@@ -49,6 +49,10 @@ interface TagInterface extends UuidEntityInterface, CoreEntityInterface
      */
     public function setTitle($title);
 
+    public function getDescription(): ?string;
+
+    public function setDescription(?string $description): void;
+
     /**
      * @return DateTime
      */
