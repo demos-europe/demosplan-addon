@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+- add `getDescription()`/`setDescription()` to `TagInterface`: the optional plaintext description of a tag
+
 ## v0.86 (2026-11-16)
 ### Added
 - `Contracts\Services\CustomerUrlGeneratorInterface` generates absolute urls for the host of a given customer outside of a request
