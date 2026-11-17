@@ -49,7 +49,6 @@ use EDT\JsonApi\ResourceConfig\Builder\MagicResourceConfigBuilder;
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,UserRoleInCustomerInterface> $roleInCustomers
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,AddressInterface> $addresses
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,SurveyVoteInterface> $surveyVotes
- * @property-read ToOneRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,UserInterface> $twinUser
  * @property-read ToManyRelationshipConfigBuilderInterface<ClauseFunctionInterface<bool>,OrderBySortMethodInterface,UserInterface,ProcedureInterface> $authorizedProcedures
  * @property-read AttributeConfigBuilderInterface<ClauseFunctionInterface<bool>,UserInterface> $providedByIdentityProvider
  */

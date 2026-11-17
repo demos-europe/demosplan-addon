@@ -308,8 +308,6 @@ interface GlobalConfigInterface
 
     public function isProdMode(): bool;
 
-    public function getGatewayURLintern(): string;
-
     public function getGeoWfsStatementLinien(): string;
 
     public function getGeoWfsStatementPolygone(): string;
@@ -353,8 +351,6 @@ interface GlobalConfigInterface
      * @return array<string,string>
      */
     public function getSubdomainMap(): array;
-
-    public function getXPlanLayerBaseUrl(): string;
 
 }
 

@@ -25,7 +25,6 @@ use EDT\PathBuilding\PropertyAutoPathTrait;
  * @property-read End $step
  * @property-read End $logo
  * @property-read End $externId
- * @property-read End $plisId
  * @property-read End $closed
  * @property-read End $deleted
  * @property-read End $master

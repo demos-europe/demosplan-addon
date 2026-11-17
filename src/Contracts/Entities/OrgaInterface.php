@@ -400,10 +400,6 @@ interface OrgaInterface extends UuidEntityInterface, CoreEntityInterface, Slugge
 
     public function getMasterUser(string $subdomain): ?UserInterface;
 
-    public function getMasterToeb(): ?MasterToebInterface;
-
-    public function setMasterToeb(?MasterToebInterface $masterToeb): self;
-
     public function hasType(string $orgaType, string $currentSubdomain): bool;
 
     public function isDefaultCitizenOrganisation(): bool;
