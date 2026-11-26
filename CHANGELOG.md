@@ -1,6 +1,8 @@
 # Changelog
 
 ## UNRELEASED
+
+## v0.87 (2026-11-26)
 - add `getDescription()`/`setDescription()` to `TagInterface`: the optional plaintext description of a tag
 
 ## v0.86 (2026-11-16)
